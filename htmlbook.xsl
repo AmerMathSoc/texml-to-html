@@ -4,22 +4,61 @@
 
 <!-- Output: https://github.com/oreillymedia/HTMLBook -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml"
-    xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+
 
 <xsl:output method="html"
             encoding ="utf-8"/>
+            <xsl:preserve-space
+              elements="abbrev abbrev-journal-title access-date addr-line
+                        aff alt-text alt-title article-id article-title
+                        attrib award-id bold chapter-title chem-struct
+                        collab comment compound-kwd-part compound-subject-part
+                        conf-acronym conf-date conf-loc conf-name conf-num
+                        conf-sponsor conf-theme contrib-id copyright-holder
+                        copyright-statement copyright-year corresp country
+                        date-in-citation day def-head degrees disp-formula
+                        edition elocation-id email etal ext-link fax fpage
+                        funding-source funding-statement given-names glyph-data
+                        gov inline-formula inline-supplementary-material
+                        institution isbn issn-l issn issue issue-id issue-part
+                        issue-sponsor issue-title italic journal-id
+                        journal-subtitle journal-title kwd label license-p
+                        long-desc lpage meta-name meta-value mixed-citation
+                        monospace month named-content object-id on-behalf-of
+                        overline p page-range part-title patent person-group
+                        phone prefix preformat price principal-award-recipient
+                        principal-investigator product pub-id publisher-loc
+                        publisher-name related-article related-object role
+                        roman sans-serif sc season self-uri series series-text
+                        series-title sig sig-block size source speaker std
+                        strike string-name styled-content std-organization
+                        sub subject subtitle suffix sup supplement surname
+                        target td term term-head tex-math textual-form th
+                        time-stamp title trans-source trans-subtitle trans-title
+                        underline uri verse-line volume volume-id volume-series
+                        xref year
+                        title head
+                        math annotation ci cn csymbol mi mn
+                        mo ms mtext"/>
+
+<xsl:template match="/">
+  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+  <xsl:text>&#xd;</xsl:text>
+  <xsl:apply-templates/>
+</xsl:template>
 
 <!-- BOOKS -->
 
 <xsl:template match="book">
-    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd"
-          xmlns="http://www.w3.org/1999/xhtml">
+    <html>
         <head>
-            <title><xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/></title>
-            <meta name="content-type" http-equiv="content-type" content="text/html; charset=UTF-8"/>
+            <title>
+              <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
+              </title>
+
+                <xsl:text disable-output-escaping="yes">&lt;meta content="charset=UTF-8"/&gt;</xsl:text>
+                <xsl:text>&#xd;</xsl:text>
         </head>
         <body data-type="book" class="book">
             <xsl:apply-templates/>
@@ -68,23 +107,53 @@
 <!-- ARTICLES -->
 
 <xsl:template match="article">
-    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd"
-          xmlns="http://www.w3.org/1999/xhtml">
+    <html>
         <head>
-            <title><xsl:apply-templates select="front/article-meta/title-group/article-title"/></title>
-            <link rel="stylesheet" href="epub.css" type="text/css"/>
-            <meta name="content-type" http-equiv="content-type" content="text/html; charset=UTF-8"/>
-            <script type="text/x-mathjax-config">  MathJax.Hub.Config({
-    extensions: ["TeX/AMScd.js"],
-  });
-    </script>
-    <script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">&#160;</script>
+            <title>
+              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+              </title>
+              <xsl:text>&#xd;</xsl:text>
+              <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text>
+              <xsl:text>&#xd;</xsl:text>
+            <xsl:text disable-output-escaping="yes">&lt;meta name="HTMLBook Sample" content="text/html; charset=UTF-8"/&gt;</xsl:text>
+            <xsl:text>&#xd;</xsl:text>
         </head>
-        <body>
+        <body data-type="book" class="book" id="htmlbook">                <xsl:text>&#xd;</xsl:text>
+          <section data-type="titlepage" class="titlepage">
+            <xsl:text>&#xd;</xsl:text>
+            <header>
+              <xsl:text>&#xd;</xsl:text>
+        <h1>
+            <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+        </h1>
+        <xsl:text>&#xd;</xsl:text>
+        <xsl:apply-templates select="front/article-meta/contrib-group/contrib/name/given-names"/>
+      <xsl:text>&#xd;</xsl:text>
+            </header>
+          <xsl:text>&#xd;</xsl:text>
+          </section>
+          <xsl:text>&#xd;</xsl:text>
+
+          <section data-type="copyright-page">
+            <xsl:text>&#xd;</xsl:text>
+            <h1>
+              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+              </h1>
+              <xsl:text>&#xd;</xsl:text>
+              <xsl:apply-templates select="front/article-meta/contrib-group/contrib/name/given-names"/>
+          </section>
+          <xsl:text>&#xd;</xsl:text>
+          <section data-type="chapter" id="chapter01">
+            <xsl:text>&#xd;</xsl:text>
+            <h1>
+              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+            </h1>
+            <xsl:text>&#xd;</xsl:text>
             <xsl:apply-templates/>
+          </section>
+        <xsl:text>&#xd;</xsl:text>
         </body>
+      <xsl:text>&#xd;</xsl:text>
     </html>
 </xsl:template>
 
@@ -190,14 +259,29 @@
     </div>
 </xsl:template>
 
-<xsl:template match="sec/title">
-    <div class="{../@disp-level}head">
+
+<xsl:template match="sec[@disp-level='section']/title">
+  <header>
+    <h1 class="{../@disp-level}head">
         <xsl:if test="preceding-sibling::label[1]">
             <xsl:value-of select="preceding-sibling::label[1]"/>
             <xsl:text>. </xsl:text>
         </xsl:if>
         <xsl:apply-templates select="@*|node()"/>
-    </div>
+    </h1>
+  </header>
+</xsl:template>
+
+<xsl:template match="sec[@disp-level='subsection']/title">
+  <header>
+    <h2 class="{../@disp-level}head">
+        <xsl:if test="preceding-sibling::label[1]">
+            <xsl:value-of select="preceding-sibling::label[1]"/>
+            <xsl:text>. </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="@*|node()"/>
+    </h2>
+  </header>
 </xsl:template>
 
 <xsl:template match="sec/label">
@@ -218,6 +302,101 @@
     </section>
 </xsl:template>
 
+
+<xsl:template match="sec[@disp-level='subsection']">
+    <section data-type="sect2" class="sect2">
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="statement">
+  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
+     <xsl:choose>
+     <xsl:when test=" $level = 'section'">
+       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+        <xsl:apply-templates/>
+      </div>
+    </xsl:when>
+         <xsl:otherwise>
+           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+            <xsl:apply-templates/>
+          </div>
+         </xsl:otherwise>
+   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="statement/label">
+  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
+     <xsl:choose>
+     <xsl:when test=" $level = 'section'">
+       <h2><xsl:apply-templates select="@*|node()"/></h2>
+    </xsl:when>
+         <xsl:otherwise>
+           <h3><xsl:apply-templates select="@*|node()"/></h3>
+         </xsl:otherwise>
+   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="fig">
+    <figure>
+        <xsl:apply-templates select="@id|node()"/>
+    </figure>
+</xsl:template>
+
+<xsl:template match="fig/graphic">
+    <img src="{@xlink:href}"/>
+</xsl:template>
+
+
+<xsl:template match="fig/caption">
+  <figcaption>
+    <xsl:if test="preceding-sibling::label[1]">
+        <strong>
+          <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:text>. </xsl:text>
+      </strong>
+    </xsl:if>
+      <xsl:apply-templates select="@*|node()"/>
+  </figcaption>
+</xsl:template>
+
+<xsl:template match="fig/label">
+</xsl:template>
+
+
+<!-- <xsl:template match="statement">
+  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
+     <xsl:choose>
+     <xsl:when test=" $level = 'section'">
+       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+        <xsl:apply-templates/>
+      </div>
+    </xsl:when>
+         <xsl:otherwise>
+           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+            <xsl:apply-templates/>
+          </section>
+         </xsl:otherwise>
+   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="statement/label">
+  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
+     <xsl:choose>
+     <xsl:when test=" $level = 'section'">
+       <header>
+       <h2><xsl:apply-templates select="@*|node()"/></h2>
+     </header>
+    </xsl:when>
+         <xsl:otherwise>
+           <header>
+           <h3><xsl:apply-templates select="@*|node()"/></h3>
+         </header>
+         </xsl:otherwise>
+   </xsl:choose>
+</xsl:template> -->
+
+
 <xsl:template match="sec[@disp-level='chapter']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
@@ -233,7 +412,7 @@
         <h1><xsl:apply-templates select="@*|node()"/></h1>
     </xsl:if>
 </xsl:template>
-
+<!--
 <xsl:template match="sec[@disp-level='section']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
@@ -242,7 +421,7 @@
         </xsl:if>
         <xsl:apply-templates select="@*|node()"/>
     </h1>
-</xsl:template>
+</xsl:template> -->
 
 <xsl:template match="sec[@disp-level='section']/label">
     <xsl:if test="not(following-sibling::title[1])">
@@ -304,9 +483,9 @@
     <dd><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
-<xsl:template match="inline-formula"><script type="math/tex">
-        <xsl:value-of disable-output-escaping="yes" select="tex-math"/>
-    </script></xsl:template>
+<xsl:template match="inline-formula">
+  <xsl:apply-templates/>
+    </xsl:template>
 
 <xsl:template match="disp-formula">
     <xsl:if test="parent::fn">
@@ -314,13 +493,24 @@
             <br/><br/>
         </xsl:if>
     </xsl:if>
-    <script type="math/tex; mode=display">
-        <xsl:value-of disable-output-escaping="yes" select="tex-math"/>
-    </script>
+    <xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="alternatives">
+  <xsl:apply-templates/>
+    </xsl:template>
+
+<xsl:template match="math">
+  <!-- this stylesheet simply copies MathML through. If your browser
+       supports it, you will get it -->
+  <xsl:copy>
+    <xsl:copy-of select="@*"/>
+    <xsl:apply-templates/>
+  </xsl:copy>
 </xsl:template>
 
 <xsl:template match="tex-math">
-    <xsl:apply-templates/>
+<!-- drop TeX -->
 </xsl:template>
 
 <xsl:template match="sec/ref-list">
