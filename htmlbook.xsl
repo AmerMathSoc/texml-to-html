@@ -325,16 +325,35 @@
    </xsl:choose>
 </xsl:template>
 
-<xsl:template match="statement/label | statement/title">
+<xsl:template match="statement/title">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <h2><xsl:apply-templates select="@*|node()"/></h2>
+       <h2>
+         <xsl:if test="preceding-sibling::label[1]">
+             <xsl:value-of select="preceding-sibling::label[1]"/>
+             <xsl:text>. </xsl:text>
+         </xsl:if>
+         <xsl:apply-templates select="@*|node()"/>
+       </h2>
     </xsl:when>
          <xsl:otherwise>
-           <h3><xsl:apply-templates select="@*|node()"/></h3>
+           <h3>
+             <xsl:apply-templates select="@*|node()"/>
+             <xsl:if test="preceding-sibling::label[1]">
+                 <xsl:value-of select="preceding-sibling::label[1]"/>
+                 <xsl:text>. </xsl:text>
+             </xsl:if>
+           </h3>
          </xsl:otherwise>
    </xsl:choose>
+</xsl:template>
+
+<!-- TODO necessary? -->
+<xsl:template match="statement/label">
+    <xsl:if test="not(following-sibling::title[1])">
+    <div class="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
+    </xsl:if>
 </xsl:template>
 
 <xsl:template match="fig">
