@@ -260,7 +260,7 @@
 </xsl:template>
 
 
-<xsl:template match="sec[@disp-level='section']/title">
+<xsl:template match="sec[@disp-level='section']/title | app/title">
   <header>
     <h1 class="{../@disp-level}head">
         <xsl:if test="preceding-sibling::label[1]">
@@ -423,7 +423,7 @@
     </h1>
 </xsl:template> -->
 
-<xsl:template match="sec[@disp-level='section']/label">
+<xsl:template match="sec[@disp-level='section']/label | app/label">
     <xsl:if test="not(following-sibling::title[1])">
         <h1><xsl:apply-templates select="@*|node()"/></h1>
     </xsl:if>
@@ -556,6 +556,19 @@
     <dd>
         <xsl:apply-templates select="@*|node()"/>
     </dd>
+</xsl:template>
+
+
+<xsl:template match="back/app-group">
+    <section data-type="appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="back/app-group/app">
+    <section data-type="sect1">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
 </xsl:template>
 
 <xsl:template match="@*|node()">
