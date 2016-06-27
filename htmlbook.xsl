@@ -562,7 +562,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
-  <dt id="{@id}">
+  <dt id="{@id}"  data-jats-raw-citation="{normalize-space(raw-citation/text())}">
     <xsl:apply-templates/>
   </dt>
 </xsl:template>
@@ -577,6 +577,10 @@
     </dd>
 </xsl:template>
 
+
+<xsl:template match="raw-citation">
+<!-- drop  -->
+</xsl:template>
 
 <xsl:template match="back/app-group">
     <section data-type="appendix">
