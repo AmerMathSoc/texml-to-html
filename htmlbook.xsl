@@ -530,8 +530,8 @@
 </xsl:template>
 
 
-<xsl:template match="sec/ref-list">
-    <section data-type="sect1">
+<xsl:template match="back/ref-list">
+    <section data-type="bibliography">
         <xsl:apply-templates select="title"/>
         <dl class="thebibliography">
             <xsl:apply-templates select="ref"/>
