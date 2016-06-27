@@ -313,12 +313,12 @@
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
         <xsl:apply-templates/>
       </div>
     </xsl:when>
          <xsl:otherwise>
-           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
             <xsl:apply-templates/>
           </div>
          </xsl:otherwise>
