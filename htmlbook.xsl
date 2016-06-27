@@ -523,13 +523,13 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
+  <dt id="{@id}">
     <xsl:apply-templates/>
+  </dt>
 </xsl:template>
 
 <xsl:template match="ref-list/ref/label">
-    <dt id="{@id}">
         <span class="refname"><xsl:apply-templates/></span>
-    </dt>
 </xsl:template>
 
 <xsl:template match="mixed-citation">
