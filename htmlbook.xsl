@@ -325,7 +325,7 @@
    </xsl:choose>
 </xsl:template>
 
-<xsl:template match="statement/label">
+<xsl:template match="statement/label | statement/title">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
