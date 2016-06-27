@@ -513,6 +513,23 @@
 <!-- drop TeX -->
 </xsl:template>
 
+<xsl:template match="disp-formula/alternatives/textual-form">
+  <span class="math display">
+    <xsl:value-of select="." disable-output-escaping="yes"/>
+    <xsl:apply-templates/>
+  <xsl:apply-templates select="@*|node()"/>
+</span>
+</xsl:template>
+
+<xsl:template match="inline-formula/alternatives/textual-form">
+  <span class="math inline">
+    <xsl:value-of select="." disable-output-escaping="yes"/>
+    <xsl:apply-templates/>
+  <xsl:apply-templates select="@*|node()"/>
+</span>
+</xsl:template>
+
+
 <xsl:template match="sec/ref-list">
     <section data-type="sect1">
         <xsl:apply-templates select="title"/>
