@@ -529,6 +529,9 @@
 </span>
 </xsl:template>
 
+<xsl:template match="back">
+  <xsl:apply-templates/>
+    </xsl:template>
 
 <xsl:template match="back/ref-list">
     <section data-type="bibliography">
