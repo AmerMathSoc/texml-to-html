@@ -10,7 +10,7 @@
 <xsl:output method="html"
             encoding ="utf-8"/>
             <xsl:preserve-space
-              elements="abbrev abbrev-journal-title access-date addr-line
+              elements="abbrev abbrev-journal-title abstract access-date addr-line
                         aff alt-text alt-title article-id article-title
                         attrib award-id bold chapter-title chem-struct
                         collab comment compound-kwd-part compound-subject-part
@@ -113,7 +113,7 @@
               <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
               </title>
               <xsl:text>&#xd;</xsl:text>
-              <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text>
+              <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
               <xsl:text>&#xd;</xsl:text>
             <xsl:text disable-output-escaping="yes">&lt;meta name="HTMLBook Sample" content="text/html; charset=UTF-8"/&gt;</xsl:text>
             <xsl:text>&#xd;</xsl:text>
@@ -123,25 +123,20 @@
             <xsl:text>&#xd;</xsl:text>
             <header>
               <xsl:text>&#xd;</xsl:text>
-        <h1>
-            <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
-        </h1>
-        <xsl:text>&#xd;</xsl:text>
-        <xsl:apply-templates select="front/article-meta/contrib-group/contrib/name/given-names"/>
-      <xsl:text>&#xd;</xsl:text>
-            </header>
-          <xsl:text>&#xd;</xsl:text>
-          </section>
-          <xsl:text>&#xd;</xsl:text>
-
-          <section data-type="copyright-page">
-            <xsl:text>&#xd;</xsl:text>
-            <h1>
-              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+              <h1>
+                <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
               </h1>
               <xsl:text>&#xd;</xsl:text>
               <xsl:apply-templates select="front/article-meta/contrib-group/contrib/name/given-names"/>
+              <xsl:text>&#xd;</xsl:text>
+            </header>
+            <xsl:text>&#xd;</xsl:text>
+            <xsl:apply-templates select="front/article-meta/abstract"/>
           </section>
+          <xsl:text>&#xd;</xsl:text>
+
+          <xsl:apply-templates select="front/article-meta"/>
+
           <xsl:text>&#xd;</xsl:text>
           <section data-type="chapter" id="chapter01">
             <xsl:text>&#xd;</xsl:text>
@@ -161,9 +156,122 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="article-title">
+<xsl:template match="article-meta">
+  <section data-type="copyright-page">
+    <xsl:text>&#xd;</xsl:text>
+    <xsl:apply-templates/>
+  </section>
+</xsl:template>
+
+<xsl:template match="article-meta/title-group">
+  <header>
+    <xsl:text>&#xd;</xsl:text>
+    <h1>
+      <xsl:apply-templates/>
+    </h1>
+    <xsl:text>&#xd;</xsl:text>
+    <p>
+      <xsl:apply-templates select="front/article-meta/contrib[@contrib-type='author']"/>
+    </p>
+    <xsl:text>&#xd;</xsl:text>
+  </header>
+  <xsl:text>&#xd;</xsl:text>
+</xsl:template>
+
+<xsl:template match="article-meta/title-group/article-title">
     <xsl:apply-templates/>
 </xsl:template>
+
+<xsl:template match="article-meta/contrib-group[@content-type='authors']">
+  <p class="authors">
+    <xsl:text>&#xd;</xsl:text>
+    <xsl:apply-templates/>
+  </p>
+  <xsl:text>&#xd;</xsl:text>
+</xsl:template>
+
+<xsl:template match="article-meta/contrib-group/contrib[@contrib-type='author']">
+  <p class="author">
+    <span class="author name"><xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/></span>, <span class="aff"><xsl:value-of select="../aff"/></span>
+    <dl>
+      <dt>MathSciNet</dt>
+      <dd> <a href="{contrib-id/text()}">
+      <xsl:value-of select="contrib-id/text()"/>
+    </a>
+    </dd>
+    <dt>For correspondence</dt>
+    <dd>
+      <a href="mailto://{email/text()}">
+        <xsl:value-of select="email"/>
+      </a>
+    </dd>
+  </dl>
+    <xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+<xsl:template match="article-meta/pub-date">
+  <p class="pub history">
+    This article was received on <time class="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, revised on<time class="pub received" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, and published on
+        <time class="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
+    <xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+
+<xsl:template match="article-meta/permissions/copyright-statement">
+  <p class="copyright">
+    <xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+<xsl:template match="article-meta/self-uri">
+  <a href="{@xlink:href}">
+    Permalink
+    <xsl:if test="@content-type='pdf'">
+        (PDF)
+    </xsl:if>
+  </a>
+</xsl:template>
+
+<xsl:template match="article-meta/kwd-group">
+  <p class="keywords"><strong>Keywords</strong>:<xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+<xsl:template match="article-meta/funding-group">
+  <p class="funding"><strong>Funding</strong>:<xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+<xsl:template match="article-meta/custom-meta-group/custom-meta">
+  <p class="meta"><xsl:apply-templates/>
+  </p>
+</xsl:template>
+
+<xsl:template match="article-meta/custom-meta-group/custom-meta/meta-name">
+  <strong class="meta name"><xsl:apply-templates/>:</strong>
+</xsl:template>
+
+<xsl:template match="article-meta/custom-meta-group/custom-meta/meta-value">
+  <span class="meta value"><xsl:apply-templates/></span>
+</xsl:template>
+
+<xsl:template match="article-meta/article-citation">
+  <p class="meta citation">
+    <a href="" data-jats-article-amsref="{translate(text(),'&#10;','')}">Citation for this article as AMSRef.</a>
+  </p>
+</xsl:template>
+
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | xref[@ref-type='aff'] | pub-date/* | history | volume | issue | copyright-year">
+    <!-- <xsl:apply-templates/> -->
+</xsl:template>
+
+
+<xsl:template match="article-meta/article-id | article-meta/article-categories">
+    <!-- drop TODO: handle elsewhere -->
+</xsl:template>
+
 
 <xsl:template match="front"/>
 
@@ -171,19 +279,10 @@
 
 <xsl:template match="metainfo"/>
 
-<xsl:template match="contrib-group|contrib">
+<xsl:template match="contrib-group|contrib | permissions | article-meta/kwd-group/kwd | article-meta/funding-group/funding-statement | article-meta/custom-meta-group">
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="name">
-    <xsl:apply-templates/>
-</xsl:template>
-
-<xsl:template match="given-names">
-    <p data-type="author">
-        <xsl:apply-templates/>
-    </p>
-</xsl:template>
 
 
 <xsl:template match="p">
@@ -297,7 +396,7 @@
     </section>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='section']">
+<xsl:template match="sec[@disp-level='section'] | abstract">
     <section data-type="sect1" class="sect1">
         <xsl:apply-templates select="@id|node()"/>
     </section>
