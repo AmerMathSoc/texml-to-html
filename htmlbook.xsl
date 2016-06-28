@@ -552,7 +552,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
-  <dt id="{@id}"  data-jats-raw-citation="{normalize-space(raw-citation/text())}">
+  <dt id="{@id}"  data-jats-raw-citation="{translate(raw-citation/text(),'&#10;','')}">
     <xsl:apply-templates/>
   </dt>
 </xsl:template>
