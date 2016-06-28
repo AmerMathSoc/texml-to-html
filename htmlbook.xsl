@@ -503,16 +503,15 @@
 </xsl:template>
 
 <xsl:template match="inline-formula">
-  <xsl:apply-templates/>
-    </xsl:template>
+  <span class="math inline"  data-jats-math-tex="{translate(alternatives/tex-math/text(),'&#10;','')}" data-jats-math-mml="{translate(alternatives/math/text(),'&#10;','')}">
+    <xsl:apply-templates/>
+  </span>
+</xsl:template>
 
 <xsl:template match="disp-formula">
-    <xsl:if test="parent::fn">
-        <xsl:if test="preceding-sibling::p">
-            <br/><br/>
-        </xsl:if>
-    </xsl:if>
+  <span class="math block" data-jats-math-tex="{translate(alternatives/math/text(),'&#10;','')}">
     <xsl:apply-templates/>
+  </span>
 </xsl:template>
 
 <xsl:template match="alternatives">
@@ -522,30 +521,21 @@
 <xsl:template match="math">
   <!-- this stylesheet simply copies MathML through. If your browser
        supports it, you will get it -->
-  <xsl:copy>
+  <!-- <xsl:copy>
     <xsl:copy-of select="@*"/>
     <xsl:apply-templates/>
-  </xsl:copy>
+  </xsl:copy> -->
+  <!-- Drop. We store them in data attributes -->
 </xsl:template>
 
 <xsl:template match="tex-math">
 <!-- drop TeX -->
 </xsl:template>
 
-<xsl:template match="disp-formula/alternatives/textual-form">
-  <span class="math display">
+<xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
     <xsl:value-of select="." disable-output-escaping="yes"/>
     <xsl:apply-templates/>
   <xsl:apply-templates select="@*|node()"/>
-</span>
-</xsl:template>
-
-<xsl:template match="inline-formula/alternatives/textual-form">
-  <span class="math inline">
-    <xsl:value-of select="." disable-output-escaping="yes"/>
-    <xsl:apply-templates/>
-  <xsl:apply-templates select="@*|node()"/>
-</span>
 </xsl:template>
 
 <xsl:template match="back">
@@ -576,7 +566,6 @@
         <xsl:apply-templates select="@*|node()"/>
     </dd>
 </xsl:template>
-
 
 <xsl:template match="raw-citation">
 <!-- drop  -->
