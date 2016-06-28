@@ -185,6 +185,7 @@
     </p>
 </xsl:template>
 
+
 <xsl:template match="p">
     <xsl:if test="*|text()">
         <p>
@@ -534,8 +535,6 @@
 
 <xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
     <xsl:value-of select="." disable-output-escaping="yes"/>
-    <xsl:apply-templates/>
-  <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
 <xsl:template match="back">
