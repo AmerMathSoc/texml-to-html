@@ -185,6 +185,7 @@
     </p>
 </xsl:template>
 
+
 <xsl:template match="p">
     <xsl:if test="*|text()">
         <p>
@@ -260,7 +261,7 @@
 </xsl:template>
 
 
-<xsl:template match="sec[@disp-level='section']/title">
+<xsl:template match="sec[@disp-level='section']/title | app/title">
   <header>
     <h1 class="{../@disp-level}head">
         <xsl:if test="preceding-sibling::label[1]">
@@ -313,28 +314,47 @@
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
         <xsl:apply-templates/>
       </div>
     </xsl:when>
          <xsl:otherwise>
-           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
             <xsl:apply-templates/>
           </div>
          </xsl:otherwise>
    </xsl:choose>
 </xsl:template>
 
-<xsl:template match="statement/label">
+<xsl:template match="statement/title">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <h2><xsl:apply-templates select="@*|node()"/></h2>
+       <h2>
+         <xsl:if test="preceding-sibling::label[1]">
+             <xsl:value-of select="preceding-sibling::label[1]"/>
+             <xsl:text>. </xsl:text>
+         </xsl:if>
+         <xsl:apply-templates select="@*|node()"/>
+       </h2>
     </xsl:when>
          <xsl:otherwise>
-           <h3><xsl:apply-templates select="@*|node()"/></h3>
+           <h3>
+             <xsl:apply-templates select="@*|node()"/>
+             <xsl:if test="preceding-sibling::label[1]">
+                 <xsl:value-of select="preceding-sibling::label[1]"/>
+                 <xsl:text>. </xsl:text>
+             </xsl:if>
+           </h3>
          </xsl:otherwise>
    </xsl:choose>
+</xsl:template>
+
+<!-- TODO necessary? -->
+<xsl:template match="statement/label">
+    <xsl:if test="not(following-sibling::title[1])">
+    <div class="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
+    </xsl:if>
 </xsl:template>
 
 <xsl:template match="fig">
@@ -423,7 +443,7 @@
     </h1>
 </xsl:template> -->
 
-<xsl:template match="sec[@disp-level='section']/label">
+<xsl:template match="sec[@disp-level='section']/label | app/label">
     <xsl:if test="not(following-sibling::title[1])">
         <h1><xsl:apply-templates select="@*|node()"/></h1>
     </xsl:if>
@@ -484,16 +504,15 @@
 </xsl:template>
 
 <xsl:template match="inline-formula">
-  <xsl:apply-templates/>
-    </xsl:template>
+  <span class="math inline"  data-jats-math-tex="{translate(alternatives/tex-math/text(),'&#10;','')}" data-jats-math-mml="{translate(alternatives/math/text(),'&#10;','')}">
+    <xsl:apply-templates/>
+  </span>
+</xsl:template>
 
 <xsl:template match="disp-formula">
-    <xsl:if test="parent::fn">
-        <xsl:if test="preceding-sibling::p">
-            <br/><br/>
-        </xsl:if>
-    </xsl:if>
+  <span class="math block" data-jats-math-tex="{translate(alternatives/math/text(),'&#10;','')}">
     <xsl:apply-templates/>
+  </span>
 </xsl:template>
 
 <xsl:template match="alternatives">
@@ -503,35 +522,27 @@
 <xsl:template match="math">
   <!-- this stylesheet simply copies MathML through. If your browser
        supports it, you will get it -->
-  <xsl:copy>
+  <!-- <xsl:copy>
     <xsl:copy-of select="@*"/>
     <xsl:apply-templates/>
-  </xsl:copy>
+  </xsl:copy> -->
+  <!-- Drop. We store them in data attributes -->
 </xsl:template>
 
 <xsl:template match="tex-math">
 <!-- drop TeX -->
 </xsl:template>
 
-<xsl:template match="disp-formula/alternatives/textual-form">
-  <span class="math display">
+<xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
     <xsl:value-of select="." disable-output-escaping="yes"/>
-    <xsl:apply-templates/>
-  <xsl:apply-templates select="@*|node()"/>
-</span>
 </xsl:template>
 
-<xsl:template match="inline-formula/alternatives/textual-form">
-  <span class="math inline">
-    <xsl:value-of select="." disable-output-escaping="yes"/>
-    <xsl:apply-templates/>
-  <xsl:apply-templates select="@*|node()"/>
-</span>
-</xsl:template>
+<xsl:template match="back">
+  <xsl:apply-templates/>
+    </xsl:template>
 
-
-<xsl:template match="sec/ref-list">
-    <section data-type="sect1">
+<xsl:template match="back/ref-list">
+    <section data-type="bibliography">
         <xsl:apply-templates select="title"/>
         <dl class="thebibliography">
             <xsl:apply-templates select="ref"/>
@@ -540,7 +551,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
-  <dt id="{@id}">
+  <dt id="{@id}"  data-jats-raw-citation="{translate(raw-citation/text(),'&#10;','')}">
     <xsl:apply-templates/>
   </dt>
 </xsl:template>
@@ -553,6 +564,28 @@
     <dd>
         <xsl:apply-templates select="@*|node()"/>
     </dd>
+</xsl:template>
+
+<xsl:template match="ext-link">
+  <a href="{@xlink:href}">
+    <xsl:apply-templates/>
+  </a>
+</xsl:template>
+
+<xsl:template match="raw-citation">
+<!-- drop  -->
+</xsl:template>
+
+<xsl:template match="back/app-group">
+    <section data-type="appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="back/app-group/app">
+    <section data-type="sect1">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
 </xsl:template>
 
 <xsl:template match="@*|node()">
