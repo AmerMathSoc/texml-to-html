@@ -567,6 +567,12 @@
     </dd>
 </xsl:template>
 
+<xsl:template match="ext-link">
+  <a href="{@xlink:href}">
+    <xsl:apply-templates/>
+  </a>
+</xsl:template>
+
 <xsl:template match="raw-citation">
 <!-- drop  -->
 </xsl:template>
