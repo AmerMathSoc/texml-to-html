@@ -396,8 +396,14 @@
     </section>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='section'] | abstract">
+<xsl:template match="sec[@disp-level='section']">
     <section data-type="sect1" class="sect1">
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="abstract">
+    <section data-type="sect1" data-jats="abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
