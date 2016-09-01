@@ -326,14 +326,12 @@
 </xsl:template>
 
 <xsl:template match="xref">
-    <a href="#{@rid}"><xsl:apply-templates/></a>
+    <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
 </xsl:template>
 
 <xsl:template match="xref[@ref-type='bibr']">
-    <cite><a href="#{@rid}"><xsl:apply-templates/></a></cite>
+    <cite><a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a></cite>
 </xsl:template>
-
-<xsl:template match="xref[@ref-type='fn']"/>
 
 <xsl:template match="fn">
     <span data-type="footnote">
