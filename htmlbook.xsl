@@ -418,14 +418,14 @@
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
+       <section data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
         <xsl:apply-templates/>
-      </div>
+      </section>
     </xsl:when>
          <xsl:otherwise>
-           <div data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
+           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
             <xsl:apply-templates/>
-          </div>
+          </section>
          </xsl:otherwise>
    </xsl:choose>
 </xsl:template>
@@ -457,8 +457,28 @@
 <!-- TODO necessary? -->
 <xsl:template match="statement/label">
     <xsl:if test="not(following-sibling::title[1])">
-    <div class="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
-    </xsl:if>
+      <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
+         <xsl:choose>
+         <xsl:when test=" $level = 'section'">
+           <h2>
+             <xsl:if test="preceding-sibling::label[1]">
+                 <xsl:value-of select="preceding-sibling::label[1]"/>
+                 <xsl:text>. </xsl:text>
+             </xsl:if>
+             <xsl:apply-templates select="@*|node()"/>
+           </h2>
+        </xsl:when>
+             <xsl:otherwise>
+               <h3>
+                 <xsl:apply-templates select="@*|node()"/>
+                 <xsl:if test="preceding-sibling::label[1]">
+                     <xsl:value-of select="preceding-sibling::label[1]"/>
+                     <xsl:text>. </xsl:text>
+                 </xsl:if>
+               </h3>
+             </xsl:otherwise>
+       </xsl:choose>
+     </xsl:if>
 </xsl:template>
 
 <xsl:template match="fig">
