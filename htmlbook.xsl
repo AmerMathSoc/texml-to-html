@@ -51,7 +51,7 @@
 <!-- BOOKS -->
 
 <xsl:template match="book">
-    <html>
+    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml">
         <head>
             <title>
               <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
@@ -107,7 +107,7 @@
 <!-- ARTICLES -->
 
 <xsl:template match="article">
-    <html>
+    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml">
         <head>
             <title>
               <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
