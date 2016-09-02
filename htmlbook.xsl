@@ -60,7 +60,7 @@
                 <xsl:text disable-output-escaping="yes">&lt;meta content="charset=UTF-8"/&gt;</xsl:text>
                 <xsl:text>&#xd;</xsl:text>
         </head>
-        <body data-type="book" class="book">
+        <body data-type="book">
             <xsl:apply-templates/>
         </body>
     </html>
@@ -75,7 +75,7 @@
 </xsl:template>
 
 <xsl:template match="book-meta">
-    <section data-type="titlepage" class="titlepage">
+    <section data-type="titlepage">
         <h1><xsl:apply-templates select="book-title-group"/></h1>
         <xsl:apply-templates select="contrib-group"/>
     </section>
@@ -92,7 +92,7 @@
 <xsl:template match="book-back//ref-list">
     <section data-type="sect1">
         <xsl:apply-templates select="title"/>
-        <dl class="thebibliography">
+        <dl data-jats="bibliography">
             <xsl:apply-templates select="ref"/>
         </dl>
     </section>
@@ -118,8 +118,9 @@
             <xsl:text disable-output-escaping="yes">&lt;meta name="HTMLBook Sample" content="text/html; charset=UTF-8"/&gt;</xsl:text>
             <xsl:text>&#xd;</xsl:text>
         </head>
-        <body data-type="book" class="book" id="htmlbook">                <xsl:text>&#xd;</xsl:text>
-          <section data-type="titlepage" class="titlepage">
+        <body data-type="book">
+          <xsl:text>&#xd;</xsl:text>
+          <section data-type="titlepage">
             <xsl:text>&#xd;</xsl:text>
             <header>
               <xsl:text>&#xd;</xsl:text>
@@ -183,7 +184,7 @@
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group[@content-type='authors']">
-  <p class="authors">
+  <p data-jats="authors">
     <xsl:text>&#xd;</xsl:text>
     <xsl:apply-templates/>
   </p>
@@ -191,8 +192,8 @@
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group/contrib[@contrib-type='author']">
-  <p class="author">
-    <span class="author name"><xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/></span>, <span class="aff"><xsl:value-of select="../aff"/></span>
+  <p data-jats="author">
+    <span data-jats="author name"><xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/></span>, <span data-jats="aff"><xsl:value-of select="../aff"/></span>
     <dl>
       <dt>MathSciNet</dt>
       <dd> <a href="{contrib-id/text()}">
@@ -211,15 +212,15 @@
 </xsl:template>
 
 <xsl:template match="article-meta/pub-date">
-  <p class="pub history">
-    This article was received on <time class="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, revised on <time class="pub received" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, and published on <time class="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
+  <p data-jats="pub history">
+    This article was received on <time data-jats="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, revised on <time data-jats="pub revised" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, and published on <time data-jats="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
     <xsl:apply-templates/>
   </p>
 </xsl:template>
 
 
 <xsl:template match="article-meta/permissions/copyright-statement">
-  <p class="copyright">
+  <p data-jats="copyright">
     <xsl:apply-templates/>
   </p>
 </xsl:template>
@@ -234,30 +235,30 @@
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group">
-  <p class="keywords"><strong>Keywords</strong>:<xsl:apply-templates/>
+  <p data-jats="keywords"><strong>Keywords</strong>:<xsl:apply-templates/>
   </p>
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group">
-  <p class="funding"><strong>Funding</strong>:<xsl:apply-templates/>
+  <p data-jats="funding"><strong>Funding</strong>:<xsl:apply-templates/>
   </p>
 </xsl:template>
 
 <xsl:template match="article-meta/custom-meta-group/custom-meta">
-  <p class="meta"><xsl:apply-templates/>
+  <p data-jats="meta"><xsl:apply-templates/>
   </p>
 </xsl:template>
 
 <xsl:template match="article-meta/custom-meta-group/custom-meta/meta-name">
-  <strong class="meta name"><xsl:apply-templates/>:</strong>
+  <strong data-jats="meta name"><xsl:apply-templates/>:</strong>
 </xsl:template>
 
 <xsl:template match="article-meta/custom-meta-group/custom-meta/meta-value">
-  <span class="meta value"><xsl:apply-templates/></span>
+  <span data-jats="meta value"><xsl:apply-templates/></span>
 </xsl:template>
 
 <xsl:template match="article-meta/article-citation">
-  <p class="meta citation">
+  <p data-jats="meta citation">
     <a href="" data-jats-article-amsref="{translate(text(),'&#10;','')}">Citation for this article as AMSRef.</a>
   </p>
 </xsl:template>
@@ -288,7 +289,7 @@
     <xsl:if test="*|text()">
         <p>
             <xsl:if test="@content-type='noindent'">
-                <xsl:attribute name="class">noindent</xsl:attribute>
+                <xsl:attribute name="data-jats">noindent</xsl:attribute>
             </xsl:if>
             <xsl:apply-templates select="@id|node()"/>
         </p>
@@ -350,7 +351,7 @@
 </xsl:template>
 
 <xsl:template match="sec">
-    <div class="{@disp-level}body">
+    <div data-jats="{@disp-level}body">
         <xsl:apply-templates select="@id"/>
         <xsl:apply-templates/>
     </div>
@@ -359,7 +360,7 @@
 
 <xsl:template match="sec[@disp-level='section']/title | app/title">
   <header>
-    <h1 class="{../@disp-level}head">
+    <h1 data-jats="{../@disp-level}head">
         <xsl:if test="preceding-sibling::label[1]">
             <xsl:value-of select="preceding-sibling::label[1]"/>
             <xsl:text>. </xsl:text>
@@ -371,7 +372,7 @@
 
 <xsl:template match="sec[@disp-level='subsection']/title">
   <header>
-    <h2 class="{../@disp-level}head">
+    <h2 data-jats="{../@disp-level}head">
         <xsl:if test="preceding-sibling::label[1]">
             <xsl:value-of select="preceding-sibling::label[1]"/>
             <xsl:text>. </xsl:text>
@@ -383,7 +384,7 @@
 
 <xsl:template match="sec/label">
     <xsl:if test="not(following-sibling::title[1])">
-    <div class="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
+    <div data-jats="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
     </xsl:if>
 </xsl:template>
 
@@ -394,7 +395,7 @@
 </xsl:template>
 
 <xsl:template match="sec[@disp-level='section']">
-    <section data-type="sect1" class="sect1">
+    <section data-type="sect1">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
@@ -407,7 +408,7 @@
 
 
 <xsl:template match="sec[@disp-level='subsection']">
-    <section data-type="sect2" class="sect2">
+    <section data-type="sect2">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
@@ -416,12 +417,12 @@
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <section data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
+       <section data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
         <xsl:apply-templates/>
       </section>
     </xsl:when>
          <xsl:otherwise>
-           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}" id="{@id}">
+           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
             <xsl:apply-templates/>
           </section>
          </xsl:otherwise>
@@ -510,12 +511,12 @@
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
      <xsl:when test=" $level = 'section'">
-       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" data-jats="{@content-type} {@style}">
         <xsl:apply-templates/>
       </div>
     </xsl:when>
          <xsl:otherwise>
-           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" class="{@content-type} {@style}">
+           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats="{@content-type} {@style}">
             <xsl:apply-templates/>
           </section>
          </xsl:otherwise>
@@ -572,7 +573,7 @@
 </xsl:template>
 
 <xsl:template match="toc">
-    <nav data-type="toc" class="toc" id="toc">
+    <nav data-type="toc" id="toc">
         <xsl:apply-templates select="title-group"/>
         <ol style="list-style-type:none">
             <xsl:apply-templates select="toc-entry"/>
@@ -626,13 +627,13 @@
 </xsl:template>
 
 <xsl:template match="inline-formula">
-  <span class="math inline"  data-jats-math-tex="{translate(alternatives/tex-math/text(),'&#10;','')}" data-jats-math-mml="{translate(alternatives/math/text(),'&#10;','')}">
+  <span data-jats="math inline"  data-jats-math-tex="{translate(alternatives/tex-math/text(),'&#10;','')}" data-jats-math-mml="{translate(alternatives/math/text(),'&#10;','')}">
     <xsl:apply-templates/>
   </span>
 </xsl:template>
 
 <xsl:template match="disp-formula">
-  <span class="math block" data-jats-math-tex="{translate(alternatives/math/text(),'&#10;','')}">
+  <span data-jats="math block" data-jats-math-tex="{translate(alternatives/math/text(),'&#10;','')}">
     <xsl:apply-templates/>
   </span>
 </xsl:template>
@@ -666,7 +667,7 @@
 <xsl:template match="back/ref-list">
     <section data-type="bibliography">
         <xsl:apply-templates select="title"/>
-        <dl class="thebibliography">
+        <dl>
             <xsl:apply-templates select="ref"/>
         </dl>
     </section>
@@ -679,7 +680,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref/label">
-        <span class="refname"><xsl:apply-templates/></span>
+        <span data-jats="refname"><xsl:apply-templates/></span>
 </xsl:template>
 
 <xsl:template match="mixed-citation">
