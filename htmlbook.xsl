@@ -627,13 +627,13 @@
 </xsl:template>
 
 <xsl:template match="inline-formula">
-  <span data-jats="math inline"  data-jats-math-tex="{translate(alternatives/tex-math/text(),'&#10;','')}" data-jats-math-mml="{translate(alternatives/math/text(),'&#10;','')}">
+  <span data-jats="math inline">
     <xsl:apply-templates/>
   </span>
 </xsl:template>
 
 <xsl:template match="disp-formula">
-  <span data-jats="math block" data-jats-math-tex="{translate(alternatives/math/text(),'&#10;','')}">
+  <span data-jats="math block">
     <xsl:apply-templates/>
   </span>
 </xsl:template>
@@ -643,21 +643,13 @@
     </xsl:template>
 
 <xsl:template match="math">
-  <!-- this stylesheet simply copies MathML through. If your browser
-       supports it, you will get it -->
-  <!-- <xsl:copy>
-    <xsl:copy-of select="@*"/>
-    <xsl:apply-templates/>
-  </xsl:copy> -->
-  <!-- Drop. We store them in data attributes -->
 </xsl:template>
 
 <xsl:template match="tex-math">
-<!-- drop TeX -->
+  <xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
-    <xsl:value-of select="." disable-output-escaping="yes"/>
 </xsl:template>
 
 <xsl:template match="back">
