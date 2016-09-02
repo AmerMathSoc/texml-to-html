@@ -160,7 +160,56 @@
 <xsl:template match="article-meta">
   <section data-type="copyright-page">
     <xsl:text>&#xd;</xsl:text>
-    <xsl:apply-templates/>
+    <h1>Article Information</h1>
+    <dl>
+      <dt>Author Information</dt>
+      <dd data-jats="authors">
+        <xsl:apply-templates select="contrib-group[@content-type='authors']"/>
+      </dd>
+      <dd data-jats="fundinginfo">
+        <xsl:apply-templates select="funding-group"/>
+      </dd>
+      <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
+      <xsl:if test="custom-meta-group/custom-meta[2]">
+        <dt>Communicated by</dt>
+        <dd data-jats="communicatedby">
+          <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
+        </dd>
+      </xsl:if>
+      <dt>Publication History</dt>
+      <dd data-jats="pub history">
+        <xsl:apply-templates select="pub-date"/>
+      </dd>
+      <dt>Copyright Information</dt>
+      <dd data-jats="copyright">
+        <xsl:apply-templates select="permissions/copyright-statement"/>
+      </dd>
+      <dt>MSC 2010</dt>
+      <dd data-jats="msc">
+        <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
+        <xsl:choose>
+          <xsl:when test="custom-meta-group/custom-meta[2]">
+            <xsl:apply-templates select="custom-meta-group/custom-meta[2]/meta-value/text()"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </dd>
+      <dt>Article References</dt>
+      <dd data-jats="articlerefs">
+        <ul>
+        <xsl:apply-templates select="self-uri"/>
+        <xsl:apply-templates select="article-id"/>
+        <xsl:apply-templates select="article-citation"/>
+      </ul>
+      </dd>
+      <dt>Keywords</dt>
+      <dd data-jats="keywords">
+        <xsl:apply-templates select="kwd-group"/>
+      </dd>
+    </dl>
+    <xsl:text>&#xd;</xsl:text>
   </section>
 </xsl:template>
 
@@ -184,38 +233,32 @@
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group[@content-type='authors']">
-  <p data-jats="authors">
-    <xsl:text>&#xd;</xsl:text>
     <xsl:apply-templates/>
-  </p>
-  <xsl:text>&#xd;</xsl:text>
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group/contrib[@contrib-type='author']">
-  <p data-jats="author">
-    <span data-jats="author name"><xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/></span>, <span data-jats="aff"><xsl:value-of select="../aff"/></span>
-    <dl>
-      <dt>MathSciNet</dt>
-      <dd> <a href="{contrib-id/text()}">
-      <xsl:value-of select="contrib-id/text()"/>
-    </a>
+  <dl data-jats="author">
+    <dt data-jats="author name">
+      <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
+    </dt>
+    <dd data-jats="affiliation">
+      <xsl:value-of select="../aff"/>
     </dd>
-    <dt>For correspondence</dt>
     <dd>
       <a href="mailto://{email/text()}">
         <xsl:value-of select="email"/>
       </a>
     </dd>
-  </dl>
+    <dd>
+      <a href="{contrib-id/text()}">MathSciNet</a>
+    </dd>
     <xsl:apply-templates/>
-  </p>
+  </dl>
 </xsl:template>
 
 <xsl:template match="article-meta/pub-date">
-  <p data-jats="pub history">
     This article was received on <time data-jats="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, revised on <time data-jats="pub revised" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, and published on <time data-jats="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
     <xsl:apply-templates/>
-  </p>
 </xsl:template>
 
 
@@ -226,12 +269,14 @@
 </xsl:template>
 
 <xsl:template match="article-meta/self-uri">
-  <a href="{@xlink:href}">
+  <li>
+  <a href="{@xlink:href}" data-jats="{@content-type}">
     Permalink
     <xsl:if test="@content-type='pdf'">
         (PDF)
     </xsl:if>
   </a>
+  </li>
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group">
@@ -240,35 +285,43 @@
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group">
-  <p data-jats="funding"><strong>Funding</strong>:<xsl:apply-templates/>
-  </p>
-</xsl:template>
-
-<xsl:template match="article-meta/custom-meta-group/custom-meta">
-  <p data-jats="meta"><xsl:apply-templates/>
-  </p>
-</xsl:template>
-
-<xsl:template match="article-meta/custom-meta-group/custom-meta/meta-name">
-  <strong data-jats="meta name"><xsl:apply-templates/>:</strong>
-</xsl:template>
-
-<xsl:template match="article-meta/custom-meta-group/custom-meta/meta-value">
-  <span data-jats="meta value"><xsl:apply-templates/></span>
+  <xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template match="article-meta/article-citation">
-  <p data-jats="meta citation">
-    <a href="" data-jats-article-amsref="{translate(text(),'&#10;','')}">Citation for this article as AMSRef.</a>
-  </p>
+  <li><span>
+    <pre data-jats="amsref">
+      <xsl:value-of select="text()"/>
+    </pre></span>
+  </li>
 </xsl:template>
 
 <xsl:template match="name | surname | given-names | aff | email | contrib-id | xref[@ref-type='aff'] | pub-date/* | history | volume | issue | copyright-year">
     <!-- <xsl:apply-templates/> -->
 </xsl:template>
 
+<xsl:template match="article-meta/kwd-group">
+  <xsl:apply-templates/>
+</xsl:template>
 
-<xsl:template match="article-meta/article-id | article-meta/article-categories">
+<xsl:template match="article-meta/kwd-group/kwd">
+  <li><xsl:value-of select="text()"/></li>
+</xsl:template>
+
+<xsl:template match="article-meta/article-id">
+  <li>
+    <xsl:if test="@pub-id-type = 'doi'">
+      DOI <a data-jats="doi" href="https://doi.org/{text()}"><xsl:value-of select="text()"/>
+</a>
+    </xsl:if>
+    <xsl:if test="@pub-id-type = 'mr'">
+      <!-- TODO What is the correct URL prefix? -->
+      <a data-jats-="mr" href="https://www.ams.org/mathscinet/search/paper.html?mrid={text()}">Math Review <xsl:value-of select="text()"/></a>
+    </xsl:if>
+  </li>
+</xsl:template>
+
+<xsl:template match="article-meta/article-categories">
     <!-- drop TODO: handle elsewhere -->
 </xsl:template>
 
@@ -279,7 +332,7 @@
 
 <xsl:template match="metainfo"/>
 
-<xsl:template match="contrib-group|contrib | permissions | article-meta/kwd-group/kwd | article-meta/funding-group/funding-statement | article-meta/custom-meta-group">
+<xsl:template match="contrib-group|contrib | permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group">
     <xsl:apply-templates/>
 </xsl:template>
 
