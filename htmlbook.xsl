@@ -320,7 +320,7 @@
     </xsl:if>
     <xsl:if test="@pub-id-type = 'mr'">
       <!-- TODO What is the correct URL prefix? -->
-      <a data-jats-="mr" href="https://www.ams.org/mathscinet/search/paper.html?mrid={text()}">Math Review <xsl:value-of select="text()"/></a>
+      <a data-jats-="mr" href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
     </xsl:if>
   </li>
 </xsl:template>
