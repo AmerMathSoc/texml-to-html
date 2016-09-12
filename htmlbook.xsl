@@ -51,7 +51,9 @@
 <!-- BOOKS -->
 
 <xsl:template match="book">
-    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml">
+  <xsl:text disable-output-escaping="yes">
+    &lt;html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml"&gt;
+  </xsl:text>
         <head>
             <title>
               <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
@@ -63,7 +65,7 @@
         <body data-type="book">
             <xsl:apply-templates/>
         </body>
-    </html>
+  <xsl:text disable-output-escaping="yes">&gt;/html&lt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="front-matter|book-body|book-back|book-part">
@@ -107,7 +109,9 @@
 <!-- ARTICLES -->
 
 <xsl:template match="article">
-    <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml">
+  <xsl:text disable-output-escaping="yes">
+    &lt;html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml"&gt;
+  </xsl:text>
         <head>
             <title>
               <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
@@ -150,7 +154,7 @@
         <xsl:text>&#xd;</xsl:text>
         </body>
       <xsl:text>&#xd;</xsl:text>
-    </html>
+    <xsl:text disable-output-escaping="yes">&gt;/html&lt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="article/body">
