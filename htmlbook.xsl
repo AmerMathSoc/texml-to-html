@@ -723,7 +723,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
-  <dt id="{@id}"  data-jats-raw-citation="{translate(raw-citation/text(),'&#10;','')}">
+  <dt id="{@id}">
     <xsl:apply-templates/>
   </dt>
 </xsl:template>
@@ -735,6 +735,9 @@
 <xsl:template match="mixed-citation">
     <dd>
         <xsl:apply-templates select="@*|node()"/>
+          <pre data-jats="amsref">
+            <xsl:value-of select="../raw-citation/text()"/>
+          </pre>
     </dd>
 </xsl:template>
 
