@@ -175,6 +175,7 @@
       <dd data-jats="authors">
         <xsl:apply-templates select="contrib-group[@content-type='authors']"/>
       </dd>
+      <dt>Funding Information</dt>
       <dd data-jats="fundinginfo">
         <xsl:apply-templates select="funding-group"/>
       </dd>
