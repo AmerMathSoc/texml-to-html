@@ -245,9 +245,7 @@
     <dt data-jats="author name">
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
     </dt>
-    <dd data-jats="affiliation">
-      <xsl:value-of select="../aff"/>
-    </dd>
+      <xsl:apply-templates select="xref[@ref-type='aff']"/>
     <dd>
       <a href="mailto://{email/text()}">
         <xsl:value-of select="email"/>
@@ -256,7 +254,6 @@
     <dd>
       <a href="{contrib-id/text()}">MathSciNet</a>
     </dd>
-    <xsl:apply-templates/>
   </dl>
 </xsl:template>
 
@@ -300,7 +297,20 @@
   </li>
 </xsl:template>
 
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | xref[@ref-type='aff'] | pub-date/* | history | volume | issue | copyright-year">
+
+<xsl:template match="article-meta/contrib-group/contrib/xref[@ref-type='aff']">
+  <dd data-jats="affiliation">
+  <xsl:variable name="link" select="./@rid" />
+  <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
+      <xsl:attribute name="data-jats">affiliation current</xsl:attribute>
+      <span>Current address: </span>
+  </xsl:if>
+  <xsl:value-of select="../../aff[@id = $link]/text()"/>
+</dd>
+</xsl:template>
+
+
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year">
     <!-- <xsl:apply-templates/> -->
 </xsl:template>
 
