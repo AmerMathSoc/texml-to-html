@@ -58,8 +58,6 @@
             <title>
               <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
               </title>
-
-                <xsl:text disable-output-escaping="yes">&lt;meta content="charset=UTF-8"/&gt;</xsl:text>
                 <xsl:text>&#xd;</xsl:text>
         </head>
         <body data-type="book">
@@ -119,7 +117,6 @@
               <xsl:text>&#xd;</xsl:text>
               <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
               <xsl:text>&#xd;</xsl:text>
-            <xsl:text disable-output-escaping="yes">&lt;meta name="HTMLBook Sample" content="text/html; charset=UTF-8"/&gt;</xsl:text>
             <xsl:text>&#xd;</xsl:text>
         </head>
         <body data-type="book">
