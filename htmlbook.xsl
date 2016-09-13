@@ -63,7 +63,7 @@
         <body data-type="book">
             <xsl:apply-templates/>
         </body>
-  <xsl:text disable-output-escaping="yes">&gt;/html&lt;</xsl:text>
+  <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="front-matter|book-body|book-back|book-part">
@@ -159,7 +159,7 @@
         <xsl:text>&#xd;</xsl:text>
         </body>
       <xsl:text>&#xd;</xsl:text>
-    <xsl:text disable-output-escaping="yes">&gt;/html&lt;</xsl:text>
+    <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="article/body">
