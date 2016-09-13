@@ -128,6 +128,14 @@
             <xsl:text>&#xd;</xsl:text>
             <header>
               <xsl:text>&#xd;</xsl:text>
+              <aside data-jats="journal">
+                <xsl:text>&#xd;</xsl:text>
+                <p data-jats="title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
+                <p data-jats="location"><span data-jats="volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-jats="issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-jats="date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
+                <p data-jats="pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
+                <xsl:text>&#xd;</xsl:text>
+              </aside>
+              <xsl:text>&#xd;</xsl:text>
               <h1>
                 <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
               </h1>
