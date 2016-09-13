@@ -187,10 +187,7 @@
       <dd data-jats="pub history">
         <xsl:apply-templates select="pub-date"/>
       </dd>
-      <dt>Copyright Information</dt>
-      <dd data-jats="copyright">
-        <xsl:apply-templates select="permissions/copyright-statement"/>
-      </dd>
+      <xsl:apply-templates select="permissions/copyright-statement"/>
       <dt>MSC 2010</dt>
       <dd data-jats="msc">
         <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
@@ -267,9 +264,8 @@
 
 
 <xsl:template match="article-meta/permissions/copyright-statement">
-  <p data-jats="copyright">
-    <xsl:apply-templates/>
-  </p>
+  <dt>Copyright Information</dt>
+  <dd data-jats="copyright"><xsl:apply-templates/></dd>
 </xsl:template>
 
 <xsl:template match="article-meta/self-uri">
