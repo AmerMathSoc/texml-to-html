@@ -175,10 +175,7 @@
       <dd data-jats="authors">
         <xsl:apply-templates select="contrib-group[@content-type='authors']"/>
       </dd>
-      <dt>Funding</dt>
-      <dd data-jats="fundinginfo">
         <xsl:apply-templates select="funding-group"/>
-      </dd>
       <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
       <xsl:if test="custom-meta-group/custom-meta[2]">
         <dt>Communicated by</dt>
@@ -292,7 +289,8 @@
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group">
-  <xsl:apply-templates/>
+  <dt>Funding</dt>
+  <dd data-jats="fundinginfo"><xsl:apply-templates/></dd>
 </xsl:template>
 
 <xsl:template match="article-meta/article-citation">
