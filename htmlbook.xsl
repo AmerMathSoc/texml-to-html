@@ -473,6 +473,11 @@
     </section>
 </xsl:template>
 
+<xsl:template match="abstract/title">
+  <header>
+    <h1><xsl:apply-templates select="@*|node()"/></h1>
+  </header>
+</xsl:template>
 
 <xsl:template match="sec[@disp-level='subsection']">
     <section data-type="sect2">
