@@ -310,7 +310,7 @@
 </xsl:template>
 
 
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year">
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x">
     <!-- <xsl:apply-templates/> -->
 </xsl:template>
 
