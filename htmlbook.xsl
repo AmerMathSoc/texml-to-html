@@ -258,7 +258,7 @@
 </xsl:template>
 
 <xsl:template match="article-meta/pub-date">
-    This article was received on <time data-jats="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, revised on <time data-jats="pub revised" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, and published on <time data-jats="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
+    This article was received on <time data-jats="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time>, revised on <time data-jats="pub revised" datetime="{../history/date[@date-type='rev-recd']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='rev-recd']/@iso-8601-date"/></time>, and published on <time data-jats="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
     <xsl:apply-templates/>
 </xsl:template>
 
