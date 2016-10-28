@@ -208,10 +208,12 @@
         <xsl:apply-templates select="article-citation"/>
       </ul>
       </dd>
+      <xsl:if test="kwd-group">
       <dt>Keywords</dt>
       <dd data-jats="keywords">
         <xsl:apply-templates select="kwd-group"/>
       </dd>
+      </xsl:if>
     </dl>
     <xsl:text>&#xd;</xsl:text>
   </section>
@@ -280,7 +282,10 @@
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group">
-  <p data-jats="keywords"><strong>Keywords</strong>:<xsl:apply-templates/>
+  <p data-jats="keywords"><strong>Keywords</strong>:
+    <ul>
+      <xsl:apply-templates/>
+    </ul>
   </p>
 </xsl:template>
 
@@ -312,10 +317,6 @@
 
 <xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x">
     <!-- <xsl:apply-templates/> -->
-</xsl:template>
-
-<xsl:template match="article-meta/kwd-group">
-  <xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
