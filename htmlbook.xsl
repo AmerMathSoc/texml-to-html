@@ -306,7 +306,7 @@
   <xsl:variable name="link" select="./@rid" />
   <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
       <xsl:attribute name="data-jats">affiliation current</xsl:attribute>
-      <span>Current address: </span>
+      <span>Address at time of publication: </span>
   </xsl:if>
   <xsl:value-of select="../../aff[@id = $link]/text()"/>
 </dd>
