@@ -282,11 +282,9 @@
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group">
-  <p data-jats="keywords"><strong>Keywords</strong>:
     <ul>
       <xsl:apply-templates/>
     </ul>
-  </p>
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group">
