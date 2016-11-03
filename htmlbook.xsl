@@ -551,8 +551,8 @@
      </xsl:if>
 </xsl:template>
 
-<xsl:template match="fig">
-    <figure>
+<xsl:template match="fig | fig-group">
+    <figure role="group">
         <xsl:apply-templates select="@id|node()"/>
     </figure>
 </xsl:template>
@@ -562,7 +562,7 @@
 </xsl:template>
 
 
-<xsl:template match="fig/caption">
+<xsl:template match="fig/caption | fig-group/caption">
   <figcaption>
     <xsl:if test="preceding-sibling::label[1]">
         <strong>
@@ -574,7 +574,7 @@
   </figcaption>
 </xsl:template>
 
-<xsl:template match="fig/label">
+<xsl:template match="fig/label | fig-group/label">
 </xsl:template>
 
 
