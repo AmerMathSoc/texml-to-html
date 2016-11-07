@@ -322,16 +322,17 @@
 </xsl:template>
 
 <xsl:template match="article-meta/article-id">
-  <li>
     <xsl:if test="@pub-id-type = 'doi'">
-      DOI <a data-jats="doi" href="https://doi.org/{text()}"><xsl:value-of select="text()"/>
-</a>
+      <li>
+        DOI <a data-jats="doi" href="https://doi.org/{text()}"><xsl:value-of select="text()"/></a>
+      </li>
     </xsl:if>
     <xsl:if test="@pub-id-type = 'mr'">
       <!-- TODO What is the correct URL prefix? -->
-      <a data-jats-="mr" href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
+      <li>
+        <a data-jats-="mr" href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
+      </li>
     </xsl:if>
-  </li>
 </xsl:template>
 
 <xsl:template match="article-meta/article-categories">
