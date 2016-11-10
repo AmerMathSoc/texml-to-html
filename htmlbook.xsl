@@ -467,6 +467,12 @@
 
 <xsl:template match="sec[@disp-level='section']">
     <section data-type="sect1">
+        <xsl:if test="starts-with(title, 'Acknowledg')">
+            <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="starts-with(title, 'Introduction')">
+            <xsl:attribute name="role">doc-introduction</xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
