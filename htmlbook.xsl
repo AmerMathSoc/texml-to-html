@@ -90,7 +90,7 @@
 </xsl:template>
 
 <xsl:template match="book-back//ref-list">
-    <section data-type="sect1">
+    <section data-type="sect1" role="doc-bibliography">
         <xsl:apply-templates select="title"/>
         <dl data-jats="bibliography">
             <xsl:apply-templates select="ref"/>
@@ -397,12 +397,16 @@
     <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
 </xsl:template>
 
+<xsl:template match="xref[@ref-type='fn']">
+    <a href="#{@rid}" data-jats="{@ref-type}" role="doc-noteref"><xsl:apply-templates/></a>
+</xsl:template>
+
 <xsl:template match="xref[@ref-type='bibr']">
-    <cite><a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a></cite>
+    <cite><a href="#{@rid}" data-jats="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
 </xsl:template>
 
 <xsl:template match="fn">
-    <span data-type="footnote">
+    <span data-type="footnote" role="doc-footnote">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
@@ -468,7 +472,7 @@
 </xsl:template>
 
 <xsl:template match="abstract">
-    <section data-type="sect1" data-jats="abstract">
+    <section data-type="sect1" data-jats="abstract" role="doc-abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
@@ -645,7 +649,7 @@
 </xsl:template>
 
 <xsl:template match="toc">
-    <nav data-type="toc" id="toc">
+    <nav data-type="toc" id="toc" role="doc-toc">
         <xsl:apply-templates select="title-group"/>
         <ol style="list-style-type:none">
             <xsl:apply-templates select="toc-entry"/>
@@ -749,10 +753,12 @@
 
 <xsl:template match="mixed-citation">
     <dd>
+      <span role="doc-biblioentry">
         <xsl:apply-templates select="@*|node()"/>
           <pre data-jats="amsref">
             <xsl:value-of select="../raw-citation/text()"/>
           </pre>
+      </span>
     </dd>
 </xsl:template>
 
@@ -767,7 +773,7 @@
 </xsl:template>
 
 <xsl:template match="back/app-group">
-    <section data-type="appendix">
+    <section data-type="appendix" role="doc-appendix">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
