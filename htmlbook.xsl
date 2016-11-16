@@ -137,7 +137,7 @@
                 <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
               </h1>
               <xsl:text>&#xd;</xsl:text>
-              <xsl:apply-templates select="front/article-meta/contrib-group/contrib/name/given-names"/>
+              <xsl:apply-templates select="front/notes[@notes-type='dedication']"/>
               <xsl:text>&#xd;</xsl:text>
             </header>
             <xsl:text>&#xd;</xsl:text>
@@ -236,6 +236,12 @@
 
 <xsl:template match="article-meta/title-group/article-title">
     <xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="front/notes[@notes-type='dedication']">
+  <aside data-jats="dedication">
+    <xsl:apply-templates/>
+  </aside>
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group[@content-type='authors']">
