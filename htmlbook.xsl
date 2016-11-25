@@ -531,11 +531,11 @@
     </xsl:when>
          <xsl:otherwise>
            <h3>
-             <xsl:apply-templates select="@*|node()"/>
              <xsl:if test="preceding-sibling::label[1]">
                  <xsl:value-of select="preceding-sibling::label[1]"/>
                  <xsl:text>. </xsl:text>
              </xsl:if>
+             <xsl:apply-templates select="@*|node()"/>
            </h3>
          </xsl:otherwise>
    </xsl:choose>
