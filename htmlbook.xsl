@@ -239,7 +239,7 @@
 </xsl:template>
 
 <xsl:template match="front/notes[@notes-type='dedication']">
-  <aside data-jats="dedication">
+  <aside role="doc-dedication">
     <xsl:apply-templates/>
   </aside>
 </xsl:template>
