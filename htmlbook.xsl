@@ -171,6 +171,24 @@
     <xsl:text>&#xd;</xsl:text>
     <h1>Article Information</h1>
     <dl>
+      <dt>MSC 2010</dt>
+      <dd data-jats="msc">
+        <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
+        <xsl:choose>
+          <xsl:when test="custom-meta-group/custom-meta[2]">
+            <xsl:apply-templates select="custom-meta-group/custom-meta[2]/meta-value/text()"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </dd>
+      <xsl:if test="kwd-group">
+      <dt>Keywords</dt>
+      <dd data-jats="keywords">
+        <xsl:apply-templates select="kwd-group"/>
+      </dd>
+      </xsl:if>
       <dt>Author Information</dt>
       <dd data-jats="authors">
         <xsl:apply-templates select="contrib-group[@content-type='authors']"/>
@@ -192,18 +210,6 @@
         <xsl:apply-templates select="pub-date"/>
       </dd>
       <xsl:apply-templates select="permissions/copyright-statement"/>
-      <dt>MSC 2010</dt>
-      <dd data-jats="msc">
-        <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
-        <xsl:choose>
-          <xsl:when test="custom-meta-group/custom-meta[2]">
-            <xsl:apply-templates select="custom-meta-group/custom-meta[2]/meta-value/text()"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </dd>
       <dt>Article References</dt>
       <dd data-jats="articlerefs">
         <ul>
@@ -212,12 +218,6 @@
         <xsl:apply-templates select="article-citation"/>
       </ul>
       </dd>
-      <xsl:if test="kwd-group">
-      <dt>Keywords</dt>
-      <dd data-jats="keywords">
-        <xsl:apply-templates select="kwd-group"/>
-      </dd>
-      </xsl:if>
     </dl>
     <xsl:text>&#xd;</xsl:text>
   </section>
