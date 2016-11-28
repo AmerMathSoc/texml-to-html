@@ -183,6 +183,10 @@
           <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
         </dd>
       </xsl:if>
+      <dt>Journal Information</dt>
+      <dd>
+        <xsl:apply-templates select="../journal-meta"/>
+      </dd>
       <dt>Publication History</dt>
       <dd data-jats="pub history">
         <xsl:apply-templates select="pub-date"/>
@@ -242,6 +246,11 @@
   <aside role="doc-dedication">
     <xsl:apply-templates/>
   </aside>
+</xsl:template>
+
+<xsl:template match="front/journal-meta">
+      <a data-jats="journal name" href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span data-jats="journal volume">Volume <xsl:value-of select="../article-meta/volume"/></span>, <span data-jats="journal issue">Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span data-jats="journal issn"><xsl:value-of select="journal-title-group/issn"/></span>, published by the
+      <span data-jats="publisher name"><xsl:value-of select="publisher/publisher-name"/></span>, <span data-jats="publisher location"><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
 <xsl:template match="article-meta/contrib-group[@content-type='authors']">
