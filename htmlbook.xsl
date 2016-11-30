@@ -338,7 +338,7 @@
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
-  <li><xsl:value-of select="text()"/></li>
+  <li><xsl:apply-templates/></li>
 </xsl:template>
 
 <xsl:template match="article-meta/article-id">
