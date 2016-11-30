@@ -781,9 +781,11 @@
     <dd>
       <span role="doc-biblioentry">
         <xsl:apply-templates select="@*|node()"/>
+        <xsl:if test="../raw-citation">
           <pre data-jats="amsref">
             <xsl:value-of select="../raw-citation/text()"/>
           </pre>
+        </xsl:if>
       </span>
     </dd>
 </xsl:template>
