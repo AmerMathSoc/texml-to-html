@@ -473,6 +473,18 @@
   </header>
 </xsl:template>
 
+<xsl:template match="sec[@disp-level='subsubsection']/title">
+  <header>
+    <h3 data-jats="{../@disp-level}head">
+        <xsl:if test="preceding-sibling::label[1]">
+            <xsl:value-of select="preceding-sibling::label[1]"/>
+            <xsl:text>. </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="@*|node()"/>
+    </h3>
+  </header>
+</xsl:template>
+
 <xsl:template match="sec/label">
     <xsl:if test="not(following-sibling::title[1])">
     <div data-jats="{../@disp-level}head"><xsl:apply-templates select="@*|node()"/></div>
@@ -515,6 +527,12 @@
     </section>
 </xsl:template>
 
+<xsl:template match="sec[@disp-level='subsubsection']">
+    <section data-type="sect3">
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
 <xsl:template match="statement">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
      <xsl:choose>
@@ -523,8 +541,13 @@
         <xsl:apply-templates/>
       </section>
     </xsl:when>
+    <xsl:when test=" $level = 'subsection'">
+      <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
+       <xsl:apply-templates/>
+     </section>
+   </xsl:when>
          <xsl:otherwise>
-           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
+           <section data-type="sect4" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
             <xsl:apply-templates/>
           </section>
          </xsl:otherwise>
@@ -543,14 +566,23 @@
          <xsl:apply-templates select="@*|node()"/>
        </h2>
     </xsl:when>
+    <xsl:when test=" $level = 'subsection'">
+      <h3>
+        <xsl:if test="preceding-sibling::label[1]">
+            <xsl:value-of select="preceding-sibling::label[1]"/>
+            <xsl:text>. </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="@*|node()"/>
+      </h3>
+   </xsl:when>
          <xsl:otherwise>
-           <h3>
+           <h4>
              <xsl:if test="preceding-sibling::label[1]">
                  <xsl:value-of select="preceding-sibling::label[1]"/>
                  <xsl:text>. </xsl:text>
              </xsl:if>
              <xsl:apply-templates select="@*|node()"/>
-           </h3>
+           </h4>
          </xsl:otherwise>
    </xsl:choose>
 </xsl:template>
@@ -569,14 +601,23 @@
              <xsl:apply-templates select="@*|node()"/>
            </h2>
         </xsl:when>
+        <xsl:when test=" $level = 'subsection'">
+          <h3>
+            <xsl:if test="preceding-sibling::label[1]">
+                <xsl:value-of select="preceding-sibling::label[1]"/>
+                <xsl:text>. </xsl:text>
+            </xsl:if>
+            <xsl:apply-templates select="@*|node()"/>
+          </h3>
+       </xsl:when>
              <xsl:otherwise>
-               <h3>
+               <h4>
                  <xsl:apply-templates select="@*|node()"/>
                  <xsl:if test="preceding-sibling::label[1]">
                      <xsl:value-of select="preceding-sibling::label[1]"/>
                      <xsl:text>. </xsl:text>
                  </xsl:if>
-               </h3>
+               </h4>
              </xsl:otherwise>
        </xsl:choose>
      </xsl:if>
