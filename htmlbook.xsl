@@ -517,69 +517,24 @@
 
 <xsl:template match="statement/title">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
-     <xsl:choose>
-     <xsl:when test=" $level = 'section'">
-       <h2>
-         <xsl:if test="preceding-sibling::label[1]">
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
              <xsl:value-of select="preceding-sibling::label[1]"/>
              <xsl:text>. </xsl:text>
          </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
-       </h2>
-    </xsl:when>
-    <xsl:when test=" $level = 'subsection'">
-      <h3>
-        <xsl:if test="preceding-sibling::label[1]">
-            <xsl:value-of select="preceding-sibling::label[1]"/>
-            <xsl:text>. </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="@*|node()"/>
-      </h3>
-   </xsl:when>
-         <xsl:otherwise>
-           <h4>
-             <xsl:if test="preceding-sibling::label[1]">
-                 <xsl:value-of select="preceding-sibling::label[1]"/>
-                 <xsl:text>. </xsl:text>
-             </xsl:if>
-             <xsl:apply-templates select="@*|node()"/>
-           </h4>
-         </xsl:otherwise>
-   </xsl:choose>
+      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="statement/label">
     <xsl:if test="not(following-sibling::title[1])">
       <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
-         <xsl:choose>
-         <xsl:when test=" $level = 'section'">
-           <h2>
+             <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
              <xsl:if test="preceding-sibling::label[1]">
                  <xsl:value-of select="preceding-sibling::label[1]"/>
                  <xsl:text>. </xsl:text>
              </xsl:if>
              <xsl:apply-templates select="@*|node()"/>
-           </h2>
-        </xsl:when>
-        <xsl:when test=" $level = 'subsection'">
-          <h3>
-            <xsl:if test="preceding-sibling::label[1]">
-                <xsl:value-of select="preceding-sibling::label[1]"/>
-                <xsl:text>. </xsl:text>
-            </xsl:if>
-            <xsl:apply-templates select="@*|node()"/>
-          </h3>
-       </xsl:when>
-             <xsl:otherwise>
-               <h4>
-                 <xsl:apply-templates select="@*|node()"/>
-                 <xsl:if test="preceding-sibling::label[1]">
-                     <xsl:value-of select="preceding-sibling::label[1]"/>
-                     <xsl:text>. </xsl:text>
-                 </xsl:if>
-               </h4>
-             </xsl:otherwise>
-       </xsl:choose>
+             <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
      </xsl:if>
 </xsl:template>
 
