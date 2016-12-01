@@ -510,23 +510,9 @@
 
 <xsl:template match="statement">
   <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
-     <xsl:choose>
-     <xsl:when test=" $level = 'section'">
-       <section data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
+       <section data-type="sect{$level + 1}" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
         <xsl:apply-templates/>
       </section>
-    </xsl:when>
-    <xsl:when test=" $level = 'subsection'">
-      <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
-       <xsl:apply-templates/>
-     </section>
-   </xsl:when>
-         <xsl:otherwise>
-           <section data-type="sect4" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
-            <xsl:apply-templates/>
-          </section>
-         </xsl:otherwise>
-   </xsl:choose>
 </xsl:template>
 
 <xsl:template match="statement/title">
