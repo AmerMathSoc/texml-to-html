@@ -333,8 +333,7 @@
 </xsl:template>
 
 
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x">
-    <!-- <xsl:apply-templates/> -->
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -353,10 +352,6 @@
         <a data-jats-="mr" href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
       </li>
     </xsl:if>
-</xsl:template>
-
-<xsl:template match="article-meta/article-categories">
-    <!-- drop TODO: handle elsewhere -->
 </xsl:template>
 
 
@@ -587,7 +582,6 @@
    </xsl:choose>
 </xsl:template>
 
-<!-- TODO necessary? -->
 <xsl:template match="statement/label">
     <xsl:if test="not(following-sibling::title[1])">
       <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
@@ -649,40 +643,6 @@
 <xsl:template match="fig/label | fig-group/label">
 </xsl:template>
 
-
-<!-- <xsl:template match="statement">
-  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
-     <xsl:choose>
-     <xsl:when test=" $level = 'section'">
-       <div data-type="sect2" data-jats="statement" data-jats-content-type="{@content-type}" data-jats="{@content-type} {@style}">
-        <xsl:apply-templates/>
-      </div>
-    </xsl:when>
-         <xsl:otherwise>
-           <section data-type="sect3" data-jats="statement" data-jats-content-type="{@content-type}" data-jats="{@content-type} {@style}">
-            <xsl:apply-templates/>
-          </section>
-         </xsl:otherwise>
-   </xsl:choose>
-</xsl:template>
-
-<xsl:template match="statement/label">
-  <xsl:variable name="level" select="ancestor::sec[1]/@disp-level"/>
-     <xsl:choose>
-     <xsl:when test=" $level = 'section'">
-       <header>
-       <h2><xsl:apply-templates select="@*|node()"/></h2>
-     </header>
-    </xsl:when>
-         <xsl:otherwise>
-           <header>
-           <h3><xsl:apply-templates select="@*|node()"/></h3>
-         </header>
-         </xsl:otherwise>
-   </xsl:choose>
-</xsl:template> -->
-
-
 <xsl:template match="sec[@disp-level='chapter']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
@@ -698,16 +658,6 @@
         <h1><xsl:apply-templates select="@*|node()"/></h1>
     </xsl:if>
 </xsl:template>
-<!--
-<xsl:template match="sec[@disp-level='section']/title">
-    <h1>
-        <xsl:if test="preceding-sibling::label[1]">
-            <xsl:value-of select="preceding-sibling::label[1]"/>
-            <xsl:text>. </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="@*|node()"/>
-    </h1>
-</xsl:template> -->
 
 <xsl:template match="sec[@disp-level='section']/label | app/label">
     <xsl:if test="not(following-sibling::title[1])">
@@ -835,10 +785,6 @@
   <a href="{@xlink:href}">
     <xsl:apply-templates/>
   </a>
-</xsl:template>
-
-<xsl:template match="raw-citation">
-<!-- drop  -->
 </xsl:template>
 
 <xsl:template match="back/app-group">
