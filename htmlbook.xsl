@@ -550,12 +550,6 @@
     </xsl:if>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='section']/label | app/label">
-    <xsl:if test="not(following-sibling::title[1])">
-        <h1><xsl:apply-templates select="@*|node()"/></h1>
-    </xsl:if>
-</xsl:template>
-
 <xsl:template match="toc">
     <nav data-type="toc" id="toc" role="doc-toc">
         <xsl:apply-templates select="title-group"/>
@@ -702,6 +696,11 @@
   </header>
 </xsl:template>
 
+<xsl:template match="app/label">
+    <xsl:if test="not(following-sibling::title[1])">
+        <h1><xsl:apply-templates select="@*|node()"/></h1>
+    </xsl:if>
+</xsl:template>
 
 <xsl:template match="@*|node()">
     <xsl:copy>
