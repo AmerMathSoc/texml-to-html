@@ -171,17 +171,9 @@
     <xsl:text>&#xd;</xsl:text>
     <h1>Article Information</h1>
     <dl>
-      <dt>MSC 2010</dt>
+      <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='msc']/meta-name/text()"/></dt>
       <dd data-jats="msc">
-        <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
-        <xsl:choose>
-          <xsl:when test="custom-meta-group/custom-meta[2]">
-            <xsl:apply-templates select="custom-meta-group/custom-meta[2]/meta-value/text()"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='msc']/meta-value/text()"/>
       </dd>
       <xsl:if test="kwd-group">
       <dt>Keywords</dt>
@@ -195,10 +187,10 @@
       </dd>
         <xsl:apply-templates select="funding-group"/>
       <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
-      <xsl:if test="custom-meta-group/custom-meta[2]">
-        <dt>Communicated by</dt>
+      <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
+        <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
         <dd data-jats="communicatedby">
-          <xsl:apply-templates select="custom-meta-group/custom-meta[1]/meta-value/text()"/>
+          <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-value/text()"/>
         </dd>
       </xsl:if>
       <dt>Journal Information</dt>
