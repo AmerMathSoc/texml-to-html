@@ -484,8 +484,8 @@
     </section>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='section']">
-    <section data-type="sect1">
+<xsl:template match="sec">
+    <section data-type="sect{@disp-level}">
         <xsl:if test="starts-with(title, 'Acknowledg')">
             <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
         </xsl:if>
@@ -506,18 +506,6 @@
   <header>
     <h1><xsl:apply-templates select="@*|node()"/></h1>
   </header>
-</xsl:template>
-
-<xsl:template match="sec[@disp-level='subsection']">
-    <section data-type="sect2">
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
-</xsl:template>
-
-<xsl:template match="sec[@disp-level='subsubsection']">
-    <section data-type="sect3">
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
 </xsl:template>
 
 <xsl:template match="statement">
