@@ -514,8 +514,9 @@
     </figure>
 </xsl:template>
 
-<xsl:template match="fig/graphic">
-    <img src="{@xlink:href}"/>
+<xsl:template match="fig/graphic | inline-graphic">
+  <!-- TODO handle alt text after ams-doc-sources/#9 -->
+    <img data-jats="{name()}" src="{@xlink:href}"/>
 </xsl:template>
 
 
