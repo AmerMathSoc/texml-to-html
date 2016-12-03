@@ -260,6 +260,9 @@
         <xsl:value-of select="email"/>
       </a>
     </dd>
+    <xsl:if test="uri">
+      <a href="{uri/text()}" data-jats="author homepage">Homepage</a>
+    </xsl:if>
     <dd>
       <a href="{contrib-id/text()}">MathSciNet</a>
     </dd>
