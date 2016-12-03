@@ -263,9 +263,16 @@
     <xsl:if test="uri">
       <a href="{uri/text()}" data-jats="author homepage">Homepage</a>
     </xsl:if>
+    <xsl:if test="contrib-id[@contrib-id-type='mrauth']">
     <dd>
-      <a href="{contrib-id/text()}">MathSciNet</a>
+      <a href="{contrib-id[@contrib-id-type='mrauth']/text()}">MathSciNet</a>
     </dd>
+  </xsl:if>
+  <xsl:if test="contrib-id[@contrib-id-type='orcid']">
+  <dd>
+    <a href="{contrib-id[@contrib-id-type='orcid']/text()}">ORCID</a>
+  </dd>
+</xsl:if>
   </dl>
 </xsl:template>
 
