@@ -171,10 +171,7 @@
     <xsl:text>&#xd;</xsl:text>
     <h1>Article Information</h1>
     <dl>
-      <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='msc']/meta-name/text()"/></dt>
-      <dd data-jats="msc">
-        <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='msc']/meta-value/text()"/>
-      </dd>
+      <xsl:apply-templates select="ams-meta-group"/>
       <xsl:if test="kwd-group">
       <dt>Keywords</dt>
       <dd data-jats="keywords">
@@ -286,6 +283,38 @@
 <xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time data-jats="pub revised" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>,
 </xsl:template>
 
+
+<xsl:template match="ams-meta-group">
+  <dt data-jats="msc">MSC <xsl:value-of select="msc/@scheme"/></dt>
+  <xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="ams-meta-group/msc">
+  <xsl:if test="primary">
+    <dd data-jats="msc primary">Primary:
+    <xsl:for-each select="primary">
+    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:value-of select="description/text()"/>)</a>
+    <xsl:choose>
+      <xsl:when test="position() != last()">, </xsl:when>
+    </xsl:choose>
+    </xsl:for-each>
+    </dd>
+  </xsl:if>
+  <xsl:if test="secondary">
+    <dd data-jats="msc secondary">Secondary:
+    <xsl:for-each select="secondary">
+    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:value-of select="description/text()"/>)</a>
+    <xsl:choose>
+      <xsl:when test="position() != last()">, </xsl:when>
+    </xsl:choose>
+    </xsl:for-each>
+    </dd>
+  </xsl:if>
+</xsl:template>
+
+<!-- <xsl:template match="ams-meta-group/msc/key">
+  <a href="http://www.ams.org/msc/msc2010.html?t={text()}"><xsl:value-of select="text()"/><xsl:value-of select="../description/text()"/></a>
+</xsl:template> -->
 
 <xsl:template match="article-meta/permissions/copyright-statement">
   <dt>Copyright Information</dt>
