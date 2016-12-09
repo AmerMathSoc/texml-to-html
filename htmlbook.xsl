@@ -312,10 +312,6 @@
   </xsl:if>
 </xsl:template>
 
-<!-- <xsl:template match="ams-meta-group/msc/key">
-  <a href="http://www.ams.org/msc/msc2010.html?t={text()}"><xsl:value-of select="text()"/><xsl:value-of select="../description/text()"/></a>
-</xsl:template> -->
-
 <xsl:template match="article-meta/permissions/copyright-statement">
   <dt>Copyright Information</dt>
   <dd data-jats="copyright"><xsl:apply-templates/></dd>
