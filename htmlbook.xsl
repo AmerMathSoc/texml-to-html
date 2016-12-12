@@ -258,7 +258,7 @@
       </a>
     </dd>
     <xsl:if test="uri">
-      <a href="{uri/text()}" data-jats="author homepage">Homepage</a>
+      <dd><a href="{uri/text()}" data-jats="author homepage">Homepage</a></dd>
     </xsl:if>
     <xsl:if test="contrib-id[@contrib-id-type='mrauth']">
     <dd>
