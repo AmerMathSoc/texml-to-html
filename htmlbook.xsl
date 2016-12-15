@@ -418,13 +418,13 @@
 </xsl:template>
 
 <xsl:template match="roman">
-    <span style="font-style: normal">
+    <span data-jats-style="roman">
         <xsl:apply-templates/>
     </span>
 </xsl:template>
 
 <xsl:template match="sc">
-    <span style="font-variant: small-caps">
+    <span data-jats-style="sc">
         <xsl:apply-templates/>
     </span>
 </xsl:template>
@@ -589,7 +589,7 @@
 <xsl:template match="toc">
     <nav data-type="toc" id="toc" role="doc-toc">
         <xsl:apply-templates select="title-group"/>
-        <ol style="list-style-type:none">
+        <ol>
             <xsl:apply-templates select="toc-entry"/>
         </ol>
     </nav>
@@ -615,7 +615,7 @@
     <li>
         <a href="#{nav-pointer/@rid}"><xsl:apply-templates select="title"/></a>
         <xsl:if test="toc-entry">
-            <ol style="list-style-type:none">
+            <ol>
                 <xsl:apply-templates select="toc-entry"/>
             </ol>
         </xsl:if>
