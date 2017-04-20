@@ -66,12 +66,20 @@
   <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
-<xsl:template match="front-matter|book-body|book-back|book-part">
+<xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body">
     <xsl:apply-templates/>
+</xsl:template>
+<xsl:template match="book-part-meta">
 </xsl:template>
 
 <xsl:template match="book-part/body">
     <xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="preface">
+    <section data-type='preface'>
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
 </xsl:template>
 
 <xsl:template match="book-meta">
@@ -242,11 +250,11 @@
       <span data-jats="publisher name"><xsl:value-of select="publisher/publisher-name"/></span>, <span data-jats="publisher location"><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
-<xsl:template match="article-meta/contrib-group[@content-type='authors']">
+<xsl:template match="contrib-group[@content-type='authors']">
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="article-meta/contrib-group/contrib[@contrib-type='author']">
+<xsl:template match="contrib-group/contrib[@contrib-type='author']">
   <dl data-jats="author">
     <dt data-jats="author name">
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
@@ -348,7 +356,7 @@
 </xsl:template>
 
 
-<xsl:template match="article-meta/contrib-group/contrib/xref[@ref-type='aff']">
+<xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd data-jats="affiliation">
   <xsl:variable name="link" select="./@rid" />
   <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
@@ -460,10 +468,10 @@
     <xsl:if test="preceding-sibling::p">
         <br/><br/>
     </xsl:if>
-    <xsl:apply-templates seelct="@*|node()"/>
+    <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level]/title">
+<xsl:template match="sec[@disp-level!='0']/title">
   <header>
     <xsl:variable name="level" select="../@disp-level"/>
     <xsl:variable name="use" select="../@specific-use"/>
@@ -483,7 +491,7 @@
     </xsl:if>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='chapter']">
+<xsl:template match="sec[@specific-use='chapter']">
     <section data-type='chapter'>
         <xsl:apply-templates select="@id|node()"/>
     </section>
@@ -570,7 +578,7 @@
 <xsl:template match="fig/label | fig-group/label">
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='chapter']/title">
+<xsl:template match="sec[@specific-use='chapter']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
             <xsl:value-of select="preceding-sibling::label[1]"/>
@@ -580,7 +588,7 @@
     </h1>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level='chapter']/label">
+<xsl:template match="sec[@specific-use='chapter']/label">
     <xsl:if test="not(following-sibling::title[1])">
         <h1><xsl:apply-templates select="@*|node()"/></h1>
     </xsl:if>
@@ -629,11 +637,11 @@
 </xsl:template>
 
 <xsl:template match="def-list/def-item">
-    <xsl:apply-templates select="@*|node()"/>
+    <xsl:apply-templates select="node()"/>
 </xsl:template>
 
 <xsl:template match="def-list/def-item/term">
-    <dt><xsl:apply-templates select="@*|node()"/></dt>
+    <dt id="{../@id}"><xsl:apply-templates select="@*|node()"/></dt>
 </xsl:template>
 
 <xsl:template match="def-list/def-item/def">
