@@ -438,10 +438,19 @@
 </xsl:template>
 
 <xsl:template match="disp-quote">
-    <div style="{@specific-use}">
+    <blockquote data-jats-style="{@specific-use}">
         <xsl:apply-templates/>
-    </div>
+    </blockquote>
 </xsl:template>
+
+<xsl:template match="attrib">
+    <footer>
+        <cite>
+            <xsl:apply-templates/>
+        </cite>
+    </footer>
+</xsl:template>
+
 
 <xsl:template match="xref">
     <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
