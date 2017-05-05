@@ -532,8 +532,8 @@
 
 <xsl:template match="statement">
   <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
-       <section data-type="sect{$level + 1}" data-jats="statement" data-jats-content-type="{@content-type}" data-jats-content-style="{@style}" id="{@id}">
-        <xsl:apply-templates/>
+       <section data-type="sect{$level + 1}" data-jats="statement" >
+        <xsl:apply-templates select="@*|node()"/>
       </section>
 </xsl:template>
 
@@ -764,6 +764,16 @@
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
+</xsl:template>
+<xsl:template match="@content-type">
+      <xsl:attribute name="data-jats-content-type">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+</xsl:template>
+<xsl:template match="@style">
+      <xsl:attribute name="data-jats-content-style">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
 </xsl:template>
 <xsl:template match="@*">
 </xsl:template>
