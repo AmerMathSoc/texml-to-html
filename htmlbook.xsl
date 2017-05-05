@@ -755,10 +755,17 @@
     </xsl:if>
 </xsl:template>
 
-<xsl:template match="@*|node()">
+<xsl:template match="node()">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
+</xsl:template>
+<xsl:template match="@id">
+    <xsl:copy>
+        <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+</xsl:template>
+<xsl:template match="@*">
 </xsl:template>
 
 </xsl:stylesheet>
