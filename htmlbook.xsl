@@ -45,24 +45,22 @@
 <xsl:template match="/">
   <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
   <xsl:text>&#xd;</xsl:text>
+  <xsl:text disable-output-escaping="yes">&lt;html&gt;</xsl:text>
   <xsl:apply-templates/>
 </xsl:template>
 
 <!-- BOOKS -->
 
 <xsl:template match="book">
-  <xsl:text disable-output-escaping="yes">
-    &lt;html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml"&gt;
-  </xsl:text>
-        <head>
-            <title>
-              <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
-              </title>
-                <xsl:text>&#xd;</xsl:text>
-        </head>
-        <body data-type="book">
-            <xsl:apply-templates/>
-        </body>
+<head>
+    <title>
+        <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
+        </title>
+        <xsl:text>&#xd;</xsl:text>
+</head>
+<body data-type="book">
+    <xsl:apply-templates/>
+</body>
   <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
@@ -115,59 +113,56 @@
 <!-- ARTICLES -->
 
 <xsl:template match="article">
-  <xsl:text disable-output-escaping="yes">
-    &lt;html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd" xmlns="http://www.w3.org/1999/xhtml"&gt;
-  </xsl:text>
-        <head>
-            <title>
-              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
-              </title>
-              <xsl:text>&#xd;</xsl:text>
-              <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
-              <xsl:text>&#xd;</xsl:text>
-            <xsl:text>&#xd;</xsl:text>
-        </head>
-        <body data-type="book">
-          <xsl:text>&#xd;</xsl:text>
-          <section data-type="titlepage">
-            <xsl:text>&#xd;</xsl:text>
-            <header>
-              <xsl:text>&#xd;</xsl:text>
-              <aside data-jats="journal">
-                <xsl:text>&#xd;</xsl:text>
-                <p data-jats="title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
-                <p data-jats="location"><span data-jats="volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-jats="issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-jats="date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
-                <p data-jats="pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
-                <xsl:text>&#xd;</xsl:text>
-              </aside>
-              <xsl:text>&#xd;</xsl:text>
-              <h1>
-                <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
-              </h1>
-              <xsl:text>&#xd;</xsl:text>
-              <xsl:apply-templates select="front/notes[@notes-type='dedication']"/>
-              <xsl:text>&#xd;</xsl:text>
-            </header>
-            <xsl:text>&#xd;</xsl:text>
-            <xsl:apply-templates select="front/article-meta/abstract"/>
-          </section>
-          <xsl:text>&#xd;</xsl:text>
-
-          <xsl:apply-templates select="front/article-meta"/>
-
-          <xsl:text>&#xd;</xsl:text>
-          <section data-type="chapter" id="chapter01">
-            <xsl:text>&#xd;</xsl:text>
-            <h1>
-              <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
-            </h1>
-            <xsl:text>&#xd;</xsl:text>
-            <xsl:apply-templates/>
-          </section>
+<head>
+    <title>
+        <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+        </title>
         <xsl:text>&#xd;</xsl:text>
-        </body>
-      <xsl:text>&#xd;</xsl:text>
-    <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
+        <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
+        <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xd;</xsl:text>
+</head>
+<body data-type="book">
+    <xsl:text>&#xd;</xsl:text>
+    <section data-type="titlepage">
+    <xsl:text>&#xd;</xsl:text>
+    <header>
+        <xsl:text>&#xd;</xsl:text>
+        <aside data-jats="journal">
+        <xsl:text>&#xd;</xsl:text>
+        <p data-jats="title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
+        <p data-jats="location"><span data-jats="volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-jats="issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-jats="date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
+        <p data-jats="pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
+        <xsl:text>&#xd;</xsl:text>
+        </aside>
+        <xsl:text>&#xd;</xsl:text>
+        <h1>
+        <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+        </h1>
+        <xsl:text>&#xd;</xsl:text>
+        <xsl:apply-templates select="front/notes[@notes-type='dedication']"/>
+        <xsl:text>&#xd;</xsl:text>
+    </header>
+    <xsl:text>&#xd;</xsl:text>
+    <xsl:apply-templates select="front/article-meta/abstract"/>
+    </section>
+    <xsl:text>&#xd;</xsl:text>
+
+    <xsl:apply-templates select="front/article-meta"/>
+
+    <xsl:text>&#xd;</xsl:text>
+    <section data-type="chapter" id="chapter01">
+    <xsl:text>&#xd;</xsl:text>
+    <h1>
+        <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+    </h1>
+    <xsl:text>&#xd;</xsl:text>
+    <xsl:apply-templates/>
+    </section>
+<xsl:text>&#xd;</xsl:text>
+</body>
+<xsl:text>&#xd;</xsl:text>
+<xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="article/body">
