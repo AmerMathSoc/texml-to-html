@@ -44,7 +44,7 @@
 
 <xsl:template match="/">
   <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-  <xsl:text>&#xd;</xsl:text>
+  <xsl:text>&#xa;</xsl:text>
   <xsl:text disable-output-escaping="yes">&lt;html&gt;</xsl:text>
   <xsl:apply-templates/>
 </xsl:template>
@@ -56,7 +56,7 @@
     <title>
         <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
         </title>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
 </head>
 <body data-type="book">
     <xsl:apply-templates/>
@@ -117,51 +117,51 @@
     <title>
         <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
         </title>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
-        <xsl:text>&#xd;</xsl:text>
-    <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
 </head>
 <body data-type="book">
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <section data-type="titlepage">
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <header>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <aside data-jats="journal">
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <p data-jats="title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
         <p data-jats="location"><span data-jats="volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-jats="issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-jats="date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
         <p data-jats="pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         </aside>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <h1>
         <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
         </h1>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
         <xsl:apply-templates select="front/notes[@notes-type='dedication']"/>
-        <xsl:text>&#xd;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
     </header>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <xsl:apply-templates select="front/article-meta/abstract"/>
     </section>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
 
     <xsl:apply-templates select="front/article-meta"/>
 
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <section data-type="chapter" id="chapter01">
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <h1>
         <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
     </h1>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <xsl:apply-templates/>
     </section>
-<xsl:text>&#xd;</xsl:text>
+<xsl:text>&#xa;</xsl:text>
 </body>
-<xsl:text>&#xd;</xsl:text>
+<xsl:text>&#xa;</xsl:text>
 <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
@@ -171,7 +171,7 @@
 
 <xsl:template match="article-meta">
   <section data-type="copyright-page">
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <h1>Article Information</h1>
     <dl>
       <xsl:apply-templates select="ams-meta-group"/>
@@ -211,23 +211,23 @@
       </ul>
       </dd>
     </dl>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
   </section>
 </xsl:template>
 
 <xsl:template match="article-meta/title-group">
   <header>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <h1>
       <xsl:apply-templates/>
     </h1>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <p>
       <xsl:apply-templates select="front/article-meta/contrib[@contrib-type='author']"/>
     </p>
-    <xsl:text>&#xd;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
   </header>
-  <xsl:text>&#xd;</xsl:text>
+  <xsl:text>&#xa;</xsl:text>
 </xsl:template>
 
 <xsl:template match="article-meta/title-group/article-title">
