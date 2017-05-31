@@ -54,7 +54,7 @@
 <xsl:template match="book">
 <head>
     <title>
-        <xsl:apply-templates select="front-matter/book-meta/book-title-group/book-title"/>
+        <xsl:apply-templates select="book-meta/book-title-group/book-title/text()"/>
         </title>
         <xsl:text>&#xd;</xsl:text>
 </head>
@@ -82,17 +82,37 @@
 
 <xsl:template match="book-meta">
     <section data-type="titlepage">
-        <h1><xsl:apply-templates select="book-title-group"/></h1>
+        <xsl:apply-templates select="title-group"/>
         <xsl:apply-templates select="contrib-group"/>
+        <footer>
+        <p>Published by</p>
+        <xsl:apply-templates select="publisher"/>
+        <p>DOI <a data-jats="doi" href="https://doi.org/{book-id[@book-id-type = 'doi']/text()}"><xsl:value-of select="book-id[@book-id-type = 'doi']/text()"/></a></p>
+      </footer>
     </section>
 </xsl:template>
 
 <xsl:template match="book-title-group">
-    <xsl:apply-templates/>
+    <header><xsl:apply-templates/></header>
 </xsl:template>
 
 <xsl:template match="book-title">
-    <xsl:apply-templates/>
+    <h1 data-jats="title"><xsl:apply-templates select="@*|node()"/></h1>
+</xsl:template>
+
+<xsl:template match="subtitle">
+    <p data-jats="subtitle"><xsl:apply-templates select="@*|node()"/></p>
+</xsl:template>
+
+<xsl:template match="book-meta/publisher">
+    <p data-jats="publisher"><xsl:apply-templates select="@*|node()"/></p>
+</xsl:template>
+
+<xsl:template match="book-meta/publisher/publisher-name">
+    <span data-jats="publisher name"><xsl:apply-templates select="@*|node()"/>,</span>
+</xsl:template>
+<xsl:template match="book-meta/publisher/publisher-loc">
+    <span data-jats="publisher loc"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
 <xsl:template match="book-back//ref-list">
@@ -255,11 +275,13 @@
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
     </dt>
       <xsl:apply-templates select="xref[@ref-type='aff']"/>
+    <xsl:if test="email">
     <dd>
       <a href="mailto://{email/text()}">
         <xsl:value-of select="email"/>
       </a>
     </dd>
+    </xsl:if>
     <xsl:if test="uri">
       <dd><a href="{uri/text()}" data-jats="author homepage">Homepage</a></dd>
     </xsl:if>
