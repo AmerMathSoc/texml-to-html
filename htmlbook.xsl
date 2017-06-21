@@ -82,7 +82,7 @@
 
 <xsl:template match="book-meta">
     <section data-type="titlepage">
-        <xsl:apply-templates select="title-group"/>
+        <xsl:apply-templates select="book-title-group"/>
         <xsl:apply-templates select="contrib-group"/>
         <footer>
         <p>Published by</p>
