@@ -40,7 +40,7 @@
                         xref year
                         title head
                         math annotation ci cn csymbol mi mn
-                        mo ms mtext"/>
+                        mo ms mtext book-meta"/>
 
 <xsl:template match="/">
   <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
@@ -85,9 +85,12 @@
         <xsl:apply-templates select="book-title-group"/>
         <xsl:apply-templates select="contrib-group"/>
         <footer>
-        <p>Published by</p>
-        <xsl:apply-templates select="publisher"/>
-        <p>DOI <a data-jats="doi" href="https://doi.org/{book-id[@book-id-type = 'doi']/text()}"><xsl:value-of select="book-id[@book-id-type = 'doi']/text()"/></a></p>
+        <dl>
+            <dt>Published by</dt>
+            <xsl:apply-templates select="publisher/publisher-name"/>
+            <dt>DOI</dt>
+            <dd><a data-jats="doi" href="https://doi.org/{book-id[@book-id-type = 'doi']/text()}"><xsl:value-of select="book-id[@book-id-type = 'doi']/text()"/></a></dd>
+        </dl>
       </footer>
     </section>
 </xsl:template>
@@ -105,11 +108,10 @@
 </xsl:template>
 
 <xsl:template match="book-meta/publisher">
-    <p data-jats="publisher"><xsl:apply-templates select="@*|node()"/></p>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher/publisher-name">
-    <span data-jats="publisher name"><xsl:apply-templates select="@*|node()"/>,</span>
+    <dd data-jats="publisher name"><xsl:apply-templates select="@*|node()"/>,</dd>
 </xsl:template>
 <xsl:template match="book-meta/publisher/publisher-loc">
     <span data-jats="publisher loc"><xsl:apply-templates select="@*|node()"/></span>
