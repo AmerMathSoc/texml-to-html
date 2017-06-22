@@ -431,9 +431,14 @@
 </xsl:template>
 
 <xsl:template match="italic">
-    <em>
-        <xsl:apply-templates/>
-    </em>
+<xsl:choose>
+    <xsl:when test="@toggle='yes'">
+        <em><xsl:apply-templates/></em>
+    </xsl:when>
+    <xsl:otherwise>
+        <i><xsl:apply-templates/></i>
+    </xsl:otherwise>
+</xsl:choose>
 </xsl:template>
 
 <xsl:template match="bold">
