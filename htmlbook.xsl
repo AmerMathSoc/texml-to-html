@@ -87,7 +87,7 @@
         <footer>
         <dl>
             <dt>Published by</dt>
-            <xsl:apply-templates select="publisher/publisher-name"/>
+            <xsl:apply-templates select="publisher"/>
             <dt>DOI</dt>
             <dd><a data-jats="doi" href="https://doi.org/{book-id[@book-id-type = 'doi']/text()}"><xsl:value-of select="book-id[@book-id-type = 'doi']/text()"/></a></dd>
         </dl>
@@ -108,10 +108,11 @@
 </xsl:template>
 
 <xsl:template match="book-meta/publisher">
+    <dd data-jats="publisher"><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher/publisher-name">
-    <dd data-jats="publisher name"><xsl:apply-templates select="@*|node()"/>,</dd>
+    <span data-jats="publisher name"><xsl:apply-templates select="@*|node()"/></span><xsl:if test="following-sibling::*">,</xsl:if>
 </xsl:template>
 <xsl:template match="book-meta/publisher/publisher-loc">
     <span data-jats="publisher loc"><xsl:apply-templates select="@*|node()"/></span>
