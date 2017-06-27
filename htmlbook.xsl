@@ -88,8 +88,6 @@
         <dl>
             <dt>Published by</dt>
             <xsl:apply-templates select="publisher"/>
-            <dt>DOI</dt>
-            <dd><a data-jats="doi" href="https://doi.org/{book-id[@book-id-type = 'doi']/text()}"><xsl:value-of select="book-id[@book-id-type = 'doi']/text()"/></a></dd>
         </dl>
       </footer>
     </section>
