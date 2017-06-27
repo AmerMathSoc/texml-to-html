@@ -388,7 +388,7 @@
 </xsl:template>
 
 
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation">
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -592,8 +592,7 @@
 </xsl:template>
 
 <xsl:template match="fig/graphic | inline-graphic">
-  <!-- TODO handle alt text after ams-doc-sources/#9 -->
-    <img data-jats="{name()}" src="{@xlink:href}"/>
+    <img data-jats="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}"/>
 </xsl:template>
 
 
