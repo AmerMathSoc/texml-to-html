@@ -81,7 +81,7 @@
 </xsl:template>
 
 <xsl:template match="book-meta">
-    <section data-type="titlepage">
+    <section data-type="titlepage" data-doi="{book-id[@book-id-type = 'doi']/text()}">
         <xsl:apply-templates select="book-title-group"/>
         <xsl:apply-templates select="contrib-group"/>
         <footer>
