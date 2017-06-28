@@ -466,7 +466,7 @@
     </blockquote>
 </xsl:template>
 
-<xsl:template match="attrib">
+<xsl:template match="disp-quote/attrib">
     <footer>
         <cite>
             <xsl:apply-templates/>
@@ -474,6 +474,11 @@
     </footer>
 </xsl:template>
 
+<xsl:template match="attrib" mode="generic">
+    <cite>
+        <xsl:apply-templates/>
+    </cite>
+</xsl:template>
 
 <xsl:template match="xref">
     <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
@@ -603,10 +608,11 @@
       </strong>
     </xsl:if>
       <xsl:apply-templates select="@*|node()"/>
+      <xsl:apply-templates select="../attrib" mode="generic"/>
   </figcaption>
 </xsl:template>
 
-<xsl:template match="fig/label | fig-group/label">
+<xsl:template match="fig/label | fig-group/label | fig/attrib">
 </xsl:template>
 
 <xsl:template match="sec[@specific-use='chapter']/title">
