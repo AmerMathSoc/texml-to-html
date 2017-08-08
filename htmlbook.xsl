@@ -319,7 +319,7 @@
   <xsl:if test="primary">
     <dd data-jats="msc primary">Primary:
     <xsl:for-each select="primary">
-    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:value-of select="description/text()"/>)</a>
+    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
     <xsl:choose>
       <xsl:when test="position() != last()">, </xsl:when>
     </xsl:choose>
