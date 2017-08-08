@@ -54,7 +54,7 @@
 <xsl:template match="book">
 <head>
     <title>
-        <xsl:apply-templates select="book-meta/book-title-group/book-title/text()"/>
+        <xsl:value-of select="book-meta/book-title-group/book-title/text()"/>
         </title>
         <xsl:text>&#xa;</xsl:text>
 </head>
@@ -136,7 +136,7 @@
 <xsl:template match="article">
 <head>
     <title>
-        <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
+        <xsl:value-of select="front/article-meta/title-group/article-title"/>
         </title>
         <xsl:text>&#xa;</xsl:text>
         <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
