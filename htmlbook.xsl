@@ -414,7 +414,7 @@
 
 <xsl:template match="metainfo"/>
 
-<xsl:template match="contrib-group|contrib | permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group">
+<xsl:template match="contrib-group|contrib | permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description">
     <xsl:apply-templates/>
 </xsl:template>
 
