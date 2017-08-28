@@ -45,7 +45,7 @@
 <xsl:template match="/">
   <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
   <xsl:text>&#xa;</xsl:text>
-  <xsl:text disable-output-escaping="yes">&lt;html&gt;</xsl:text>
+  <xsl:text disable-output-escaping="yes">&lt;html lang="en"&gt;</xsl:text>
   <xsl:apply-templates/>
 </xsl:template>
 
@@ -61,7 +61,7 @@
 <body data-type="book">
     <xsl:apply-templates/>
 </body>
-  <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
+  <xsl:text disable-output-escaping="yes">&lt;/html lang="en"&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body">
