@@ -460,6 +460,12 @@
     </span>
 </xsl:template>
 
+<xsl:template match="underline">
+    <span data-jats-style="underline">
+        <xsl:apply-templates/>
+    </span>
+</xsl:template>
+
 <xsl:template match="disp-quote">
     <blockquote data-jats-style="{@specific-use}">
         <xsl:apply-templates/>
