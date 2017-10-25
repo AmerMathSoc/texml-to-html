@@ -366,10 +366,10 @@
 </xsl:template>
 
 <xsl:template match="article-meta/article-citation">
-  <li><span>
+  <li>
     <pre data-jats="amsref">
       <xsl:value-of select="text()"/>
-    </pre></span>
+    </pre>
   </li>
 </xsl:template>
 
@@ -742,14 +742,14 @@
 
 <xsl:template match="mixed-citation">
     <dd>
-      <span role="doc-biblioentry">
+      <div role="doc-biblioentry">
         <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="../raw-citation">
           <pre data-jats="amsref">
             <xsl:value-of select="../raw-citation/text()"/>
           </pre>
         </xsl:if>
-      </span>
+      </div>
     </dd>
 </xsl:template>
 
