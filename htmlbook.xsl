@@ -426,7 +426,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description">
+<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -642,7 +642,15 @@
   </figcaption>
 </xsl:template>
 
-<xsl:template match="fig/label | fig-group/label | fig/attrib">
+<xsl:template match="fig/label | fig-group/label">
+  <xsl:if test="not(following-sibling::caption[1])">
+    <figcaption>
+        <strong>
+        <xsl:apply-templates select="@*|node()"/>
+        <xsl:text>. </xsl:text>
+        </strong>
+    </figcaption>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="sec[@specific-use='chapter']/title">
