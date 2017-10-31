@@ -396,8 +396,8 @@
 </dd>
 </xsl:template>
 
-
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment">
+<!-- the "ignore" template -->
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -425,6 +425,7 @@
 
 <xsl:template match="metainfo"/>
 
+<!-- the "pass-through" template -->
 <xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description">
     <xsl:apply-templates/>
 </xsl:template>
@@ -532,21 +533,26 @@
     <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level!='0']/title">
+<xsl:template match="sec[@disp-level!='0']/title | app/title">
   <header>
     <xsl:variable name="level" select="../@disp-level"/>
     <xsl:variable name="use" select="../@specific-use"/>
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /> data-jats="<xsl:value-of select="$use" />head" <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-        <xsl:if test="preceding-sibling::label[1]">
-            <xsl:value-of select="preceding-sibling::label[1]"/>
-            <xsl:text>. </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="@*|node()"/>
+    <xsl:if test="preceding-sibling::label[1]">
+        <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:text>. </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates select="@*|node()"/>
     <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+    <xsl:if test="preceding-sibling::sec-meta[1]">
+    <dl>
+        <xsl:apply-templates select="preceding-sibling::sec-meta[1]/*"/>
+    </dl>
+    </xsl:if>
   </header>
 </xsl:template>
 
-<xsl:template match="sec/label">
+<xsl:template match="sec/label | app/label">
     <xsl:if test="not(following-sibling::title[1])">
     <div data-jats="{../@specific-use}head"><xsl:apply-templates select="@*|node()"/></div>
     </xsl:if>
@@ -787,24 +793,6 @@
     <section data-type="sect1">
         <xsl:apply-templates select="@*|node()"/>
     </section>
-</xsl:template>
-
-<xsl:template match="app/title">
-  <header>
-    <h1 data-jats="{../@specific-use}head">
-        <xsl:if test="preceding-sibling::label[1]">
-            <xsl:value-of select="preceding-sibling::label[1]"/>
-            <xsl:text>. </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="@*|node()"/>
-    </h1>
-  </header>
-</xsl:template>
-
-<xsl:template match="app/label">
-    <xsl:if test="not(following-sibling::title[1])">
-        <h1><xsl:apply-templates select="@*|node()"/></h1>
-    </xsl:if>
 </xsl:template>
 
 <xsl:template match="node()">
