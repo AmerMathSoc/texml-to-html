@@ -202,11 +202,8 @@
         <xsl:apply-templates select="kwd-group"/>
       </dd>
       </xsl:if>
-      <dt>Author Information</dt>
-      <dd data-jats="authors">
-        <xsl:apply-templates select="contrib-group[@content-type='authors']"/>
-      </dd>
-        <xsl:apply-templates select="funding-group"/>
+      <xsl:apply-templates select="contrib-group"/>
+      <xsl:apply-templates select="funding-group"/>
       <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
@@ -266,13 +263,27 @@
       <span data-jats="publisher name"><xsl:value-of select="publisher/publisher-name"/></span>, <span data-jats="publisher location"><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
-<xsl:template match="contrib-group[@content-type='authors']">
-    <xsl:apply-templates/>
+
+<xsl:template match="contrib-group">
+<!-- Expected values for contrib-group/@content-type:  "authors", "editors", "translators", "contributors". -->
+<!-- We capitalize the first letter of @content-type and remove the final letter (which should be 's'). -->
+      <dt><xsl:value-of select="concat(
+  translate(
+    substring(@content-type, 1, 1),
+    'abcdefghijklmnopqrstuvwxyz',
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  ),
+  substring(@content-type,2,string-length(@content-type)-2)
+)"/> Information</dt>
+      <dd data-jats-contrib-type="{@content-type}">
+          <xsl:if test="author-comment"><xsl:attribute name="data-jats-contrib-comment"><xsl:value-of select="author-comment/text()"/></xsl:attribute></xsl:if>
+        <xsl:apply-templates/>
+      </dd>
 </xsl:template>
 
-<xsl:template match="contrib-group/contrib[@contrib-type='author']">
-  <dl data-jats="author">
-    <dt data-jats="author name">
+<xsl:template match="contrib-group/contrib">
+  <dl data-jats="{@contrib-type}">
+    <dt data-jats="{@contrib-type} name">
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
     </dt>
       <xsl:apply-templates select="xref[@ref-type='aff']"/>
@@ -284,7 +295,7 @@
     </dd>
     </xsl:if>
     <xsl:if test="uri">
-      <dd><a href="{uri/text()}" data-jats="author homepage">Homepage</a></dd>
+      <dd><a href="{uri/text()}" data-jats="{@contrib-type} homepage">Homepage</a></dd>
     </xsl:if>
     <xsl:if test="contrib-id[@contrib-id-type='mrauth']">
     <dd>
@@ -386,7 +397,7 @@
 </xsl:template>
 
 
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text">
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -414,7 +425,7 @@
 
 <xsl:template match="metainfo"/>
 
-<xsl:template match="contrib-group|contrib | permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description">
+<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description">
     <xsl:apply-templates/>
 </xsl:template>
 
