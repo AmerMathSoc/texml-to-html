@@ -564,9 +564,9 @@
     </section>
 </xsl:template>
 
-<xsl:template match="sec">
+<xsl:template match="sec | ack">
     <section data-type="sect{@disp-level}">
-        <xsl:if test="starts-with(title, 'Acknowledg')">
+        <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
             <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
         </xsl:if>
         <xsl:if test="starts-with(title, 'Introduction')">
