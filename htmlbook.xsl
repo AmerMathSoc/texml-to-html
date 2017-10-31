@@ -442,6 +442,13 @@
     </xsl:if>
 </xsl:template>
 
+<xsl:template match="styled-content">
+    <span data-jats-style="{@style-type}">
+        <xsl:apply-templates/>
+    </span>
+</xsl:template>
+
+
 <xsl:template match="italic">
 <xsl:choose>
     <xsl:when test="@toggle='yes'">
