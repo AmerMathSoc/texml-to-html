@@ -426,7 +426,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib">
+<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib | statement/secheading">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -531,6 +531,10 @@
         <br/><br/>
     </xsl:if>
     <xsl:apply-templates select="@*|node()"/>
+</xsl:template>
+
+<xsl:template match="statement/secheading/title">
+    <span data-jats="secheading"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
 <xsl:template match="sec[@disp-level!='0']/title | app/title">
