@@ -545,7 +545,7 @@
     <xsl:apply-templates select="@*|node()"/>
     <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="preceding-sibling::sec-meta[1]">
-    <dl>
+    <dl data-jats="sec-meta">
         <xsl:apply-templates select="preceding-sibling::sec-meta[1]/*"/>
     </dl>
     </xsl:if>
