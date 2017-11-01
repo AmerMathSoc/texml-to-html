@@ -753,7 +753,7 @@
   <xsl:apply-templates/>
     </xsl:template>
 
-<xsl:template match="back/ref-list">
+<xsl:template match="ref-list">
     <section data-type="bibliography">
         <xsl:apply-templates select="title"/>
         <dl>
