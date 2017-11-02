@@ -540,8 +540,7 @@
 <xsl:template match="sec[@disp-level!='0']/title | app/title">
   <header>
     <xsl:variable name="level" select="../@disp-level"/>
-    <xsl:variable name="use" select="../@specific-use"/>
-    <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /> data-jats="<xsl:value-of select="$use" />head" <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+    <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="preceding-sibling::label[1]">
         <xsl:value-of select="preceding-sibling::label[1]"/>
         <xsl:text>. </xsl:text>
@@ -569,7 +568,7 @@
 </xsl:template>
 
 <xsl:template match="sec | ack">
-    <section data-type="sect{@disp-level}">
+    <section data-type="sect{@disp-level}" data-jats-structure="{@specific-use}">
         <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
             <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
         </xsl:if>
