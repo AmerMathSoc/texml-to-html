@@ -749,6 +749,10 @@
   <xsl:apply-templates/>
 </xsl:template>
 
+<xsl:template match="tex-math/xref">
+  <xsl:value-of select="text()"/>
+</xsl:template>
+
 <xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
 </xsl:template>
 
