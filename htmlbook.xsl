@@ -517,6 +517,10 @@
     <cite><a href="#{@rid}" data-jats="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
 </xsl:template>
 
+<xsl:template match="xref[@ref-type='bibr']/x">
+    <xsl:apply-templates/>
+</xsl:template>
+
 <xsl:template match="fn">
     <span data-type="footnote" role="doc-footnote">
         <xsl:apply-templates select="@*|node()"/>
