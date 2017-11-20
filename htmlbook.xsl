@@ -541,7 +541,8 @@
     <span data-jats="secheading"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level!='0']/title | app/title">
+<xsl:template match="sec[@disp-level!='0']/title | app/title | sec/label | app/label">
+<xsl:if test="not(following-sibling::title[1])">
   <header>
     <xsl:variable name="level" select="../@disp-level"/>
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
@@ -557,12 +558,7 @@
     </dl>
     </xsl:if>
   </header>
-</xsl:template>
-
-<xsl:template match="sec/label | app/label">
-    <xsl:if test="not(following-sibling::title[1])">
-    <div data-jats="{../@specific-use}head"><xsl:apply-templates select="@*|node()"/></div>
-    </xsl:if>
+</xsl:if>
 </xsl:template>
 
 <xsl:template match="sec[@specific-use='chapter']">
