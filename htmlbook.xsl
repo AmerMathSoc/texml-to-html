@@ -399,7 +399,7 @@
 </xsl:template>
 
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta">
+<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -428,7 +428,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib | statement/secheading">
+<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib | statement/secheading | table-wrap">
     <xsl:apply-templates/>
 </xsl:template>
 
