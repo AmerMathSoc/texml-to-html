@@ -666,6 +666,13 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template match="table | thead | tbody | tr | td | th | colgroup | tfoot">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+</xsl:template>
+
 <xsl:template match="sec[@specific-use='chapter']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
