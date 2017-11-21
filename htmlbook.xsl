@@ -91,8 +91,16 @@
             <dt>Published by</dt>
             <xsl:apply-templates select="publisher"/>
         </dl>
+        <xsl:apply-templates select="permissions/copyright-statement"/>
       </footer>
     </section>
+</xsl:template>
+
+
+<xsl:template match="book-meta/permissions/copyright-statement">
+<p>
+  <xsl:apply-templates/>
+</p>
 </xsl:template>
 
 <xsl:template match="book-title-group">
