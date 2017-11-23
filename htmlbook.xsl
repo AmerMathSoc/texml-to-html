@@ -4,7 +4,7 @@
 
 <!-- Output: https://github.com/oreillymedia/HTMLBook -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="xlink" xmlns:amermathsoc="amermathsoc">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:amermathsoc="amermathsoc" exclude-result-prefixes="xlink amermathsoc">
 
 
 <xsl:output method="html"
@@ -127,7 +127,7 @@
 </xsl:template>
 
 <xsl:template match="book-back//ref-list">
-    <section data-type="sect1" role="doc-bibliography">
+    <section data-type="sect1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
         <dl data-jats="bibliography">
             <xsl:apply-templates select="ref"/>
@@ -794,7 +794,7 @@
     </xsl:template>
 
 <xsl:template match="ref-list">
-    <section data-type="bibliography">
+    <section data-type="bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
         <dl>
             <xsl:apply-templates select="ref"/>
