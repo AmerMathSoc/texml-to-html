@@ -382,7 +382,7 @@
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group">
-  <dt>Funding</dt>
+  <dt>Additional Notes</dt>
   <dd data-jats="fundinginfo"><xsl:apply-templates/></dd>
 </xsl:template>
 
