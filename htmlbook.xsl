@@ -98,7 +98,7 @@
 
 
 <xsl:template match="book-meta/permissions/copyright-statement">
-<p>
+<p data-jats="copyright">
   <xsl:apply-templates/>
 </p>
 </xsl:template>
