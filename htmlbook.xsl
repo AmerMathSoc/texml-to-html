@@ -622,7 +622,9 @@
              <xsl:text> </xsl:text>
          </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
-        <xsl:text>. </xsl:text>
+        <xsl:if test="../@content-type!='proof'">
+          <xsl:text>. </xsl:text>
+        </xsl:if>
       <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
