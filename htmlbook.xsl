@@ -299,9 +299,7 @@
       <xsl:apply-templates select="xref[@ref-type='aff']"/>
     <xsl:if test="email">
     <dd>
-      <a href="mailto://{email/text()}">
-        <xsl:value-of select="email"/>
-      </a>
+      <xsl:apply-templates select="email"/>
     </dd>
     </xsl:if>
     <xsl:if test="uri">
@@ -318,6 +316,15 @@
   </dd>
 </xsl:if>
   </dl>
+</xsl:template>
+
+<xsl:template match="email">
+  <a href="mailto://{email/text()}">
+    <xsl:apply-templates/>
+  </a>
+  <xsl:if test="position() != last()">
+    <xsl:text>, </xsl:text>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="article-meta/pub-date">
@@ -407,7 +414,7 @@
 </xsl:template>
 
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | email | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label">
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
