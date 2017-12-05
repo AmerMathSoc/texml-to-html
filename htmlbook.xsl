@@ -612,9 +612,10 @@
   <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
      <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
              <xsl:value-of select="preceding-sibling::label[1]"/>
-             <xsl:text>. </xsl:text>
+             <xsl:text> </xsl:text>
          </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
+        <xsl:text>. </xsl:text>
       <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
