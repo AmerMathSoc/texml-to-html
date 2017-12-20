@@ -64,13 +64,8 @@
   <xsl:text disable-output-escaping="yes">&lt;/html lang="en"&gt;</xsl:text>
 </xsl:template>
 
-<xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body">
-    <xsl:apply-templates/>
-</xsl:template>
-<xsl:template match="book-part-meta">
-</xsl:template>
-
-<xsl:template match="book-part/body">
+<!-- the "pass-through" template -->
+<xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body|book-part-meta|book-part/body">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -558,7 +553,7 @@
     <span data-jats="secheading"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level!='0']/title | app/title | sec/label | app/label">
+<xsl:template match="sec[@disp-level!='0']/title | app/title | sec/label | app/label | front-matter-part/title">
 <xsl:if test="not(following-sibling::title[1])">
   <header>
     <xsl:variable name="level" select="../@disp-level"/>
@@ -584,8 +579,11 @@
     </section>
 </xsl:template>
 
-<xsl:template match="sec | ack">
+<xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
     <section data-type="sect{@disp-level}" data-jats-structure="{@specific-use}">
+        <xsl:if test="(self::dedication)">
+            <xsl:attribute name="role">doc-dedication</xsl:attribute>
+        </xsl:if>
         <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
             <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
         </xsl:if>
