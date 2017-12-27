@@ -198,7 +198,7 @@
 <xsl:template match="article-meta">
   <section data-type="copyright-page">
     <xsl:text>&#xa;</xsl:text>
-    <h1>Article Information</h1>
+    <h2>Article Information</h2>
     <dl>
       <xsl:apply-templates select="ams-meta-group"/>
       <xsl:if test="kwd-group">
@@ -241,9 +241,9 @@
 <xsl:template match="article-meta/title-group">
   <header>
     <xsl:text>&#xa;</xsl:text>
-    <h1>
+    <h2>
       <xsl:apply-templates/>
-    </h1>
+    </h2>
     <xsl:text>&#xa;</xsl:text>
     <p>
       <xsl:apply-templates select="front/article-meta/contrib[@contrib-type='author']"/>
@@ -556,7 +556,14 @@
 <xsl:template match="sec[@disp-level!='0']/title | app/title | sec/label | app/label | front-matter-part/title">
 <xsl:if test="not(following-sibling::title[1])">
   <header>
-    <xsl:variable name="level" select="../@disp-level"/>
+    <xsl:variable name="displevel" select="../@disp-level"/>
+    <xsl:variable name="level">
+     <xsl:choose>
+      <xsl:when test="/article"><xsl:value-of select="$displevel + 1"/></xsl:when>
+      <xsl:otherwise><xsl:value-of select="$displevel"/></xsl:otherwise>
+     </xsl:choose>
+   </xsl:variable>
+
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="preceding-sibling::label[1]">
         <xsl:value-of select="preceding-sibling::label[1]"/>
@@ -602,20 +609,27 @@
 
 <xsl:template match="abstract/title">
   <header>
-    <h1><xsl:apply-templates select="@*|node()"/></h1>
+    <h2><xsl:apply-templates select="@*|node()"/></h2>
   </header>
 </xsl:template>
 
 <xsl:template match="statement">
-  <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
+    <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
        <section data-type="sect{$level + 1}" data-jats="statement" >
         <xsl:apply-templates select="@*|node()"/>
       </section>
 </xsl:template>
 
 <xsl:template match="statement/title">
-  <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
-     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
+  <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
+     <xsl:variable name="level">
+     <xsl:choose>
+      <xsl:when test="/article"><xsl:value-of select="$displevel + 2"/></xsl:when>
+      <xsl:otherwise><xsl:value-of select="$displevel + 1"/></xsl:otherwise>
+     </xsl:choose>
+    </xsl:variable>
+
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
              <xsl:value-of select="preceding-sibling::label[1]"/>
              <xsl:text> </xsl:text>
          </xsl:if>
@@ -623,12 +637,18 @@
         <xsl:if test="../@content-type!='proof'">
           <xsl:text>. </xsl:text>
         </xsl:if>
-      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
 <xsl:template match="statement/label">
     <xsl:if test="not(following-sibling::title[1])">
-      <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
+    <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
+    <xsl:variable name="level">
+     <xsl:choose>
+      <xsl:when test="/article"><xsl:value-of select="$displevel + 1"/></xsl:when>
+      <xsl:otherwise><xsl:value-of select="$displevel"/></xsl:otherwise>
+     </xsl:choose>
+    </xsl:variable>
              <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
              <xsl:if test="preceding-sibling::label[1]">
                  <xsl:value-of select="preceding-sibling::label[1]"/>
@@ -697,6 +717,7 @@
     </xsl:copy>
 </xsl:template>
 
+<!-- TODO this seems redundant since sec[@disp-level] handling does the same -->
 <xsl:template match="sec[@specific-use='chapter']/title">
     <h1>
         <xsl:if test="preceding-sibling::label[1]">
@@ -727,7 +748,16 @@
 </xsl:template>
 
 <xsl:template match="title">
-    <h1><xsl:apply-templates select="@*|node()"/></h1>
+<!-- TODO only seems used in ref-list/title -->
+     <xsl:choose>
+      <xsl:when test="/article">
+          <h2><xsl:apply-templates select="@*|node()"/></h2>
+        </xsl:when>
+      <xsl:otherwise>
+          <h1><xsl:apply-templates select="@*|node()"/></h1>
+      </xsl:otherwise>
+     </xsl:choose>
+
 </xsl:template>
 
 <xsl:template match="toc-entry/title">
