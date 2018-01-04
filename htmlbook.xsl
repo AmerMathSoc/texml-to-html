@@ -786,7 +786,9 @@
 </xsl:template>
 
 <xsl:template match="def-list/def-item">
+    <div>
     <xsl:apply-templates select="node()"/>
+    </div>
 </xsl:template>
 
 <xsl:template match="def-list/def-item/term">
