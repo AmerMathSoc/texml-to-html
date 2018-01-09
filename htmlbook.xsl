@@ -61,7 +61,7 @@
 <body data-type="book">
     <xsl:apply-templates/>
 </body>
-  <xsl:text disable-output-escaping="yes">&lt;/html lang="en"&gt;</xsl:text>
+  <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
 <!-- the "pass-through" template -->
@@ -438,7 +438,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | fig/attrib | statement/secheading | table-wrap">
+<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap">
     <xsl:apply-templates/>
 </xsl:template>
 
