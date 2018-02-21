@@ -6,7 +6,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:amermathsoc="amermathsoc" exclude-result-prefixes="xlink amermathsoc">
 
-
+<xsl:strip-space elements="description inline-formula"/>
 <xsl:output method="html"
             encoding ="utf-8"/>
             <xsl:preserve-space
@@ -20,7 +20,7 @@
                         date-in-citation day def-head degrees disp-formula
                         edition elocation-id email etal ext-link fax fpage
                         funding-source funding-statement given-names glyph-data
-                        gov inline-formula inline-supplementary-material
+                        gov inline-supplementary-material
                         institution isbn issn-l issn issue issue-id issue-part
                         issue-sponsor issue-title italic journal-id
                         journal-subtitle journal-title kwd label license-p
