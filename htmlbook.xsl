@@ -790,6 +790,9 @@
     <xsl:apply-templates select="node()"/>
     </div>
 </xsl:template>
+<xsl:template match="book//def-list/def-item">
+    <xsl:apply-templates select="node()"/>
+</xsl:template>
 
 <xsl:template match="def-list/def-item/term">
     <dt id="{../@id}"><xsl:apply-templates select="@*|node()"/></dt>
