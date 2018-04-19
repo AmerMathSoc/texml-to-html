@@ -1,0 +1,29 @@
+{
+  "name": "jats-to-htmlbook",
+  "version": "1.1.0",
+  "description": "An xslt for converting JATS to htmlbook ",
+  "private": true,
+  "main": "htmlbook.xsl",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmerMathSoc/jats-to-htmlbook.git"
+  },
+  "contributors": [
+    {
+      "name": "David Jones",
+      "email": "dmj@ams.org"
+    },
+    {
+      "name": "Peter Krautzberger",
+      "email": "peter@krautzource.com"
+    }
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/AmerMathSoc/jats-to-htmlbook/issues"
+  },
+  "homepage": "https://github.com/AmerMathSoc/jats-to-htmlbook#readme"
+}
