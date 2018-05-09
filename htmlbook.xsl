@@ -141,12 +141,11 @@
 <xsl:template match="article">
 <head>
     <title>
-        <xsl:value-of select="front/article-meta/title-group/alt-title"/>
-        </title>
-        <xsl:text>&#xa;</xsl:text>
-        <!-- <xsl:text disable-output-escaping="yes">&lt;link rel="stylesheet" href="jats-preview.css" type="text/css"/&gt;</xsl:text> -->
-        <xsl:text>&#xa;</xsl:text>
-    <xsl:text>&#xa;</xsl:text>
+     <xsl:choose>
+      <xsl:when test="front/article-meta/title-group/alt-title"><xsl:value-of select="front/article-meta/title-group/alt-title"/></xsl:when>
+      <xsl:otherwise><xsl:value-of select="front/article-meta/title-group/article-title"/></xsl:otherwise>
+     </xsl:choose>
+    </title>
 </head>
 <body data-type="book">
     <xsl:text>&#xa;</xsl:text>
