@@ -828,6 +828,12 @@
   \xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}
 </xsl:template>
 
+<xsl:template match="tex-math/text">\text{<xsl:apply-templates/>}</xsl:template>
+
+<xsl:template match="tex-math/text/xref">
+  $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
+</xsl:template>
+
 <xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
 </xsl:template>
 
