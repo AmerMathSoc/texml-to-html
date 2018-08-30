@@ -703,17 +703,6 @@
     </xsl:copy>
 </xsl:template>
 
-<!-- TODO this seems redundant since sec[@disp-level] handling does the same -->
-<xsl:template match="sec[@specific-use='chapter']/title">
-    <h1>
-        <xsl:if test="preceding-sibling::label[1]">
-            <xsl:value-of select="preceding-sibling::label[1]"/>
-            <xsl:text>. </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="@*|node()"/>
-    </h1>
-</xsl:template>
-
 <xsl:template match="sec[@specific-use='chapter']/label">
     <xsl:if test="not(following-sibling::title[1])">
         <h1><xsl:apply-templates select="@*|node()"/></h1>
