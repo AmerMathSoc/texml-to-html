@@ -441,19 +441,6 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-
-
-<xsl:template match="p">
-    <xsl:if test="*|text()">
-        <p>
-            <xsl:if test="@content-type='noindent'">
-                <xsl:attribute name="data-jats">noindent</xsl:attribute>
-            </xsl:if>
-            <xsl:apply-templates select="@id|node()"/>
-        </p>
-    </xsl:if>
-</xsl:template>
-
 <xsl:template match="styled-content">
     <span data-jats-style="{@style-type}">
         <xsl:apply-templates/>
