@@ -557,12 +557,16 @@
     </xsl:if>
     <xsl:apply-templates select="@*|node()"/>
     <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-    <xsl:if test="preceding-sibling::sec-meta[1]">
-    <dl data-jats="sec-meta">
-        <xsl:apply-templates select="preceding-sibling::sec-meta[1]/*"/>
-    </dl>
-    </xsl:if>
   </header>
+    <xsl:if test="preceding-sibling::sec-meta">
+    <section data-jats="sec-meta">
+    <!-- We pick&choose from whitelist since contrib-group templates are messy already -->
+        <dl>
+            <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
+        </dl>
+        <xsl:apply-templates select="preceding-sibling::sec-meta/abstract"/>
+    </section>
+    </xsl:if>
 </xsl:if>
 </xsl:template>
 
@@ -606,7 +610,7 @@
       </section>
 </xsl:template>
 
-<xsl:template match="statement/title">
+<xsl:template match="statement/title | sec-meta/abstract/title">
   <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
      <xsl:variable name="level">
      <xsl:choose>
