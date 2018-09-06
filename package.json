@@ -1,7 +1,7 @@
 {
   "name": "jats-to-htmlbook",
-  "version": "2.0.0",
-  "description": "An xslt for converting JATS to htmlbook ",
+  "version": "2.1.0",
+  "description": "An xslt for converting JATS to htmlbook",
   "private": true,
   "scripts": {
     "test": "echo \"No tests yet\""

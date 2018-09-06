@@ -387,6 +387,10 @@
   <dd data-jats="fundinginfo"><xsl:apply-templates/></dd>
 </xsl:template>
 
+<xsl:template match="article-meta/funding-group/funding-statement">
+    <p><xsl:apply-templates/></p>
+</xsl:template>
+
 <xsl:template match="article-meta/article-citation">
   <li>
     <pre data-jats="amsref">
@@ -437,7 +441,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/funding-group/funding-statement | article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap">
+<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap">
     <xsl:apply-templates/>
 </xsl:template>
 
