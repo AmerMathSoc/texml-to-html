@@ -481,6 +481,12 @@
     </span>
 </xsl:template>
 
+<xsl:template match="monospace">
+    <span data-jats-style="monospace">
+        <xsl:apply-templates/>
+    </span>
+</xsl:template>
+
 <xsl:template match="underline">
     <span data-jats-style="underline">
         <xsl:apply-templates/>
