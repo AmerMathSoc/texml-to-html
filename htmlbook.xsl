@@ -549,13 +549,14 @@
     <span data-jats="secheading"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="sec[@disp-level!='0']/title | app/title | sec/label | app/label | front-matter-part/title">
+<xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
 <xsl:if test="not(following-sibling::title[1])">
   <header>
     <xsl:variable name="displevel" select="../@disp-level"/>
     <xsl:variable name="level">
      <xsl:choose>
       <xsl:when test="/article"><xsl:value-of select="$displevel + 1"/></xsl:when>
+      <xsl:when test="/book and ancestor::sec[@specific-use='chapter'] and ancestor::sec[@specific-use='part']"><xsl:value-of select="$displevel - 1"/></xsl:when>
       <xsl:otherwise><xsl:value-of select="$displevel"/></xsl:otherwise>
      </xsl:choose>
    </xsl:variable>
@@ -715,12 +716,6 @@
       <xsl:copy-of select="@*[not(name()=$tableAttribs)]"/>
       <xsl:apply-templates/>
     </xsl:copy>
-</xsl:template>
-
-<xsl:template match="sec[@specific-use='chapter']/label">
-    <xsl:if test="not(following-sibling::title[1])">
-        <h1><xsl:apply-templates select="@*|node()"/></h1>
-    </xsl:if>
 </xsl:template>
 
 <xsl:template match="toc">
