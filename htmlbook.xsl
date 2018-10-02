@@ -695,29 +695,6 @@
   </xsl:if>
 </xsl:template>
 
-<!-- SOURCE: https://stackoverflow.com/questions/23820874/xsl-copy-attributes-that-match-a-whitelist CC-BY-SA -->
-<amermathsoc:blacklist>
-    <handle>frame</handle>
-    <handle>rules</handle>
-    <handle>align</handle>
-    <handle>bgcolor</handle>
-    <handle>border</handle>
-    <handle>cellpadding</handle>
-    <handle>cellspacing</handle>
-    <handle>summary</handle>
-    <handle>width</handle>
-</amermathsoc:blacklist>
-
-<xsl:variable name="tableAttribs" select="document('')/*/amermathsoc:blacklist/handle"/>
-
-<xsl:template match="table | thead | tbody | tr | td | th | colgroup | tfoot">
-    <xsl:copy>
-      <!-- TODO preserve blacklist as data-* attributes for CSS -->
-      <xsl:copy-of select="@*[not(name()=$tableAttribs)]"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
-</xsl:template>
-
 <xsl:template match="toc">
     <nav data-type="toc" id="toc" role="doc-toc">
         <xsl:apply-templates select="title-group"/>
