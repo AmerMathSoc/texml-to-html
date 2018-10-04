@@ -876,4 +876,6 @@
 <xsl:template match="@*">
 </xsl:template>
 
+<xsl:template match="break"><br/></xsl:template>
+
 </xsl:stylesheet>
