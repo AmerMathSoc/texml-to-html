@@ -507,6 +507,12 @@
     </footer>
 </xsl:template>
 
+<xsl:template match="attrib">
+    <cite>
+        <xsl:apply-templates/>
+    </cite>
+</xsl:template>
+<!-- NOTE repeated because fig-caption (below) needs a mode to be able to pull in attrib (else fig/attrib's ignore kicks in) -->
 <xsl:template match="attrib" mode="generic">
     <cite>
         <xsl:apply-templates/>
