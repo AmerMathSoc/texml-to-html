@@ -883,5 +883,6 @@
 </xsl:template>
 
 <xsl:template match="break"><br/></xsl:template>
+<xsl:template match="string-name"><span data-jats="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
 
 </xsl:stylesheet>
