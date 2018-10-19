@@ -285,6 +285,9 @@
       </dd>
 </xsl:template>
 
+<xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
+<xsl:template match="book//sec-meta//contrib-group/author-comment"><span data-jats="author-comment"><xsl:apply-templates/></span></xsl:template>
+
 <xsl:template match="contrib-group/contrib">
   <dl data-jats="{@contrib-type}">
     <dt data-jats="{@contrib-type} name">
@@ -578,9 +581,16 @@
     <xsl:if test="preceding-sibling::sec-meta">
     <section data-jats="sec-meta">
     <!-- We pick&choose from whitelist since contrib-group templates are messy already -->
+        <xsl:choose>
+        <xsl:when test="ancestor::article">
         <dl>
             <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
         </dl>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
+        </xsl:otherwise>
+        </xsl:choose>
         <xsl:apply-templates select="preceding-sibling::sec-meta/abstract"/>
     </section>
     </xsl:if>
