@@ -554,8 +554,16 @@
     <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
-<xsl:template match="statement/secheading/title">
-    <span data-jats="secheading"><xsl:apply-templates select="@*|node()"/></span>
+<xsl:template match="statement/secheading/title | statement/secheading/label">
+    <xsl:if test="not(following-sibling::title[1])">
+    <span data-jats="secheading">
+        <xsl:if test="preceding-sibling::label[1]">
+        <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:text>. </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates select="@*|node()"/>
+    </span>
+    </xsl:if>
 </xsl:template>
 
 <xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
