@@ -106,8 +106,12 @@
     <h1 data-jats="title"><xsl:apply-templates select="@*|node()"/></h1>
 </xsl:template>
 
-<xsl:template match="subtitle">
+<xsl:template match="book-title-group/subtitle">
     <p data-jats="subtitle"><xsl:apply-templates select="@*|node()"/></p>
+</xsl:template>
+<!-- Passthrough template variant to allow pulling subtitle inot <title>/<label> logic-->
+<xsl:template match="subtitle" mode="generic">
+    <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher">
@@ -415,7 +419,7 @@
 </xsl:template>
 
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib">
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -568,7 +572,6 @@
 
 <xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
 <xsl:if test="not(following-sibling::title[1])">
-  <header>
     <xsl:variable name="displevel" select="../@disp-level"/>
     <xsl:variable name="level">
      <xsl:choose>
@@ -577,7 +580,7 @@
       <xsl:otherwise><xsl:value-of select="$displevel"/></xsl:otherwise>
      </xsl:choose>
    </xsl:variable>
-
+  <header>
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="preceding-sibling::label[1]">
         <xsl:value-of select="preceding-sibling::label[1]"/>
@@ -585,6 +588,9 @@
     </xsl:if>
     <xsl:apply-templates select="@*|node()"/>
     <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+    <xsl:if test="following-sibling::subtitle">
+    <p data-jats="subtitle" data-jats-level="{$level}"><xsl:apply-templates select="following-sibling::subtitle" mode="generic"/></p>
+    </xsl:if>
   </header>
     <xsl:if test="preceding-sibling::sec-meta">
     <section data-jats="sec-meta">
