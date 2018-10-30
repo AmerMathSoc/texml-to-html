@@ -458,41 +458,41 @@
 <xsl:template match="italic">
 <xsl:choose>
     <xsl:when test="@toggle='yes'">
-        <em><xsl:apply-templates/></em>
+        <em><xsl:apply-templates select="@*|node()"/></em>
     </xsl:when>
     <xsl:otherwise>
-        <i><xsl:apply-templates/></i>
+        <i><xsl:apply-templates select="@*|node()"/></i>
     </xsl:otherwise>
 </xsl:choose>
 </xsl:template>
 
 <xsl:template match="bold">
     <strong>
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
     </strong>
 </xsl:template>
 
 <xsl:template match="roman">
     <span data-jats-style="roman">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="sc">
     <span data-jats-style="sc">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="monospace">
     <span data-jats-style="monospace">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="underline">
     <span data-jats-style="underline">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
