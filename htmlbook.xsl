@@ -696,8 +696,8 @@
     </figure>
 </xsl:template>
 
-<xsl:template match="fig/graphic | inline-graphic">
-    <img data-jats="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}"/>
+<xsl:template match="graphic | inline-graphic">
+    <img data-jats="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-jats-style="{@specific-use}"/>
 </xsl:template>
 
 
