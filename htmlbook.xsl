@@ -700,6 +700,9 @@
     <img data-jats="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-jats-style="{@specific-use}"/>
 </xsl:template>
 
+<xsl:template match="img">
+    <img src="{@src}" alt="{@alt}"/>
+</xsl:template>
 
 <xsl:template match="fig/caption | fig-group/caption">
   <figcaption>
