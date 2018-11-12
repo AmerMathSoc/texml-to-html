@@ -913,4 +913,6 @@
 <xsl:template match="string-name"><span data-jats="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
 <xsl:template match="target"><span data-jats-target-type="{@target-type}"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
 
+<xsl:template match="verse-group"><figure data-jats="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
+
 </xsl:stylesheet>
