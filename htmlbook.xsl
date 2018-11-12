@@ -297,7 +297,9 @@
     <dt data-jats="{@contrib-type} name">
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
     </dt>
+    <dd data-jats="affiliation">
       <xsl:apply-templates select="xref[@ref-type='aff']"/>
+    </dd>
     <xsl:if test="email">
     <dd>
       <xsl:apply-templates select="email"/>
@@ -408,14 +410,12 @@
 
 
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
-  <dd data-jats="affiliation">
   <xsl:variable name="link" select="./@rid" />
   <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
       <xsl:attribute name="data-jats">affiliation current</xsl:attribute>
       <span>Address at time of publication: </span>
   </xsl:if>
   <xsl:value-of select="../../aff[@id = $link]/text()"/>
-</dd>
 </xsl:template>
 
 <!-- the "ignore" template -->
