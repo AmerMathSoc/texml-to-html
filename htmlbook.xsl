@@ -906,6 +906,11 @@
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+<xsl:template match="@specific-use">
+      <xsl:attribute name="data-jats-specific-use">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+</xsl:template>
 <xsl:template match="@*">
 </xsl:template>
 
