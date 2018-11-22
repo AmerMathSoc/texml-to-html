@@ -53,6 +53,7 @@
 
 <xsl:template match="book">
 <head>
+  <meta name="viewport" content="width=device-width"/>
     <title>
         <xsl:value-of select="book-meta/book-title-group/book-title/text()"/>
         </title>
