@@ -416,8 +416,11 @@
       <xsl:attribute name="data-jats">affiliation current</xsl:attribute>
       <span>Address at time of publication: </span>
   </xsl:if>
-  <xsl:value-of select="../../aff[@id = $link]/text()"/>
+  <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
   </dd>
+</xsl:template>
+<xsl:template match="aff" mode="generic">
+    <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
 <!-- the "ignore" template -->
