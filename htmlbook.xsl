@@ -420,7 +420,7 @@
   </dd>
 </xsl:template>
 <xsl:template match="aff" mode="generic">
-    <xsl:apply-templates select="@*|node()"/>
+    <xsl:apply-templates select="node()"/>
 </xsl:template>
 
 <!-- the "ignore" template -->
