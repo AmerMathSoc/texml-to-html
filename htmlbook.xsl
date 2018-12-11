@@ -809,6 +809,11 @@
 
 <xsl:template match="disp-formula">
   <span data-jats="math block">
+  <xsl:if test="tex-math[@has-qed-box]">
+    <xsl:attribute name="data-ams-qed-box">
+    <xsl:value-of select="(tex-math/@has-qed-box)[1]"/>
+    </xsl:attribute>
+  </xsl:if>
     <xsl:apply-templates/>
   </span>
 </xsl:template>
@@ -916,6 +921,13 @@
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<xsl:template match="@has-qed-box">
+      <xsl:attribute name="data-ams-qed-box">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+</xsl:template>
+
 <xsl:template match="@*">
 </xsl:template>
 
