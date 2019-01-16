@@ -670,7 +670,8 @@
              <xsl:text> </xsl:text>
          </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
-        <xsl:if test="../@content-type!='proof'">
+        <xsl:variable name="contenttype" select="../@content-type/text()"/>
+        <xsl:if test="starts-with($contenttype, 'proof')">
           <xsl:text>. </xsl:text>
         </xsl:if>
       <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
