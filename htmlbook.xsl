@@ -453,7 +453,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap">
+<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref">
     <xsl:apply-templates/>
 </xsl:template>
 
