@@ -424,7 +424,7 @@
 </xsl:template>
 
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value">
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -805,6 +805,9 @@
   <span data-jats="math inline">
     <xsl:apply-templates/>
   </span>
+  <xsl:if test="tex-math/fn">
+    <xsl:apply-templates select="tex-math/fn" mode="generic"/>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="disp-formula">
@@ -816,6 +819,9 @@
   </xsl:if>
     <xsl:apply-templates/>
   </span>
+  <xsl:if test="tex-math/fn">
+    <xsl:apply-templates select="tex-math/fn" mode="generic"/>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="alternatives">
@@ -829,8 +835,22 @@
   <xsl:apply-templates/>
 </xsl:template>
 
+
 <xsl:template match="tex-math/xref">
+  <xsl:choose>
+  <xsl:when test="@ref-type='fn'">
+  \xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{{}^{<xsl:value-of select="text()"/>}}
+  </xsl:when>
+  <xsl:otherwise>
   \xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}
+  </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="tex-math/fn" mode="generic">
+    <span data-type="footnote" role="doc-footnote">
+        <xsl:apply-templates select="@*|node()"/>
+    </span>
 </xsl:template>
 
 <xsl:template match="tex-math/text">\text{<xsl:apply-templates/>}</xsl:template>
