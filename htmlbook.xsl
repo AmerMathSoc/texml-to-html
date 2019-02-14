@@ -535,6 +535,10 @@
     <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
 </xsl:template>
 
+<xsl:template match="xref[not(@rid)]">
+    <span data-ams="notrid"><xsl:apply-templates/></span>
+</xsl:template>
+
 <xsl:template match="xref[@ref-type='fn']">
     <a href="#{@rid}" data-jats="{@ref-type}" role="doc-noteref"><xsl:apply-templates/></a>
 </xsl:template>
