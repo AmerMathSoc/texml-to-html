@@ -871,7 +871,7 @@
     </xsl:template>
 
 <xsl:template match="ref-list">
-    <section data-type="bibliography" id="{@id}">
+    <section data-type="bibliography">
         <xsl:apply-templates select="title"/>
         <dl>
             <xsl:apply-templates select="ref"/>
