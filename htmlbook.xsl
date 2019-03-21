@@ -894,9 +894,9 @@
       <div role="doc-biblioentry">
         <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="../raw-citation">
-          <pre data-jats="amsref">
+          <code data-jats="amsref">
             <xsl:value-of select="../raw-citation/text()"/>
-          </pre>
+          </code>
         </xsl:if>
       </div>
     </dd>
