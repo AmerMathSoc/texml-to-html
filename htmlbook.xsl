@@ -262,9 +262,9 @@
 </xsl:template>
 
 <xsl:template match="front/notes[@notes-type='dedication']">
-  <aside role="doc-dedication">
+  <div role="doc-dedication">
     <xsl:apply-templates/>
-  </aside>
+  </div>
 </xsl:template>
 
 <xsl:template match="front/journal-meta">
