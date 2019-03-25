@@ -925,7 +925,7 @@
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
 </xsl:template>
-<xsl:template match="@id">
+<xsl:template match="@id|@rowspan|@colspan">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
