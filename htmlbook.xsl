@@ -70,6 +70,12 @@
     <xsl:apply-templates/>
 </xsl:template>
 
+<!-- alternative for label pass-through -->
+<xsl:template match="label" mode="generic">
+    <xsl:apply-templates select="@*|node()"/>
+</xsl:template>
+
+
 <xsl:template match="preface">
     <section data-type='preface'>
         <xsl:apply-templates select="@*|node()"/>
@@ -571,7 +577,7 @@
     <xsl:if test="not(following-sibling::title[1])">
     <span data-jats="secheading">
         <xsl:if test="preceding-sibling::label[1]">
-        <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
     <xsl:apply-templates select="@*|node()"/>
@@ -592,7 +598,7 @@
   <header>
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="preceding-sibling::label[1]">
-        <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
     <xsl:apply-templates select="@*|node()"/>
@@ -670,7 +676,7 @@
     </xsl:variable>
 
      <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
-             <xsl:value-of select="preceding-sibling::label[1]"/>
+             <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
              <xsl:text> </xsl:text>
          </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
@@ -691,7 +697,7 @@
     </xsl:variable>
              <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
              <xsl:if test="preceding-sibling::label[1]">
-                 <xsl:value-of select="preceding-sibling::label[1]"/>
+                 <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
                  <xsl:text>. </xsl:text>
              </xsl:if>
              <xsl:apply-templates select="@*|node()"/>
@@ -717,7 +723,7 @@
   <figcaption>
     <xsl:if test="preceding-sibling::label[1]">
         <strong>
-          <xsl:value-of select="preceding-sibling::label[1]"/>
+          <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
       </strong>
     </xsl:if>
@@ -765,7 +771,7 @@
 
 <xsl:template match="toc-entry/title">
     <xsl:if test="preceding-sibling::label[1]">
-        <xsl:value-of select="preceding-sibling::label[1]"/>
+        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
     <xsl:apply-templates/>
