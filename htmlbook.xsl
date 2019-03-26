@@ -845,7 +845,7 @@
   <xsl:apply-templates/>
 </xsl:template>
 
-
+<!-- NOTE do not generalize to all descendants to avoid interference with tex-math//text -->
 <xsl:template match="tex-math/xref">
   <xsl:choose>
   <xsl:when test="@ref-type='fn'">
@@ -857,15 +857,16 @@
   </xsl:choose>
 </xsl:template>
 
+<!-- NOTE do not generalize to all descendants to avoid interference with tex-math//text -->
 <xsl:template match="tex-math/fn" mode="generic">
     <span data-type="footnote" role="doc-footnote">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
-<xsl:template match="tex-math/text">\text{<xsl:apply-templates/>}</xsl:template>
+<xsl:template match="tex-math//text">\text{<xsl:apply-templates/>}</xsl:template>
 
-<xsl:template match="tex-math/text/xref">
+<xsl:template match="tex-math//text/xref">
   $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
 </xsl:template>
 
