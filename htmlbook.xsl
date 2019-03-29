@@ -408,9 +408,9 @@
 
 <xsl:template match="article-meta/article-citation">
   <li>
-    <pre data-jats="amsref">
+    <code data-jats="amsref">
       <xsl:value-of select="text()"/>
-    </pre>
+    </code>
   </li>
 </xsl:template>
 
