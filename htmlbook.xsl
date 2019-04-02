@@ -566,11 +566,8 @@
 <xsl:template match="fn/label">
 </xsl:template>
 
-<xsl:template match="fn/p">
-    <xsl:if test="preceding-sibling::p">
-        <br/><br/>
-    </xsl:if>
-    <xsl:apply-templates select="@*|node()"/>
+<xsl:template match="p//p">
+  <span data-ams="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
 <xsl:template match="statement/secheading/title | statement/secheading/label">
