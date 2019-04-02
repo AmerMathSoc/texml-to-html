@@ -72,7 +72,7 @@
 
 <!-- alternative for label pass-through -->
 <xsl:template match="label" mode="generic">
-    <xsl:apply-templates select="@*|node()"/>
+    <xsl:apply-templates select="node()"/>
 </xsl:template>
 
 
