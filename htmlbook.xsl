@@ -566,7 +566,7 @@
 <xsl:template match="fn/label">
 </xsl:template>
 
-<xsl:template match="p//p">
+<xsl:template match="p//p | fn//p">
   <span data-ams="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
