@@ -704,7 +704,7 @@
 
 <xsl:template match="fig | fig-group">
     <figure role="group">
-        <xsl:apply-templates select="@id|node()"/>
+        <xsl:apply-templates select="@id|@position|node()"/>
     </figure>
 </xsl:template>
 
@@ -952,6 +952,12 @@
 
 <xsl:template match="@has-qed-box">
       <xsl:attribute name="data-ams-qed-box">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+</xsl:template>
+
+<xsl:template match="@position">
+      <xsl:attribute name="data-ams-position">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
