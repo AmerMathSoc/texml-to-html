@@ -625,7 +625,7 @@
 
 <!-- BOOKS ONLY -->
 <xsl:template match="sec[@specific-use='chapter']">
-    <section data-ams-doc='chapter'>
+    <section role="doc-chapter">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
