@@ -59,7 +59,7 @@
         </title>
         <xsl:text>&#xa;</xsl:text>
 </head>
-<body data-type="book"> <!-- TODO drop -->
+<body>
     <xsl:apply-templates/>
 </body>
   <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
@@ -77,13 +77,13 @@
 
 
 <xsl:template match="preface">
-    <section data-type='preface'> <!-- TODO sectioning, add role=doc-preface, possibly drop -->
+    <section role="doc-preface">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
 
 <xsl:template match="book-meta">
-    <section data-type="titlepage" data-doi="{book-id[@book-id-type = 'doi']/text()}"> <!-- TODO sectioning, rename? use role=doc-credits?-->
+    <section data-ams-doc="titlepage" data-doi="{book-id[@book-id-type = 'doi']/text()}">
         <xsl:apply-templates select="book-title-group"/>
         <dl>
         <xsl:apply-templates select="contrib-group"/>
@@ -133,7 +133,7 @@
 </xsl:template>
 
 <xsl:template match="book-back//ref-list">
-    <section data-type="sect1" role="doc-bibliography" id="{@id}"> <!-- TODO sectioning-->
+    <section data-ams-doc="sect1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
         <dl data-jats="bibliography">
             <xsl:apply-templates select="ref"/>
@@ -142,7 +142,7 @@
 </xsl:template>
 
 <xsl:template match="app">
-    <section data-type="appendix"> <!-- TODO sectioning, add role, drop for role?-->
+    <section role="doc-appendix">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
@@ -158,9 +158,9 @@
      </xsl:choose>
     </title>
 </head>
-<body data-type="book"> <!-- TODO drop-->
+<body>
     <xsl:text>&#xa;</xsl:text>
-    <section data-type="titlepage"> <!-- TODO sectioning, cf. above-->
+    <section data-ams-doc="titlepage">
     <xsl:text>&#xa;</xsl:text>
     <header>
         <xsl:text>&#xa;</xsl:text>
@@ -187,7 +187,7 @@
     <xsl:apply-templates select="front/article-meta"/>
 
     <xsl:text>&#xa;</xsl:text>
-    <section data-type="chapter" id="chapter01"> <!-- TODO sectioning - rename or drop (for articles)? -->
+    <section data-ams-doc="article">
     <xsl:text>&#xa;</xsl:text>
     <h1>
         <xsl:apply-templates select="front/article-meta/title-group/article-title"/>
@@ -206,7 +206,7 @@
 </xsl:template>
 
 <xsl:template match="article-meta">
-  <section data-type="copyright-page"> <!-- TODO sectioning (rename, cf above) -->
+  <section data-ams-doc="copyright-page">
     <xsl:text>&#xa;</xsl:text>
     <h2>Article Information</h2>
     <dl>
@@ -558,7 +558,7 @@
 </xsl:template>
 
 <xsl:template match="fn">
-    <span data-type="footnote" role="doc-footnote"> <!-- TODO drop-->
+    <span role="doc-footnote">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
@@ -623,14 +623,15 @@
 </xsl:if>
 </xsl:template>
 
+<!-- BOOKS ONLY -->
 <xsl:template match="sec[@specific-use='chapter']">
-    <section data-type='chapter'> <!-- TODO sectioning -->
+    <section data-ams-doc='chapter'>
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
 
 <xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
-    <section data-type="sect{@disp-level}" data-jats-structure="{@specific-use}"> <!-- TODO sectioning-->
+    <section data-ams-doc="sect{@disp-level}" data-jats-structure="{@specific-use}">
         <xsl:if test="(self::dedication)">
             <xsl:attribute name="role">doc-dedication</xsl:attribute>
         </xsl:if>
@@ -645,7 +646,7 @@
 </xsl:template>
 
 <xsl:template match="abstract">
-    <section data-type="sect1" data-jats="abstract" role="doc-abstract"> <!-- TODO sectioning / needed? -->
+    <section data-ams-doc="sect1" role="doc-abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
@@ -658,7 +659,7 @@
 
 <xsl:template match="statement">
     <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
-       <section data-type="sect{$level + 1}" data-jats="statement" > <!-- TODO sectioning-->
+       <section data-ams-doc="sect{$level + 1}" data-jats="statement" >
         <xsl:apply-templates select="@*|node()"/>
       </section>
 </xsl:template>
@@ -740,8 +741,9 @@
   </xsl:if>
 </xsl:template>
 
+<!-- BOOKS ONLY -->
 <xsl:template match="toc">
-    <nav data-type="toc" id="toc" role="doc-toc"> <!-- TODO sectioning / drop? (only used in books) -->
+    <nav role="doc-toc">
         <xsl:apply-templates select="title-group"/>
         <ol>
             <xsl:apply-templates select="toc-entry"/>
@@ -856,7 +858,7 @@
 
 <!-- NOTE do not generalize to all descendants to avoid interference with tex-math//text -->
 <xsl:template match="tex-math/fn" mode="generic">
-    <span data-type="footnote" role="doc-footnote"> <!-- TODO drop-->
+    <span role="doc-footnote">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
@@ -875,7 +877,7 @@
     </xsl:template>
 
 <xsl:template match="ref-list">
-    <section data-type="bibliography"> <!-- TODO sectioning, add role, drop for role? -->
+    <section role="doc-bibliography">
         <xsl:apply-templates select="title"/>
         <dl>
             <xsl:apply-templates select="ref"/>
@@ -913,13 +915,13 @@
 </xsl:template>
 
 <xsl:template match="back/app-group">
-    <section data-type="appendix" role="doc-appendix"> <!-- TODO drop?-->
+    <section role="doc-appendix">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
 
 <xsl:template match="back/app-group/app">
-    <section data-type="sect1"> <!-- TODO sectioning-->
+    <section data-ams-doc="sect1">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
