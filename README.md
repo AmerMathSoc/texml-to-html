@@ -1,2 +1,3 @@
-# jats-to-htmlbook
-An xslt for converting JATS to htmlbook
+# ams-xml-to-html
+
+An xslt for converting JATS-like XML to html

@@ -1,14 +1,14 @@
 {
-  "name": "jats-to-htmlbook",
+  "name": "ams-xml-to-html",
   "version": "3.0.0-2",
-  "description": "An xslt for converting JATS to htmlbook",
+  "description": "An xslt for converting JATS-like XML to html",
   "private": true,
   "scripts": {
     "test": "echo \"No tests yet\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmerMathSoc/jats-to-htmlbook.git"
+    "url": "git+https://github.com/AmerMathSoc/ams-xml-to-html.git"
   },
   "contributors": [
     {
@@ -22,7 +22,7 @@
   ],
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/AmerMathSoc/jats-to-htmlbook/issues"
+    "url": "https://github.com/AmerMathSoc/ams-xml-to-html/issues"
   },
-  "homepage": "https://github.com/AmerMathSoc/jats-to-htmlbook#readme"
+  "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme"
 }
