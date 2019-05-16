@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Input: texml output -->
+<!-- Input: texml output (based on JATS, BITS) -->
 
-<!-- Output: https://github.com/oreillymedia/HTMLBook -->
+<!-- Output: html (based on https://github.com/oreillymedia/HTMLBook) -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:amermathsoc="amermathsoc" exclude-result-prefixes="xlink amermathsoc">
 
@@ -83,7 +83,7 @@
 </xsl:template>
 
 <xsl:template match="book-meta">
-    <section data-ams-doc="titlepage" data-doi="{book-id[@book-id-type = 'doi']/text()}">
+    <section data-ams-doc="titlepage">
         <xsl:apply-templates select="book-title-group"/>
         <dl>
         <xsl:apply-templates select="contrib-group"/>
@@ -100,7 +100,7 @@
 
 
 <xsl:template match="book-meta/permissions/copyright-statement">
-<p data-jats="copyright">
+<p data-ams-doc="book copyright">
   <xsl:apply-templates/>
 </p>
 </xsl:template>
@@ -110,32 +110,32 @@
 </xsl:template>
 
 <xsl:template match="book-title">
-    <h1 data-jats="title"><xsl:apply-templates select="@*|node()"/></h1>
+    <h1><xsl:apply-templates select="@*|node()"/></h1>
 </xsl:template>
 
 <xsl:template match="book-title-group/subtitle">
-    <p data-jats="subtitle"><xsl:apply-templates select="@*|node()"/></p>
+    <p data-ams-doc="subtitle"><xsl:apply-templates select="@*|node()"/></p>
 </xsl:template>
-<!-- Passthrough template variant to allow pulling subtitle inot <title>/<label> logic-->
+<!-- Passthrough template variant to allow pulling subtitle into <title>/<label> logic-->
 <xsl:template match="subtitle" mode="generic">
     <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher">
-    <dd data-jats="publisher"><xsl:apply-templates select="@*|node()"/></dd>
+    <dd data-ams-doc="book publisher"><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher/publisher-name">
-    <span data-jats="publisher name"><xsl:apply-templates select="@*|node()"/></span><xsl:if test="following-sibling::*">,</xsl:if>
+    <span><xsl:apply-templates select="@*|node()"/></span><xsl:if test="following-sibling::*">,</xsl:if>
 </xsl:template>
 <xsl:template match="book-meta/publisher/publisher-loc">
-    <span data-jats="publisher loc"><xsl:apply-templates select="@*|node()"/></span>
+    <span><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
 <xsl:template match="book-back//ref-list">
-    <section data-ams-doc="sect1" role="doc-bibliography" id="{@id}">
+    <section data-ams-doc-level="1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
-        <dl data-jats="bibliography">
+        <dl>
             <xsl:apply-templates select="ref"/>
         </dl>
     </section>
@@ -164,11 +164,11 @@
     <xsl:text>&#xa;</xsl:text>
     <header>
         <xsl:text>&#xa;</xsl:text>
-        <aside data-jats="journal">
+        <aside data-ams-doc="journal"><!-- TODO cf. front/journal-meta: should this duplication be done in ams-html? -->
         <xsl:text>&#xa;</xsl:text>
-        <p data-jats="title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
-        <p data-jats="location"><span data-jats="volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-jats="issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-jats="date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
-        <p data-jats="pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
+        <p data-ams-doc="journal title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
+        <p data-ams-doc="journal location"><span data-ams-doc="journal volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-ams-doc="journal issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-ams-doc="journal date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
+        <p data-ams-doc="journal pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
         <xsl:text>&#xa;</xsl:text>
         </aside>
         <xsl:text>&#xa;</xsl:text>
@@ -213,7 +213,7 @@
       <xsl:apply-templates select="ams-meta-group"/>
       <xsl:if test="kwd-group">
       <dt>Keywords</dt>
-      <dd data-jats="keywords">
+      <dd> <!-- NOTE cf. #220, schema.org -->
         <xsl:apply-templates select="kwd-group"/>
       </dd>
       </xsl:if>
@@ -222,7 +222,7 @@
       <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
-        <dd data-jats="communicatedby">
+        <dd>
           <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-value/text()"/>
         </dd>
       </xsl:if>
@@ -231,12 +231,12 @@
         <xsl:apply-templates select="../journal-meta"/>
       </dd>
       <dt>Publication History</dt>
-      <dd data-jats="pub history">
+      <dd>
         <xsl:apply-templates select="pub-date"/>
       </dd>
       <xsl:apply-templates select="permissions/copyright-statement"/>
       <dt>Article References</dt>
-      <dd data-jats="articlerefs">
+      <dd>
         <ul>
         <xsl:apply-templates select="self-uri"/>
         <xsl:apply-templates select="article-id"/>
@@ -273,9 +273,10 @@
   </div>
 </xsl:template>
 
+<!-- NOTE: article template partially duplicates this information for titlepage, cf. note there. -->
 <xsl:template match="front/journal-meta">
-      <a data-jats="journal name" href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span data-jats="journal volume">Volume <xsl:value-of select="../article-meta/volume"/></span>, <span data-jats="journal issue">Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span data-jats="journal issn"><xsl:value-of select="journal-title-group/issn"/></span>, published by the
-      <span data-jats="publisher name"><xsl:value-of select="publisher/publisher-name"/></span>, <span data-jats="publisher location"><xsl:value-of select="publisher/publisher-loc"/></span>.
+      <a href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span >Volume <xsl:value-of select="../article-meta/volume"/></span>, <span>Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span><xsl:value-of select="journal-title-group/issn"/></span>, published by the
+      <span><xsl:value-of select="publisher/publisher-name"/></span>, <span><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
 
@@ -290,18 +291,19 @@
   ),
   substring(@content-type,2,string-length(@content-type)-2)
 )"/> Information</dt>
-      <dd data-jats-contrib-type="{@content-type}">
-          <xsl:if test="author-comment"><xsl:attribute name="data-jats-contrib-comment"><xsl:value-of select="author-comment/text()"/></xsl:attribute></xsl:if>
+      <dd data-ams-doc-contrib="{@content-type}">
+      <!-- NOTE author-comment needs to fit in a sentence -->
+          <xsl:if test="author-comment"><xsl:attribute name="data-ams-doc-contrib-comment"><xsl:value-of select="author-comment/text()"/></xsl:attribute></xsl:if>
         <xsl:apply-templates/>
       </dd>
 </xsl:template>
 
 <xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
-<xsl:template match="book//sec-meta//contrib-group/author-comment"><span data-jats="author-comment"><xsl:apply-templates/></span></xsl:template>
+<xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
 
 <xsl:template match="contrib-group/contrib">
-  <dl data-jats="{@contrib-type}">
-    <dt data-jats="{@contrib-type} name">
+  <dl data-ams-doc-contrib="{@contrib-type}">
+    <dt data-ams-doc-contrib="{@contrib-type} name">
       <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
     </dt>
     <xsl:if test="not (xref[@ref-type='aff'])"><dd></dd></xsl:if>
@@ -312,7 +314,7 @@
     </dd>
     </xsl:if>
     <xsl:if test="uri">
-      <dd><a href="{uri/text()}" data-jats="{@contrib-type} homepage">Homepage</a></dd>
+      <dd><a href="{uri/text()}">Homepage</a></dd>
     </xsl:if>
     <xsl:if test="contrib-id[@contrib-id-type='mrauth']">
     <dd>
@@ -337,24 +339,24 @@
 </xsl:template>
 
 <xsl:template match="article-meta/pub-date">
-    This article was received on <time data-jats="pub received" datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/>
+    This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/>
     </xsl:if>
-    and published on <time data-jats="pub published" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
+    and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time data-jats="pub revised" datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>,
+<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>,
 </xsl:template>
 
 
 <xsl:template match="ams-meta-group">
-  <dt data-jats="msc">MSC <xsl:value-of select="msc/@scheme"/></dt>
+  <dt>MSC <xsl:value-of select="msc/@scheme"/></dt>
   <xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template match="ams-meta-group/msc">
   <xsl:if test="primary">
-    <dd data-jats="msc primary">Primary:
+    <dd>Primary:
     <xsl:for-each select="primary">
     <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
     <xsl:choose>
@@ -364,7 +366,7 @@
     </dd>
   </xsl:if>
   <xsl:if test="secondary">
-    <dd data-jats="msc secondary">Secondary:
+    <dd>Secondary:
     <xsl:for-each select="secondary">
     <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
     <xsl:choose>
@@ -377,12 +379,12 @@
 
 <xsl:template match="article-meta/permissions/copyright-statement">
   <dt>Copyright Information</dt>
-  <dd data-jats="copyright"><xsl:apply-templates/></dd>
+  <dd data-ams-doc="copyright"><xsl:apply-templates/></dd>
 </xsl:template>
 
 <xsl:template match="article-meta/self-uri">
   <li>
-  <a href="{@xlink:href}" data-jats="{@content-type}">
+  <a href="{@xlink:href}" data-ams-ref="{@content-type}">
     Permalink
     <xsl:if test="@content-type='pdf'">
         (PDF)
@@ -399,7 +401,7 @@
 
 <xsl:template match="article-meta/funding-group">
   <dt>Additional Notes</dt>
-  <dd data-jats="fundinginfo"><xsl:apply-templates/></dd>
+  <dd><xsl:apply-templates/></dd>
 </xsl:template>
 
 <xsl:template match="article-meta/funding-group/funding-statement">
@@ -408,7 +410,7 @@
 
 <xsl:template match="article-meta/article-citation">
   <li>
-    <code data-jats="amsref">
+    <code data-ams-doc="amsref">
       <xsl:value-of select="text()"/>
     </code>
   </li>
@@ -416,10 +418,9 @@
 
 
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
-  <dd data-jats="affiliation">
+  <dd>
   <xsl:variable name="link" select="./@rid" />
   <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
-      <xsl:attribute name="data-jats">affiliation current</xsl:attribute>
       <span>Address at time of publication: </span>
   </xsl:if>
   <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
@@ -440,13 +441,12 @@
 <xsl:template match="article-meta/article-id">
     <xsl:if test="@pub-id-type = 'doi'">
       <li>
-        DOI <a data-jats="doi" href="https://doi.org/{text()}"><xsl:value-of select="text()"/></a>
+        DOI <a href="https://doi.org/{text()}"><xsl:value-of select="text()"/></a>
       </li>
     </xsl:if>
     <xsl:if test="@pub-id-type = 'mr'">
-      <!-- TODO What is the correct URL prefix? -->
       <li>
-        <a data-jats-="mr" href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
+        <a href="http://www.ams.org/mathscinet-getitem?mr={text()}">MathSciNet Review</a>
       </li>
     </xsl:if>
 </xsl:template>
@@ -464,7 +464,8 @@
 </xsl:template>
 
 <xsl:template match="styled-content">
-    <span data-jats-style="{@style-type}">
+<!-- NOTE: we also use data-ams-style for @style. This might clash if we introduce styled-content with style attributes -->
+    <span data-ams-style="{@style-type}">
         <xsl:apply-templates/>
     </span>
 </xsl:template>
@@ -488,69 +489,70 @@
 </xsl:template>
 
 <xsl:template match="roman">
-    <span data-jats-style="roman">
+    <span data-ams-style="roman">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="sc">
-    <span data-jats-style="sc">
+    <span data-ams-style="sc">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="monospace">
-    <span data-jats-style="monospace">
+    <span data-ams-style="monospace">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="underline">
-    <span data-jats-style="underline">
+    <span data-ams-style="underline">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
 
 <xsl:template match="disp-quote">
-    <blockquote data-jats-style="{@specific-use}">
+    <blockquote data-ams-style="{@specific-use}">
         <xsl:apply-templates/>
     </blockquote>
 </xsl:template>
 
 <xsl:template match="disp-quote/attrib">
     <footer>
-        <span data-jats="attrib">
+        <span>
             <xsl:apply-templates/>
         </span>
     </footer>
 </xsl:template>
 
 <xsl:template match="attrib">
-    <span data-jats="attrib">
+    <span>
         <xsl:apply-templates/>
     </span>
 </xsl:template>
 <!-- NOTE repeated because fig-caption (below) needs a mode to be able to pull in attrib (else fig/attrib's ignore kicks in) -->
 <xsl:template match="attrib" mode="generic">
-    <span data-jats="attrib">
+    <span>
         <xsl:apply-templates/>
     </span>
 </xsl:template>
 
 <xsl:template match="xref">
-    <a href="#{@rid}" data-jats="{@ref-type}"><xsl:apply-templates/></a>
+    <a href="#{@rid}" data-ams-ref="{@ref-type}"><xsl:apply-templates/></a>
 </xsl:template>
 
 <xsl:template match="xref[not(@rid)]">
-    <span data-ams="notrid"><xsl:apply-templates/></span>
+    <span data-ams-ref="notrid"><xsl:apply-templates/></span>
 </xsl:template>
 
 <xsl:template match="xref[@ref-type='fn']">
-    <a href="#{@rid}" data-jats="{@ref-type}" role="doc-noteref"><xsl:apply-templates/></a>
+<!-- TODO we could drop data-ams-ref if we don't use general purpose "[data-ams-ref]" selectors anywhere and if we change the \xhref extension -->
+    <a href="#{@rid}" data-ams-ref="{@ref-type}" role="doc-noteref"><xsl:apply-templates/></a>
 </xsl:template>
 
 <xsl:template match="xref[@ref-type='bibr']">
-    <cite><a href="#{@rid}" data-jats="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
+    <cite><a href="#{@rid}" data-ams-ref="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
 </xsl:template>
 
 <xsl:template match="xref[@ref-type='bibr']/x">
@@ -567,12 +569,12 @@
 </xsl:template>
 
 <xsl:template match="p//p | fn//p">
-  <span data-ams="paragraph"><xsl:apply-templates select="@*|node()"/></span>
+  <span data-ams-doc="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
 <xsl:template match="statement/secheading/title | statement/secheading/label">
     <xsl:if test="not(following-sibling::title[1])">
-    <span data-jats="secheading">
+    <span data-ams-doc="secheading">
         <xsl:if test="preceding-sibling::label[1]">
         <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
@@ -601,11 +603,11 @@
     <xsl:apply-templates select="@*|node()"/>
     <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     <xsl:if test="following-sibling::subtitle">
-    <p data-jats="subtitle" data-jats-level="{$level}"><xsl:apply-templates select="following-sibling::subtitle" mode="generic"/></p>
+    <p data-ams-doc="subtitle" data-ams-doc-level="{$level}"><xsl:apply-templates select="following-sibling::subtitle" mode="generic"/></p>
     </xsl:if>
   </header>
     <xsl:if test="preceding-sibling::sec-meta">
-    <section data-jats="sec-meta">
+    <section data-ams-doc="sec-meta">
     <!-- We pick&choose from whitelist since contrib-group templates are messy already -->
         <xsl:choose>
         <xsl:when test="ancestor::article">
@@ -631,7 +633,8 @@
 </xsl:template>
 
 <xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
-    <section data-ams-doc="sect{@disp-level}" data-jats-structure="{@specific-use}">
+<!-- NOTE ack, dedication have no disp-level, so data-ams-doc-level will be empty -->
+    <section data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}">
         <xsl:if test="(self::dedication)">
             <xsl:attribute name="role">doc-dedication</xsl:attribute>
         </xsl:if>
@@ -646,7 +649,7 @@
 </xsl:template>
 
 <xsl:template match="abstract">
-    <section data-ams-doc="sect1" role="doc-abstract">
+    <section data-ams-doc-level="1" role="doc-abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
@@ -659,7 +662,7 @@
 
 <xsl:template match="statement">
     <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
-       <section data-ams-doc="sect{$level + 1}" data-jats="statement" >
+       <section data-ams-doc-level="{$level + 1}" data-ams-doc="statement" >
         <xsl:apply-templates select="@*|node()"/>
       </section>
 </xsl:template>
@@ -710,7 +713,7 @@
 </xsl:template>
 
 <xsl:template match="graphic | inline-graphic">
-    <img data-jats="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-jats-style="{@specific-use}"/>
+    <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}"/>
 </xsl:template>
 
 <xsl:template match="img">
@@ -811,7 +814,7 @@
 </xsl:template>
 
 <xsl:template match="inline-formula">
-  <span data-jats="math inline">
+  <span data-ams-doc="math inline">
     <xsl:apply-templates/>
   </span>
   <xsl:if test="tex-math/fn">
@@ -820,7 +823,7 @@
 </xsl:template>
 
 <xsl:template match="disp-formula">
-  <span data-jats="math block">
+  <span data-ams-doc="math block">
   <xsl:if test="tex-math[@has-qed-box]">
     <xsl:attribute name="data-ams-qed-box">
     <xsl:value-of select="(tex-math/@has-qed-box)[1]"/>
@@ -892,7 +895,7 @@
 </xsl:template>
 
 <xsl:template match="ref-list/ref/label">
-        <span data-jats="refname"><xsl:apply-templates/></span>
+        <span><xsl:apply-templates/></span>
 </xsl:template>
 
 <xsl:template match="mixed-citation">
@@ -900,7 +903,7 @@
       <div role="doc-biblioentry">
         <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="../raw-citation">
-          <code data-jats="amsref">
+          <code data-ams-doc="amsref">
             <xsl:value-of select="../raw-citation/text()"/>
           </code>
         </xsl:if>
@@ -921,7 +924,7 @@
 </xsl:template>
 
 <xsl:template match="back/app-group/app">
-    <section data-ams-doc="sect1">
+    <section data-ams-doc-level="1">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
@@ -937,17 +940,17 @@
     </xsl:copy>
 </xsl:template>
 <xsl:template match="@content-type">
-      <xsl:attribute name="data-jats-content-type">
+      <xsl:attribute name="data-ams-content-type">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
 <xsl:template match="@style">
-      <xsl:attribute name="data-jats-content-style">
+      <xsl:attribute name="data-ams-style">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
 <xsl:template match="@specific-use">
-      <xsl:attribute name="data-jats-specific-use">
+      <xsl:attribute name="data-ams-specific-use">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
@@ -968,9 +971,9 @@
 </xsl:template>
 
 <xsl:template match="break"><br/></xsl:template>
-<xsl:template match="string-name"><span data-jats="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
-<xsl:template match="target"><span data-jats-target-type="{@target-type}"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+<xsl:template match="string-name"><span data-ams-doc="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+<xsl:template match="target"><span><xsl:apply-templates select="@*|node()"/></span></xsl:template>
 
-<xsl:template match="verse-group"><figure data-jats="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
+<xsl:template match="verse-group"><figure data-ams-doc="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
 
 </xsl:stylesheet>
