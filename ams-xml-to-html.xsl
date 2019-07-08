@@ -713,7 +713,7 @@
 </xsl:template>
 
 <xsl:template match="graphic | inline-graphic">
-    <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}"/>
+    <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
 
 <xsl:template match="img">
