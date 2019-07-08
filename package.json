@@ -4,6 +4,7 @@
   "description": "An xslt for converting JATS-like XML to html",
   "private": true,
   "scripts": {
+    "release": "standard-version",
     "test": "echo \"No tests yet\""
   },
   "repository": {
@@ -24,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/AmerMathSoc/ams-xml-to-html/issues"
   },
-  "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme"
+  "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
+  "devDependencies": {
+    "standard-version": "~6"
+  }
 }
