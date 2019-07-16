@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.1.0...v3.1.1) (2019-07-16)
+
+
+### Bug Fixes
+
+* p//p template should exclude nested def-list ([b630af8](https://github.com/AmerMathSoc/ams-xml-to-html/commit/b630af8)), closes [#225](https://github.com/AmerMathSoc/ams-xml-to-html/issues/225)
+
+
+
 ## 3.1.0 (2019-07-08)
 
 
