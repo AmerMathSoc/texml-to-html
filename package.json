@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "release": "standard-version",
-    "test": "echo \"No tests yet\""
+    "test": "tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
   "devDependencies": {
-    "standard-version": "~6"
+    "standard-version": "~6",
+    "tape": "~4"
   }
 }
