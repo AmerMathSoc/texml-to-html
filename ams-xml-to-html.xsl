@@ -575,7 +575,7 @@
 <xsl:template match="statement/secheading/title | statement/secheading/label">
     <xsl:if test="not(following-sibling::title[1])">
     <span data-ams-doc="secheading">
-        <xsl:if test="preceding-sibling::label[1]">
+        <xsl:if test="preceding-sibling::label[1][text()] != ''">
         <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
@@ -596,7 +596,7 @@
    </xsl:variable>
   <header>
     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-    <xsl:if test="preceding-sibling::label[1]">
+    <xsl:if test="preceding-sibling::label[1][text()] != ''">
         <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
@@ -676,7 +676,7 @@
      </xsl:choose>
     </xsl:variable>
 
-     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1]">
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1][text()] != ''">
              <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
              <xsl:text> </xsl:text>
          </xsl:if>
@@ -697,7 +697,7 @@
      </xsl:choose>
     </xsl:variable>
              <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-             <xsl:if test="preceding-sibling::label[1]">
+             <xsl:if test="preceding-sibling::label[1][text()] != ''"><!-- TODO This is never called; it would need two consecutive labels to trigger (in which case we would get multiple heading elements. Maybe it was thought to go after apply-templates below but that would create visual regressions, so let's do it at a later point.  -->
                  <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
                  <xsl:text>. </xsl:text>
              </xsl:if>
@@ -722,7 +722,7 @@
 
 <xsl:template match="fig/caption | fig-group/caption">
   <figcaption>
-    <xsl:if test="preceding-sibling::label[1]">
+    <xsl:if test="preceding-sibling::label[1][text()] != ''">
         <strong>
           <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
@@ -772,7 +772,7 @@
 </xsl:template>
 
 <xsl:template match="toc-entry/title">
-    <xsl:if test="preceding-sibling::label[1]">
+    <xsl:if test="preceding-sibling::label[1][text()] != ''">
         <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
         <xsl:text>. </xsl:text>
     </xsl:if>
