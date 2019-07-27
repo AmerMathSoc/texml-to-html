@@ -3,16 +3,13 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Empty Labels should be stripped', async function(t) {
-  t.plan(5);
+  t.plan(6);
   const input = path.resolve(__dirname, 'stripEmptyLabel.xml');
-  const output = await xsltproc(input);
-  t.ok(output.stdout.search('<h2></h2>') > -1);
-  t.ok(output.stdout.search('<h3>. </h3>') > -1);
-  t.ok(output.stdout.search('<span data-ams-doc="secheading"></span>') > -1);
-  t.ok(output.stdout.search('<figcaption></figcaption>') > -1);
-  t.ok(
-    output.stdout.search(
-      '<nav role="doc-toc"><ol><li><a href="#"></a></li></ol></nav>'
-    ) > -1
-  );
+  const document = await xsltproc(input);
+  t.equal(document.querySelector('nav[role="doc-toc"] ol li a').innerHTML, '', 'Toc-entry with (empty) title and empty label');
+  t.equal(document.querySelector('section[data-ams-doc-level="1"] h2').innerHTML, '', 'Sec with (empty) title and empty label');
+  t.equal(document.querySelector('section[data-ams-doc="statement"] h3').innerHTML, '. ', 'Statement with (empty) title and empty label');
+  t.equal(document.querySelector('span[data-ams-doc="secheading"]').innerHTML, '', 'Secheading in statement with empty label');
+  t.equal(document.querySelectorAll('section[data-ams-doc="statement"] h3')[1].innerHTML, '', 'Sec with no title and empty label');
+  t.equal(document.querySelector('figcaption').innerHTML, '', 'Fig with empty label');
 });

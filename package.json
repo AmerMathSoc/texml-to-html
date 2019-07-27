@@ -28,6 +28,7 @@
   "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
   "devDependencies": {
     "standard-version": "~6",
-    "tape": "~4"
+    "tape": "~4",
+    "jsdom": "~15"
   }
 }
