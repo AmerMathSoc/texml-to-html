@@ -1,0 +1,23 @@
+<article>
+    <fig>
+        <label>Label 1</label>
+        <caption>Caption 1</caption>
+    </fig>
+    <fig-group>
+        <label>Grouplabel 1</label>
+        <caption>Groupcaption 1</caption>
+        <fig>
+            <label>Sublabel 1</label>
+            <caption>Subcaption 1</caption>
+        </fig>
+    </fig-group>
+    <fig>
+        <label>Label 2</label>
+    </fig>
+    <fig-group>
+        <label>Grouplabel 2</label>
+        <fig>
+            <label>Sublabel 2</label>
+        </fig>
+    </fig-group>
+</article>

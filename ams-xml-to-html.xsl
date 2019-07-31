@@ -744,6 +744,32 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template match="fig-group/fig/caption">
+  <figcaption>
+    <xsl:if test="preceding-sibling::label[1][text()] != ''">
+        <strong>
+          <xsl:text>(</xsl:text>
+          <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
+          <xsl:text>) </xsl:text>
+      </strong>
+    </xsl:if>
+      <xsl:apply-templates select="@*|node()"/>
+      <xsl:apply-templates select="../attrib" mode="generic"/>
+  </figcaption>
+</xsl:template>
+
+<xsl:template match="fig-group/fig/label">
+  <xsl:if test="not(following-sibling::caption[1])">
+    <figcaption>
+        <strong>
+        <xsl:text>(</xsl:text>
+        <xsl:apply-templates select="@*|node()"/>
+        <xsl:text>) </xsl:text>
+        </strong>
+    </figcaption>
+  </xsl:if>
+</xsl:template>
+
 <!-- BOOKS ONLY -->
 <xsl:template match="toc">
     <nav role="doc-toc">
