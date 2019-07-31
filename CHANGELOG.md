@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.1.1...v3.2.0) (2019-07-31)
+
+
+### Bug Fixes
+
+* **label:** ignore (some) empty labels ([b2ff3c7](https://github.com/AmerMathSoc/ams-xml-to-html/commit/b2ff3c7)), closes [#226](https://github.com/AmerMathSoc/ams-xml-to-html/issues/226)
+
+
+### Features
+
+* **fig:** wrap subfigure labels in parentheses ([9df3c53](https://github.com/AmerMathSoc/ams-xml-to-html/commit/9df3c53)), closes [#227](https://github.com/AmerMathSoc/ams-xml-to-html/issues/227)
+* **tests:** add initial test suite setup ([79baa46](https://github.com/AmerMathSoc/ams-xml-to-html/commit/79baa46)), closes [#226](https://github.com/AmerMathSoc/ams-xml-to-html/issues/226) [#202](https://github.com/AmerMathSoc/ams-xml-to-html/issues/202)
+* **tests:** revise helper.js ([04d1d08](https://github.com/AmerMathSoc/ams-xml-to-html/commit/04d1d08)), closes [#228](https://github.com/AmerMathSoc/ams-xml-to-html/issues/228)
+
+
+
 ### [3.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.1.0...v3.1.1) (2019-07-16)
 
 
