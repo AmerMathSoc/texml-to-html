@@ -901,12 +901,14 @@
   $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
 </xsl:template>
 
+<!-- TODO move to ignore template? -->
 <xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
 </xsl:template>
 
+<!-- TODO move to pass-through template? -->
 <xsl:template match="back">
   <xsl:apply-templates/>
-    </xsl:template>
+</xsl:template>
 
 <xsl:template match="ref-list">
     <section role="doc-bibliography">
@@ -927,6 +929,7 @@
         <span><xsl:apply-templates/></span>
 </xsl:template>
 
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 <xsl:template match="mixed-citation">
     <dd>
       <div role="doc-biblioentry">
@@ -958,6 +961,7 @@
     </section>
 </xsl:template>
 
+<!-- NOTE node() intentionally has no test, should it? -->
 <xsl:template match="node()">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
@@ -996,6 +1000,7 @@
       </xsl:attribute>
 </xsl:template>
 
+<!-- NOTE @* intentionally has no test, should it? -->
 <xsl:template match="@*">
 </xsl:template>
 
