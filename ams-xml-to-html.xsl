@@ -85,6 +85,9 @@
 <xsl:template match="book-meta">
     <section data-ams-doc="titlepage">
         <xsl:apply-templates select="book-title-group"/>
+        <span data-ams-doc="series">
+          <xsl:value-of select="book-id[@book-id-type = 'publ_key']/text()"/>
+        </span>
         <dl>
         <xsl:apply-templates select="contrib-group"/>
         </dl>
