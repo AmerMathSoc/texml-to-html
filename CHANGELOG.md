@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.2.0...v3.3.0) (2019-08-14)
+
+
+### Features
+
+* **book-meta:** preserve publ_key ([d4f65e4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d4f65e4)), closes [#230](https://github.com/AmerMathSoc/ams-xml-to-html/issues/230)
+
+
+
 ## [3.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.1.1...v3.2.0) (2019-07-31)
 
 
