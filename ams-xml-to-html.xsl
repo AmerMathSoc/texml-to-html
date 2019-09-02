@@ -910,6 +910,9 @@
   <xsl:apply-templates/>
 </xsl:template>
 
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+
+<!-- TODO unify with book-back//ref-list template? -->
 <xsl:template match="ref-list">
     <section role="doc-bibliography">
         <xsl:apply-templates select="title"/>
@@ -929,7 +932,6 @@
         <span><xsl:apply-templates/></span>
 </xsl:template>
 
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 <xsl:template match="mixed-citation">
     <dd>
       <div role="doc-biblioentry">
