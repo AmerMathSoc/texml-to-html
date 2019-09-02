@@ -434,7 +434,7 @@
 </xsl:template>
 
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn">
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
@@ -462,7 +462,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref">
+<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -899,15 +899,6 @@
 
 <xsl:template match="tex-math//text/xref">
   $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
-</xsl:template>
-
-<!-- TODO move to ignore template? -->
-<xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
-</xsl:template>
-
-<!-- TODO move to pass-through template? -->
-<xsl:template match="back">
-  <xsl:apply-templates/>
 </xsl:template>
 
 <!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
