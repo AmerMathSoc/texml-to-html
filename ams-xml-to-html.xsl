@@ -462,7 +462,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back">
+<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -863,14 +863,6 @@
   <xsl:if test="tex-math/fn">
     <xsl:apply-templates select="tex-math/fn" mode="generic"/>
   </xsl:if>
-</xsl:template>
-
-<xsl:template match="alternatives">
-  <xsl:apply-templates/>
-    </xsl:template>
-
-<xsl:template match="tex-math">
-  <xsl:apply-templates/>
 </xsl:template>
 
 <!-- NOTE do not generalize to all descendants to avoid interference with tex-math//text -->
