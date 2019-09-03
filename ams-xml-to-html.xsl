@@ -462,7 +462,7 @@
 <xsl:template match="metainfo"/>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math">
+<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -782,11 +782,6 @@
         </ol>
     </nav>
 </xsl:template>
-
-<xsl:template match="title-group">
-    <xsl:apply-templates/>
-</xsl:template>
-
 
 <xsl:template match="toc-entry/title">
     <xsl:if test="preceding-sibling::label[1][text()] != ''">
