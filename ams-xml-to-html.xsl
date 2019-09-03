@@ -819,6 +819,8 @@
     </li>
 </xsl:template>
 
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+
 <xsl:template match="def-list">
     <dl>
         <xsl:apply-templates select="@*|node()"/>
@@ -841,8 +843,6 @@
 <xsl:template match="def-list/def-item/def">
     <dd><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
-
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 
 <xsl:template match="inline-formula">
   <span data-ams-doc="math inline">
