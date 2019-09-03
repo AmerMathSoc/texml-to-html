@@ -842,6 +842,8 @@
     <dd><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+
 <xsl:template match="inline-formula">
   <span data-ams-doc="math inline">
     <xsl:apply-templates/>
@@ -886,11 +888,8 @@
 
 <xsl:template match="tex-math//text">\text{<xsl:apply-templates/>}</xsl:template>
 
-<xsl:template match="tex-math//text/xref">
-  $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
-</xsl:template>
+<xsl:template match="tex-math//text/xref">$\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$</xsl:template>
 
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 
 <!-- TODO unify with book-back//ref-list template? -->
 <xsl:template match="ref-list">
