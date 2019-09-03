@@ -709,18 +709,21 @@
      </xsl:if>
 </xsl:template>
 
-<xsl:template match="fig | fig-group">
-    <figure role="group">
-        <xsl:apply-templates select="@id|@position|node()"/>
-    </figure>
-</xsl:template>
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
 
+<!-- NOTE img should only appear inside HTML tables -->
 <xsl:template match="img">
     <img src="{@src}" alt="{@alt}"/>
+</xsl:template>
+
+<xsl:template match="fig | fig-group">
+    <figure role="group">
+        <xsl:apply-templates select="@id|@position|node()"/>
+    </figure>
 </xsl:template>
 
 <xsl:template match="fig/caption | fig-group/caption">
@@ -772,8 +775,6 @@
     </figcaption>
   </xsl:if>
 </xsl:template>
-
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 
 <!-- NOTE effectively only for books since articles do not have a TOC in XML -->
 <xsl:template match="toc">
