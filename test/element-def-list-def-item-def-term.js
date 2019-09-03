@@ -6,7 +6,7 @@ tape('def-list, def-item, def, term', async function(t) {
   t.plan(6);
   const input = path.resolve(
     __dirname,
-    'def-list-def-item-def-term--article.xml'
+    'element-def-list-def-item-def-term--article.xml'
   );
   const document = await xsltproc(input);
 
@@ -19,7 +19,7 @@ tape('def-list, def-item, def, term', async function(t) {
   t.ok(deflist.querySelector('div>dt+dd'), 'Def')
   const input2 = path.resolve(
     __dirname,
-    'def-list-def-item-def-term--book.xml'
+    'element-def-list-def-item-def-term--book.xml'
   );
   const document2 = await xsltproc(input2);
   t.equal(document2.querySelector('dl').firstElementChild.tagName, 'DT', 'Def-item in book')

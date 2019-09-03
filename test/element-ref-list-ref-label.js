@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('ref-list, ref-list/title, ref, ref/label', async function(t) {
   t.plan(4);
-  const input = path.resolve(__dirname, 'ref-list-ref-label.xml');
+  const input = path.resolve(__dirname, 'element-ref-list-ref-label.xml');
   const document = await xsltproc(input);
   const bibliography = document.querySelector('section[role="doc-bibliography"]');
   t.ok(bibliography, 'Section with role doc-bibliography');

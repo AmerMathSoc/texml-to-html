@@ -6,7 +6,7 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
   t.plan(10);
   const input = path.resolve(
     __dirname,
-    'inline-formula-disp-formula-tex-math.xml'
+    'element-inline-formula-disp-formula-tex-math.xml'
   );
   const document = await xsltproc(input);
   const inlineformula = document.querySelector('[data-ams-doc="math inline"]');
