@@ -773,7 +773,9 @@
   </xsl:if>
 </xsl:template>
 
-<!-- BOOKS ONLY -->
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+
+<!-- NOTE effectively only for books since articles do not have a TOC in XML -->
 <xsl:template match="toc">
     <nav role="doc-toc">
         <xsl:apply-templates select="title-group"/>
@@ -801,8 +803,6 @@
         </xsl:if>
     </li>
 </xsl:template>
-
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
 
 <xsl:template match="def-list">
     <dl>
