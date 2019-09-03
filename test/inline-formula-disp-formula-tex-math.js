@@ -45,5 +45,4 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
     'Display-formula Footnote'
   );
   t.ok(disptex.includes('\\text{Start$\\xhref[other]{#otherid2}{}$End}'), 'tex-math/text/xref');
-  console.log(document.body.outerHTML, disptex);
 });
