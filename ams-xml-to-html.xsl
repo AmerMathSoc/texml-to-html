@@ -787,18 +787,6 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="title">
-<!-- TODO only seems used in ref-list/title -->
-     <xsl:choose>
-      <xsl:when test="/article">
-          <h2><xsl:apply-templates select="@*|node()"/></h2>
-        </xsl:when>
-      <xsl:otherwise>
-          <h1><xsl:apply-templates select="@*|node()"/></h1>
-      </xsl:otherwise>
-     </xsl:choose>
-
-</xsl:template>
 
 <xsl:template match="toc-entry/title">
     <xsl:if test="preceding-sibling::label[1][text()] != ''">
@@ -899,6 +887,18 @@
             <xsl:apply-templates select="ref"/>
         </dl>
     </section>
+</xsl:template>
+
+<xsl:template match="title">
+<!-- TODO only seems used in ref-list/title -->
+     <xsl:choose>
+      <xsl:when test="/article">
+          <h2><xsl:apply-templates select="@*|node()"/></h2>
+        </xsl:when>
+      <xsl:otherwise>
+          <h1><xsl:apply-templates select="@*|node()"/></h1>
+      </xsl:otherwise>
+     </xsl:choose>
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
