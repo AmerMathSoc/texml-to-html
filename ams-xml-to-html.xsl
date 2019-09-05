@@ -304,6 +304,27 @@
 <xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
 <xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
 
+<!-- NOTE same as statement/title -->
+<xsl:template match="book//sec-meta/abstract/title">
+  <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
+     <xsl:variable name="level">
+     <xsl:choose>
+      <xsl:when test="/article"><xsl:value-of select="$displevel + 2"/></xsl:when>
+      <xsl:otherwise><xsl:value-of select="$displevel + 1"/></xsl:otherwise>
+     </xsl:choose>
+    </xsl:variable>
+
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1][text()] != ''">
+             <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
+             <xsl:text> </xsl:text>
+         </xsl:if>
+         <xsl:apply-templates select="@*|node()"/>
+        <xsl:if test="not(starts-with(../@content-type, 'proof'))">
+          <xsl:text>. </xsl:text>
+        </xsl:if>
+      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+</xsl:template>
+
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
@@ -575,18 +596,6 @@
   <span data-ams-doc="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="statement/secheading/title | statement/secheading/label">
-    <xsl:if test="not(following-sibling::title[1])">
-    <span data-ams-doc="secheading">
-        <xsl:if test="preceding-sibling::label[1][text()] != ''">
-        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
-        <xsl:text>. </xsl:text>
-    </xsl:if>
-    <xsl:apply-templates select="@*|node()"/>
-    </span>
-    </xsl:if>
-</xsl:template>
-
 <xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
 <xsl:if test="not(following-sibling::title[1])">
     <xsl:variable name="displevel" select="../@disp-level"/>
@@ -663,6 +672,8 @@
   </header>
 </xsl:template>
 
+<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+
 <xsl:template match="statement">
     <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
        <section data-ams-doc-level="{$level + 1}" data-ams-doc="statement" >
@@ -670,7 +681,8 @@
       </section>
 </xsl:template>
 
-<xsl:template match="statement/title | sec-meta/abstract/title">
+<!-- NOTE same as book//sec-meta/abstract/title -->
+<xsl:template match="statement/title">
   <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
      <xsl:variable name="level">
      <xsl:choose>
@@ -709,7 +721,18 @@
      </xsl:if>
 </xsl:template>
 
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+<!-- NOTE: seems to be only used in proofs -->
+<xsl:template match="statement/secheading/title | statement/secheading/label">
+    <xsl:if test="not(following-sibling::title[1])">
+    <span data-ams-doc="secheading">
+        <xsl:if test="preceding-sibling::label[1][text()] != ''">
+        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
+        <xsl:text>. </xsl:text>
+        </xsl:if>
+    <xsl:apply-templates select="@*|node()"/>
+    </span>
+    </xsl:if>
+</xsl:template>
 
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
