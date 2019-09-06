@@ -556,6 +556,8 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="xref">
     <a href="#{@rid}" data-ams-ref="{@ref-type}"><xsl:apply-templates/></a>
 </xsl:template>
@@ -571,10 +573,6 @@
 
 <xsl:template match="xref[@ref-type='bibr']">
     <cite><a href="#{@rid}" data-ams-ref="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
-</xsl:template>
-
-<xsl:template match="xref[@ref-type='bibr']/x">
-    <xsl:apply-templates/>
 </xsl:template>
 
 <!-- GROUP -->
