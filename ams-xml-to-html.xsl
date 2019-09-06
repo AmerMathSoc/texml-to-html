@@ -586,6 +586,8 @@
 <xsl:template match="fn/label">
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="p//p[not(parent::def)] | fn//p">
   <span data-ams-doc="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
