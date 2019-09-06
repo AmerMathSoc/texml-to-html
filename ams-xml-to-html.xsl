@@ -144,12 +144,6 @@
     </section>
 </xsl:template>
 
-<xsl:template match="app">
-    <section role="doc-appendix">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
-
 <!-- ARTICLES -->
 
 <xsl:template match="article">
@@ -596,7 +590,57 @@
   <span data-ams-doc="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
+<!-- GROUP -->
+
+<xsl:template match="back/app-group">
+    <section role="doc-appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="back/app-group/app">
+    <section data-ams-doc-level="1">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<!-- GROUP -->
+
+<!-- NOTE chapters currently only appear in books -->
+<!-- TODO add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}" ?-->
+<xsl:template match="sec[@specific-use='chapter']">
+    <section role="doc-chapter">
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
+<!-- NOTE ack, dedication have no disp-level, so data-ams-doc-level will be empty -->
+<!-- TODO we have acknowledgments as app -->
+    <section data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}">
+        <xsl:if test="(self::dedication)">
+            <xsl:attribute name="role">doc-dedication</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
+            <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="starts-with(title, 'Introduction')">
+            <xsl:attribute name="role">doc-introduction</xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<!-- NOTE app only applies in books since articles always have app within app-group (cf. template for app-group/app above) -->
+<!-- TODO (BREAKING CHANGE) remove app-group/app and make app-group pass-through - the role should be on each app, not on wrapper from app-group; but watch out for app with Acknowledgements. -->
+<!-- TODO should we add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}"? We expect them for heading level computation. -->
+<xsl:template match="app">
+    <section role="doc-appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="sec/title | sec/label | app/title | app/label | front-matter-part/title | front-matter-part/label">
 <xsl:if test="not(following-sibling::title[1])">
     <xsl:variable name="displevel" select="../@disp-level"/>
     <xsl:variable name="level">
@@ -619,15 +663,17 @@
     </xsl:if>
   </header>
     <xsl:if test="preceding-sibling::sec-meta">
+    <!-- NOTE sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations -->
+    <!-- TODO find a cleaner solution, e.g., general purpose markup + publication specific customization -->
     <section data-ams-doc="sec-meta">
     <!-- We pick&choose from whitelist since contrib-group templates are messy already -->
         <xsl:choose>
-        <xsl:when test="ancestor::article">
+        <xsl:when test="ancestor::article"><!-- jams410 only -->
         <dl>
             <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
         </dl>
         </xsl:when>
-        <xsl:otherwise>
+        <xsl:otherwise><!-- MCL01, MCL14 only -->
             <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
         </xsl:otherwise>
         </xsl:choose>
@@ -637,28 +683,7 @@
 </xsl:if>
 </xsl:template>
 
-<!-- BOOKS ONLY -->
-<xsl:template match="sec[@specific-use='chapter']">
-    <section role="doc-chapter">
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
-</xsl:template>
-
-<xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
-<!-- NOTE ack, dedication have no disp-level, so data-ams-doc-level will be empty -->
-    <section data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}">
-        <xsl:if test="(self::dedication)">
-            <xsl:attribute name="role">doc-dedication</xsl:attribute>
-        </xsl:if>
-        <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
-            <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
-        </xsl:if>
-        <xsl:if test="starts-with(title, 'Introduction')">
-            <xsl:attribute name="role">doc-introduction</xsl:attribute>
-        </xsl:if>
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="abstract">
     <section data-ams-doc-level="1" role="doc-abstract">
@@ -672,7 +697,7 @@
   </header>
 </xsl:template>
 
-<!-- Below this comment, we have tests (unless some template-specific comment says otherwise) -->
+<!-- GROUP -->
 
 <xsl:template match="statement">
     <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
@@ -734,14 +759,20 @@
     </xsl:if>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
+
+<!-- GROUP -->
 
 <!-- NOTE img should only appear inside HTML tables -->
 <xsl:template match="img">
     <img src="{@src}" alt="{@alt}"/>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="fig | fig-group">
     <figure role="group">
@@ -799,6 +830,8 @@
   </xsl:if>
 </xsl:template>
 
+<!-- GROUP -->
+
 <!-- NOTE effectively only for books since articles do not have a TOC in XML -->
 <xsl:template match="toc">
     <nav role="doc-toc">
@@ -828,6 +861,8 @@
     </li>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="def-list">
     <dl>
         <xsl:apply-templates select="@*|node()"/>
@@ -850,6 +885,8 @@
 <xsl:template match="def-list/def-item/def">
     <dd><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="inline-formula">
   <span data-ams-doc="math inline">
@@ -897,6 +934,7 @@
 
 <xsl:template match="tex-math//text/xref">$\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$</xsl:template>
 
+<!-- GROUP -->
 
 <!-- TODO unify with book-back//ref-list template? -->
 <xsl:template match="ref-list">
@@ -930,6 +968,8 @@
         <span><xsl:apply-templates/></span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="mixed-citation">
     <dd>
       <div role="doc-biblioentry">
@@ -943,23 +983,15 @@
     </dd>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="ext-link">
   <a href="{@xlink:href}">
     <xsl:apply-templates/>
   </a>
 </xsl:template>
 
-<xsl:template match="back/app-group">
-    <section role="doc-appendix">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
-
-<xsl:template match="back/app-group/app">
-    <section data-ams-doc-level="1">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
+<!-- GROUP -->
 
 <!-- NOTE node() intentionally has no test, should it? -->
 <xsl:template match="node()">
@@ -967,26 +999,40 @@
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@id|@rowspan|@colspan">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@content-type">
       <xsl:attribute name="data-ams-content-type">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@style">
       <xsl:attribute name="data-ams-style">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@specific-use">
       <xsl:attribute name="data-ams-specific-use">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="@has-qed-box">
       <xsl:attribute name="data-ams-qed-box">
@@ -994,19 +1040,33 @@
       </xsl:attribute>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="@position">
       <xsl:attribute name="data-ams-position">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
 
+<!-- GROUP -->
+
 <!-- NOTE @* intentionally has no test, should it? -->
 <xsl:template match="@*">
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="break"><br/></xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="string-name"><span data-ams-doc="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="target"><span><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="verse-group"><figure data-ams-doc="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
 
