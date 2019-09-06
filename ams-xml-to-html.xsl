@@ -544,6 +544,8 @@
     </footer>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="attrib">
     <span>
         <xsl:apply-templates/>
