@@ -413,13 +413,12 @@
   <dd data-ams-doc="copyright"><xsl:apply-templates/></dd>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta/self-uri">
   <li>
   <a href="{@xlink:href}" data-ams-ref="{@content-type}">
-    Permalink
-    <xsl:if test="@content-type='pdf'">
-        (PDF)
-    </xsl:if>
+    Permalink <xsl:if test="@content-type='pdf'">(PDF)</xsl:if>
   </a>
   </li>
 </xsl:template>
