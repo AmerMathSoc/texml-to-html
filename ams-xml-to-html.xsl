@@ -506,6 +506,8 @@
     </strong>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="roman">
     <span data-ams-style="roman">
         <xsl:apply-templates select="@*|node()"/>
