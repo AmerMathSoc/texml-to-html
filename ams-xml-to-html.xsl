@@ -424,6 +424,8 @@
   </li>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta/funding-group">
   <dt>Additional Notes</dt>
   <dd><xsl:apply-templates/></dd>
