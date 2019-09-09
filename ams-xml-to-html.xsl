@@ -512,6 +512,8 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="sc">
     <span data-ams-style="sc">
         <xsl:apply-templates select="@*|node()"/>
