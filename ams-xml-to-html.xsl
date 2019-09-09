@@ -518,6 +518,8 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="monospace">
     <span data-ams-style="monospace">
         <xsl:apply-templates select="@*|node()"/>
