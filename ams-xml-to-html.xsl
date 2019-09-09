@@ -424,12 +424,6 @@
   </li>
 </xsl:template>
 
-<xsl:template match="article-meta/kwd-group">
-    <ul>
-      <xsl:apply-templates/>
-    </ul>
-</xsl:template>
-
 <xsl:template match="article-meta/funding-group">
   <dt>Additional Notes</dt>
   <dd><xsl:apply-templates/></dd>
@@ -439,12 +433,22 @@
     <p><xsl:apply-templates/></p>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta/article-citation">
   <li>
     <code data-ams-doc="amsref">
       <xsl:value-of select="text()"/>
     </code>
   </li>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/kwd-group">
+    <ul>
+      <xsl:apply-templates/>
+    </ul>
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
