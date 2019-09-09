@@ -488,6 +488,7 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
 
 <xsl:template match="italic">
 <xsl:choose>
