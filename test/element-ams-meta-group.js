@@ -9,7 +9,6 @@ tape('Template: ams-meta-group', async function(t) {
     'element-ams-meta-group.xml'
   );
   const document = await xsltproc(input);
-  console.log(document.body.outerHTML);
   const mscgroup = document.querySelector('section[data-ams-doc="article"] dt'); // NOTE brittle selector
   t.equal(mscgroup.innerHTML, 'MSC scheme', 'ams-meta-group with scheme to DT with content');
   const mscPrimary = mscgroup.nextElementSibling;
