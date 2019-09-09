@@ -373,32 +373,20 @@
 </xsl:template>
 
 
-<xsl:template match="ams-meta-group">
+<!-- GROUP -->
+
+<xsl:template match="article-meta/ams-meta-group">
   <dt>MSC <xsl:value-of select="msc/@scheme"/></dt>
   <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="ams-meta-group/msc">
+<xsl:template match="article-meta/ams-meta-group/msc">
   <xsl:if test="primary">
-    <dd>Primary:
-    <xsl:for-each select="primary">
-    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
-    <xsl:choose>
-      <xsl:when test="position() != last()">, </xsl:when>
-    </xsl:choose>
-    </xsl:for-each>
-    </dd>
+    <dd>Primary: <xsl:for-each select="primary"><a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a><xsl:choose><xsl:when test="position() != last()">, </xsl:when></xsl:choose></xsl:for-each></dd>
   </xsl:if>
   <xsl:if test="secondary">
-    <dd>Secondary:
-    <xsl:for-each select="secondary">
-    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
-    <xsl:choose>
-      <xsl:when test="position() != last()">, </xsl:when>
-    </xsl:choose>
-    </xsl:for-each>
-    </dd>
-  </xsl:if>
+    <dd>Secondary: <xsl:for-each select="secondary"><a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a><xsl:choose><xsl:when test="position() != last()">, </xsl:when></xsl:choose></xsl:for-each></dd>
+</xsl:if>
 </xsl:template>
 
 <!-- GROUP -->
