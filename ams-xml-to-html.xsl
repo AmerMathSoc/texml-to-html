@@ -101,13 +101,6 @@
     </section>
 </xsl:template>
 
-
-<xsl:template match="book-meta/permissions/copyright-statement">
-<p data-ams-doc="book copyright">
-  <xsl:apply-templates/>
-</p>
-</xsl:template>
-
 <xsl:template match="book-title-group">
     <header><xsl:apply-templates/></header>
 </xsl:template>
@@ -408,9 +401,17 @@
   </xsl:if>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta/permissions/copyright-statement">
   <dt>Copyright Information</dt>
   <dd data-ams-doc="copyright"><xsl:apply-templates/></dd>
+</xsl:template>
+
+<xsl:template match="book-meta/permissions/copyright-statement">
+<p data-ams-doc="book copyright"><!-- TODO data attribute inconsistent compared to article case -->
+  <xsl:apply-templates/>
+</p>
 </xsl:template>
 
 <!-- GROUP -->
