@@ -481,6 +481,8 @@
     <xsl:apply-templates/>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="styled-content">
 <!-- NOTE: we also use data-ams-style for @style. This might clash if we introduce styled-content with style attributes -->
     <span data-ams-style="{@style-type}">
