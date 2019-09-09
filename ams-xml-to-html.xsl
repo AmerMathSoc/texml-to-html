@@ -530,6 +530,8 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="disp-quote">
     <blockquote data-ams-style="{@specific-use}">
         <xsl:apply-templates/>
