@@ -524,6 +524,9 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO switch to HTML u element ams-xml-to-html#223 -->
 <xsl:template match="underline">
     <span data-ams-style="underline">
         <xsl:apply-templates select="@*|node()"/>
