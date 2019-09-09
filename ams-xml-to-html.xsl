@@ -353,8 +353,10 @@
     <xsl:apply-templates select="node()"/>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="email">
-  <a href="mailto://{email/text()}">
+  <a href="mailto://{text()}">
     <xsl:apply-templates/>
   </a>
   <xsl:if test="position() != last()">
