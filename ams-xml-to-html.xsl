@@ -362,15 +362,13 @@
   </xsl:if>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta/pub-date">
-    This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/>
-    </xsl:if>
-    and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
-    <xsl:apply-templates/>
+    This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/></xsl:if> and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.<xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>,
-</xsl:template>
+<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>, </xsl:template>
 
 
 <!-- GROUP -->
