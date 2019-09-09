@@ -500,6 +500,8 @@
 </xsl:choose>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="bold">
     <strong>
         <xsl:apply-templates select="@*|node()"/>
