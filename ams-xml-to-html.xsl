@@ -347,6 +347,19 @@
   </dl>
 </xsl:template>
 
+<xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
+  <dd>
+  <xsl:variable name="link" select="./@rid" />
+  <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
+      <span>Address at time of publication: </span>
+  </xsl:if>
+  <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
+  </dd>
+</xsl:template>
+<xsl:template match="aff" mode="generic">
+    <xsl:apply-templates select="node()"/>
+</xsl:template>
+
 <xsl:template match="email">
   <a href="mailto://{email/text()}">
     <xsl:apply-templates/>
@@ -434,23 +447,11 @@
   </li>
 </xsl:template>
 
-
-<xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
-  <dd>
-  <xsl:variable name="link" select="./@rid" />
-  <xsl:if test="../../aff[@id = $link]/@specific-use = 'current'">
-      <span>Address at time of publication: </span>
-  </xsl:if>
-  <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
-  </dd>
-</xsl:template>
-<xsl:template match="aff" mode="generic">
-    <xsl:apply-templates select="node()"/>
-</xsl:template>
-
 <xsl:template match="article-meta/kwd-group/kwd">
   <li><xsl:apply-templates/></li>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="article-meta/article-id">
     <xsl:if test="@pub-id-type = 'doi'">
