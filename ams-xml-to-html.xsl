@@ -448,10 +448,6 @@
     <xsl:apply-templates select="node()"/>
 </xsl:template>
 
-<!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form | math | fn/label">
-</xsl:template>
-
 <xsl:template match="article-meta/kwd-group/kwd">
   <li><xsl:apply-templates/></li>
 </xsl:template>
@@ -470,11 +466,10 @@
 </xsl:template>
 
 
-<xsl:template match="front"/>
-
 <!-- SHARED -->
-
-<xsl:template match="metainfo"/>
+<!-- the "ignore" template -->
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form | math | fn/label | front | metainfo">
+</xsl:template>
 
 <!-- the "pass-through" template -->
 <xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
