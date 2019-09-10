@@ -2,7 +2,7 @@ const path = require('path');
 const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
-tape('Template: statement, label, title', async function(t) {
+tape('Template: book//sec-meta => contrib-group, author-comment, abstract/title', async function(t) {
   t.plan(4);
 
   const input = path.resolve(__dirname, 'element-book-sec-meta.xml');
