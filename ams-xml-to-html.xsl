@@ -312,6 +312,9 @@
       <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO match="contrib" should be ok -->
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
