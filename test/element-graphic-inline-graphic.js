@@ -7,7 +7,6 @@ tape('Template: img', async function(t) {
   t.plan(7);
   const input = path.resolve(__dirname, 'element-graphic-inline-graphic.xml');
   const document = await xsltproc(input);
-  console.log(document.body.innerHTML)
   const graphic =  document.querySelector('img[data-ams-doc="graphic"]');
   t.ok(graphic, 'img with data-ams-doc=graphic');
   t.equal(graphic.getAttribute('src'), 'file', 'graphic href as source');
