@@ -13,6 +13,7 @@
             <uri>uri</uri>
             </contrib>
             <aff id="aff1">aff</aff>
+            <author-comment>comment</author-comment>
         </contrib-group>
     </article-meta>
 </article>

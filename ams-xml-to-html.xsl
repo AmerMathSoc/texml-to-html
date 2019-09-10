@@ -270,6 +270,8 @@
 </xsl:template>
 
 
+<!-- GROUP -->
+
 <xsl:template match="contrib-group">
 <!-- Expected values for contrib-group/@content-type:  "authors", "editors", "translators", "contributors". -->
 <!-- We capitalize the first letter of @content-type and remove the final letter (which should be 's'). -->
@@ -282,6 +284,7 @@
   substring(@content-type,2,string-length(@content-type)-2)
 )"/> Information</dt>
       <dd data-ams-doc-contrib="{@content-type}">
+      <!-- TODO this looks very hacky; should only apply to articles (thus should test for it). -->
       <!-- NOTE author-comment needs to fit in a sentence -->
           <xsl:if test="author-comment"><xsl:attribute name="data-ams-doc-contrib-comment"><xsl:value-of select="author-comment/text()"/></xsl:attribute></xsl:if>
         <xsl:apply-templates/>
