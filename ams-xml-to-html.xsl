@@ -288,29 +288,6 @@
       </dd>
 </xsl:template>
 
-<xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
-<xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
-
-<!-- NOTE same as statement/title -->
-<xsl:template match="book//sec-meta/abstract/title">
-  <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
-     <xsl:variable name="level">
-     <xsl:choose>
-      <xsl:when test="/article"><xsl:value-of select="$displevel + 2"/></xsl:when>
-      <xsl:otherwise><xsl:value-of select="$displevel + 1"/></xsl:otherwise>
-     </xsl:choose>
-    </xsl:variable>
-
-     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1][text()] != ''">
-             <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
-             <xsl:text> </xsl:text>
-         </xsl:if>
-         <xsl:apply-templates select="@*|node()"/>
-        <xsl:if test="not(starts-with(../@content-type, 'proof'))">
-          <xsl:text>. </xsl:text>
-        </xsl:if>
-      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-</xsl:template>
 
 <!-- GROUP -->
 
@@ -708,6 +685,20 @@
   <header>
     <h2><xsl:apply-templates select="@*|node()"/></h2>
   </header>
+</xsl:template>
+
+<!-- GROUP -->
+<!-- TODO Reconsider. MCL01, MCL14 only. Cf. notes in calls to sec-meta template below. -->
+<xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
+<xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
+<!-- NOTE simplified from statement/title -->
+<!-- NOTE MUST BE AFTER abstract/title due to specificity!!!!! -->
+<xsl:template match="book//sec-meta/abstract/title">
+  <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level + 1"/>
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$displevel" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+         <xsl:apply-templates select="@*|node()"/>
+          <xsl:text>. </xsl:text>
+      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$displevel" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 </xsl:template>
 
 <!-- GROUP -->
