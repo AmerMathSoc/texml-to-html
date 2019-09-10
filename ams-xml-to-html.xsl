@@ -340,6 +340,8 @@
   </dl>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd>
   <xsl:variable name="link" select="./@rid" />
@@ -349,6 +351,7 @@
   <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
   </dd>
 </xsl:template>
+
 <xsl:template match="aff" mode="generic">
     <xsl:apply-templates select="node()"/>
 </xsl:template>
