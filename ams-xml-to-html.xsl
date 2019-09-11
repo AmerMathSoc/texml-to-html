@@ -257,6 +257,8 @@
     <xsl:apply-templates/>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="front/notes[@notes-type='dedication']">
   <div role="doc-dedication">
     <xsl:apply-templates/>
