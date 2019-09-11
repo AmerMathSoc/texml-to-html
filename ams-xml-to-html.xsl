@@ -191,6 +191,8 @@
 <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="article-meta">
   <section data-ams-doc="copyright-page">
     <xsl:text>&#xa;</xsl:text>
@@ -199,13 +201,12 @@
       <xsl:apply-templates select="ams-meta-group"/>
       <xsl:if test="kwd-group">
       <dt>Keywords</dt>
-      <dd> <!-- NOTE cf. #220, schema.org -->
+      <dd> <!-- NOTE cf. ams-xml-to-html#220, schema.org -->
         <xsl:apply-templates select="kwd-group"/>
       </dd>
       </xsl:if>
       <xsl:apply-templates select="contrib-group"/>
       <xsl:apply-templates select="funding-group"/>
-      <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
         <dd>
