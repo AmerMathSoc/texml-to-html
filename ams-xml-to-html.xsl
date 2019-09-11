@@ -234,21 +234,6 @@
   </section>
 </xsl:template>
 
-<xsl:template match="article-meta/title-group">
-  <header>
-    <xsl:text>&#xa;</xsl:text>
-    <h2>
-      <xsl:apply-templates/>
-    </h2>
-    <xsl:text>&#xa;</xsl:text>
-    <p>
-      <xsl:apply-templates select="front/article-meta/contrib[@contrib-type='author']"/>
-    </p>
-    <xsl:text>&#xa;</xsl:text>
-  </header>
-  <xsl:text>&#xa;</xsl:text>
-</xsl:template>
-
 <!-- GROUP -->
 
 <xsl:template match="front/notes[@notes-type='dedication']">
