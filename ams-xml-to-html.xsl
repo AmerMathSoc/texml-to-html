@@ -191,10 +191,6 @@
 <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
-<xsl:template match="article/body">
-    <xsl:apply-templates/>
-</xsl:template>
-
 <xsl:template match="article-meta">
   <section data-ams-doc="copyright-page">
     <xsl:text>&#xa;</xsl:text>
@@ -251,10 +247,6 @@
     <xsl:text>&#xa;</xsl:text>
   </header>
   <xsl:text>&#xa;</xsl:text>
-</xsl:template>
-
-<xsl:template match="article-meta/title-group/article-title">
-    <xsl:apply-templates/>
 </xsl:template>
 
 <!-- GROUP -->
@@ -456,7 +448,7 @@
 </xsl:template>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
+<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
     <xsl:apply-templates/>
 </xsl:template>
 
