@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 
-tape('Element: article-meta', async function(t) {
+tape('Template: article-meta', async function(t) {
   t.plan(15);
   const input = path.resolve(__dirname, 'element-article-meta.xml');
   const document = await xsltproc(input);

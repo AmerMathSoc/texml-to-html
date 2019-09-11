@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 
-tape('Element: fig, fig-group, caption, label', async function(t) {
+tape('Template: fig, fig-group, caption, label', async function(t) {
   t.plan(6);
   const input = path.resolve(__dirname, 'element-fig-subfig-label.xml');
   const document = await xsltproc(input);
