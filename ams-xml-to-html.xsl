@@ -263,10 +263,11 @@
   </div>
 </xsl:template>
 
+<!-- GROUP -->
+
 <!-- NOTE: article template partially duplicates this information for titlepage, cf. note there. -->
 <xsl:template match="front/journal-meta">
-      <a href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span >Volume <xsl:value-of select="../article-meta/volume"/></span>, <span>Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span><xsl:value-of select="journal-title-group/issn"/></span>, published by the
-      <span><xsl:value-of select="publisher/publisher-name"/></span>, <span><xsl:value-of select="publisher/publisher-loc"/></span>.
+      <a href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span >Volume <xsl:value-of select="../article-meta/volume"/></span>, <span>Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span><xsl:value-of select="journal-title-group/issn"/></span>, published by the <span><xsl:value-of select="publisher/publisher-name"/></span>, <span><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
 
