@@ -7,7 +7,6 @@ tape('Template: book-title-group, title, subtitle', async function(t) {
 
   const input = path.resolve(__dirname, 'element-book-title-group.xml');
   const document = await xsltproc(input);
-  console.log(document.body.innerHTML);
   const titlegroup = document.querySelector('header');
   t.ok(titlegroup, 'book-title-group to header');
   const title = titlegroup.firstElementChild;

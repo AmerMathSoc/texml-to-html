@@ -7,7 +7,6 @@ tape('Template: article-meta', async function(t) {
   t.plan(25);
   const input = path.resolve(__dirname, 'element-article-meta.xml');
   const document = await xsltproc(input);
-  console.log(document.body.innerHTML)
   const copyrightpage = document.querySelector('section[data-ams-doc="copyright-page"]');
   t.ok (copyrightpage, 'article-meta creates wrapping section with data-ams-doc=copyright-page');
   t.equal(copyrightpage.firstElementChild.outerHTML, '<h2>Article Information</h2>', 'copyright page heading');

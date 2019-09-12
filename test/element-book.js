@@ -9,7 +9,6 @@ tape('Template: book', async function(t) {
   const document = await xsltproc(input);
 
   const head = document.head;
-  console.log(document.body.innerHTML)
   t.ok(head, 'document head created');
   t.ok(document.querySelector('head meta[name="viewport"][content="width=device-width"]'), 'meta tag viewport');
   t.equal(document.title, 'title', 'document title from book-title');

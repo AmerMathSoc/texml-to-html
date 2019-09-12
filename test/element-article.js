@@ -6,7 +6,6 @@ tape('Template: article', async function(t) {
   t.plan(42);
   const input = path.resolve(__dirname, 'element-article.xml');
   const document = await xsltproc(input);
-  console.log(document.head.outerHTML, document.body.outerHTML);
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
 

@@ -7,7 +7,6 @@ tape('Template: book-meta', async function(t) {
 
   const input = path.resolve(__dirname, 'element-book-meta.xml');
   const document = await xsltproc(input);
-  console.log(document.body.innerHTML);
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
   t.ok(titlepage, 'book-meta creates section with data-ams-doc=titlepage');
   const booktitlegroup = titlepage.firstElementChild;
