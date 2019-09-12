@@ -139,6 +139,8 @@
 
 <!-- ARTICLES -->
 
+<!-- GROUP -->
+
 <xsl:template match="article">
 <head>
     <title>
@@ -199,7 +201,7 @@
     <h2>Article Information</h2>
     <dl>
       <xsl:apply-templates select="ams-meta-group"/>
-      <xsl:if test="kwd-group">
+      <xsl:if test="kwd-group"> <!-- TODO drop this if clause? missing keywords should be a bug? -->
       <dt>Keywords</dt>
       <dd> <!-- NOTE cf. ams-xml-to-html#220, schema.org -->
         <xsl:apply-templates select="kwd-group"/>
