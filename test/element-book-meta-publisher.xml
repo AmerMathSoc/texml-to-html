@@ -1,0 +1,11 @@
+<book>
+    <book-meta>
+        <publisher>
+            <publisher-name>name1</publisher-name>
+            <publisher-loc>loc</publisher-loc>
+        </publisher>
+        <publisher>
+            <publisher-name>name2</publisher-name>
+        </publisher>
+    </book-meta>
+</book>

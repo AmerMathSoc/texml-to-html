@@ -1,0 +1,22 @@
+<article xmlns:xlink="http://www.w3.org/1999/xlink" >
+    <front>
+        <article-meta>
+        <volume>volume</volume>
+        <issue>issue</issue>
+        </article-meta>
+        <journal-meta>
+            <journal-id journal-id-type="publisher">jams</journal-id>
+            <journal-title-group>
+                <journal-title>journal-title</journal-title>
+                <abbrev-journal-title>abbrev-journal-title</abbrev-journal-title>
+                <issn publication-format="print">print</issn>
+                <issn publication-format="electronic">electronic</issn>
+            </journal-title-group>
+            <publisher>
+                <publisher-name>publisher-name</publisher-name>
+                <publisher-loc>publisher-loc</publisher-loc>
+            </publisher>
+            <self-uri xlink:href="href">self-uri</self-uri>
+        </journal-meta>
+    </front>
+</article>

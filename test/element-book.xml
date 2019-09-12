@@ -1,0 +1,14 @@
+<book>
+    <book-meta>
+        <book-title-group>
+            <book-title>title</book-title>
+        </book-title-group>
+    </book-meta>
+    <book-body>
+        <book-part>
+            <body>
+                <sec disp-level="2" id="id" specific-use="chapter"/>
+            </body>
+        </book-part>
+    </book-body>
+</book>

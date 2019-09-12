@@ -3,9 +3,9 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 
-tape('Empty Labels should be stripped', async function(t) {
+tape('Template: fig, fig-group, caption, label', async function(t) {
   t.plan(6);
-  const input = path.resolve(__dirname, 'fig-subfig-label.xml');
+  const input = path.resolve(__dirname, 'element-fig-subfig-label.xml');
   const document = await xsltproc(input);
   const labels = document.querySelectorAll('strong');
   t.equal(labels[0].innerHTML, 'Label 1. ', 'Fig label with caption gets period');

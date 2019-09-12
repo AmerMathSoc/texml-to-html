@@ -1,0 +1,5 @@
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+    <graphic height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
+    <alt-text>text</alt-text>
+    <inline-graphic  height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use" alt="text"/>
+ </article>

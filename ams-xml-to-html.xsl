@@ -51,6 +51,8 @@
 
 <!-- BOOKS -->
 
+<!-- GROUP -->
+
 <xsl:template match="book">
 <head>
   <meta name="viewport" content="width=device-width"/>
@@ -65,22 +67,27 @@
   <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
+<!-- NO TEST -->
 <!-- the "pass-through" template -->
 <xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body|book-part-meta|book-part/body">
     <xsl:apply-templates/>
 </xsl:template>
 
+<!-- NO TEST -->
 <!-- alternative for label pass-through -->
 <xsl:template match="label" mode="generic">
     <xsl:apply-templates select="node()"/>
 </xsl:template>
 
+<!-- GROUP -->
 
 <xsl:template match="preface">
     <section role="doc-preface">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="book-meta">
     <section data-ams-doc="titlepage">
@@ -101,12 +108,7 @@
     </section>
 </xsl:template>
 
-
-<xsl:template match="book-meta/permissions/copyright-statement">
-<p data-ams-doc="book copyright">
-  <xsl:apply-templates/>
-</p>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="book-title-group">
     <header><xsl:apply-templates/></header>
@@ -116,25 +118,34 @@
     <h1><xsl:apply-templates select="@*|node()"/></h1>
 </xsl:template>
 
+<!-- TODO unify subtitle templates (drop mode=generic verion, remove subtitle from ignore template  -->
 <xsl:template match="book-title-group/subtitle">
     <p data-ams-doc="subtitle"><xsl:apply-templates select="@*|node()"/></p>
 </xsl:template>
 <!-- Passthrough template variant to allow pulling subtitle into <title>/<label> logic-->
+<!-- NOTE mode=generic is tested in sec/title etc template; but note TODO above -->
 <xsl:template match="subtitle" mode="generic">
     <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="book-meta/publisher">
     <dd data-ams-doc="book publisher"><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher/publisher-name">
-    <span><xsl:apply-templates select="@*|node()"/></span><xsl:if test="following-sibling::*">,</xsl:if>
+    <span><xsl:apply-templates select="@*|node()"/>
+    </span><xsl:if test="following-sibling::*">, </xsl:if>
 </xsl:template>
+
 <xsl:template match="book-meta/publisher/publisher-loc">
     <span><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO unify with ref-list -->
 <xsl:template match="book-back//ref-list">
     <section data-ams-doc-level="1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
@@ -144,13 +155,9 @@
     </section>
 </xsl:template>
 
-<xsl:template match="app">
-    <section role="doc-appendix">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
-
 <!-- ARTICLES -->
+
+<!-- GROUP -->
 
 <xsl:template match="article">
 <head>
@@ -204,9 +211,7 @@
 <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
-<xsl:template match="article/body">
-    <xsl:apply-templates/>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="article-meta">
   <section data-ams-doc="copyright-page">
@@ -214,15 +219,14 @@
     <h2>Article Information</h2>
     <dl>
       <xsl:apply-templates select="ams-meta-group"/>
-      <xsl:if test="kwd-group">
+      <xsl:if test="kwd-group"> <!-- TODO drop this if clause? missing keywords should be a bug? -->
       <dt>Keywords</dt>
-      <dd> <!-- NOTE cf. #220, schema.org -->
+      <dd> <!-- NOTE cf. ams-xml-to-html#220, schema.org -->
         <xsl:apply-templates select="kwd-group"/>
       </dd>
       </xsl:if>
       <xsl:apply-templates select="contrib-group"/>
       <xsl:apply-templates select="funding-group"/>
-      <!-- HACK until texml makes them identifiable them https://github.com/AmerMathSoc/ams-article-sources/issues/5 -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
         <dd>
@@ -251,24 +255,7 @@
   </section>
 </xsl:template>
 
-<xsl:template match="article-meta/title-group">
-  <header>
-    <xsl:text>&#xa;</xsl:text>
-    <h2>
-      <xsl:apply-templates/>
-    </h2>
-    <xsl:text>&#xa;</xsl:text>
-    <p>
-      <xsl:apply-templates select="front/article-meta/contrib[@contrib-type='author']"/>
-    </p>
-    <xsl:text>&#xa;</xsl:text>
-  </header>
-  <xsl:text>&#xa;</xsl:text>
-</xsl:template>
-
-<xsl:template match="article-meta/title-group/article-title">
-    <xsl:apply-templates/>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="front/notes[@notes-type='dedication']">
   <div role="doc-dedication">
@@ -276,12 +263,15 @@
   </div>
 </xsl:template>
 
+<!-- GROUP -->
+
 <!-- NOTE: article template partially duplicates this information for titlepage, cf. note there. -->
 <xsl:template match="front/journal-meta">
-      <a href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span >Volume <xsl:value-of select="../article-meta/volume"/></span>, <span>Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span><xsl:value-of select="journal-title-group/issn"/></span>, published by the
-      <span><xsl:value-of select="publisher/publisher-name"/></span>, <span><xsl:value-of select="publisher/publisher-loc"/></span>.
+      <a href="{self-uri/@xlink:href}"><xsl:value-of select="journal-title-group/journal-title"/></a>, <span >Volume <xsl:value-of select="../article-meta/volume"/></span>, <span>Issue <xsl:value-of select="../article-meta/issue"/></span>, ISSN <span><xsl:value-of select="journal-title-group/issn"/></span>, published by the <span><xsl:value-of select="publisher/publisher-name"/></span>, <span><xsl:value-of select="publisher/publisher-loc"/></span>.
 </xsl:template>
 
+
+<!-- GROUP -->
 
 <xsl:template match="contrib-group">
 <!-- Expected values for contrib-group/@content-type:  "authors", "editors", "translators", "contributors". -->
@@ -295,15 +285,17 @@
   substring(@content-type,2,string-length(@content-type)-2)
 )"/> Information</dt>
       <dd data-ams-doc-contrib="{@content-type}">
+      <!-- TODO this looks very hacky; should only apply to articles (thus should test for it). -->
       <!-- NOTE author-comment needs to fit in a sentence -->
           <xsl:if test="author-comment"><xsl:attribute name="data-ams-doc-contrib-comment"><xsl:value-of select="author-comment/text()"/></xsl:attribute></xsl:if>
         <xsl:apply-templates/>
       </dd>
 </xsl:template>
 
-<xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
-<xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO match="contrib" should be ok -->
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
@@ -332,93 +324,7 @@
   </dl>
 </xsl:template>
 
-<xsl:template match="email">
-  <a href="mailto://{email/text()}">
-    <xsl:apply-templates/>
-  </a>
-  <xsl:if test="position() != last()">
-    <xsl:text>, </xsl:text>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template match="article-meta/pub-date">
-    This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/>
-    </xsl:if>
-    and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.
-    <xsl:apply-templates/>
-</xsl:template>
-
-<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>,
-</xsl:template>
-
-
-<xsl:template match="ams-meta-group">
-  <dt>MSC <xsl:value-of select="msc/@scheme"/></dt>
-  <xsl:apply-templates/>
-</xsl:template>
-
-<xsl:template match="ams-meta-group/msc">
-  <xsl:if test="primary">
-    <dd>Primary:
-    <xsl:for-each select="primary">
-    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
-    <xsl:choose>
-      <xsl:when test="position() != last()">, </xsl:when>
-    </xsl:choose>
-    </xsl:for-each>
-    </dd>
-  </xsl:if>
-  <xsl:if test="secondary">
-    <dd>Secondary:
-    <xsl:for-each select="secondary">
-    <a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a>
-    <xsl:choose>
-      <xsl:when test="position() != last()">, </xsl:when>
-    </xsl:choose>
-    </xsl:for-each>
-    </dd>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template match="article-meta/permissions/copyright-statement">
-  <dt>Copyright Information</dt>
-  <dd data-ams-doc="copyright"><xsl:apply-templates/></dd>
-</xsl:template>
-
-<xsl:template match="article-meta/self-uri">
-  <li>
-  <a href="{@xlink:href}" data-ams-ref="{@content-type}">
-    Permalink
-    <xsl:if test="@content-type='pdf'">
-        (PDF)
-    </xsl:if>
-  </a>
-  </li>
-</xsl:template>
-
-<xsl:template match="article-meta/kwd-group">
-    <ul>
-      <xsl:apply-templates/>
-    </ul>
-</xsl:template>
-
-<xsl:template match="article-meta/funding-group">
-  <dt>Additional Notes</dt>
-  <dd><xsl:apply-templates/></dd>
-</xsl:template>
-
-<xsl:template match="article-meta/funding-group/funding-statement">
-    <p><xsl:apply-templates/></p>
-</xsl:template>
-
-<xsl:template match="article-meta/article-citation">
-  <li>
-    <code data-ams-doc="amsref">
-      <xsl:value-of select="text()"/>
-    </code>
-  </li>
-</xsl:template>
-
+<!-- GROUP -->
 
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd>
@@ -429,17 +335,104 @@
   <xsl:apply-templates select="../../aff[@id = $link]" mode="generic"/>
   </dd>
 </xsl:template>
+
 <xsl:template match="aff" mode="generic">
     <xsl:apply-templates select="node()"/>
 </xsl:template>
 
-<!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn">
+<!-- GROUP -->
+
+<xsl:template match="email">
+  <a href="mailto://{text()}">
+    <xsl:apply-templates/>
+  </a>
+  <xsl:if test="position() != last()">
+    <xsl:text>, </xsl:text>
+  </xsl:if>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/pub-date">
+    This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/></xsl:if> and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.<xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="article-meta/history/date[@date-type='rev-recd']"><time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>, </xsl:template>
+
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/ams-meta-group">
+  <dt>MSC <xsl:value-of select="msc/@scheme"/></dt>
+  <xsl:apply-templates/>
+</xsl:template>
+
+<xsl:template match="article-meta/ams-meta-group/msc">
+  <xsl:if test="primary">
+    <dd>Primary: <xsl:for-each select="primary"><a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a><xsl:choose><xsl:when test="position() != last()">, </xsl:when></xsl:choose></xsl:for-each></dd>
+  </xsl:if>
+  <xsl:if test="secondary">
+    <dd>Secondary: <xsl:for-each select="secondary"><a href="http://www.ams.org/msc/msc2010.html?t={key/text()}"><xsl:value-of select="key/text()"/> (<xsl:apply-templates select="description"/>)</a><xsl:choose><xsl:when test="position() != last()">, </xsl:when></xsl:choose></xsl:for-each></dd>
+</xsl:if>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/permissions/copyright-statement">
+  <dt>Copyright Information</dt>
+  <dd data-ams-doc="copyright"><xsl:apply-templates/></dd>
+</xsl:template>
+
+<xsl:template match="book-meta/permissions/copyright-statement">
+<p data-ams-doc="book copyright"><!-- TODO data attribute inconsistent compared to article case -->
+  <xsl:apply-templates/>
+</p>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/self-uri">
+  <li>
+  <a href="{@xlink:href}" data-ams-ref="{@content-type}">
+    Permalink <xsl:if test="@content-type='pdf'">(PDF)</xsl:if>
+  </a>
+  </li>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/funding-group">
+  <dt>Additional Notes</dt>
+  <dd><xsl:apply-templates/></dd>
+</xsl:template>
+
+<xsl:template match="article-meta/funding-group/funding-statement">
+    <p><xsl:apply-templates/></p>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/article-citation">
+  <li>
+    <code data-ams-doc="amsref">
+      <xsl:value-of select="text()"/>
+    </code>
+  </li>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="article-meta/kwd-group">
+    <ul>
+      <xsl:apply-templates/>
+    </ul>
 </xsl:template>
 
 <xsl:template match="article-meta/kwd-group/kwd">
   <li><xsl:apply-templates/></li>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="article-meta/article-id">
     <xsl:if test="@pub-id-type = 'doi'">
@@ -455,16 +448,17 @@
 </xsl:template>
 
 
-<xsl:template match="front"/>
-
 <!-- SHARED -->
-
-<xsl:template match="metainfo"/>
+<!-- the "ignore" template -->
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form | math | fn/label | front | metainfo">
+</xsl:template>
 
 <!-- the "pass-through" template -->
-<xsl:template match="permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref">
+<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
     <xsl:apply-templates/>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="styled-content">
 <!-- NOTE: we also use data-ams-style for @style. This might clash if we introduce styled-content with style attributes -->
@@ -473,6 +467,7 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
 
 <xsl:template match="italic">
 <xsl:choose>
@@ -485,11 +480,15 @@
 </xsl:choose>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="bold">
     <strong>
         <xsl:apply-templates select="@*|node()"/>
     </strong>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="roman">
     <span data-ams-style="roman">
@@ -497,11 +496,15 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="sc">
     <span data-ams-style="sc">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="monospace">
     <span data-ams-style="monospace">
@@ -509,11 +512,16 @@
     </span>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO switch to HTML u element ams-xml-to-html#223 -->
 <xsl:template match="underline">
     <span data-ams-style="underline">
         <xsl:apply-templates select="@*|node()"/>
     </span>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="disp-quote">
     <blockquote data-ams-style="{@specific-use}">
@@ -529,6 +537,8 @@
     </footer>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="attrib">
     <span>
         <xsl:apply-templates/>
@@ -540,6 +550,8 @@
         <xsl:apply-templates/>
     </span>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="xref">
     <a href="#{@rid}" data-ams-ref="{@ref-type}"><xsl:apply-templates/></a>
@@ -558,9 +570,7 @@
     <cite><a href="#{@rid}" data-ams-ref="{@ref-type}" role="doc-biblioref"><xsl:apply-templates/></a></cite>
 </xsl:template>
 
-<xsl:template match="xref[@ref-type='bibr']/x">
-    <xsl:apply-templates/>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="fn">
     <span role="doc-footnote">
@@ -568,26 +578,63 @@
     </span>
 </xsl:template>
 
-<xsl:template match="fn/label">
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="p//p[not(parent::def)] | fn//p">
   <span data-ams-doc="paragraph"><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
-<xsl:template match="statement/secheading/title | statement/secheading/label">
-    <xsl:if test="not(following-sibling::title[1])">
-    <span data-ams-doc="secheading">
-        <xsl:if test="preceding-sibling::label[1][text()] != ''">
-        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
-        <xsl:text>. </xsl:text>
-    </xsl:if>
-    <xsl:apply-templates select="@*|node()"/>
-    </span>
-    </xsl:if>
+<!-- GROUP -->
+
+<xsl:template match="back/app-group">
+    <section role="doc-appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
 </xsl:template>
 
-<xsl:template match="sec/title | app/title | sec/label | app/label | front-matter-part/title">
+<xsl:template match="back/app-group/app">
+    <section data-ams-doc-level="1">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<!-- GROUP -->
+
+<!-- NOTE chapters currently only appear in books -->
+<!-- TODO add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}" ?-->
+<xsl:template match="sec[@specific-use='chapter']">
+    <section role="doc-chapter">
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
+<!-- NOTE ack, dedication have no disp-level, so data-ams-doc-level will be empty -->
+<!-- TODO we have acknowledgments as app -->
+    <section data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}">
+        <xsl:if test="(self::dedication)">
+            <xsl:attribute name="role">doc-dedication</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
+            <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="starts-with(title, 'Introduction')">
+            <xsl:attribute name="role">doc-introduction</xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates select="@id|node()"/>
+    </section>
+</xsl:template>
+
+<!-- NOTE app only applies in books since articles always have app within app-group (cf. template for app-group/app above) -->
+<!-- TODO (BREAKING CHANGE) remove app-group/app and make app-group pass-through - the role should be on each app, not on wrapper from app-group; but watch out for app with Acknowledgements. -->
+<!-- TODO should we add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}"? We expect them for heading level computation. -->
+<xsl:template match="app">
+    <section role="doc-appendix">
+        <xsl:apply-templates select="@*|node()"/>
+    </section>
+</xsl:template>
+
+<xsl:template match="sec/title | sec/label | app/title | app/label | front-matter-part/title | front-matter-part/label">
 <xsl:if test="not(following-sibling::title[1])">
     <xsl:variable name="displevel" select="../@disp-level"/>
     <xsl:variable name="level">
@@ -610,15 +657,17 @@
     </xsl:if>
   </header>
     <xsl:if test="preceding-sibling::sec-meta">
+    <!-- NOTE sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations -->
+    <!-- TODO find a cleaner solution, e.g., general purpose markup + publication specific customization -->
     <section data-ams-doc="sec-meta">
     <!-- We pick&choose from whitelist since contrib-group templates are messy already -->
         <xsl:choose>
-        <xsl:when test="ancestor::article">
+        <xsl:when test="ancestor::article"><!-- jams410 only -->
         <dl>
             <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
         </dl>
         </xsl:when>
-        <xsl:otherwise>
+        <xsl:otherwise><!-- MCL01, MCL14 only -->
             <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
         </xsl:otherwise>
         </xsl:choose>
@@ -628,28 +677,7 @@
 </xsl:if>
 </xsl:template>
 
-<!-- BOOKS ONLY -->
-<xsl:template match="sec[@specific-use='chapter']">
-    <section role="doc-chapter">
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
-</xsl:template>
-
-<xsl:template match="sec | ack | front-matter-part | front-matter/dedication">
-<!-- NOTE ack, dedication have no disp-level, so data-ams-doc-level will be empty -->
-    <section data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}">
-        <xsl:if test="(self::dedication)">
-            <xsl:attribute name="role">doc-dedication</xsl:attribute>
-        </xsl:if>
-        <xsl:if test="(starts-with(title, 'Acknowledg')) or (self::ack)">
-            <xsl:attribute name="role">doc-acknowledgments</xsl:attribute>
-        </xsl:if>
-        <xsl:if test="starts-with(title, 'Introduction')">
-            <xsl:attribute name="role">doc-introduction</xsl:attribute>
-        </xsl:if>
-        <xsl:apply-templates select="@id|node()"/>
-    </section>
-</xsl:template>
+<!-- GROUP -->
 
 <xsl:template match="abstract">
     <section data-ams-doc-level="1" role="doc-abstract">
@@ -663,6 +691,22 @@
   </header>
 </xsl:template>
 
+<!-- GROUP -->
+<!-- TODO Reconsider. MCL01, MCL14 only. Cf. notes in calls to sec-meta template below. -->
+<xsl:template match="book//sec-meta//contrib-group"><p><xsl:apply-templates/></p></xsl:template>
+<xsl:template match="book//sec-meta//contrib-group/author-comment"><span><xsl:apply-templates/></span></xsl:template>
+<!-- NOTE simplified from statement/title -->
+<!-- NOTE MUST BE AFTER abstract/title due to specificity!!!!! -->
+<xsl:template match="book//sec-meta/abstract/title">
+  <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level + 1"/>
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$displevel" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+         <xsl:apply-templates select="@*|node()"/>
+          <xsl:text>. </xsl:text>
+      <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$displevel" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+</xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="statement">
     <xsl:variable name="level" select="ancestor::*[@disp-level][1]/@disp-level"/>
        <section data-ams-doc-level="{$level + 1}" data-ams-doc="statement" >
@@ -670,7 +714,8 @@
       </section>
 </xsl:template>
 
-<xsl:template match="statement/title | sec-meta/abstract/title">
+<!-- NOTE same as book//sec-meta/abstract/title -->
+<xsl:template match="statement/title">
   <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
      <xsl:variable name="level">
      <xsl:choose>
@@ -709,18 +754,38 @@
      </xsl:if>
 </xsl:template>
 
-<xsl:template match="fig | fig-group">
-    <figure role="group">
-        <xsl:apply-templates select="@id|@position|node()"/>
-    </figure>
+<!-- NOTE: seems to be only used in proofs -->
+<xsl:template match="statement/secheading/title | statement/secheading/label">
+    <xsl:if test="not(following-sibling::title[1])">
+    <span data-ams-doc="secheading">
+        <xsl:if test="preceding-sibling::label[1][text()] != ''">
+        <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
+        <xsl:text>. </xsl:text>
+        </xsl:if>
+    <xsl:apply-templates select="@*|node()"/>
+    </span>
+    </xsl:if>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- NOTE img should only appear inside HTML tables -->
 <xsl:template match="img">
     <img src="{@src}" alt="{@alt}"/>
+</xsl:template>
+
+<!-- GROUP -->
+
+<xsl:template match="fig | fig-group">
+    <figure role="group">
+        <xsl:apply-templates select="@id|@position|node()"/>
+    </figure>
 </xsl:template>
 
 <xsl:template match="fig/caption | fig-group/caption">
@@ -773,7 +838,9 @@
   </xsl:if>
 </xsl:template>
 
-<!-- BOOKS ONLY -->
+<!-- GROUP -->
+
+<!-- NOTE effectively only for books since articles do not have a TOC in XML -->
 <xsl:template match="toc">
     <nav role="doc-toc">
         <xsl:apply-templates select="title-group"/>
@@ -781,23 +848,6 @@
             <xsl:apply-templates select="toc-entry"/>
         </ol>
     </nav>
-</xsl:template>
-
-<xsl:template match="title-group">
-    <xsl:apply-templates/>
-</xsl:template>
-
-<xsl:template match="title">
-<!-- TODO only seems used in ref-list/title -->
-     <xsl:choose>
-      <xsl:when test="/article">
-          <h2><xsl:apply-templates select="@*|node()"/></h2>
-        </xsl:when>
-      <xsl:otherwise>
-          <h1><xsl:apply-templates select="@*|node()"/></h1>
-      </xsl:otherwise>
-     </xsl:choose>
-
 </xsl:template>
 
 <xsl:template match="toc-entry/title">
@@ -818,6 +868,8 @@
         </xsl:if>
     </li>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="def-list">
     <dl>
@@ -842,6 +894,8 @@
     <dd><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="inline-formula">
   <span data-ams-doc="math inline">
     <xsl:apply-templates/>
@@ -865,17 +919,6 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="alternatives">
-  <xsl:apply-templates/>
-    </xsl:template>
-
-<xsl:template match="math">
-</xsl:template>
-
-<xsl:template match="tex-math">
-  <xsl:apply-templates/>
-</xsl:template>
-
 <!-- NOTE do not generalize to all descendants to avoid interference with tex-math//text -->
 <xsl:template match="tex-math/xref">
   <xsl:choose>
@@ -897,17 +940,11 @@
 
 <xsl:template match="tex-math//text">\text{<xsl:apply-templates/>}</xsl:template>
 
-<xsl:template match="tex-math//text/xref">
-  $\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$
-</xsl:template>
+<xsl:template match="tex-math//text/xref">$\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$</xsl:template>
 
-<xsl:template match="disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form">
-</xsl:template>
+<!-- GROUP -->
 
-<xsl:template match="back">
-  <xsl:apply-templates/>
-    </xsl:template>
-
+<!-- TODO unify with book-back//ref-list template? -->
 <xsl:template match="ref-list">
     <section role="doc-bibliography">
         <xsl:apply-templates select="title"/>
@@ -915,6 +952,18 @@
             <xsl:apply-templates select="ref"/>
         </dl>
     </section>
+</xsl:template>
+
+<xsl:template match="title">
+<!-- TODO only seems used in ref-list/title -->
+     <xsl:choose>
+      <xsl:when test="/article">
+          <h2><xsl:apply-templates select="@*|node()"/></h2>
+        </xsl:when>
+      <xsl:otherwise>
+          <h1><xsl:apply-templates select="@*|node()"/></h1>
+      </xsl:otherwise>
+     </xsl:choose>
 </xsl:template>
 
 <xsl:template match="ref-list/ref">
@@ -926,6 +975,8 @@
 <xsl:template match="ref-list/ref/label">
         <span><xsl:apply-templates/></span>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="mixed-citation">
     <dd>
@@ -940,49 +991,56 @@
     </dd>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="ext-link">
   <a href="{@xlink:href}">
     <xsl:apply-templates/>
   </a>
 </xsl:template>
 
-<xsl:template match="back/app-group">
-    <section role="doc-appendix">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
+<!-- GROUP -->
 
-<xsl:template match="back/app-group/app">
-    <section data-ams-doc-level="1">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
-
+<!-- NOTE node() intentionally has no test, should it? -->
 <xsl:template match="node()">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@id|@rowspan|@colspan">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@content-type">
       <xsl:attribute name="data-ams-content-type">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@style">
       <xsl:attribute name="data-ams-style">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="@specific-use">
       <xsl:attribute name="data-ams-specific-use">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="@has-qed-box">
       <xsl:attribute name="data-ams-qed-box">
@@ -990,18 +1048,33 @@
       </xsl:attribute>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="@position">
       <xsl:attribute name="data-ams-position">
         <xsl:value-of select="."/>
       </xsl:attribute>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- NOTE @* intentionally has no test, should it? -->
 <xsl:template match="@*">
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="break"><br/></xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="string-name"><span data-ams-doc="stringname"><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+
+<!-- GROUP -->
+
 <xsl:template match="target"><span><xsl:apply-templates select="@*|node()"/></span></xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="verse-group"><figure data-ams-doc="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
 

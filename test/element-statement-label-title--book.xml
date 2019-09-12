@@ -1,0 +1,8 @@
+<book>
+    <sec disp-level="1" id="id1" specific-use="section">
+        <statement content-type="content type" id="id2" style="style">
+            <label>Theorem 1</label>
+            <p></p>
+        </statement>
+    </sec>
+</book>
