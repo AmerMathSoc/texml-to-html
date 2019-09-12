@@ -51,6 +51,8 @@
 
 <!-- BOOKS -->
 
+<!-- GROUP -->
+
 <xsl:template match="book">
 <head>
   <meta name="viewport" content="width=device-width"/>
@@ -75,12 +77,15 @@
     <xsl:apply-templates select="node()"/>
 </xsl:template>
 
+<!-- GROUP -->
 
 <xsl:template match="preface">
     <section role="doc-preface">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="book-meta">
     <section data-ams-doc="titlepage">
@@ -101,6 +106,8 @@
     </section>
 </xsl:template>
 
+<!-- GROUP -->
+
 <xsl:template match="book-title-group">
     <header><xsl:apply-templates/></header>
 </xsl:template>
@@ -109,25 +116,34 @@
     <h1><xsl:apply-templates select="@*|node()"/></h1>
 </xsl:template>
 
+<!-- TODO unify subtitle templates (drop mode=generic verion, remove subtitle from ignore template  -->
 <xsl:template match="book-title-group/subtitle">
     <p data-ams-doc="subtitle"><xsl:apply-templates select="@*|node()"/></p>
 </xsl:template>
 <!-- Passthrough template variant to allow pulling subtitle into <title>/<label> logic-->
+<!-- NOTE mode=generic is tested in sec/title etc template; but note TODO above -->
 <xsl:template match="subtitle" mode="generic">
     <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
+
+<!-- GROUP -->
 
 <xsl:template match="book-meta/publisher">
     <dd data-ams-doc="book publisher"><xsl:apply-templates select="@*|node()"/></dd>
 </xsl:template>
 
 <xsl:template match="book-meta/publisher/publisher-name">
-    <span><xsl:apply-templates select="@*|node()"/></span><xsl:if test="following-sibling::*">,</xsl:if>
+    <span><xsl:apply-templates select="@*|node()"/>
+    </span><xsl:if test="following-sibling::*">, </xsl:if>
 </xsl:template>
+
 <xsl:template match="book-meta/publisher/publisher-loc">
     <span><xsl:apply-templates select="@*|node()"/></span>
 </xsl:template>
 
+<!-- GROUP -->
+
+<!-- TODO unify with ref-list -->
 <xsl:template match="book-back//ref-list">
     <section data-ams-doc-level="1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
