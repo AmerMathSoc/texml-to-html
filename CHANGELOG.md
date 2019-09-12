@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1-0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.3.0...v3.3.1-0) (2019-09-12)
+
+
+### Bug Fixes
+
+* remove dead code article-meta/title-group ([4e62231](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4e62231)), closes [#233](https://github.com/AmerMathSoc/ams-xml-to-html/issues/233)
+* tex-math//text/xref remove newlines ([9a98440](https://github.com/AmerMathSoc/ams-xml-to-html/commit/9a98440))
+
+
+
 ## [3.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.2.0...v3.3.0) (2019-08-14)
 
 
