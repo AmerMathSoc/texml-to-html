@@ -67,11 +67,13 @@
   <xsl:text disable-output-escaping="yes">&lt;/html&gt;</xsl:text>
 </xsl:template>
 
+<!-- NO TEST -->
 <!-- the "pass-through" template -->
 <xsl:template match="front-matter|book-body|book-back|book-part|named-book-part-body|book-part-meta|book-part/body">
     <xsl:apply-templates/>
 </xsl:template>
 
+<!-- NO TEST -->
 <!-- alternative for label pass-through -->
 <xsl:template match="label" mode="generic">
     <xsl:apply-templates select="node()"/>
