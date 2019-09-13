@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1-1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.3.1-0...v3.3.1-1) (2019-09-13)
+
+
+### Bug Fixes
+
+* **ref-list/ref:** avoid invalid dd-in-dt nesting ([245e786](https://github.com/AmerMathSoc/ams-xml-to-html/commit/245e786)), closes [#234](https://github.com/AmerMathSoc/ams-xml-to-html/issues/234)
+* **xref@ref-type='bibr'/x:** restore pass-through ([fdaf124](https://github.com/AmerMathSoc/ams-xml-to-html/commit/fdaf124)), closes [#235](https://github.com/AmerMathSoc/ams-xml-to-html/issues/235)
+
+
+
 ### [3.3.1-0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.3.0...v3.3.1-0) (2019-09-12)
 
 
