@@ -454,7 +454,7 @@
 </xsl:template>
 
 <!-- the "pass-through" template -->
-<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group">
+<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group | xref[@ref-type='bibr']/x">
     <xsl:apply-templates/>
 </xsl:template>
 
