@@ -968,8 +968,9 @@
 
 <xsl:template match="ref-list/ref">
   <dt id="{@id}">
-    <xsl:apply-templates/>
+    <xsl:apply-templates select="label"/>
   </dt>
+  <xsl:apply-templates select="*[not(self::label)]"/>
 </xsl:template>
 
 <xsl:template match="ref-list/ref/label">
