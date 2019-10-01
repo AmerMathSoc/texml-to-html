@@ -5,4 +5,14 @@
             <p></p>
         </statement>
     </sec>
+    <sec disp-level="1" id="part" specific-use="part">
+        <sec disp-level="2" id="chapter" specific-use="chapter">
+            <sec disp-level="3" id="id3" specific-use="section">
+                <statement content-type="content type" id="id4" style="style">
+                    <label>Theorem 1</label>
+                    <p></p>
+                </statement>
+            </sec>
+        </sec>
+    </sec>
 </book>

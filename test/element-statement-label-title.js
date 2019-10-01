@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(18);
+  t.plan(20);
   const input = path.resolve(
     __dirname,
     'element-statement-label-title--article.xml'
@@ -92,4 +92,8 @@ tape('Template: statement, label, title', async function(t) {
   );
   t.ok(statement2_1, 'statement as section with data-ams-doc');
   t.ok(statement2_1.querySelector('h2'), 'statement heading level in book');
+
+  const statement_part = document2.querySelector('section[data-ams-doc="statement"]#id4');
+  t.ok(statement_part, 'statement as section with data-ams-doc');
+  t.ok(statement_part.querySelector('h3'), 'statement heading level in part (in book)');
 });

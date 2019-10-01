@@ -721,6 +721,7 @@
      <xsl:variable name="level">
      <xsl:choose>
       <xsl:when test="/article"><xsl:value-of select="$displevel + 2"/></xsl:when>
+      <xsl:when test="/book and ancestor::sec[@specific-use='chapter'] and ancestor::sec[@specific-use='part']"><xsl:value-of select="$displevel"/></xsl:when>
       <xsl:otherwise><xsl:value-of select="$displevel + 1"/></xsl:otherwise>
      </xsl:choose>
     </xsl:variable>
