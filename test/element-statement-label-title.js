@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(17);
+  t.plan(18);
   const input = path.resolve(
     __dirname,
     'element-statement-label-title--article.xml'
@@ -30,6 +30,11 @@ tape('Template: statement, label, title', async function(t) {
     'section[data-ams-doc="statement"]#id2'
   );
   t.ok(statement2, 'statement 2');
+  t.equal(
+    statement2.querySelector('h3').innerHTML,
+    'Label 2. ',
+    'statement with label creates period after'
+  );
   const statement3 = document.querySelector(
     'section[data-ams-doc="statement"]#id3'
   );

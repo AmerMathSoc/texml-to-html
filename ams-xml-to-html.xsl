@@ -715,7 +715,8 @@
 </xsl:template>
 
 <!-- NOTE same as book//sec-meta/abstract/title -->
-<xsl:template match="statement/title">
+<xsl:template match="statement/title | statement/label">
+<xsl:if test="text() and not(following-sibling::title[1])">
   <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
      <xsl:variable name="level">
      <xsl:choose>
@@ -724,34 +725,17 @@
      </xsl:choose>
     </xsl:variable>
 
-     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>         <xsl:if test="preceding-sibling::label[1][text()] != ''">
+     <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+     <xsl:if test="preceding-sibling::label[1][text()] != ''">
              <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
              <xsl:text> </xsl:text>
-         </xsl:if>
+      </xsl:if>
          <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="not(starts-with(../@content-type, 'proof'))">
           <xsl:text>. </xsl:text>
         </xsl:if>
       <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level " /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-</xsl:template>
-
-<xsl:template match="statement/label">
-    <xsl:if test="not(following-sibling::title[1])">
-    <xsl:variable name="displevel" select="ancestor::*[@disp-level][1]/@disp-level"/>
-    <xsl:variable name="level">
-     <xsl:choose>
-      <xsl:when test="/article"><xsl:value-of select="$displevel + 1"/></xsl:when>
-      <xsl:otherwise><xsl:value-of select="$displevel"/></xsl:otherwise>
-     </xsl:choose>
-    </xsl:variable>
-             <xsl:text disable-output-escaping="yes">&lt;h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-             <xsl:if test="preceding-sibling::label[1][text()] != ''"><!-- TODO This is never called; it would need two consecutive labels to trigger (in which case we would get multiple heading elements. Maybe it was thought to go after apply-templates below but that would create visual regressions, so let's do it at a later point.  -->
-                 <xsl:apply-templates select="preceding-sibling::label[1]" mode="generic"/>
-                 <xsl:text>. </xsl:text>
-             </xsl:if>
-             <xsl:apply-templates select="@*|node()"/>
-             <xsl:text disable-output-escaping="yes">&lt;/h</xsl:text><xsl:value-of select="$level + 1" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-     </xsl:if>
+</xsl:if>
 </xsl:template>
 
 <!-- NOTE: seems to be only used in proofs -->
