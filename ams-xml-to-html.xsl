@@ -1044,6 +1044,13 @@
 
 <!-- GROUP -->
 
+<!-- NOTE HTML ignores value; only used on table td's -->
+<xsl:template match="@hidden">
+  <xsl:attribute name="hidden" />
+</xsl:template>
+
+<!-- GROUP -->
+
 <!-- NOTE @* intentionally has no test, should it? -->
 <xsl:template match="@*">
 </xsl:template>
