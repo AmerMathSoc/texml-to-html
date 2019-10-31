@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.4.0...v3.5.0) (2019-10-31)
+
+
+### Features
+
+* support hidden attribute ([afb568d](https://github.com/AmerMathSoc/ams-xml-to-html/commit/afb568d)), closes [#241](https://github.com/AmerMathSoc/ams-xml-to-html/issues/241)
+
+
+
 ## [3.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.3.2-0...v3.4.0) (2019-10-30)
 
 
