@@ -62,47 +62,18 @@ const createJournalHead = (document, root, parent) => {
     return header;
 }
 
-// const main = () => {
-//     const root = document.body.firstChild;
-//     // detach root
-//     root.parentNode.removeChild(root);
-//     // title
-//     document.head.appendChild(createTitle(document, root));
-//     // titlepage
-//     document.body.appendChild(createTitlepage(document, root));
-//     // debugging
-//     document.body.appendChild(root);
-//     return dom
-// }
-
-// const input = fs.readFileSync(path.resolve(process.argv[2])).toString();
-// const output = path.resolve(process.argv[3]);
-// const dom = new JSDOM(input);
-// const document = dom.window.document;
-
-
-
-// fs.writeFileSync(output, main(dom).serialize());
-
-const main = (xmlstring, outputpath) => {
+const main = (xmlstring) => {
   const xml = new JSDOM(xmlstring, { contentType: 'text/xml' });
   const xmldoc = xml.window.document;
 
   const html = new JSDOM('');
   const htmldoc = html.window.document;
 
-  const isBook = xmldoc.firstElementChild.tagName === 'BOOK';
-  const isArticle = xmldoc.firstElementChild.tagName === 'ARTICLE';
-  if (!(isBook || isArticle)) {
-    console.error('No book or article');
-    return;
-  }
-
   htmldoc.body.appendChild(
     htmldoc.importNode(xmldoc.querySelector('tex-math'), true)
   );
 
-  fs.writeFileSync(outputpath, html.serialize());
+  return html;
 };
 
 module.exports = main;
@@ -110,5 +81,6 @@ module.exports = main;
 if (require.main === module) {
   const input = fs.readFileSync(path.resolve(process.argv[2])).toString();
   const output = path.resolve(process.argv[3]);
-  main(input, output);
+  const html = main(input);
+  fs.writeFileSync(output, html.serialize());
 }
