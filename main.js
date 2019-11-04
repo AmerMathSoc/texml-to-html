@@ -3,44 +3,12 @@ const path = require('path');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-const nodeRename = (document, node, newTagName) => {
-    if (!node) throw new Error('No node found');
-    const newNode = document.createElement(newTagName);
-    while (node.firstChild) newNode.appendChild(node.firstChild);
-    for (let attribute of node.attributes) {
-      newNode.setAttribute(attribute.name, attribute.value);
-    }
-    newNode.setAttribute('data-xmltag', node.tagName.toLowerCase());
-    node.parentNode.replaceChild(newNode, node);
-    return newNode;
-  };
-
-const nodeUnwrap = (document, node) => {
-    const parent = node.parentNode;
-    if (!parent) throw new Error('No parent node found');
-    while (node.firstChild) parent.insertBefore(node.firstChild, node);
-    node.delete;
-}
-
-const createTitle = (document, root) => {
-    const bookTitle = root.querySelector('book-meta book-title-group book-title');
-    const articleAltTitle = root.querySelector('front article-meta title-group alt-title');
-    const articleTitle = root.querySelector('front article-meta title-group article-title');
-    const originalTitle = bookTitle || articleAltTitle || articleTitle;
-    const title = document.createElement('title');
-    title.textContent = originalTitle.textContent;
-    return title;
-}
-
 const createChild = (document, parent, tagname) => {
     const child = document.createElement(tagname);
     parent.appendChild(child);
     return child;
 }
 
-const handleAbstract = (document, root, parent) => {
-
-}
 
 const createTitlepage = (document, root) => {
     const titlepage = createChild(document, document.body, 'section');
@@ -62,9 +30,44 @@ const createJournalHead = (document, root, parent) => {
     return header;
 }
 
-const setTitle = (xmldoc, htmldoc) => {
+const setHead = (xmldoc, htmldoc) => {
+  // add viewport meta tag
+  const viewportmeta = htmldoc.createElement('meta');
+  viewportmeta.setAttribute('name', 'viewport');
+  viewportmeta.setAttribute('content', 'width=device-width');
+  htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+  // set title
   const xmlTitle = xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title');
   htmldoc.title =  xmlTitle ? xmlTitle.textContent : 'Error: no title';
+}
+
+elementProcessor = {
+  'book': function (xmldoc, htmldoc, element) {
+
+  },
+  'article': (xmldoc, htmldoc, element) => {
+
+  },
+  'book-meta': () => {}
+}
+
+// pass through elements
+const passThrough = (xmldoc, htmldoc, htmlnode , xmlnode) => {
+  xmlnode.childNodes.forEach(recurseTheDom.bind(null, htmldoc, xmldoc, htmlnode));
+}
+const passThroughElements = ['front-matter', 'book-body', 'book-back', 'book-part', 'named-book-part-body', 'book-part-meta', 'body']
+const enablePassThrough = tagname => {
+  elementProcessor[tagname] = passThrough;
+};
+passThroughElements.forEach(enablePassThrough);
+
+
+const recurseTheDom = (xmldoc, htmldoc, htmlnode, xmlnode) => {
+  if (xmlnode.nodeType === 3) htmlNode.appendChild(xmlNode);
+  if (xmlnode.nodeType !== 1) return;
+  // console.log(xmlnode.tagName);
+  if (elementProcessor[xmlnode.tagName]) elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlnode, xmlnode);
+  // else we drop the node
 }
 
 const main = (xmlstring) => {
@@ -74,7 +77,10 @@ const main = (xmlstring) => {
   const html = new JSDOM('');
   const htmldoc = html.window.document;
 
-  setTitle(xmldoc, htmldoc);
+  setHead(xmldoc, htmldoc);
+
+  const root = xmldoc.querySelector('book, article');
+  recurseTheDom(xmldoc, htmldoc, htmldoc.body, root);
 
   return html;
 };

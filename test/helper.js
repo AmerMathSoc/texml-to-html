@@ -17,7 +17,6 @@ exports.xsltproc = async input => {
 
 exports.xsltproc = async input => {
   const inputString = fs.readFileSync(input);
-  console.log(xml2html);
   const dom = xml2html(inputString);
   console.log(dom.serialize());
   return dom.window.document;
