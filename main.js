@@ -62,6 +62,11 @@ const createJournalHead = (document, root, parent) => {
     return header;
 }
 
+const setTitle = (xmldoc, htmldoc) => {
+  const xmlTitle = xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title');
+  htmldoc.title =  xmlTitle ? xmlTitle.textContent : 'Error: no title';
+}
+
 const main = (xmlstring) => {
   const xml = new JSDOM(xmlstring, { contentType: 'text/xml' });
   const xmldoc = xml.window.document;
@@ -69,9 +74,7 @@ const main = (xmlstring) => {
   const html = new JSDOM('');
   const htmldoc = html.window.document;
 
-  htmldoc.body.appendChild(
-    htmldoc.importNode(xmldoc.querySelector('tex-math'), true)
-  );
+  setTitle(xmldoc, htmldoc);
 
   return html;
 };
