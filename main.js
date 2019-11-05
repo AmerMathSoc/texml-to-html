@@ -3,11 +3,13 @@ const path = require('path');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-// const createChild = (document, parent, tagname) => {
-//     const child = document.createElement(tagname);
-//     parent.appendChild(child);
-//     return child;
-// }
+const createNode = (document, tagname, content, properties) => {
+    if (!properties) properties = {};
+    const node = document.createElement(tagname);
+    if (!content)    node.innerHTML = content;
+    for (let prop of Object.keys(properties)) node.setAttribute(prop, properties[prop]);
+    return node;
+}
 
 
 // const createTitlepage = (document, root) => {
@@ -42,32 +44,31 @@ const setHead = (xmldoc, htmldoc) => {
 }
 
 elementProcessor = {
-  'book': function (xmldoc, htmldoc, element) {
-
-  },
-  'article': (xmldoc, htmldoc, element) => {
-
-  },
-  'book-meta': () => {}
+  'preface': (xmldoc, htmldoc, htmlParentNode , xmlnode) => {
+    const preface = createNode(htmldoc, 'section', '', {role : 'doc-preface'});
+    htmlParentNode.appendChild(preface);
+    passThrough(xmldoc, htmldoc, preface, xmlnode);
+  }
 }
 
 // pass through elements
-const passThrough = (xmldoc, htmldoc, htmlnode , xmlnode) => {
-  xmlnode.childNodes.forEach(recurseTheDom.bind(null, htmldoc, xmldoc, htmlnode));
-}
-const passThroughElements = ['front-matter', 'book-body', 'book-back', 'book-part', 'named-book-part-body', 'book-part-meta', 'body']
+const passThrough = (xmldoc, htmldoc, htmlParentNode , xmlnode) => {
+  xmlnode.childNodes.forEach(recurseTheDom.bind(null, xmldoc, htmldoc, htmlParentNode));
+};
+
+const passThroughElements = ['book', 'front-matter', 'book-body', 'book-back', 'book-part', 'named-book-part-body', 'book-part-meta', 'body']
 const enablePassThrough = tagname => {
   elementProcessor[tagname] = passThrough;
 };
 passThroughElements.forEach(enablePassThrough);
 
 
-const recurseTheDom = (xmldoc, htmldoc, htmlnode, xmlnode) => {
-  if (xmlnode.nodeType === 3) htmlNode.appendChild(xmlNode);
+const recurseTheDom = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  if (xmlnode.nodeType === 3) htmlParentNode.appendChild(htmldoc.importNode(xmlnode, false));
   if (xmlnode.nodeType !== 1) return;
-  // console.log(xmlnode.tagName);
-  if (elementProcessor[xmlnode.tagName]) elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlnode, xmlnode);
-  // else we drop the node
+  console.log(xmlnode.tagName);
+  if (elementProcessor[xmlnode.tagName]) elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlParentNode, xmlnode);
+  // else we drop/ignore the node
 }
 
 const main = (xmlstring) => {
