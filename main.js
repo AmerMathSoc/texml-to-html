@@ -38,7 +38,7 @@ const setHead = (xmldoc, htmldoc) => {
   htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
   // set title
   const xmlTitle = xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title');
-  htmldoc.title =  xmlTitle ? xmlTitle.textContent : 'Error: no title';
+  htmldoc.title =  xmlTitle ? xmlTitle.textContent : 'AMS Publication';
 }
 
 elementProcessor = {
