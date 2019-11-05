@@ -81,15 +81,31 @@ elementProcessor = {
     const footerDT = createNode(htmldoc, 'dt', 'Published by');
     footerDL.appendChild(footerDT);
     const publisher = xmlnode.querySelector('publisher');
-    recurseTheDom(xmldoc, htmldoc, footerDL, publisher);
+    if (publisher) recurseTheDom(xmldoc, htmldoc, footerDL, publisher);
 
     const copyrightStatement = xmlnode.querySelector('copyright-statement');
-    recurseTheDom(xmldoc, htmldoc, footer, copyrightStatement);
+    if (copyrightStatement)
+      recurseTheDom(xmldoc, htmldoc, footer, copyrightStatement);
   },
   'book-title-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const header = createNode(htmldoc, 'header');
     htmlParentNode.appendChild(header);
     passThrough(xmldoc, htmldoc, header, xmlnode);
+  },
+  'book-title': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const heading = createNode(htmldoc, 'h1');
+    htmlParentNode.appendChild(heading);
+    passThrough(xmldoc, htmldoc, heading, xmlnode);
+  },
+  subtitle: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const isbookTitleGroup = Boolean(xmlnode.closest('book-title-group'));
+    if (!isbookTitleGroup) {
+      passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+      return;
+    }
+    const p = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'subtitle'});
+    htmlParentNode.appendChild(p);
+    passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'contrib-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO multiple templates
@@ -111,7 +127,7 @@ elementProcessor = {
     // if book
     const p = createNode(htmldoc, 'p', { 'data-ams-doc': 'book copyright' });
     htmlParentNode.appendChild(p);
-    passThrough(xmldoc,htmldoc, p, xmlnode);
+    passThrough(xmldoc, htmldoc, p, xmlnode);
   }
 };
 
