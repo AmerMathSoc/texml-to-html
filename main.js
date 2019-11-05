@@ -1,16 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-const jsdom = require("jsdom");
+const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 const createNode = (document, tagname, content, properties) => {
-    if (!properties) properties = {};
-    const node = document.createElement(tagname);
-    if (!content)    node.innerHTML = content;
-    for (let prop of Object.keys(properties)) node.setAttribute(prop, properties[prop]);
-    return node;
-}
-
+  if (!properties) properties = {};
+  const node = document.createElement(tagname);
+  if (!content) node.innerHTML = content;
+  for (let prop of Object.keys(properties))
+    node.setAttribute(prop, properties[prop]);
+  return node;
+};
 
 // const createTitlepage = (document, root) => {
 //     const titlepage = createChild(document, document.body, 'section');
@@ -39,39 +39,53 @@ const setHead = (xmldoc, htmldoc) => {
   viewportmeta.setAttribute('content', 'width=device-width');
   htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
   // set title
-  const xmlTitle = xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title');
-  htmldoc.title =  xmlTitle ? xmlTitle.textContent : 'AMS Publication';
-}
+  const xmlTitle = xmldoc.querySelector(
+    'book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title'
+  );
+  htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
+};
 
 elementProcessor = {
-  'preface': (xmldoc, htmldoc, htmlParentNode , xmlnode) => {
-    const preface = createNode(htmldoc, 'section', '', {role : 'doc-preface'});
+  preface: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const preface = createNode(htmldoc, 'section', '', { role: 'doc-preface' });
     htmlParentNode.appendChild(preface);
     passThrough(xmldoc, htmldoc, preface, xmlnode);
   }
-}
-
-// pass through elements
-const passThrough = (xmldoc, htmldoc, htmlParentNode , xmlnode) => {
-  xmlnode.childNodes.forEach(recurseTheDom.bind(null, xmldoc, htmldoc, htmlParentNode));
 };
 
-const passThroughElements = ['book', 'front-matter', 'book-body', 'book-back', 'book-part', 'named-book-part-body', 'book-part-meta', 'body']
+// pass through elements
+const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  xmlnode.childNodes.forEach(
+    recurseTheDom.bind(null, xmldoc, htmldoc, htmlParentNode)
+  );
+};
+
+const passThroughElements = [
+  'book',
+  'front-matter',
+  'book-body',
+  'book-back',
+  'book-part',
+  'named-book-part-body',
+  'book-part-meta',
+  'body'
+];
 const enablePassThrough = tagname => {
   elementProcessor[tagname] = passThrough;
 };
 passThroughElements.forEach(enablePassThrough);
 
-
 const recurseTheDom = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-  if (xmlnode.nodeType === 3) htmlParentNode.appendChild(htmldoc.importNode(xmlnode, false));
+  if (xmlnode.nodeType === 3)
+    htmlParentNode.appendChild(htmldoc.importNode(xmlnode, false));
   if (xmlnode.nodeType !== 1) return;
   console.log(xmlnode.tagName);
-  if (elementProcessor[xmlnode.tagName]) elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlParentNode, xmlnode);
+  if (elementProcessor[xmlnode.tagName])
+    elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlParentNode, xmlnode);
   // else we drop/ignore the node
-}
+};
 
-const main = (xmlstring) => {
+const main = xmlstring => {
   const xml = new JSDOM(xmlstring, { contentType: 'text/xml' });
   const xmldoc = xml.window.document;
 
