@@ -6,7 +6,7 @@ const { JSDOM } = jsdom;
 const createNode = (document, tagname, content, properties) => {
   if (!properties) properties = {};
   const node = document.createElement(tagname);
-  if (!content) node.innerHTML = content;
+  if (content) node.innerHTML = content;
   for (let prop of Object.keys(properties))
     node.setAttribute(prop, properties[prop]);
   return node;
@@ -50,6 +50,68 @@ elementProcessor = {
     const preface = createNode(htmldoc, 'section', '', { role: 'doc-preface' });
     htmlParentNode.appendChild(preface);
     passThrough(xmldoc, htmldoc, preface, xmlnode);
+  },
+  'book-meta': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const titlepage = createNode(htmldoc, 'section', '', {
+      'data-ams-doc': 'titlepage'
+    });
+    htmlParentNode.appendChild(titlepage);
+
+    const bookTitleGroup = xmlnode.querySelector('book-title-group');
+    if (bookTitleGroup)
+      recurseTheDom(xmldoc, htmldoc, titlepage, bookTitleGroup);
+
+    const publKey = xmlnode.querySelector('book-id[book-id-type="publ_key"]');
+    const series = publKey ? publKey.textContent : '';
+    const seriesNode = createNode(htmldoc, 'span', series, {
+      'data-ams-doc': 'series'
+    });
+    titlepage.appendChild(seriesNode);
+
+    const contribGroupDL = createNode(htmldoc, 'dl');
+    titlepage.appendChild(contribGroupDL);
+    const contribGroup = xmlnode.querySelector('contrib-group');
+    if (contribGroup)
+      recurseTheDom(xmldoc, htmldoc, contribGroupDL, contribGroup);
+
+    const footer = createNode(htmldoc, 'footer');
+    titlepage.appendChild(footer);
+    const footerDL = createNode(htmldoc, 'dl');
+    footer.appendChild(footerDL);
+    const footerDT = createNode(htmldoc, 'dt', 'Published by');
+    footerDL.appendChild(footerDT);
+    const publisher = xmlnode.querySelector('publisher');
+    recurseTheDom(xmldoc, htmldoc, footerDL, publisher);
+
+    const copyrightStatement = xmlnode.querySelector('copyright-statement');
+    recurseTheDom(xmldoc, htmldoc, footer, copyrightStatement);
+  },
+  'book-title-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const header = createNode(htmldoc, 'header');
+    htmlParentNode.appendChild(header);
+    passThrough(xmldoc, htmldoc, header, xmlnode);
+  },
+  'contrib-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO multiple templates
+    // if book
+    const dt = createNode(htmldoc, 'dt');
+    htmlParentNode.appendChild(dt);
+    // TODO very incomplete
+  },
+  publisher: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO multiple templates
+    // if book
+    const dd = createNode(htmldoc, 'dd', '', {
+      'data-ams-doc': 'book publisher'
+    });
+    htmlParentNode.appendChild(dd);
+  },
+  'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO multiple templates
+    // if book
+    const p = createNode(htmldoc, 'p', { 'data-ams-doc': 'book copyright' });
+    htmlParentNode.appendChild(p);
+    passThrough(xmldoc,htmldoc, p, xmlnode);
   }
 };
 
@@ -79,7 +141,7 @@ const recurseTheDom = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   if (xmlnode.nodeType === 3)
     htmlParentNode.appendChild(htmldoc.importNode(xmlnode, false));
   if (xmlnode.nodeType !== 1) return;
-  console.log(xmlnode.tagName);
+  // console.log(xmlnode.tagName);
   if (elementProcessor[xmlnode.tagName])
     elementProcessor[xmlnode.tagName](xmldoc, htmldoc, htmlParentNode, xmlnode);
   // else we drop/ignore the node
