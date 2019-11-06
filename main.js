@@ -5,7 +5,9 @@ const { JSDOM } = jsdom;
 
 const createNode = (document, tagname, content, properties) => {
   if (!properties) properties = {};
-  const node = document.createElement(tagname);
+  const node = tagname
+    ? document.createElement(tagname)
+    : document.createTextNode(content);
   if (content) node.innerHTML = content;
   for (let prop of Object.keys(properties))
     node.setAttribute(prop, properties[prop]);
@@ -104,7 +106,7 @@ elementProcessor = {
       passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
       return;
     }
-    const p = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'subtitle'});
+    const p = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'subtitle' });
     htmlParentNode.appendChild(p);
     passThrough(xmldoc, htmldoc, p, xmlnode);
   },
@@ -123,10 +125,25 @@ elementProcessor = {
     htmlParentNode.appendChild(dd);
     passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
+  'publisher-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '');
+    htmlParentNode.appendChild(span);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
+    if (xmlnode.nextElementSibling) {
+      htmlParentNode.appendChild(createNode(htmldoc, null, ', '));
+    }
+  },
+  'publisher-loc': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '');
+    htmlParentNode.appendChild(span);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
+  },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO multiple templates
     // if book
-    const p = createNode(htmldoc, 'p', { 'data-ams-doc': 'book copyright' });
+    const p = createNode(htmldoc, 'p', '', {
+      'data-ams-doc': 'book copyright'
+    });
     htmlParentNode.appendChild(p);
     passThrough(xmldoc, htmldoc, p, xmlnode);
   }
