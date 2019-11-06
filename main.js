@@ -161,7 +161,7 @@ elementProcessor = {
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
   'ref-list': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = xmlnode.closest('book') ? '1' : '2';
+    const level = xmldoc.firstElementChild.tagName === 'book' ? '1' : '2'; // NOTE checks if document is a book
     const section = createNode(htmldoc, 'section', '', {
       role: 'doc-bibliography',
       'data-ams-doc-level': level
