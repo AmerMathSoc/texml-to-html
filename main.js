@@ -5,9 +5,7 @@ const { JSDOM } = jsdom;
 
 const createNode = (document, tagname, content, properties) => {
   if (!properties) properties = {};
-  const node = tagname
-    ? document.createElement(tagname)
-    : document.createTextNode(content);
+  const node = document.createElement(tagname);
   if (content) node.innerHTML = content;
   for (let prop of Object.keys(properties))
     node.setAttribute(prop, properties[prop]);
@@ -130,7 +128,7 @@ elementProcessor = {
     htmlParentNode.appendChild(span);
     passThrough(xmldoc, htmldoc, span, xmlnode);
     if (xmlnode.nextElementSibling) {
-      htmlParentNode.appendChild(createNode(htmldoc, null, ', '));
+      htmlParentNode.appendChild(htmldoc.createTextNode(', '));
     }
   },
   'publisher-loc': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
