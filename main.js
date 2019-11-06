@@ -12,6 +12,30 @@ const createNode = (document, tagname, content, properties) => {
   return node;
 };
 
+const attributeDictionary = {
+  id: 'id',
+  rowspan: 'rowspan',
+  colspan: 'colspan',
+  'content-type': 'data-ams-content-type',
+  'has-qed-box': 'data-ams-qed-box',
+  hidden: 'hidden',
+  position: 'data-ams-position',
+  style: 'data-ams-style',
+  'specific-use': 'data-ams-specific-use' // NOTE generic fallback; elementProcessors who do something different should remove the attribute from the xmlnode before calling mapAttributes
+};
+
+mapAttribute = (htmlNode, xmlNode, attributeName) => {
+  const attributeValue = xmlNode.getAttribute(attributeName);
+  if (!attributeValue) return;
+  htmlNode.setAttribute(attributeName, attributeDictionary[attributeValue]);
+};
+
+const mapAttributes = (htmlNode, xmlNode) => {
+  Object.keys(attributeDictionary).forEach(
+    mapAttribute.bind(null, htmlNode, xmlNode)
+  );
+};
+
 // const createTitlepage = (document, root) => {
 //     const titlepage = createChild(document, document.body, 'section');
 //     titlepage.setAttribute('data-type','titlepage');
@@ -135,6 +159,28 @@ elementProcessor = {
     const span = createNode(htmldoc, 'span', '');
     htmlParentNode.appendChild(span);
     passThrough(xmldoc, htmldoc, span, xmlnode);
+  },
+  'ref-list': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const level = xmlnode.closest('book') ? '1' : '2';
+    const section = createNode(htmldoc, 'section', '', {
+      role: 'doc-bibliography',
+      'data-ams-doc-level': level
+    });
+    mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    recurseTheDom(xmldoc, htmldoc, section, xmlnode.querySelector('title'));
+    const dl = createNode(htmldoc, 'dl', '');
+    section.appendChild(dl);
+    xmlnode
+      .querySelectorAll('ref')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+  },
+  title: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const level = htmlParentNode.closest('[data-ams-doc-level]').getAttribute('data-ams-doc-level');
+    const heading = createNode(htmldoc, `h${level}`, '');
+    htmlParentNode.appendChild(heading);
+    passThrough(xmldoc, htmldoc, heading, xmlnode);
+    // TODO continue
   },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO multiple templates
