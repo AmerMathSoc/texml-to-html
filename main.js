@@ -98,6 +98,7 @@ elementProcessor = {
     passThrough(xmldoc, htmldoc, heading, xmlnode);
   },
   subtitle: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // NOTE was multiple templates: book-title-group/subtitle and mode=generic)
     const isbookTitleGroup = Boolean(xmlnode.closest('book-title-group'));
     if (!isbookTitleGroup) {
       passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
@@ -115,12 +116,12 @@ elementProcessor = {
     // TODO very incomplete
   },
   publisher: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO multiple templates
-    // if book
+    // only used in books
     const dd = createNode(htmldoc, 'dd', '', {
       'data-ams-doc': 'book publisher'
     });
     htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO multiple templates
