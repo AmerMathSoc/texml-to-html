@@ -61,7 +61,7 @@ tape('Template: article', async function(t) {
   t.notOk(dedication.nextElementSibling, 'dedication is last child of titlepage header');
 
   const abstract = header.nextElementSibling;
-  t.equal(abstract.outerHTML, '<section data-ams-doc-level="1" role="doc-abstract"></section>', 'abstract following titlepage header');
+  t.equal(abstract.outerHTML, '<section data-ams-doc-level="2" role="doc-abstract"></section>', 'abstract following titlepage header');
   t.notOk(abstract.nextElementSibling, 'abstract last child of titlepage');
 
   const articlemeta = titlepage.nextElementSibling;

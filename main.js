@@ -63,10 +63,15 @@ const setHead = (xmldoc, htmldoc) => {
   viewportmeta.setAttribute('content', 'width=device-width');
   htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
   // set title
-  const xmlTitle = xmldoc.querySelector(
-    'book-meta>book-title-group>book-title, front>article-meta>title-group>alt-title, front>article-meta>title-group>article-title'
+  const xmlTitle = xmldoc.querySelector('front>article-meta>title-group>alt-title') || xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>article-title'
   );
   htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
+};
+
+const getClosestLevel = htmlParentNode => {
+  const ancestor = htmlParentNode.closest('[data-ams-doc-level]');
+  if (ancestor) return ancestor.getAttribute('data-ams-doc-level');
+  else return null;
 };
 
 elementProcessor = {
@@ -176,11 +181,11 @@ elementProcessor = {
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
   title: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = htmlParentNode.closest('[data-ams-doc-level]').getAttribute('data-ams-doc-level');
+    const level = getClosestLevel(htmlParentNode);
     const heading = createNode(htmldoc, `h${level}`, '');
     htmlParentNode.appendChild(heading);
     passThrough(xmldoc, htmldoc, heading, xmlnode);
-    // TODO continue
+    // TODO continue or could this be enough?
   },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO multiple templates
@@ -190,7 +195,78 @@ elementProcessor = {
     });
     htmlParentNode.appendChild(p);
     passThrough(xmldoc, htmldoc, p, xmlnode);
-  }
+  },
+  article:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc': 'titlepage'});
+    htmlParentNode.appendChild(section);
+
+    const header = createNode(htmldoc, 'header');
+    section.appendChild(header);
+
+    const journalInfo = createNode(htmldoc, 'aside', '', { 'data-ams-doc': 'journal'});
+    header.appendChild(journalInfo);
+
+    const journalTitle = createNode(htmldoc, 'p', xmldoc.querySelector('front>journal-meta>journal-title-group>journal-title').textContent, { 'data-ams-doc': 'journal title'}); // NOTE no recursion (matches xslt)
+    journalInfo.appendChild(journalTitle);
+    const journalLocation = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'journal location'});
+    journalInfo.appendChild(journalLocation);
+    journalLocation.appendChild(createNode(htmldoc, 'span', `Volume ${xmldoc.querySelector('front>article-meta>volume').textContent}, `, { 'data-ams-doc': 'journal volume'}));
+    journalLocation.appendChild(htmldoc.createTextNode(', '));
+    journalLocation.appendChild(createNode(htmldoc, 'span', `Issue ${xmldoc.querySelector('front>article-meta>issue').textContent}`, { 'data-ams-doc': 'journal issue'}));
+    journalLocation.appendChild(createNode(htmldoc, 'span', `(${xmldoc.querySelector('front>article-meta>pub-date[iso-8601-date]').getAttribute('iso-8601-date')})`, { 'data-ams-doc': 'journal date'}));
+
+    const journalPii = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'journal pii'});
+    journalInfo.appendChild(journalPii);
+    journalPii.appendChild(createNode(htmldoc, 'a', xmldoc.querySelector('front>article-meta>article-id[pub-id-type="pii"]').textContent, { 'href': `https://doi.org/${xmldoc.querySelector('front>article-meta>article-id[pub-id-type="doi"]').textContent}`}));
+
+    recurseTheDom(xmldoc, htmldoc, header, xmldoc.querySelector('front>article-meta>title-group>article-title'));
+    recurseTheDom(xmldoc, htmldoc, header, xmldoc.querySelector('front>notes[notes-type="dedication"]'));
+
+    // add abstract
+    recurseTheDom(xmldoc, htmldoc, section, xmldoc.querySelector('front>article-meta>abstract'));
+
+    // add copyright page
+    recurseTheDom(xmldoc,htmldoc, htmlParentNode, xmldoc.querySelector('front>article-meta'));
+
+    // the article wrapper
+    const artSection = createNode(htmldoc, 'section', '', { 'data-ams-doc': 'article'});
+    htmlParentNode.appendChild(artSection);
+    // heading (again) TODO[postrelease] ams-html replaces this heading with the titlepage; after release, drop this heading and update ams-html
+    recurseTheDom(xmldoc, htmldoc, artSection, xmldoc.querySelector('front>article-meta>title-group>article-title'));
+    // recurse throught the article content
+    passThrough(xmldoc, htmldoc, artSection, xmlnode);
+  },
+  'article-title':   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const h1 = createNode(htmldoc, 'h1');
+    htmlParentNode.appendChild(h1);
+    passThrough(xmldoc, htmldoc, h1, xmlnode);
+  },
+  'article-meta':   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', {'data-ams-doc': 'copyright-page'});
+    htmlParentNode.appendChild(section);
+    // TODO TBC
+  },
+  'notes': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // so far, we only have one type
+    if (xmlnode.getAttribute('notes-type') !== 'dedication') return;
+    const div = createNode(htmldoc, 'div', '', {role: 'doc-dedication'});
+    htmlParentNode.appendChild(div);
+    passThrough(xmldoc, htmldoc, div, xmlnode);
+  },
+  abstract:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const level = getClosestLevel(htmlParentNode) || '2'; // NOTE in articles, we don't have a disp-level in the XML; also NOTE that this is a change from xslt which erroneously had hardcoded 1 but abstract/title still got an h2
+    const section = createNode(htmldoc, 'section', '', {'data-ams-doc-level': level, role: 'doc-abstract'});
+    mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
+  sec:   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const level = getClosestLevel(htmlParentNode) || xmlnode.closest('[disp-level]').getAttribute('disp-level');
+    const section = createNode(htmldoc, 'section', '', {'data-ams-doc-level': level, 'data-ams-doc': xmlnode.getAttribute('specific-use')});
+    // mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
 };
 
 // pass through elements
@@ -216,6 +292,7 @@ const enablePassThrough = tagname => {
 passThroughElements.forEach(enablePassThrough);
 
 const recurseTheDom = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  if (!xmlnode) return;
   if (xmlnode.nodeType === 3)
     htmlParentNode.appendChild(htmldoc.importNode(xmlnode, false));
   if (xmlnode.nodeType !== 1) return;
