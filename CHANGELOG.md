@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.5.0...v3.6.0) (2019-11-11)
+
+
+### Features
+
+* **statement:** add period to proof title&lable ([60c2c7a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/60c2c7a)), closes [#243](https://github.com/AmerMathSoc/ams-xml-to-html/issues/243)
+
+
+
 ## [3.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.4.0...v3.5.0) (2019-10-31)
 
 
