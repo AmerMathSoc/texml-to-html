@@ -50,8 +50,8 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement4, 'statement 4');
   t.equal(
     statement4.querySelector('h3').innerHTML,
-    'Proof',
-    'title in proof statement does not get extra period'
+    'Proof. ',
+    'title in proof statement now also gets extra period'
   );
   t.equal(
     statement4.querySelector('[data-ams-doc="secheading"]').innerHTML,
@@ -64,7 +64,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement5, 'statement 5');
   t.equal(
     statement5.querySelector('h3').innerHTML,
-    'Label 5 Proof',
+    'Label 5 Proof. ',
     'proof statement with label+title'
   );
   t.equal(
