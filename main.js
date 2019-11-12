@@ -138,11 +138,16 @@ elementProcessor = {
     passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'contrib-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO multiple templates
-    // if book
-    const dt = createNode(htmldoc, 'dt');
-    htmlParentNode.appendChild(dt);
-    // TODO very incomplete
+    // TODO handle sec-meta/contrib-group
+    // if book-meta or article-meta
+    let contentType = xmlnode.getAttribute('content-type');
+    contentType = contentType[0].toUpperCase() + contentType.substring(1, contentType.length-1);
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `${contentType} Information`,  { 'data-ams-doc-contrib': `${contentType}`}));
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+  },
+  'contrib': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const contentType = xmlnode.getAttribute('content-type');
+    htmlParentNode.appendChild(createNode(htmldoc, 'dd', `${contentType} Information`, { 'data-ams-doc-contrib': `${contentType}s`}));
   },
   publisher: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // only used in books
@@ -188,13 +193,21 @@ elementProcessor = {
     // TODO continue or could this be enough?
   },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO multiple templates
+    const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
     // if book
-    const p = createNode(htmldoc, 'p', '', {
-      'data-ams-doc': 'book copyright'
-    });
-    htmlParentNode.appendChild(p);
-    passThrough(xmldoc, htmldoc, p, xmlnode);
+    if (isBook){
+      const p = createNode(htmldoc, 'p', '', {
+        'data-ams-doc': 'book copyright'
+      });
+      htmlParentNode.appendChild(p);
+      passThrough(xmldoc, htmldoc, p, xmlnode);
+      return;
+    }
+    // if article
+      htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Copyright Information'));
+      const dd = createNode(htmldoc, 'dd', '', {'data-ams-doc': 'copyright'});
+      htmlParentNode.appendChild(dd);
+      passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
   article:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const section = createNode(htmldoc, 'section', '', { 'data-ams-doc': 'titlepage'});
@@ -205,7 +218,7 @@ elementProcessor = {
 
     const journalInfo = createNode(htmldoc, 'aside', '', { 'data-ams-doc': 'journal'});
     header.appendChild(journalInfo);
-
+    // TODO journal information seems to get removed in ams-html. Drop it here and update ams-html.
     const journalTitle = createNode(htmldoc, 'p', xmldoc.querySelector('front>journal-meta>journal-title-group>journal-title').textContent, { 'data-ams-doc': 'journal title'}); // NOTE no recursion (matches xslt)
     journalInfo.appendChild(journalTitle);
     const journalLocation = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'journal location'});
@@ -244,7 +257,120 @@ elementProcessor = {
   'article-meta':   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const section = createNode(htmldoc, 'section', '', {'data-ams-doc': 'copyright-page'});
     htmlParentNode.appendChild(section);
-    // TODO TBC
+    const h2 = createNode(htmldoc, 'h2', 'Article Information');
+    section.appendChild(h2);
+    const dl = createNode(htmldoc, 'dl');
+    section.appendChild(dl);
+
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('ams-meta-group'));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('kwd-group'));
+    xmlnode.querySelectorAll('contrib-group').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('funding-group'));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('custom-meta'));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.parentNode.querySelector('journal-meta'));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('pub-date'));
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('copyright-statement'));
+
+    dl.appendChild(createNode(htmldoc, 'dt', 'Article References'));
+    const artRefDD = createNode(htmldoc, 'dd');
+    dl.appendChild(artRefDD);
+    const artRefUL = createNode(htmldoc, 'ul');
+    artRefDD.appendChild(artRefUL);
+    xmlnode.querySelectorAll('self-uri').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, artRefUL));
+    recurseTheDom(xmldoc, htmldoc, artRefUL, xmlnode.querySelector('article-id'));
+    recurseTheDom(xmldoc, htmldoc, artRefUL, xmlnode.querySelector('article-citation'));
+
+  },
+  'ams-meta-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `MSC ${xmlnode.querySelector('msc[scheme]').getAttribute('scheme')}`));
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+  },
+  'kwd-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Keywords'));
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+
+  },
+  'funding-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Additional Notes'));
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+  },
+  'funding-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
+  },
+  'meta-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // NOTE currently, we only have custom-meta[@specific-use='communicated-by']>meta-name; future publications might need more here
+    const dt = createNode(htmldoc, 'dt');
+    htmlParentNode.appendChild(dt);
+    passThrough(xmldoc, htmldoc, dt, xmlnode);
+  },
+  'meta-value': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // NOTE currently, we only have custom-meta[@specific-use='communicated-by']>meta-value; future publications might need more here
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
+  },
+  'journal-meta': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Journal Information'));
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    // TODO refactor into methods (cf. journal/article-meta handling in titlepage)
+    dd.appendChild(createNode(htmldoc, 'a', xmlnode.querySelector('journal-title-group>journal-title').textContent, {href: xmlnode.querySelector('self-uri').getAttribute('href')}));
+    dd.appendChild(htmldoc.createTextNode(', '));
+    dd.appendChild(createNode(htmldoc, 'span', `Volume ${xmlnode.parentNode.querySelector('article-meta>volume').textContent}`))
+    dd.appendChild(htmldoc.createTextNode(', '));
+    dd.appendChild(createNode(htmldoc, 'span', `Issue ${xmlnode.parentNode.querySelector('article-meta>issue').textContent}`))
+    dd.appendChild(htmldoc.createTextNode(', '));
+    dd.appendChild(createNode(htmldoc, 'span', `ISSN ${xmlnode.querySelector('journal-title-group>issn').textContent}`))    // NOTE minimal change to xslt (text was outside the span);
+    dd.appendChild(htmldoc.createTextNode(', '));
+    dd.appendChild(createNode(htmldoc, 'span', `, published by the ${xmlnode.querySelector('publisher>publisher-name').textContent}`))    // NOTE minimal change to xslt (text was outside the span);
+    dd.appendChild(htmldoc.createTextNode(', '));
+    dd.appendChild(createNode(htmldoc, 'span', `ISSN ${xmlnode.querySelector('publisher>publisher-loc').textContent}`))
+  },
+  'pub-date': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Publication History'));
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    // TODO refactor into methods? (cf. journal-meta)
+    dd.appendChild(htmldoc.createTextNode('This article was received on '));
+    const rectime = xmlnode.parentNode.querySelector('history>date[date-type="received"]').getAttribute('iso-8601-date');
+    dd.appendChild(createNode(htmldoc, 'time', rectime , {datetime: rectime}));
+    const rev = xmlnode.parentNode.querySelector('history>date[date-type="rev-recd"]')
+    if (rev) {
+      const revtime = rev.getAttribute('iso-8601-date');
+      // TODO should be a time element like the others
+      dd.appendChild(htmldoc.createTextNode(`, revised on ${revtime}`));
+    }
+    dd.appendChild(htmldoc.createTextNode(' and published on'));
+    const pubtime = xmlnode.getAttribute('iso-8601-date');
+    dd.appendChild(createNode(htmldoc, 'time', pubtime , {datetime: pubtime}));
+  },
+  'self-uri': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const li = createNode(htmldoc, 'li');
+    htmlParentNode.appendChild(li);
+    const contentType = xmlnode.getAttribute('content-type') || '';
+    const suffix = contentType === 'pdf' ? ' (PDF)' : '';
+    const a = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('href') , 'data-ams-doc': contentType});
+    li.appendChild(a);
+  },
+  'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const idType = xmlnode.getAttribute('pub-id-type');
+    if (idType !== 'doi' && IdType !== 'mr') return; // NOTE publications only use those 2 values right now
+    const isDOI =  idType === 'doi';
+    const litext = isDOI ? 'DOI ' : '';
+    const li = createNode(htmldoc, 'li', litext);
+    htmlParentNode.appendChild(li);
+    const xmltext = xmlnode.textContent;
+    const url = isDOI ? 'https://doi.org/' + xmltext : 'http://www.ams.org/mathscinet-getitem?mr=' + xmltext;
+    li.appendChild(createNode(htmldoc, 'a', isDOI ? xmltext : 'MathSciNet Review', { href: url}));
+  },
+  'article-citation': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const li = createNode(htmldoc, 'li');
+    htmlParentNode.appendChild(li);
+    const code = createNode(htmldoc, 'code', xmlnode.textContent, {'data-ams-doc': 'amsref'});
+    li.appendChild(code);
+
   },
   'notes': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // so far, we only have one type
@@ -284,7 +410,10 @@ const passThroughElements = [
   'book-part',
   'named-book-part-body',
   'book-part-meta',
-  'body'
+  'body',
+  'description',
+  'custom-meta-group',
+  'custom-meta'
 ];
 const enablePassThrough = tagname => {
   elementProcessor[tagname] = passThrough;

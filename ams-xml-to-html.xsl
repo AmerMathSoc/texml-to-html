@@ -177,6 +177,7 @@
         <xsl:text>&#xa;</xsl:text>
         <aside data-ams-doc="journal"><!-- TODO cf. front/journal-meta: should this duplication be done in ams-html? -->
         <xsl:text>&#xa;</xsl:text>
+        <!-- NOTE in JS: we still pick and leave the general method for the article-meta processing -->
         <p data-ams-doc="journal title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
         <p data-ams-doc="journal location"><span data-ams-doc="journal volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-ams-doc="journal issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-ams-doc="journal date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
         <p data-ams-doc="journal pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
@@ -228,12 +229,14 @@
       </xsl:if>
       <xsl:apply-templates select="contrib-group"/>
       <xsl:apply-templates select="funding-group"/>
+      <!-- NOTE in JS: separate methods for meta-name, meta-value (and pass-through custom-meta-group, custom-meta) -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
         <dd>
           <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-value/text()"/>
         </dd>
       </xsl:if>
+      <!-- NOTE in JS: dt and dd added by journal-meta method -->
       <dt>Journal Information</dt>
       <dd>
         <xsl:apply-templates select="../journal-meta"/>
@@ -297,6 +300,7 @@
 <!-- GROUP -->
 
 <!-- TODO match="contrib" should be ok -->
+<!-- NOTE in JS, contrib will take over creating the wrapping dd as well as creating the xref (so as to avoid another case in xref handling) -->
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
@@ -327,6 +331,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: redundant (cf contrib above) -->
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd>
   <xsl:variable name="link" select="./@rid" />
@@ -354,6 +359,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE for JS: dropped apply-templates call (shouldn't be doing anything since ignore template includes pubdate/* -->
 <xsl:template match="article-meta/pub-date">
     This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/></xsl:if> and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.<xsl:apply-templates/>
 </xsl:template>

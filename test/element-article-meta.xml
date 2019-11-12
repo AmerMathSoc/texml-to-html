@@ -1,20 +1,92 @@
-<article>
-    <article-meta>
-        <ams-meta-group/>
-        <contrib-group/>
-        <funding-group/>
-        <permissions><copyright-statement/></permissions>
-        <self-uri/>
-        <article-id/>
-        <article-citation/>
-        <kwd-group/>
-        <custom-meta-group>
-            <custom-meta specific-use='communicated-by'>
-              <meta-name>meta-name</meta-name>
-              <meta-value>meta-value</meta-value>
-            </custom-meta>
-        </custom-meta-group>
-        <contrib-group>
-        </contrib-group>
-    </article-meta>
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+      <article-meta>
+         <ams-meta-group>
+              <msc scheme="">
+                  <primary>
+                      <key>key1</key>
+                      <description>desc1</description>
+                  </primary>
+                  <primary>
+                      <key>key2</key>
+                      <description>desc2</description>
+                  </primary>
+                  <secondary>
+                      <key>key3</key>
+                      <description>desc3</description>
+                  </secondary>
+                  <secondary>
+                      <key>key4</key>
+                      <description>desc4</description>
+                  </secondary>
+              </msc>
+          </ams-meta-group>
+       <contrib-group content-type="contribAs">
+          <contrib content-type="contribA"/>
+       </contrib-group>
+       <contrib-group content-type="contribBs">
+          <contrib content-type="contribB"/>
+       </contrib-group>
+      <funding-group>
+          <funding-statement/>
+      </funding-group>
+      <permissions><copyright-statement/></permissions>
+      <self-uri xlink:href="href" content-type="type"/>
+      <self-uri xlink:href="href" content-type="pdf"/>
+      <article-id pub-id-type="doi">doi</article-id>
+      <article-id pub-id-type="pii">pii</article-id>
+      <article-citation/>
+      <kwd-group/>
+      <custom-meta-group>
+          <custom-meta specific-use='communicated-by'>
+            <meta-name>meta-name</meta-name>
+            <meta-value>meta-value</meta-value>
+          </custom-meta>
+      </custom-meta-group>
+        <title-group>
+            <article-title>article-title</article-title>
+        </title-group>
+        <volume>volume</volume>
+        <issue>issue</issue>
+        <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2014-11-21">
+            <day>21</day>
+            <month>11</month>
+            <year>2014</year>
+        </pub-date>
+        <history>
+            <date date-type="received" iso-8601-date="2013-12-16">
+            <day>16</day>
+            <month>12</month>
+            <year>2013</year>
+            </date>
+            <date date-type="rev-recd" iso-8601-date="2014-06-12">
+            <day>12</day>
+            <month>6</month>
+            <year>2014</year>
+            </date>
+        </history>
+        <volume>1</volume>
+        <issue>11</issue>
+        <article-id pub-id-type="doi">doi</article-id>
+        <article-id pub-id-type="pii">pii</article-id>
+        <abstract/>
+      </article-meta>
+      <journal-meta>
+          <journal-title-group>
+              <journal-title>journal-title</journal-title>
+              <abbrev-journal-title>abbrev-journal-title</abbrev-journal-title>
+              <issn publication-format="print">print</issn>
+              <issn publication-format="electronic">electronic</issn>
+          </journal-title-group>
+          <publisher>
+              <publisher-name>publisher-name</publisher-name>
+              <publisher-loc>publisher-loc</publisher-loc>
+          </publisher>
+          <self-uri xlink:href=""/>
+      </journal-meta>
+      <notes notes-type="dedication"/>
+  </front>
+  <body>
+      <sec id="sec" disp-level="1" specific-use="section"/>
+  </body>
 </article>
