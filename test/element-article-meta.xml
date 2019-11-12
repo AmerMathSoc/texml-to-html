@@ -82,7 +82,7 @@
               <publisher-name>publisher-name</publisher-name>
               <publisher-loc>publisher-loc</publisher-loc>
           </publisher>
-          <self-uri xlink:href=""/>
+          <self-uri xlink:href="href"/>
       </journal-meta>
       <notes notes-type="dedication"/>
   </front>

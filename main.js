@@ -316,17 +316,18 @@ elementProcessor = {
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
     // TODO refactor into methods (cf. journal/article-meta handling in titlepage)
-    dd.appendChild(createNode(htmldoc, 'a', xmlnode.querySelector('journal-title-group>journal-title').textContent, {href: xmlnode.querySelector('self-uri').getAttribute('href')}));
+    dd.appendChild(createNode(htmldoc, 'a', xmlnode.querySelector('journal-title-group>journal-title').textContent, {href: xmlnode.querySelector('self-uri').getAttribute('xlink:href')}));
     dd.appendChild(htmldoc.createTextNode(', '));
     dd.appendChild(createNode(htmldoc, 'span', `Volume ${xmlnode.parentNode.querySelector('article-meta>volume').textContent}`))
     dd.appendChild(htmldoc.createTextNode(', '));
     dd.appendChild(createNode(htmldoc, 'span', `Issue ${xmlnode.parentNode.querySelector('article-meta>issue').textContent}`))
+    dd.appendChild(htmldoc.createTextNode(', ISSN '));
+    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('journal-title-group>issn').textContent}`));
+    dd.appendChild(htmldoc.createTextNode(', published by the '));
+    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('publisher>publisher-name').textContent}`));
     dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `ISSN ${xmlnode.querySelector('journal-title-group>issn').textContent}`))    // NOTE minimal change to xslt (text was outside the span);
-    dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `, published by the ${xmlnode.querySelector('publisher>publisher-name').textContent}`))    // NOTE minimal change to xslt (text was outside the span);
-    dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `ISSN ${xmlnode.querySelector('publisher>publisher-loc').textContent}`))
+    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('publisher>publisher-loc').textContent}`))
+    dd.appendChild(htmldoc.createTextNode('.'));
   },
   'pub-date': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Publication History'));
@@ -351,7 +352,7 @@ elementProcessor = {
     htmlParentNode.appendChild(li);
     const contentType = xmlnode.getAttribute('content-type') || '';
     const suffix = contentType === 'pdf' ? ' (PDF)' : '';
-    const a = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('href') , 'data-ams-doc': contentType});
+    const a = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-doc': contentType});
     li.appendChild(a);
   },
   'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
