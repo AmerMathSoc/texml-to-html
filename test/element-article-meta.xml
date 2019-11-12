@@ -2,7 +2,7 @@
   <front>
       <article-meta>
          <ams-meta-group>
-              <msc scheme="">
+              <msc scheme="scheme">
                   <primary>
                       <key>key1</key>
                       <description>desc1</description>

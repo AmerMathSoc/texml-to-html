@@ -74,7 +74,7 @@ const getClosestLevel = htmlParentNode => {
   else return null;
 };
 
-elementProcessor = {
+const elementProcessor = {
   preface: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const preface = createNode(htmldoc, 'section', '', { role: 'doc-preface' });
     htmlParentNode.appendChild(preface);
@@ -341,6 +341,25 @@ elementProcessor = {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', `MSC ${xmlnode.querySelector('msc[scheme]').getAttribute('scheme')}`));
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   },
+  'msc': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `MSC ${xmlnode.getAttribute('scheme')}`));
+    // NOTE if msc is present, there must be primary's and there may be secondary's
+    const primaryDD = createNode(htmldoc, 'dd', 'Primary: ');
+    htmlParentNode.appendChild(primaryDD);
+    xmlnode.querySelectorAll('primary').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, primaryDD));
+    if (!xmlnode.querySelector('secondary')) return;
+    const secondaryDD = createNode(htmldoc, 'dd', 'Secondary: ');
+    htmlParentNode.appendChild(secondaryDD);
+    xmlnode.querySelectorAll('secondary').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, secondaryDD));
+  },
+  'primary': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const key = xmlnode.querySelector('key').textContent;
+    const description = xmlnode.querySelector('description').textContent;
+    const anchor = createNode(htmldoc, 'a', `${key} (${description})`, { href: `http://www.ams.org/msc/msc2010.html?t=${key}`} )
+    htmlParentNode.appendChild(anchor);
+    const text = xmlnode.nextElementSibling  && xmlnode.nextElementSibling.tagName === xmlnode.tagName ? ', ' : '\n'
+    htmlParentNode.appendChild(htmldoc.createTextNode(text));
+  },
   'kwd-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Keywords'));
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
@@ -453,6 +472,8 @@ elementProcessor = {
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
 };
+
+elementProcessor['secondary'] = elementProcessor['primary'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
