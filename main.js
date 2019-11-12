@@ -397,11 +397,13 @@ elementProcessor = {
     if (rev) {
       const revtime = rev.getAttribute('iso-8601-date');
       // TODO should be a time element like the others
-      dd.appendChild(htmldoc.createTextNode(`, revised on ${revtime}`));
+      dd.appendChild(htmldoc.createTextNode(`,\u00A0revised on `));
+      dd.appendChild(createNode(htmldoc, 'time', revtime , {datetime: revtime}));
     }
-    dd.appendChild(htmldoc.createTextNode(' and published on'));
+    dd.appendChild(htmldoc.createTextNode(',  and published on '));
     const pubtime = xmlnode.getAttribute('iso-8601-date');
     dd.appendChild(createNode(htmldoc, 'time', pubtime , {datetime: pubtime}));
+    dd.appendChild(htmldoc.createTextNode('.'));
   },
   'self-uri': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const li = createNode(htmldoc, 'li');
