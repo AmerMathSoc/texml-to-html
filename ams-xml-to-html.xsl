@@ -300,7 +300,7 @@
 <!-- GROUP -->
 
 <!-- TODO match="contrib" should be ok -->
-<!-- NOTE in JS, contrib will take over creating the wrapping dd as well as creating the xref (so as to avoid another case in xref handling) -->
+<!-- NOTE in JS, contrib will take over creating the wrapping dd -->
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
@@ -331,7 +331,7 @@
 
 <!-- GROUP -->
 
-<!-- NOTE in JS: redundant (cf contrib above) -->
+<!-- NOTE in JS: folded into xref method-->
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd>
   <xsl:variable name="link" select="./@rid" />
@@ -348,6 +348,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: replace apply-templates with text() since the href assumes this already-->
 <xsl:template match="email">
   <a href="mailto://{text()}">
     <xsl:apply-templates/>

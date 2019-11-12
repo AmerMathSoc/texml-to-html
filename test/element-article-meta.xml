@@ -22,10 +22,37 @@
               </msc>
           </ams-meta-group>
        <contrib-group content-type="contribAs">
-          <contrib content-type="contribA"/>
+          <contrib contrib-type="contribA">
+            <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+            <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+            <name name-style="western">
+                <surname>Sur</surname>
+                <given-names>Given</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff"/>
+            <email>email</email>
+            <uri>uri</uri>
+          </contrib>
+          <aff id="aff">aff</aff>
+          <author-comment>comment</author-comment>
        </contrib-group>
        <contrib-group content-type="contribBs">
-          <contrib content-type="contribB"/>
+          <contrib contrib-type="contribB">
+            <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+            <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+            <name name-style="western">
+                <surname>Sur</surname>
+                <given-names>Given</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1"/>
+            <xref ref-type="aff" rid="aff2"/>
+            <email>address1</email>
+            <email>address2</email>
+            <uri>uri</uri>
+          </contrib>
+          <aff id="aff1" specific-use="current">Aff1</aff>
+          <aff id="aff2">Aff2</aff>
+          <author-comment>comment</author-comment>
        </contrib-group>
       <funding-group>
           <funding-statement/>

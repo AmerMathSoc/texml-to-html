@@ -142,13 +142,69 @@ elementProcessor = {
     // if book-meta or article-meta
     let contentType = xmlnode.getAttribute('content-type');
     contentType = contentType[0].toUpperCase() + contentType.substring(1, contentType.length-1);
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `${contentType} Information`,  { 'data-ams-doc-contrib': `${contentType}`}));
+    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `${contentType} Information`));
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   },
   'contrib': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const contentType = xmlnode.getAttribute('content-type');
-    htmlParentNode.appendChild(createNode(htmldoc, 'dd', `${contentType} Information`, { 'data-ams-doc-contrib': `${contentType}s`}));
+    const contentType = xmlnode.getAttribute('contrib-type');
+    const dd = createNode(htmldoc, 'dd', '', { 'data-ams-doc-contrib': `${contentType}s`});
+    // NOTE (from xslt): author-comment needs to fit in a sentence
+    // TODO (from xslt): this looks very hacky; should only apply to articles (thus should test for it).
+    const authorComment = xmlnode.parentNode.querySelector('author-comment');
+    if (authorComment) dd.setAttribute('data-ams-doc-contrib-comment', authorComment.textContent);
+    htmlParentNode.appendChild(dd);
+
+    const dl = createNode(htmldoc, 'dl', '', { 'data-ams-doc-contrib': contentType});
+    dd.appendChild(dl);
+    // TODO could be a name etc method
+    dl.appendChild(createNode(htmldoc, 'dt', `${xmlnode.querySelector('name>given-names').textContent}\u00A0${xmlnode.querySelector('name>surname').textContent}`, { 'data-ams-doc-contrib': `${contentType} name`}));
+
+    xmlnode
+    .querySelectorAll('xref[ref-type="aff"]')
+    .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+
+    if (xmlnode.querySelector('email')){
+      const dd = createNode(htmldoc, 'dd');
+      dl.appendChild(dd);
+      xmlnode.querySelectorAll('email').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dd));
+    }
+
+    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('uri'));
+    xmlnode.querySelectorAll('contrib-id').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
+  email: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const text = xmlnode.textContent;
+    htmlParentNode.appendChild(createNode(htmldoc, 'a', text , { href: `mailto://${text}`}))
+    if (xmlnode.nextElementSibling.tagName === 'email') htmlParentNode.appendChild(htmldoc.createTextNode(', '));
+  },
+  xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO many more cases to cover later
+    // case contrib/xref[ref-type="aff"]
+    if (xmlnode.getAttribute('ref-type') === 'aff'){
+      const dd = createNode(htmldoc, 'dd');
+      htmlParentNode.appendChild(dd);
+      const rid = xmlnode.getAttribute('rid');
+      const aff = xmldoc.getElementById(rid);
+      if (aff.getAttribute('specific-use') === 'current') {
+        dd.appendChild(createNode(htmldoc, 'span', 'Address at time of publication: '));
+      }
+      passThrough(xmldoc, htmldoc, dd, aff);
+    }
+  },
+  uri: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+      const dd = createNode(htmldoc, 'dd');
+      htmlParentNode.appendChild(dd);
+      dd.appendChild(createNode(htmldoc, 'a', 'Homepage', {href: xmlnode.textContent}))
+  },
+  'contrib-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    const format = xmlnode.getAttribute('contrib-id-type');
+    let text = 'Unknown Type';
+    if( format === 'orcid') text = 'ORCID'
+    else if ( format === 'mrauth') text = 'MathSciNet';
+    dd.appendChild(createNode(htmldoc, 'a', text, {href: xmlnode.textContent}))
+},
   publisher: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // only used in books
     const dd = createNode(htmldoc, 'dd', '', {
@@ -352,8 +408,8 @@ elementProcessor = {
     htmlParentNode.appendChild(li);
     const contentType = xmlnode.getAttribute('content-type') || '';
     const suffix = contentType === 'pdf' ? ' (PDF)' : '';
-    const a = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-doc': contentType});
-    li.appendChild(a);
+    const anchor = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-doc': contentType});
+    li.appendChild(anchor);
   },
   'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const idType = xmlnode.getAttribute('pub-id-type');
