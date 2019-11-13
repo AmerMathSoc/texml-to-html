@@ -100,7 +100,9 @@
             <article-id pub-id-type="doi">doi</article-id>
             <article-id pub-id-type="pii">pii</article-id>
             <article-id pub-id-type="mr">mr</article-id>
-            <abstract/>
+            <abstract>
+                <title>Abstract</title>
+            </abstract>
         </article-meta>
         <journal-meta>
             <journal-title-group>
