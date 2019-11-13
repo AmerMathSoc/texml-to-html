@@ -63,8 +63,11 @@ const setHead = (xmldoc, htmldoc) => {
   viewportmeta.setAttribute('content', 'width=device-width');
   htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
   // set title
-  const xmlTitle = xmldoc.querySelector('front>article-meta>title-group>alt-title') || xmldoc.querySelector('book-meta>book-title-group>book-title, front>article-meta>title-group>article-title'
-  );
+  const xmlTitle =
+    xmldoc.querySelector('front>article-meta>title-group>alt-title') ||
+    xmldoc.querySelector(
+      'book-meta>book-title-group>book-title, front>article-meta>title-group>article-title'
+    );
   htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
 };
 
@@ -141,70 +144,104 @@ const elementProcessor = {
     // TODO handle sec-meta/contrib-group
     // if book-meta or article-meta
     let contentType = xmlnode.getAttribute('content-type');
-    contentType = contentType[0].toUpperCase() + contentType.substring(1, contentType.length-1);
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `${contentType} Information`));
+    contentType =
+      contentType[0].toUpperCase() +
+      contentType.substring(1, contentType.length - 1);
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'dt', `${contentType} Information`)
+    );
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   },
-  'contrib': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  contrib: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const contentType = xmlnode.getAttribute('contrib-type');
-    const dd = createNode(htmldoc, 'dd', '', { 'data-ams-doc-contrib': `${contentType}s`});
+    const dd = createNode(htmldoc, 'dd', '', {
+      'data-ams-doc-contrib': `${contentType}s`
+    });
     // NOTE (from xslt): author-comment needs to fit in a sentence
     // TODO (from xslt): this looks very hacky; should only apply to articles (thus should test for it).
     const authorComment = xmlnode.parentNode.querySelector('author-comment');
-    if (authorComment) dd.setAttribute('data-ams-doc-contrib-comment', authorComment.textContent);
+    if (authorComment)
+      dd.setAttribute(
+        'data-ams-doc-contrib-comment',
+        authorComment.textContent
+      );
     htmlParentNode.appendChild(dd);
 
-    const dl = createNode(htmldoc, 'dl', '', { 'data-ams-doc-contrib': contentType});
+    const dl = createNode(htmldoc, 'dl', '', {
+      'data-ams-doc-contrib': contentType
+    });
     dd.appendChild(dl);
     // TODO could be a name etc method
-    dl.appendChild(createNode(htmldoc, 'dt', `${xmlnode.querySelector('name>given-names').textContent}\u00A0${xmlnode.querySelector('name>surname').textContent}`, { 'data-ams-doc-contrib': `${contentType} name`}));
+    dl.appendChild(
+      createNode(
+        htmldoc,
+        'dt',
+        `${xmlnode.querySelector('name>given-names').textContent}\u00A0${
+          xmlnode.querySelector('name>surname').textContent
+        }`,
+        { 'data-ams-doc-contrib': `${contentType} name` }
+      )
+    );
 
     xmlnode
-    .querySelectorAll('xref[ref-type="aff"]')
-    .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+      .querySelectorAll('xref[ref-type="aff"]')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
 
-    if (xmlnode.querySelector('email')){
+    if (xmlnode.querySelector('email')) {
       const dd = createNode(htmldoc, 'dd');
       dl.appendChild(dd);
-      xmlnode.querySelectorAll('email').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dd));
+      xmlnode
+        .querySelectorAll('email')
+        .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dd));
     }
 
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('uri'));
-    xmlnode.querySelectorAll('contrib-id').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+    xmlnode
+      .querySelectorAll('contrib-id')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
   email: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const text = xmlnode.textContent;
-    htmlParentNode.appendChild(createNode(htmldoc, 'a', text , { href: `mailto://${text}`}))
-    if (xmlnode.nextElementSibling.tagName === 'email') htmlParentNode.appendChild(htmldoc.createTextNode(', '));
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'a', text, { href: `mailto://${text}` })
+    );
+    if (xmlnode.nextElementSibling.tagName === 'email')
+      htmlParentNode.appendChild(htmldoc.createTextNode(', '));
   },
   xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // TODO many more cases to cover later
     // case contrib/xref[ref-type="aff"]
-    if (xmlnode.getAttribute('ref-type') === 'aff'){
+    if (xmlnode.getAttribute('ref-type') === 'aff') {
       const dd = createNode(htmldoc, 'dd');
       htmlParentNode.appendChild(dd);
       const rid = xmlnode.getAttribute('rid');
       const aff = xmldoc.getElementById(rid);
       if (aff.getAttribute('specific-use') === 'current') {
-        dd.appendChild(createNode(htmldoc, 'span', 'Address at time of publication: '));
+        dd.appendChild(
+          createNode(htmldoc, 'span', 'Address at time of publication: ')
+        );
       }
       passThrough(xmldoc, htmldoc, dd, aff);
     }
   },
   uri: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-      const dd = createNode(htmldoc, 'dd');
-      htmlParentNode.appendChild(dd);
-      dd.appendChild(createNode(htmldoc, 'a', 'Homepage', {href: xmlnode.textContent}))
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    dd.appendChild(
+      createNode(htmldoc, 'a', 'Homepage', { href: xmlnode.textContent })
+    );
   },
   'contrib-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
     const format = xmlnode.getAttribute('contrib-id-type');
     let text = 'Unknown Type';
-    if( format === 'orcid') text = 'ORCID'
-    else if ( format === 'mrauth') text = 'MathSciNet';
-    dd.appendChild(createNode(htmldoc, 'a', text, {href: xmlnode.textContent}))
-},
+    if (format === 'orcid') text = 'ORCID';
+    else if (format === 'mrauth') text = 'MathSciNet';
+    dd.appendChild(
+      createNode(htmldoc, 'a', text, { href: xmlnode.textContent })
+    );
+  },
   publisher: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // only used in books
     const dd = createNode(htmldoc, 'dd', '', {
@@ -251,7 +288,7 @@ const elementProcessor = {
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
     // if book
-    if (isBook){
+    if (isBook) {
       const p = createNode(htmldoc, 'p', '', {
         'data-ams-doc': 'book copyright'
       });
@@ -260,58 +297,143 @@ const elementProcessor = {
       return;
     }
     // if article
-      htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Copyright Information'));
-      const dd = createNode(htmldoc, 'dd', '', {'data-ams-doc': 'copyright'});
-      htmlParentNode.appendChild(dd);
-      passThrough(xmldoc, htmldoc, dd, xmlnode);
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'dt', 'Copyright Information')
+    );
+    const dd = createNode(htmldoc, 'dd', '', { 'data-ams-doc': 'copyright' });
+    htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
-  article:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc': 'titlepage'});
+  article: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc': 'titlepage'
+    });
     htmlParentNode.appendChild(section);
 
     const header = createNode(htmldoc, 'header');
     section.appendChild(header);
 
-    const journalInfo = createNode(htmldoc, 'aside', '', { 'data-ams-doc': 'journal'});
+    const journalInfo = createNode(htmldoc, 'aside', '', {
+      'data-ams-doc': 'journal'
+    });
     header.appendChild(journalInfo);
     // TODO journal information seems to get removed in ams-html. Drop it here and update ams-html.
-    const journalTitle = createNode(htmldoc, 'p', xmldoc.querySelector('front>journal-meta>journal-title-group>journal-title').textContent, { 'data-ams-doc': 'journal title'}); // NOTE no recursion (matches xslt)
+    const journalTitle = createNode(
+      htmldoc,
+      'p',
+      xmldoc.querySelector(
+        'front>journal-meta>journal-title-group>journal-title'
+      ).textContent,
+      { 'data-ams-doc': 'journal title' }
+    ); // NOTE no recursion (matches xslt)
     journalInfo.appendChild(journalTitle);
-    const journalLocation = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'journal location'});
+    const journalLocation = createNode(htmldoc, 'p', '', {
+      'data-ams-doc': 'journal location'
+    });
     journalInfo.appendChild(journalLocation);
-    journalLocation.appendChild(createNode(htmldoc, 'span', `Volume ${xmldoc.querySelector('front>article-meta>volume').textContent}, `, { 'data-ams-doc': 'journal volume'}));
+    journalLocation.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `Volume ${
+          xmldoc.querySelector('front>article-meta>volume').textContent
+        }, `,
+        { 'data-ams-doc': 'journal volume' }
+      )
+    );
     journalLocation.appendChild(htmldoc.createTextNode(', '));
-    journalLocation.appendChild(createNode(htmldoc, 'span', `Issue ${xmldoc.querySelector('front>article-meta>issue').textContent}`, { 'data-ams-doc': 'journal issue'}));
-    journalLocation.appendChild(createNode(htmldoc, 'span', `(${xmldoc.querySelector('front>article-meta>pub-date[iso-8601-date]').getAttribute('iso-8601-date')})`, { 'data-ams-doc': 'journal date'}));
+    journalLocation.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `Issue ${xmldoc.querySelector('front>article-meta>issue').textContent}`,
+        { 'data-ams-doc': 'journal issue' }
+      )
+    );
+    journalLocation.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `(${xmldoc
+          .querySelector('front>article-meta>pub-date[iso-8601-date]')
+          .getAttribute('iso-8601-date')})`,
+        { 'data-ams-doc': 'journal date' }
+      )
+    );
 
-    const journalPii = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'journal pii'});
+    const journalPii = createNode(htmldoc, 'p', '', {
+      'data-ams-doc': 'journal pii'
+    });
     journalInfo.appendChild(journalPii);
-    journalPii.appendChild(createNode(htmldoc, 'a', xmldoc.querySelector('front>article-meta>article-id[pub-id-type="pii"]').textContent, { 'href': `https://doi.org/${xmldoc.querySelector('front>article-meta>article-id[pub-id-type="doi"]').textContent}`}));
+    journalPii.appendChild(
+      createNode(
+        htmldoc,
+        'a',
+        xmldoc.querySelector('front>article-meta>article-id[pub-id-type="pii"]')
+          .textContent,
+        {
+          href: `https://doi.org/${
+            xmldoc.querySelector(
+              'front>article-meta>article-id[pub-id-type="doi"]'
+            ).textContent
+          }`
+        }
+      )
+    );
 
-    recurseTheDom(xmldoc, htmldoc, header, xmldoc.querySelector('front>article-meta>title-group>article-title'));
-    recurseTheDom(xmldoc, htmldoc, header, xmldoc.querySelector('front>notes[notes-type="dedication"]'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      header,
+      xmldoc.querySelector('front>article-meta>title-group>article-title')
+    );
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      header,
+      xmldoc.querySelector('front>notes[notes-type="dedication"]')
+    );
 
     // add abstract
-    recurseTheDom(xmldoc, htmldoc, section, xmldoc.querySelector('front>article-meta>abstract'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      section,
+      xmldoc.querySelector('front>article-meta>abstract')
+    );
 
     // add copyright page
-    recurseTheDom(xmldoc,htmldoc, htmlParentNode, xmldoc.querySelector('front>article-meta'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      htmlParentNode,
+      xmldoc.querySelector('front>article-meta')
+    );
 
     // the article wrapper
-    const artSection = createNode(htmldoc, 'section', '', { 'data-ams-doc': 'article'});
+    const artSection = createNode(htmldoc, 'section', '', {
+      'data-ams-doc': 'article'
+    });
     htmlParentNode.appendChild(artSection);
     // heading (again) TODO[postrelease] ams-html replaces this heading with the titlepage; after release, drop this heading and update ams-html
-    recurseTheDom(xmldoc, htmldoc, artSection, xmldoc.querySelector('front>article-meta>title-group>article-title'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      artSection,
+      xmldoc.querySelector('front>article-meta>title-group>article-title')
+    );
     // recurse throught the article content
     passThrough(xmldoc, htmldoc, artSection, xmlnode);
   },
-  'article-title':   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  'article-title': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const h1 = createNode(htmldoc, 'h1');
     htmlParentNode.appendChild(h1);
     passThrough(xmldoc, htmldoc, h1, xmlnode);
   },
-  'article-meta':   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const section = createNode(htmldoc, 'section', '', {'data-ams-doc': 'copyright-page'});
+  'article-meta': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc': 'copyright-page'
+    });
     htmlParentNode.appendChild(section);
     const h2 = createNode(htmldoc, 'h2', 'Article Information');
     section.appendChild(h2);
@@ -320,50 +442,90 @@ const elementProcessor = {
 
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('ams-meta-group'));
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('kwd-group'));
-    xmlnode.querySelectorAll('contrib-group').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
+    xmlnode
+      .querySelectorAll('contrib-group')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('funding-group'));
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('custom-meta'));
-    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.parentNode.querySelector('journal-meta'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      dl,
+      xmlnode.parentNode.querySelector('journal-meta')
+    );
     recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('pub-date'));
-    recurseTheDom(xmldoc, htmldoc, dl, xmlnode.querySelector('copyright-statement'));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      dl,
+      xmlnode.querySelector('copyright-statement')
+    );
 
     dl.appendChild(createNode(htmldoc, 'dt', 'Article References'));
     const artRefDD = createNode(htmldoc, 'dd');
     dl.appendChild(artRefDD);
     const artRefUL = createNode(htmldoc, 'ul');
     artRefDD.appendChild(artRefUL);
-    xmlnode.querySelectorAll('self-uri').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, artRefUL));
-    recurseTheDom(xmldoc, htmldoc, artRefUL, xmlnode.querySelector('article-id'));
-    recurseTheDom(xmldoc, htmldoc, artRefUL, xmlnode.querySelector('article-citation'));
-
+    xmlnode
+      .querySelectorAll('self-uri')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, artRefUL));
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      artRefUL,
+      xmlnode.querySelector('article-id')
+    );
+    recurseTheDom(
+      xmldoc,
+      htmldoc,
+      artRefUL,
+      xmlnode.querySelector('article-citation')
+    );
   },
   'ams-meta-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `MSC ${xmlnode.querySelector('msc[scheme]').getAttribute('scheme')}`));
+    htmlParentNode.appendChild(
+      createNode(
+        htmldoc,
+        'dt',
+        `MSC ${xmlnode.querySelector('msc[scheme]').getAttribute('scheme')}`
+      )
+    );
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   },
-  'msc': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', `MSC ${xmlnode.getAttribute('scheme')}`));
+  msc: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'dt', `MSC ${xmlnode.getAttribute('scheme')}`)
+    );
     // NOTE if msc is present, there must be primary's and there may be secondary's
     const primaryDD = createNode(htmldoc, 'dd', 'Primary: ');
     htmlParentNode.appendChild(primaryDD);
-    xmlnode.querySelectorAll('primary').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, primaryDD));
+    xmlnode
+      .querySelectorAll('primary')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, primaryDD));
     if (!xmlnode.querySelector('secondary')) return;
     const secondaryDD = createNode(htmldoc, 'dd', 'Secondary: ');
     htmlParentNode.appendChild(secondaryDD);
-    xmlnode.querySelectorAll('secondary').forEach(recurseTheDom.bind(null,xmldoc, htmldoc, secondaryDD));
+    xmlnode
+      .querySelectorAll('secondary')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, secondaryDD));
   },
-  'primary': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  primary: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const key = xmlnode.querySelector('key').textContent;
     const description = xmlnode.querySelector('description').textContent;
-    const anchor = createNode(htmldoc, 'a', `${key} (${description})`, { href: `http://www.ams.org/msc/msc2010.html?t=${key}`} )
+    const anchor = createNode(htmldoc, 'a', `${key} (${description})`, {
+      href: `http://www.ams.org/msc/msc2010.html?t=${key}`
+    });
     htmlParentNode.appendChild(anchor);
-    const text = xmlnode.nextElementSibling  && xmlnode.nextElementSibling.tagName === xmlnode.tagName ? ', ' : '\n'
+    const text =
+      xmlnode.nextElementSibling &&
+      xmlnode.nextElementSibling.tagName === xmlnode.tagName
+        ? ', '
+        : '\n';
     htmlParentNode.appendChild(htmldoc.createTextNode(text));
   },
   'kwd-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Keywords'));
     passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
-
   },
   'funding-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Additional Notes'));
@@ -389,41 +551,92 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
   'journal-meta': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Journal Information'));
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'dt', 'Journal Information')
+    );
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
     // TODO refactor into methods (cf. journal/article-meta handling in titlepage)
-    dd.appendChild(createNode(htmldoc, 'a', xmlnode.querySelector('journal-title-group>journal-title').textContent, {href: xmlnode.querySelector('self-uri').getAttribute('xlink:href')}));
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'a',
+        xmlnode.querySelector('journal-title-group>journal-title').textContent,
+        { href: xmlnode.querySelector('self-uri').getAttribute('xlink:href') }
+      )
+    );
     dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `Volume ${xmlnode.parentNode.querySelector('article-meta>volume').textContent}`))
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `Volume ${
+          xmlnode.parentNode.querySelector('article-meta>volume').textContent
+        }`
+      )
+    );
     dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `Issue ${xmlnode.parentNode.querySelector('article-meta>issue').textContent}`))
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `Issue ${
+          xmlnode.parentNode.querySelector('article-meta>issue').textContent
+        }`
+      )
+    );
     dd.appendChild(htmldoc.createTextNode(', ISSN '));
-    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('journal-title-group>issn').textContent}`));
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `${xmlnode.querySelector('journal-title-group>issn').textContent}`
+      )
+    );
     dd.appendChild(htmldoc.createTextNode(', published by the '));
-    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('publisher>publisher-name').textContent}`));
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `${xmlnode.querySelector('publisher>publisher-name').textContent}`
+      )
+    );
     dd.appendChild(htmldoc.createTextNode(', '));
-    dd.appendChild(createNode(htmldoc, 'span', `${xmlnode.querySelector('publisher>publisher-loc').textContent}`))
+    dd.appendChild(
+      createNode(
+        htmldoc,
+        'span',
+        `${xmlnode.querySelector('publisher>publisher-loc').textContent}`
+      )
+    );
     dd.appendChild(htmldoc.createTextNode('.'));
   },
   'pub-date': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Publication History'));
+    htmlParentNode.appendChild(
+      createNode(htmldoc, 'dt', 'Publication History')
+    );
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
     // TODO refactor into methods? (cf. journal-meta)
     dd.appendChild(htmldoc.createTextNode('This article was received on '));
-    const rectime = xmlnode.parentNode.querySelector('history>date[date-type="received"]').getAttribute('iso-8601-date');
-    dd.appendChild(createNode(htmldoc, 'time', rectime , {datetime: rectime}));
-    const rev = xmlnode.parentNode.querySelector('history>date[date-type="rev-recd"]')
+    const rectime = xmlnode.parentNode
+      .querySelector('history>date[date-type="received"]')
+      .getAttribute('iso-8601-date');
+    dd.appendChild(createNode(htmldoc, 'time', rectime, { datetime: rectime }));
+    const rev = xmlnode.parentNode.querySelector(
+      'history>date[date-type="rev-recd"]'
+    );
     if (rev) {
       const revtime = rev.getAttribute('iso-8601-date');
       // TODO should be a time element like the others
       dd.appendChild(htmldoc.createTextNode(`,\u00A0revised on `));
-      dd.appendChild(createNode(htmldoc, 'time', revtime , {datetime: revtime}));
+      dd.appendChild(
+        createNode(htmldoc, 'time', revtime, { datetime: revtime })
+      );
     }
     dd.appendChild(htmldoc.createTextNode(',  and published on '));
     const pubtime = xmlnode.getAttribute('iso-8601-date');
-    dd.appendChild(createNode(htmldoc, 'time', pubtime , {datetime: pubtime}));
+    dd.appendChild(createNode(htmldoc, 'time', pubtime, { datetime: pubtime }));
     dd.appendChild(htmldoc.createTextNode('.'));
   },
   'self-uri': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
@@ -431,48 +644,66 @@ const elementProcessor = {
     htmlParentNode.appendChild(li);
     const contentType = xmlnode.getAttribute('content-type') || '';
     const suffix = contentType === 'pdf' ? ' (PDF)' : '';
-    const anchor = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-ref': contentType});
+    const anchor = createNode(htmldoc, 'a', `Permalink${suffix}`, {
+      href: xmlnode.getAttribute('xlink:href'),
+      'data-ams-ref': contentType
+    });
     li.appendChild(anchor);
   },
   'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const idType = xmlnode.getAttribute('pub-id-type');
     if (idType !== 'doi' && IdType !== 'mr') return; // NOTE publications only use those 2 values right now
-    const isDOI =  idType === 'doi';
+    const isDOI = idType === 'doi';
     const litext = isDOI ? 'DOI ' : '';
     const li = createNode(htmldoc, 'li', litext);
     htmlParentNode.appendChild(li);
     const xmltext = xmlnode.textContent;
-    const url = isDOI ? 'https://doi.org/' + xmltext : 'http://www.ams.org/mathscinet-getitem?mr=' + xmltext;
-    li.appendChild(createNode(htmldoc, 'a', isDOI ? xmltext : 'MathSciNet Review', { href: url}));
+    const url = isDOI
+      ? 'https://doi.org/' + xmltext
+      : 'http://www.ams.org/mathscinet-getitem?mr=' + xmltext;
+    li.appendChild(
+      createNode(htmldoc, 'a', isDOI ? xmltext : 'MathSciNet Review', {
+        href: url
+      })
+    );
   },
   'article-citation': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const li = createNode(htmldoc, 'li');
     htmlParentNode.appendChild(li);
-    const code = createNode(htmldoc, 'code', xmlnode.textContent, {'data-ams-doc': 'amsref'});
+    const code = createNode(htmldoc, 'code', xmlnode.textContent, {
+      'data-ams-doc': 'amsref'
+    });
     li.appendChild(code);
-
   },
-  'notes': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  notes: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // so far, we only have one type
     if (xmlnode.getAttribute('notes-type') !== 'dedication') return;
-    const div = createNode(htmldoc, 'div', '', {role: 'doc-dedication'});
+    const div = createNode(htmldoc, 'div', '', { role: 'doc-dedication' });
     htmlParentNode.appendChild(div);
     passThrough(xmldoc, htmldoc, div, xmlnode);
   },
-  abstract:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  abstract: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const level = getClosestLevel(htmlParentNode) || '2'; // NOTE in articles, we don't have a disp-level in the XML; also NOTE that this is a change from xslt which erroneously had hardcoded 1 but abstract/title still got an h2
-    const section = createNode(htmldoc, 'section', '', {'data-ams-doc-level': level, role: 'doc-abstract'});
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc-level': level,
+      role: 'doc-abstract'
+    });
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
-  sec:   (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = getClosestLevel(htmlParentNode) || xmlnode.closest('[disp-level]').getAttribute('disp-level');
-    const section = createNode(htmldoc, 'section', '', {'data-ams-doc-level': level, 'data-ams-doc': xmlnode.getAttribute('specific-use')});
+  sec: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const level =
+      getClosestLevel(htmlParentNode) ||
+      xmlnode.closest('[disp-level]').getAttribute('disp-level');
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc-level': level,
+      'data-ams-doc': xmlnode.getAttribute('specific-use')
+    });
     // mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
-  },
+  }
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];
