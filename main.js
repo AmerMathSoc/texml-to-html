@@ -700,7 +700,12 @@ const elementProcessor = {
     // mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
-  }
+  },
+  'styled-content':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', {'data-ams-style': xmlnode.getAttribute('style-type')});
+    htmlParentNode.appendChild(span);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];

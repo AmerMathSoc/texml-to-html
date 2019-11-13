@@ -116,6 +116,8 @@
       <notes notes-type="dedication"/>
   </front>
   <body>
-      <sec id="sec" disp-level="1" specific-use="section"/>
+      <sec id="sec" disp-level="1" specific-use="section">
+                <styled-content style-type="type"/>
+      </sec>
   </body>
 </article>
