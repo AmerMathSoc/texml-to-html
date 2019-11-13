@@ -120,6 +120,8 @@
     <body>
         <sec id="sec" disp-level="1" specific-use="section">
             <styled-content style-type="type"/>
+            <italic/>
+            <italic toggle="yes"/>
         </sec>
     </body>
 </article>

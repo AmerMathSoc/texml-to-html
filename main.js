@@ -686,6 +686,12 @@ const elementProcessor = {
     htmlParentNode.appendChild(span);
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
+  'italic':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const tagname = xmlnode.getAttribute('toggle') === 'yes' ? 'em' : 'i';
+    const node = createNode(htmldoc, tagname);
+    htmlParentNode.appendChild(node);
+    passThrough(xmldoc, htmldoc, node, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];
