@@ -24,7 +24,7 @@ const attributeDictionary = {
   'specific-use': 'data-ams-specific-use' // NOTE generic fallback; elementProcessors who do something different should remove the attribute from the xmlnode before calling mapAttributes
 };
 
-mapAttribute = (htmlNode, xmlNode, attributeName) => {
+const mapAttribute = (htmlNode, xmlNode, attributeName) => {
   const attributeValue = xmlNode.getAttribute(attributeName);
   if (!attributeValue) return;
   htmlNode.setAttribute(attributeName, attributeDictionary[attributeValue]);
