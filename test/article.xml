@@ -132,6 +132,12 @@
             <disp-quote specific-use="use">
                 <attrib/>
             </disp-quote>
+            <xref ref-type="type" rid="rid1">ref</xref>
+            <xref ref-type="fn" rid="rid2">ref</xref>
+            <xref ref-type="bibr" rid="rid3">ref</xref>
+            <xref ref-type="bibr" rid="rid4">ref<x>,</x> note</xref>
+            <xref ref-type="type" rid="rid5"><x>Context</x> ref</xref>
+            <xref ref-type="type">ref</xref>
         </sec>
     </body>
 </article>

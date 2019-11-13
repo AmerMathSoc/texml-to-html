@@ -202,7 +202,41 @@ const elementProcessor = {
         );
       }
       passThrough(xmldoc, htmldoc, dd, aff);
+      return;
     }
+    const rid = xmlnode.getAttribute('rid');
+    if (!rid) {
+      const span = createNode(htmldoc, 'span', '', {'data-ams-ref': 'notrid'});
+      htmlParentNode.appendChild(span);
+      passThrough(xmldoc, htmldoc, span, xmlnode);
+      return;
+    }
+    if (xmlnode.parentNode.tagName === 'tex-math') {
+      const text = htmldoc.createTextNode('');
+      // TODO
+      htmlParentNode.appendChild(text)
+      return;
+    }
+    const refType = xmlnode.getAttribute('ref-type');
+    const anchor = createNode(htmldoc, 'a', '', { href: `#${rid}`, 'data-ams-ref': refType});
+    const typeToRole = {
+      fn: 'doc-noteref',
+      bibr: 'doc-biblioref'
+    };
+    if (typeToRole[refType]) anchor.setAttribute('role', typeToRole[refType]);
+    if (refType === 'bibr') {
+      const cite = createNode(htmldoc, 'cite')
+      cite.appendChild(anchor);
+      htmlParentNode.appendChild(cite);
+    }
+    else {
+      htmlParentNode.appendChild(anchor);
+    }
+    passThrough(xmldoc, htmldoc, anchor, xmlnode);
+  },
+  x: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    if (xmlnode.parentNode.tagName !== 'xref') return;
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   },
   uri: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dd = createNode(htmldoc, 'dd');
