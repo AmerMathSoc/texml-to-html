@@ -60,8 +60,6 @@
       <permissions><copyright-statement/></permissions>
       <self-uri xlink:href="href" content-type="type"/>
       <self-uri xlink:href="href" content-type="pdf"/>
-      <article-id pub-id-type="doi">doi</article-id>
-      <article-id pub-id-type="pii">pii</article-id>
       <article-citation/>
       <kwd-group/>
       <custom-meta-group>
@@ -99,6 +97,7 @@
         <issue>11</issue>
         <article-id pub-id-type="doi">doi</article-id>
         <article-id pub-id-type="pii">pii</article-id>
+        <article-id pub-id-type="mr">mr</article-id>
         <abstract/>
       </article-meta>
       <journal-meta>

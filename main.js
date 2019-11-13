@@ -469,12 +469,9 @@ const elementProcessor = {
     xmlnode
       .querySelectorAll('self-uri')
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, artRefUL));
-    recurseTheDom(
-      xmldoc,
-      htmldoc,
-      artRefUL,
-      xmlnode.querySelector('article-id')
-    );
+    xmlnode
+      .querySelectorAll('article-id')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, artRefUL));
     recurseTheDom(
       xmldoc,
       htmldoc,
@@ -652,7 +649,7 @@ const elementProcessor = {
   },
   'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const idType = xmlnode.getAttribute('pub-id-type');
-    if (idType !== 'doi' && IdType !== 'mr') return; // NOTE publications only use those 2 values right now
+    if (idType !== 'doi' && idType !== 'mr') return; // NOTE there's also "pii" but we only use those 2 values right now
     const isDOI = idType === 'doi';
     const litext = isDOI ? 'DOI ' : '';
     const li = createNode(htmldoc, 'li', litext);
