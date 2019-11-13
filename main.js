@@ -459,16 +459,6 @@ const elementProcessor = {
       xmlnode.querySelector('article-citation')
     );
   },
-  'ams-meta-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    htmlParentNode.appendChild(
-      createNode(
-        htmldoc,
-        'dt',
-        `MSC ${xmlnode.querySelector('msc[scheme]').getAttribute('scheme')}`
-      )
-    );
-    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
-  },
   msc: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(
       createNode(htmldoc, 'dt', `MSC ${xmlnode.getAttribute('scheme')}`)
@@ -732,6 +722,7 @@ const passThroughElements = [
   'custom-meta-group',
   'custom-meta',
   'permissions',
+  'ams-meta-group',
   // 'secheading',
   'table-wrap',
   // 'toc-entry/title/xref',
