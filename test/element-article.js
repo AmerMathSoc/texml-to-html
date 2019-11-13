@@ -77,7 +77,7 @@ tape('Template: article', async function(t) {
 
   t.notOk(article.nextElementSibling, 'article last child of body')
 
-  const input2 = path.resolve(__dirname, 'element-article--alttitle.xml');
+  const input2 = path.resolve(__dirname, 'article--alttitle.xml');
   const document2 = await xsltproc(input2);
   t.equal(document2.title, 'alttitle', 'alttitle');
 });
