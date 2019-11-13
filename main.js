@@ -372,7 +372,9 @@ const elementProcessor = {
   'funding-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
-    passThrough(xmldoc, htmldoc, dd, xmlnode);
+    const p = createNode(htmldoc, 'p');
+    dd.appendChild(p);
+    passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'meta-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // NOTE currently, we only have custom-meta[@specific-use='communicated-by']>meta-name; future publications might need more here
