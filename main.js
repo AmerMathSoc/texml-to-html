@@ -687,6 +687,22 @@ const elementProcessor = {
     htmlParentNode.appendChild(node);
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
+  'disp-quote':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const node = createNode(htmldoc, 'blockquote', '', {'data-ams-style': xmlnode.getAttribute('specific-use')});
+    htmlParentNode.appendChild(node);
+    passThrough(xmldoc, htmldoc, node, xmlnode);
+  },
+  attrib:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    let actualParent = htmlParentNode;
+    if (xmlnode.parentNode.tagName === 'disp-quote') {
+      const footer = createNode(htmldoc, 'footer');
+      htmlParentNode.appendChild(footer);
+      actualParent = footer;
+    }
+    const node = createNode(htmldoc, 'span');
+    actualParent.appendChild(node);
+    passThrough(xmldoc, htmldoc, actualParent, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];

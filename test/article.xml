@@ -129,6 +129,9 @@
             <sc/>
             <monospace/>
             <underline/>
+            <disp-quote specific-use="use">
+                <attrib/>
+            </disp-quote>
         </sec>
     </body>
 </article>

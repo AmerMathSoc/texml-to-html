@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('Template: disp-quote, disp-quote/attrib', async function(t) {
   t.plan(2);
-  const input = path.resolve(__dirname, 'element-disp-quote.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   const quote = document.querySelector('blockquote[data-ams-style="use"]');
   t.ok(quote, 'disp-quote with specific-use to blockquote with data-ams-style');
