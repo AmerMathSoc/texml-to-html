@@ -692,6 +692,11 @@ const elementProcessor = {
     htmlParentNode.appendChild(node);
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
+  'bold':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const node = createNode(htmldoc, 'strong');
+    htmlParentNode.appendChild(node);
+    passThrough(xmldoc, htmldoc, node, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];

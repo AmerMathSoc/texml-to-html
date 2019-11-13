@@ -122,6 +122,7 @@
             <styled-content style-type="type"/>
             <italic/>
             <italic toggle="yes"/>
+            <bold/>
         </sec>
     </body>
 </article>
