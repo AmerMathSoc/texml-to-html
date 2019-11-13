@@ -723,7 +723,16 @@ const passThroughElements = [
   'body',
   'description',
   'custom-meta-group',
-  'custom-meta'
+  'custom-meta',
+  'permissions',
+  // 'secheading',
+  'table-wrap',
+  // 'toc-entry/title/xref',
+  'back',
+  'alternatives',
+  'tex-math',
+  'title-group',
+  // 'xref/x'
 ];
 const enablePassThrough = tagname => {
   elementProcessor[tagname] = passThrough;
