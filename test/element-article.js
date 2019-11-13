@@ -4,7 +4,7 @@ const tape = require('tape');
 
 tape('Template: article', async function(t) {
   t.plan(42);
-  const input = path.resolve(__dirname, 'element-article.xml');
+  const input = path.resolve(__dirname, 'element-article-meta.xml');
   const document = await xsltproc(input);
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
@@ -38,7 +38,7 @@ tape('Template: article', async function(t) {
   const jdate = jissue.nextElementSibling;
   t.equal(jdate.tagName, 'SPAN', 'journal date span');
   t.equal(jdate.getAttribute('data-ams-doc'), 'journal date', 'journal date data-ams-doc "journal date"');
-  t.equal(jdate.innerHTML, '(isodate)', 'journal date content from article-meta/pubdate');
+  t.equal(jdate.innerHTML, '(2000-04-13)', 'journal date content from article-meta/pubdate');
   t.notOk(jdate.nextElementSibling, 'journal date last child of journal volume');
 
   const jpii = journalloc.nextElementSibling;
