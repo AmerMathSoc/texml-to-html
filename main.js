@@ -429,7 +429,7 @@ const elementProcessor = {
     htmlParentNode.appendChild(li);
     const contentType = xmlnode.getAttribute('content-type') || '';
     const suffix = contentType === 'pdf' ? ' (PDF)' : '';
-    const anchor = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-doc': contentType});
+    const anchor = createNode(htmldoc, 'a', `Permalink${suffix}`, { href: xmlnode.getAttribute('xlink:href') , 'data-ams-ref': contentType});
     li.appendChild(anchor);
   },
   'article-id': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
