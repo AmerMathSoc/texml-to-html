@@ -701,6 +701,17 @@ const elementProcessor = {
 
 elementProcessor['secondary'] = elementProcessor['primary'];
 
+const tagToDataStyle =  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  const span = createNode(htmldoc, 'span', '', {'data-ams-style': xmlnode.tagName});
+  htmlParentNode.appendChild(span);
+  passThrough(xmldoc, htmldoc, span, xmlnode);
+};
+
+elementProcessor['roman'] = tagToDataStyle;
+elementProcessor['sc'] = tagToDataStyle;
+elementProcessor['monospace'] = tagToDataStyle;
+elementProcessor['underline'] = tagToDataStyle;
+
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   xmlnode.childNodes.forEach(

@@ -123,6 +123,10 @@
             <italic/>
             <italic toggle="yes"/>
             <bold/>
+            <roman/>
+            <sc/>
+            <monospace/>
+            <underline/>
         </sec>
     </body>
 </article>
