@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('Template: funding-group, funding-statement', async function(t) {
   t.plan(3);
-  const input = path.resolve(__dirname, 'element-article-meta.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   let fundinggroup = {};
   document.querySelectorAll('section[data-ams-doc="copyright-page"] dt').forEach ( node => {

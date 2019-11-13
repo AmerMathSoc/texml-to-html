@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('Template: styled-content', async function(t) {
   t.plan(1);
-  const input = path.resolve(__dirname, 'element-article-meta.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.querySelector('span[data-ams-style="type"]'), 'Styled-content as span with data-ams-style');
 });

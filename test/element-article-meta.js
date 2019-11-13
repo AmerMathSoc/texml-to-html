@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('Template: article-meta', async function(t) {
   t.plan(25);
-  const input = path.resolve(__dirname, 'element-article-meta.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   const copyrightpage = document.querySelector('section[data-ams-doc="copyright-page"]');
   t.ok (copyrightpage, 'article-meta creates wrapping section with data-ams-doc=copyright-page');

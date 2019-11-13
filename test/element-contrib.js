@@ -6,7 +6,7 @@ tape('Template: contrib', async function(t) {
   t.plan(9);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const contrib = document.querySelector('dl[data-ams-doc-contrib="contribA"]');

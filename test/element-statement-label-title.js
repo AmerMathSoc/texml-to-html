@@ -6,7 +6,7 @@ tape('Template: statement, label, title', async function(t) {
   t.plan(20);
   const input = path.resolve(
     __dirname,
-    'element-statement-label-title--article.xml'
+    'element-statement-label-title--'article.xml''
   );
   const document = await xsltproc(input);
 

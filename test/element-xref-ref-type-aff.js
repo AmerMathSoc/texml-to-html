@@ -6,7 +6,7 @@ tape('Template: contrib-group/xref@ref-type="aff"', async function(t) {
   t.plan(2);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const link1 = document.querySelector('dt[data-ams-doc-contrib="contribB name"]').nextElementSibling;

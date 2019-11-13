@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
   t.plan(39);
-  const input = path.resolve(__dirname, 'element-sec-app-front-matter-part-dedication-title-label--article.xml');
+  const input = path.resolve(__dirname, 'element-sec-app-front-matter-part-dedication-title-label--'article.xml'');
   const document = await xsltproc(input);
 
   t.equal(document.querySelectorAll('[data-ams-doc-level="1"]').length, 11, 'disp-level attribute to data-ams-doc-level'); //app, dedication don't preserve these (yet) but need it for heading computation

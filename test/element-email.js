@@ -6,7 +6,7 @@ tape('Template: email', async function(t) {
   t.plan(2);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const email = document.querySelector('a[href="mailto://address1"]');

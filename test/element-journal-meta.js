@@ -6,7 +6,7 @@ tape('Template: journal-meta, ...', async function(t) {
   t.plan(1);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   let jmeta = {};

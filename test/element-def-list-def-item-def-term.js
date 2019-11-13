@@ -6,7 +6,7 @@ tape('def-list, def-item, def, term', async function(t) {
   t.plan(6);
   const input = path.resolve(
     __dirname,
-    'element-def-list-def-item-def-term--article.xml'
+    'element-def-list-def-item-def-term--'article.xml''
   );
   const document = await xsltproc(input);
 

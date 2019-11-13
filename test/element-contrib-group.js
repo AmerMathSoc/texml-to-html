@@ -6,7 +6,7 @@ tape('Template: contrib-group', async function(t) {
   t.plan(4);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const contribgroup = document.querySelector('section[data-ams-doc="copyright-page"] dl dd[data-ams-doc-contrib="contribAs"]').previousElementSibling;

@@ -6,7 +6,7 @@ tape('Template: copyright-statement', async function(t) {
   t.plan(3);
   const input = path.resolve(
     __dirname,
-    'element-article-meta.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const article_copyright = document.querySelector(
