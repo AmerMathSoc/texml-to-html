@@ -13,7 +13,7 @@ tape('Template: article-meta', async function(t) {
   const dl = copyrightpage.querySelector('dl');
   t.ok(dl, 'Wrapping dl for metadata');
   const dts = document.querySelectorAll('section[data-ams-doc="copyright-page"]>dl>dt');
-  t.equal(dts[0].innerHTML, 'MSC ', 'dt with "MSC "');
+  t.equal(dts[0].innerHTML, 'MSC scheme', 'dt with "MSC "');
   t.equal(dts[1].innerHTML, 'Keywords', 'dt with "Keywords"');
   t.equal(dts[2].innerHTML, 'ContribA Information', 'contrib group A to dt with generated content');
   t.equal(dts[2].nextElementSibling.tagName, 'DD', 'dt followed by dd');
