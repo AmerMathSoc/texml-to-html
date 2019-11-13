@@ -36,26 +36,6 @@ const mapAttributes = (htmlNode, xmlNode) => {
   );
 };
 
-// const createTitlepage = (document, root) => {
-//     const titlepage = createChild(document, document.body, 'section');
-//     titlepage.setAttribute('data-type','titlepage');
-//     createJournalHead(document, root, titlepage);
-//     const heading = createChild(document, titlepage, 'h1');
-//     heading.innerHTML = root.querySelector('front article-meta title-group article-title').innerHTML;
-//     handleAbstract(document, root, titlepage);
-//     return titlepage;
-// }
-
-// const createJournalHead = (document, root, parent) => {
-//     const header = createChild(document, parent, 'header');
-//     const aside = createChild(document, header, 'aside');
-//     aside.setAttribute('data-jats', 'journal');
-//     const title = createChild(document, aside, 'p');
-//     title.setAttribute('data-jats', 'title');
-//     title.textContent = root.querySelector('front journal-meta journal-title-group journal-title').textContent;
-//     return header;
-// }
-
 const setHead = (xmldoc, htmldoc) => {
   // add viewport meta tag
   const viewportmeta = htmldoc.createElement('meta');
