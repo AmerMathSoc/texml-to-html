@@ -737,6 +737,12 @@ const elementProcessor = {
     actualParent.appendChild(node);
     passThrough(xmldoc, htmldoc, actualParent, xmlnode);
   },
+  fn:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', { role: 'doc-footnote'});
+    htmlParentNode.appendChild(span);
+    mapAttributes(span, xmlnode);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];

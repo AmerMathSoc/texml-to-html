@@ -138,6 +138,7 @@
             <xref ref-type="bibr" rid="rid4">ref<x>,</x> note</xref>
             <xref ref-type="type" rid="rid5"><x>Context</x> ref</xref>
             <xref ref-type="type">ref</xref>
+            <fn><label>Label</label></fn>
         </sec>
     </body>
 </article>
