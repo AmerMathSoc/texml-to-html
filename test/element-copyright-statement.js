@@ -23,7 +23,7 @@ tape('Template: copyright-statement', async function(t) {
   );
   const input2 = path.resolve(
     __dirname,
-    'element-copyright-statement--book.xml'
+    'book.xml'
   );
   const document2 = await xsltproc(input2);
   t.ok(
