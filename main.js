@@ -27,7 +27,7 @@ const attributeDictionary = {
 const mapAttribute = (htmlNode, xmlNode, attributeName) => {
   const attributeValue = xmlNode.getAttribute(attributeName);
   if (!attributeValue) return;
-  htmlNode.setAttribute(attributeName, attributeDictionary[attributeValue]);
+  htmlNode.setAttribute(attributeDictionary[attributeName], attributeValue);
 };
 
 const mapAttributes = (htmlNode, xmlNode) => {
@@ -742,6 +742,43 @@ const elementProcessor = {
     htmlParentNode.appendChild(span);
     mapAttributes(span, xmlnode);
     passThrough(xmldoc, htmldoc, span, xmlnode);
+  },
+  p:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    let paragraph = createNode(htmldoc, 'p')
+    if (xmlnode.parentNode.closest('p, fn')) paragraph = createNode(htmldoc, 'span', '', {'data-ams-doc': 'paragraph'});
+    mapAttributes(paragraph, xmlnode);
+    htmlParentNode.appendChild(paragraph);
+    passThrough(xmldoc, htmldoc, paragraph, xmlnode);
+  },
+  'def-list':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dl = createNode(htmldoc, 'dl');
+    mapAttributes(dl, xmlnode);
+    htmlParentNode.appendChild(dl);
+    passThrough(xmldoc, htmldoc, dl, xmlnode);
+  },
+  'def-item':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const isBook = xmldoc.firstElementChild.tagName === 'book';
+    if (isBook) {
+      passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+      return;
+    }
+    const div = createNode(htmldoc, 'div');
+    htmlParentNode.appendChild(div);
+    passThrough(xmldoc, htmldoc, div, xmlnode);
+  },
+  'term':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dt = createNode(htmldoc, 'dt');
+    mapAttributes(dt, xmlnode);
+    // TODO DT gets id from def-item; cf above.
+    dt.setAttribute('id', xmlnode.parentNode.id);
+    htmlParentNode.appendChild(dt);
+    passThrough(xmldoc, htmldoc, dt, xmlnode);
+  },
+  'def':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dd = createNode(htmldoc, 'dd');
+    mapAttributes(dd, xmlnode);
+    htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
 };
 

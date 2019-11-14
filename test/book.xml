@@ -1,0 +1,23 @@
+<book xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
+    <book-meta>
+        <book-title-group>
+            <book-title>title</book-title>
+        </book-title-group>
+    </book-meta>
+    <front-matter>
+        <preface/>
+    </front-matter>
+    <book-body>
+        <book-part>
+            <body>
+                <sec disp-level="2" id="id" specific-use="chapter">
+                    <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
+                        <def-item id="ditem1">
+                            <term>•</term> <def><p>Item 1</p></def>
+                        </def-item>
+                    </def-list>
+                </sec>
+            </body>
+        </book-part>
+    </book-body>
+</book>

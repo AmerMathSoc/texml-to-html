@@ -1,4 +1,4 @@
-<article xmlns:xlink="http://www.w3.org/1999/xlink">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
     <front>
         <article-meta>
             <ams-meta-group>
@@ -139,6 +139,22 @@
             <xref ref-type="type" rid="rid5"><x>Context</x> ref</xref>
             <xref ref-type="type">ref</xref>
             <fn><label>Label</label></fn>
+            <!-- element-p-p.js -->
+            <p id="pid1"><p/></p>
+            <def-list id="pid2">
+                <def-item>
+                    <term>•</term>
+                    <def><p/></def>
+                </def-item>
+            </def-list>
+            <fn id="pid3"><p/></fn>
+            <!-- element-def-list-def-item-def-term -->
+            <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
+                <def-item id="ditem1">
+                    <term>•</term>
+                    <def><p>Item 1</p></def>
+                </def-item>
+            </def-list>
         </sec>
     </body>
 </article>
