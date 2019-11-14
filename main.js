@@ -780,6 +780,18 @@ const elementProcessor = {
     htmlParentNode.appendChild(dd);
     passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
+  'app-group':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', { role: 'doc-appendix'});
+    mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
+  'app':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc-level': '1'});
+    mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
 };
 
 elementProcessor['secondary'] = elementProcessor['primary'];
