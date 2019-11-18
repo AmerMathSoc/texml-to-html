@@ -317,6 +317,8 @@ const elementProcessor = {
       previousSibling &&
       previousSibling.tagName === 'sec-meta' &&
       previousSibling.innerHTML.trim !== ''; // NOTE this will not work if sec-meta+label+title
+
+    const isStatement = xmlnode.parentNode.tagName === 'statement';
     const level = getParentLevel(htmlParentNode) + 1;
     const header = createNode(htmldoc, 'header');
     htmlParentNode.appendChild(header);
@@ -324,9 +326,11 @@ const elementProcessor = {
     header.appendChild(heading);
     if (hasLabelSibling) {
       passThrough(xmldoc, htmldoc, heading, previousSibling);
-      heading.appendChild(htmldoc.createTextNode('. '));
+      const labelSeparatorString = isStatement ? ' ' : '. ';
+      heading.appendChild(htmldoc.createTextNode(labelSeparatorString));
     }
     passThrough(xmldoc, htmldoc, heading, xmlnode);
+    if (isStatement) heading.appendChild(htmldoc.createTextNode('. '));
     if (hasSubtitleSibling) recurseTheDom(xmldoc, htmldoc, header, nextSibling);
     if (hasSecmetaSibling) {
       // NOTE (from xslt) sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
@@ -911,6 +915,31 @@ const elementProcessor = {
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
+  statement: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc': 'statement',
+      'data-ams-doc-level': getParentLevel(htmlParentNode) + 1
+    });
+    mapAttributes(section, xmlnode);
+    htmlParentNode.appendChild(section);
+    passThrough(xmldoc, htmldoc, section, xmlnode);
+  },
+  secheading: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', {
+      'data-ams-doc': 'secheading'
+    });
+    htmlParentNode.appendChild(span);
+    const label = xmlnode.querySelector('label');
+    const title = xmlnode.querySelector('title');
+    if (label) {
+      passThrough(xmldoc, htmldoc, span, label);
+    }
+    if (title && label) {
+      span.appendChild(htmldoc.createTextNode('. '));
+      // TODO his does not match label/title punctuation where a title without label would get a period.
+    }
+    passThrough(xmldoc, htmldoc, span, title);
   }
 };
 
@@ -937,6 +966,7 @@ elementProcessor['title'] = elementProcessor['label'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  if (!xmlnode) return;
   xmlnode.childNodes.forEach(
     recurseTheDom.bind(null, xmldoc, htmldoc, htmlParentNode)
   );

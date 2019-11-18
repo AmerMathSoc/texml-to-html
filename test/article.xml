@@ -202,11 +202,41 @@
             <subtitle>Subtitle</subtitle>
         </front-matter-part>
 
-        <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
-        <app id="secmeta" disp-level="1" specific-use="section">
-            <sec-meta/>
-            <label>Appendix 1</label>
-        </app>
+        <!-- statement -->
+        <sec disp-level="1" id="statements" specific-use="section">
+            <statement content-type="content type" id="statement1" style="style">
+                <label>Label 1</label>
+                <title>Title 1</title>
+                <p></p>
+            </statement>
+            <statement content-type="content type" id="statement2" style="style">
+                <label>Label 2</label>
+                <p></p>
+            </statement>
+            <statement content-type="content type" id="statement3" style="style">
+                <title>Title 3</title>
+                <p></p>
+            </statement>
+            <statement content-type="proof proof" has-qed-box="true" id="statement4">
+                <title>Proof</title>
+                <secheading id="statement4secheading" disp-level="3" specific-use="subsection">
+                    <title>secheading</title>
+                </secheading>
+            </statement>
+            <statement content-type="proof proof" has-qed-box="true" id="statement5">
+                <label>Label 5</label>
+                <title>Proof</title>
+                <secheading id="statement5secheading" disp-level="3" specific-use="subsection">
+                    <label>secheading</label>
+                </secheading>
+            </statement>
+            <statement content-type="proof proof" has-qed-box="true" id="statement6">
+                <secheading id="statement6secheading" disp-level="3" specific-use="subsection">
+                    <label>Label 6</label>
+                    <title>secheading</title>
+                </secheading>
+            </statement>
+        </sec>
     </body>
     <back>
         <app-group>

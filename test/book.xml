@@ -30,7 +30,7 @@
                         </def-item>
                     </def-list>
                 </sec>
-                <sec disp-level="2" id="chapter2" specific-use="chapter">
+                <sec disp-level="1" id="chapter2" specific-use="chapter">
                     <sec id="ack3" disp-level="2"  specific-use="use">
                         <title>Acknowledg</title>
                     </sec>
@@ -68,6 +68,24 @@
                         <abstract/>
                     </sec-meta>
                     <label/>
+                </sec>
+
+                <!-- statement etc -->
+                <sec disp-level="1" id="statementchapter" specific-use="chapter">
+                    <statement content-type="content type" id="statement2" style="style">
+                        <label>Theorem 1</label>
+                        <p></p>
+                    </statement>
+                </sec>
+                <sec disp-level="1" id="statementpart" specific-use="part">
+                    <sec disp-level="2" id="statementpartchapter" specific-use="chapter">
+                        <sec disp-level="3" id="statementsection" specific-use="section">
+                            <statement content-type="content type" id="statement4" style="style">
+                                <label>Theorem 1</label>
+                                <p></p>
+                            </statement>
+                        </sec>
+                    </sec>
                 </sec>
             </body>
         </book-part>
