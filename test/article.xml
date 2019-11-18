@@ -156,10 +156,75 @@
                 </def-item>
             </def-list>
         </sec>
+        <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
+        <!-- TODO remove title+label variations -->
+        <ack id="ack1" disp-level="1"  specific-use="use">
+        </ack>
+        <front-matter-part id="ack2" disp-level="1"  specific-use="use">
+            <title>Acknowledg</title>
+        </front-matter-part>
+        <front-matter-part id="intro1" disp-level="1"  specific-use="use">
+            <title>Introduction</title>
+        </front-matter-part>
+        <sec id="ack3" disp-level="1"  specific-use="use">
+            <title>Acknowledg</title>
+        </sec>
+        <sec id="intro2" disp-level="1"  specific-use="use">
+            <title>Introduction</title>
+        </sec>
+        <front-matter>
+            <dedication id="ded"/>
+        </front-matter>
+
+        <sec id="seclabeltitle" disp-level="1"  specific-use="use">
+            <label>Label</label>
+            <title>Title</title>
+        </sec>
+        <sec id="seclabel" disp-level="1"  specific-use="use">
+            <label>Label</label>
+            <subtitle>Subtitle</subtitle>
+        </sec>
+        <sec id="sectitle" disp-level="1"  specific-use="use">
+            <title>Title</title>
+            <subtitle>Subtitle</subtitle>
+        </sec>
+
+        <front-matter-part id="fmlabeltitle" disp-level="1"  specific-use="use">
+            <label>Label</label>
+            <title>Title</title>
+        </front-matter-part>
+        <front-matter-part id="fmlabel" disp-level="1"  specific-use="use">
+            <label>Label</label>
+            <subtitle>Subtitle</subtitle>
+        </front-matter-part>
+        <front-matter-part id="fmtitle" disp-level="1"  specific-use="use">
+            <title>Title</title>
+            <subtitle>Subtitle</subtitle>
+        </front-matter-part>
+
+        <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
+        <app id="secmeta" disp-level="1" specific-use="section">
+            <sec-meta/>
+            <label>Appendix 1</label>
+        </app>
     </body>
     <back>
         <app-group>
-            <app></app>
+          <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
+            <ack id="ack1" disp-level="1"  specific-use="use"></ack>
+            <app id="applabeltitle" disp-level="1"  specific-use="use">
+                <label>Label</label>
+                <title>Title</title>
+            </app>
+            <app id="applabel" disp-level="1"  specific-use="use">
+                <label>Label</label>
+                <subtitle>Subtitle</subtitle>
+            </app>
+            <app id="apptitle" disp-level="1"  specific-use="use">
+                <title>Title</title>
+                <subtitle>Subtitle</subtitle>
+            </app>
         </app-group>
     </back>
+
 </article>

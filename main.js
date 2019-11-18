@@ -51,11 +51,7 @@ const setHead = (xmldoc, htmldoc) => {
   htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
 };
 
-const getClosestLevel = htmlParentNode => {
-  const ancestor = htmlParentNode.closest('[data-ams-doc-level]');
-  if (ancestor) return ancestor.getAttribute('data-ams-doc-level');
-  else return null;
-};
+const getParentLevel = htmlParentNode => parseInt(htmlParentNode.getAttribute('data-ams-doc-level'));
 
 const elementProcessor = {
   preface: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
@@ -112,8 +108,9 @@ const elementProcessor = {
   subtitle: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // NOTE was multiple templates: book-title-group/subtitle and mode=generic)
     const isbookTitleGroup = Boolean(xmlnode.closest('book-title-group'));
-    if (!isbookTitleGroup) {
-      passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+    // NOTE otherwise (so far) subtitles are handled by title/label handling which creates a header as htmlParent
+    const isInHeader = (htmlParentNode.tagName === 'HEADER');
+    if (!(isbookTitleGroup || isInHeader)) {
       return;
     }
     const p = createNode(htmldoc, 'p', '', { 'data-ams-doc': 'subtitle' });
@@ -121,7 +118,13 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'contrib-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO handle sec-meta/contrib-group
+    // if sec-meta
+    if (xmlnode.parentNode.tagName === 'sec-meta') {
+      const p = createNode(htmldoc, 'p');
+      htmlParentNode.appendChild(p);
+      passThrough(xmldoc, htmldoc, p, xmlnode);
+      return;
+    }
     // if book-meta or article-meta
     let contentType = xmlnode.getAttribute('content-type');
     contentType =
@@ -292,12 +295,45 @@ const elementProcessor = {
       .querySelectorAll('ref')
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
-  title: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = getClosestLevel(htmlParentNode);
+  label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const nextSibling = xmlnode.nextElementSibling;
+    // NOTE if a label is followed by a title, we skip (and pull in the label later on when processing title)
+    if (nextSibling && nextSibling.tagName === 'title') return;
+    const previousSibling = xmlnode.previousElementSibling;
+    const hasLabelSibling = previousSibling && (previousSibling.tagName === 'label') && (previousSibling.innerHTML.trim !== '');
+    const hasSubtitleSibling = nextSibling && (nextSibling.tagName === 'subtitle') && (nextSibling.innerHTML.trim !== '');
+    const hasSecmetaSibling = previousSibling && (previousSibling.tagName === 'sec-meta') && (previousSibling.innerHTML.trim !== ''); // NOTE this will not work if sec-meta+label+title
+    const level = getParentLevel(htmlParentNode) + 1;
+    const header = createNode(htmldoc, 'header');
+    htmlParentNode.appendChild(header);
     const heading = createNode(htmldoc, `h${level}`, '');
-    htmlParentNode.appendChild(heading);
+    header.appendChild(heading);
+    if (hasLabelSibling) {
+      passThrough(xmldoc, htmldoc, heading, previousSibling);
+      heading.appendChild(htmldoc.createTextNode('. '));
+    }
     passThrough(xmldoc, htmldoc, heading, xmlnode);
-    // TODO continue or could this be enough?
+    if (hasSubtitleSibling) recurseTheDom(xmldoc, htmldoc, header, nextSibling);
+    if (hasSecmetaSibling) {
+      // NOTE (from xslt) sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
+      // TODO (from xslt) find a cleaner solution, e.g., general purpose markup + publication specific customization
+      const secmetaSection = createNode(htmldoc, 'section', '', {'data-ams-doc': 'sec-meta'});
+      htmlParentNode.appendChild(secmetaSection);
+      if (xmldoc.firstElementChild.tagName === 'article') {
+        const dl = createNode(htmldoc, 'dl');
+        secmetaSection.appendChild(dl);
+        recurseTheDom(xmldoc, htmldoc, dl, previousSibling.querySelector('contrib-group'));
+      }
+      else {
+        recurseTheDom(xmldoc, htmldoc, secmetaSection, previousSibling.querySelector('contrib-group'));
+      }
+      recurseTheDom(xmldoc, htmldoc, secmetaSection, previousSibling.querySelector('abstract'));
+    }
+  },
+  'string-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', { 'data-ams-doc': 'stringname'});
+    htmlParentNode.appendChild(span);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
   },
   'copyright-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
@@ -684,7 +720,7 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, div, xmlnode);
   },
   abstract: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = getClosestLevel(htmlParentNode) || '2'; // NOTE in articles, we don't have a disp-level in the XML; also NOTE that this is a change from xslt which erroneously had hardcoded 1 but abstract/title still got an h2
+    const level = getParentLevel(htmlParentNode) || '2'; // NOTE in articles, we don't have a disp-level in the XML; also NOTE that this is a change from xslt which erroneously had hardcoded 1 but abstract/title still got an h2
     const section = createNode(htmldoc, 'section', '', {
       'data-ams-doc-level': level,
       role: 'doc-abstract'
@@ -694,16 +730,29 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
   sec: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level =
-      getClosestLevel(htmlParentNode) ||
-      xmlnode.closest('[disp-level]').getAttribute('disp-level');
-    const section = createNode(htmldoc, 'section', '', {
-      'data-ams-doc-level': level,
-      'data-ams-doc': xmlnode.getAttribute('specific-use')
-    });
-    // mapAttributes(section, xmlnode);
+    const isBook = xmldoc.firstElementChild.tagName === 'book';
+    const baseLevel = isBook ? -1 : 0;
+
+    const specificUse = xmlnode.getAttribute('specific-use');
+    const ancestorWithLevel = htmlParentNode.closest('[data-ams-doc-level]');
+    const parentLevel = ancestorWithLevel ? parseInt(ancestorWithLevel.getAttribute('data-ams-doc-level')) : baseLevel;
+    const level = (specificUse === 'chapter' || specificUse === 'part') ? 0 : (parentLevel + 1);
+
+    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc-level': level, 'data-ams-doc': specificUse, id: xmlnode.getAttribute('id')});
     htmlParentNode.appendChild(section);
+
+    if (specificUse === 'chapter') {
+      section.setAttribute('role', 'doc-chapter');
+      section.removeAttribute('specific-use');
+    }
+    if (xmlnode.tagName === 'dedication') section.setAttribute('role', 'doc-dedication');
+
+    const titleChild = xmlnode.querySelector('title');
+    if (xmlnode.tagName === 'ack' || ( titleChild && titleChild.textContent.startsWith('Acknowledg'))) section.setAttribute('role', 'doc-acknowledgments');
+    if (titleChild && titleChild.textContent.startsWith('Introduction')) section.setAttribute('role', 'doc-introduction');
+
     passThrough(xmldoc, htmldoc, section, xmlnode);
+
   },
   'styled-content':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const span = createNode(htmldoc, 'span', '', {'data-ams-style': xmlnode.getAttribute('style-type')});
@@ -787,12 +836,25 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
   'app':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
+    // if book
+    if (isBook) {
+    // NOTE (from xslt) app only applies in books since articles always have app within app-group (cf. template for app-group/app above) -->
+    // TODO (from xslt) (BREAKING CHANGE) remove app-group/app and make app-group pass-through - the role should be on each app, not on wrapper from app-group; but watch out for app with Acknowledgements. -->
+    // NOTE (from xslt) should we add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}"? We expect them for heading level computation. -->
+      const section = createNode(htmldoc, 'section', '', { role: 'doc-appendix', 'data-ams-doc-level': 0});
+      htmlParentNode.appendChild(section);
+      mapAttributes(section, xmlnode);
+      passThrough(xmldoc, htmldoc, section, xmlnode);
+      return;
+    }
+    // if article
     const section = createNode(htmldoc, 'section', '', { 'data-ams-doc-level': '1'});
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
-};
+  };
 
 elementProcessor['secondary'] = elementProcessor['primary'];
 
@@ -806,6 +868,12 @@ elementProcessor['roman'] = tagToDataStyle;
 elementProcessor['sc'] = tagToDataStyle;
 elementProcessor['monospace'] = tagToDataStyle;
 elementProcessor['underline'] = tagToDataStyle;
+
+elementProcessor['ack'] = elementProcessor['sec'];
+elementProcessor['front-matter-part'] = elementProcessor['sec'];
+elementProcessor['dedication'] = elementProcessor['sec'];
+
+elementProcessor['title'] = elementProcessor['label'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
