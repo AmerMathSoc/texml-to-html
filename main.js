@@ -51,7 +51,8 @@ const setHead = (xmldoc, htmldoc) => {
   htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
 };
 
-const getParentLevel = htmlParentNode => parseInt(htmlParentNode.getAttribute('data-ams-doc-level'));
+const getParentLevel = htmlParentNode =>
+  parseInt(htmlParentNode.getAttribute('data-ams-doc-level'));
 
 const elementProcessor = {
   preface: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
@@ -109,7 +110,7 @@ const elementProcessor = {
     // NOTE was multiple templates: book-title-group/subtitle and mode=generic)
     const isbookTitleGroup = Boolean(xmlnode.closest('book-title-group'));
     // NOTE otherwise (so far) subtitles are handled by title/label handling which creates a header as htmlParent
-    const isInHeader = (htmlParentNode.tagName === 'HEADER');
+    const isInHeader = htmlParentNode.tagName === 'HEADER';
     if (!(isbookTitleGroup || isInHeader)) {
       return;
     }
@@ -209,7 +210,9 @@ const elementProcessor = {
     }
     const rid = xmlnode.getAttribute('rid');
     if (!rid) {
-      const span = createNode(htmldoc, 'span', '', {'data-ams-ref': 'notrid'});
+      const span = createNode(htmldoc, 'span', '', {
+        'data-ams-ref': 'notrid'
+      });
       htmlParentNode.appendChild(span);
       passThrough(xmldoc, htmldoc, span, xmlnode);
       return;
@@ -217,22 +220,24 @@ const elementProcessor = {
     if (xmlnode.parentNode.tagName === 'tex-math') {
       const text = htmldoc.createTextNode('');
       // TODO
-      htmlParentNode.appendChild(text)
+      htmlParentNode.appendChild(text);
       return;
     }
     const refType = xmlnode.getAttribute('ref-type');
-    const anchor = createNode(htmldoc, 'a', '', { href: `#${rid}`, 'data-ams-ref': refType});
+    const anchor = createNode(htmldoc, 'a', '', {
+      href: `#${rid}`,
+      'data-ams-ref': refType
+    });
     const typeToRole = {
       fn: 'doc-noteref',
       bibr: 'doc-biblioref'
     };
     if (typeToRole[refType]) anchor.setAttribute('role', typeToRole[refType]);
     if (refType === 'bibr') {
-      const cite = createNode(htmldoc, 'cite')
+      const cite = createNode(htmldoc, 'cite');
       cite.appendChild(anchor);
       htmlParentNode.appendChild(cite);
-    }
-    else {
+    } else {
       htmlParentNode.appendChild(anchor);
     }
     passThrough(xmldoc, htmldoc, anchor, xmlnode);
@@ -300,9 +305,18 @@ const elementProcessor = {
     // NOTE if a label is followed by a title, we skip (and pull in the label later on when processing title)
     if (nextSibling && nextSibling.tagName === 'title') return;
     const previousSibling = xmlnode.previousElementSibling;
-    const hasLabelSibling = previousSibling && (previousSibling.tagName === 'label') && (previousSibling.innerHTML.trim !== '');
-    const hasSubtitleSibling = nextSibling && (nextSibling.tagName === 'subtitle') && (nextSibling.innerHTML.trim !== '');
-    const hasSecmetaSibling = previousSibling && (previousSibling.tagName === 'sec-meta') && (previousSibling.innerHTML.trim !== ''); // NOTE this will not work if sec-meta+label+title
+    const hasLabelSibling =
+      previousSibling &&
+      previousSibling.tagName === 'label' &&
+      previousSibling.innerHTML.trim !== '';
+    const hasSubtitleSibling =
+      nextSibling &&
+      nextSibling.tagName === 'subtitle' &&
+      nextSibling.innerHTML.trim !== '';
+    const hasSecmetaSibling =
+      previousSibling &&
+      previousSibling.tagName === 'sec-meta' &&
+      previousSibling.innerHTML.trim !== ''; // NOTE this will not work if sec-meta+label+title
     const level = getParentLevel(htmlParentNode) + 1;
     const header = createNode(htmldoc, 'header');
     htmlParentNode.appendChild(header);
@@ -317,21 +331,39 @@ const elementProcessor = {
     if (hasSecmetaSibling) {
       // NOTE (from xslt) sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
       // TODO (from xslt) find a cleaner solution, e.g., general purpose markup + publication specific customization
-      const secmetaSection = createNode(htmldoc, 'section', '', {'data-ams-doc': 'sec-meta'});
+      const secmetaSection = createNode(htmldoc, 'section', '', {
+        'data-ams-doc': 'sec-meta'
+      });
       htmlParentNode.appendChild(secmetaSection);
       if (xmldoc.firstElementChild.tagName === 'article') {
         const dl = createNode(htmldoc, 'dl');
         secmetaSection.appendChild(dl);
-        recurseTheDom(xmldoc, htmldoc, dl, previousSibling.querySelector('contrib-group'));
+        recurseTheDom(
+          xmldoc,
+          htmldoc,
+          dl,
+          previousSibling.querySelector('contrib-group')
+        );
+      } else {
+        recurseTheDom(
+          xmldoc,
+          htmldoc,
+          secmetaSection,
+          previousSibling.querySelector('contrib-group')
+        );
       }
-      else {
-        recurseTheDom(xmldoc, htmldoc, secmetaSection, previousSibling.querySelector('contrib-group'));
-      }
-      recurseTheDom(xmldoc, htmldoc, secmetaSection, previousSibling.querySelector('abstract'));
+      recurseTheDom(
+        xmldoc,
+        htmldoc,
+        secmetaSection,
+        previousSibling.querySelector('abstract')
+      );
     }
   },
   'string-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const span = createNode(htmldoc, 'span', '', { 'data-ams-doc': 'stringname'});
+    const span = createNode(htmldoc, 'span', '', {
+      'data-ams-doc': 'stringname'
+    });
     htmlParentNode.appendChild(span);
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
@@ -735,47 +767,63 @@ const elementProcessor = {
 
     const specificUse = xmlnode.getAttribute('specific-use');
     const ancestorWithLevel = htmlParentNode.closest('[data-ams-doc-level]');
-    const parentLevel = ancestorWithLevel ? parseInt(ancestorWithLevel.getAttribute('data-ams-doc-level')) : baseLevel;
-    const level = (specificUse === 'chapter' || specificUse === 'part') ? 0 : (parentLevel + 1);
+    const parentLevel = ancestorWithLevel
+      ? parseInt(ancestorWithLevel.getAttribute('data-ams-doc-level'))
+      : baseLevel;
+    const level =
+      specificUse === 'chapter' || specificUse === 'part' ? 0 : parentLevel + 1;
 
-    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc-level': level, 'data-ams-doc': specificUse, id: xmlnode.getAttribute('id')});
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc-level': level,
+      'data-ams-doc': specificUse,
+      id: xmlnode.getAttribute('id')
+    });
     htmlParentNode.appendChild(section);
 
     if (specificUse === 'chapter') {
       section.setAttribute('role', 'doc-chapter');
       section.removeAttribute('specific-use');
     }
-    if (xmlnode.tagName === 'dedication') section.setAttribute('role', 'doc-dedication');
+    if (xmlnode.tagName === 'dedication')
+      section.setAttribute('role', 'doc-dedication');
 
     const titleChild = xmlnode.querySelector('title');
-    if (xmlnode.tagName === 'ack' || ( titleChild && titleChild.textContent.startsWith('Acknowledg'))) section.setAttribute('role', 'doc-acknowledgments');
-    if (titleChild && titleChild.textContent.startsWith('Introduction')) section.setAttribute('role', 'doc-introduction');
+    if (
+      xmlnode.tagName === 'ack' ||
+      (titleChild && titleChild.textContent.startsWith('Acknowledg'))
+    )
+      section.setAttribute('role', 'doc-acknowledgments');
+    if (titleChild && titleChild.textContent.startsWith('Introduction'))
+      section.setAttribute('role', 'doc-introduction');
 
     passThrough(xmldoc, htmldoc, section, xmlnode);
-
   },
-  'styled-content':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const span = createNode(htmldoc, 'span', '', {'data-ams-style': xmlnode.getAttribute('style-type')});
+  'styled-content': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', {
+      'data-ams-style': xmlnode.getAttribute('style-type')
+    });
     htmlParentNode.appendChild(span);
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
-  'italic':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  italic: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const tagname = xmlnode.getAttribute('toggle') === 'yes' ? 'em' : 'i';
     const node = createNode(htmldoc, tagname);
     htmlParentNode.appendChild(node);
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
-  'bold':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  bold: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const node = createNode(htmldoc, 'strong');
     htmlParentNode.appendChild(node);
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
-  'disp-quote':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const node = createNode(htmldoc, 'blockquote', '', {'data-ams-style': xmlnode.getAttribute('specific-use')});
+  'disp-quote': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const node = createNode(htmldoc, 'blockquote', '', {
+      'data-ams-style': xmlnode.getAttribute('specific-use')
+    });
     htmlParentNode.appendChild(node);
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
-  attrib:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  attrib: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     let actualParent = htmlParentNode;
     if (xmlnode.parentNode.tagName === 'disp-quote') {
       const footer = createNode(htmldoc, 'footer');
@@ -786,26 +834,29 @@ const elementProcessor = {
     actualParent.appendChild(node);
     passThrough(xmldoc, htmldoc, actualParent, xmlnode);
   },
-  fn:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const span = createNode(htmldoc, 'span', '', { role: 'doc-footnote'});
+  fn: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span', '', { role: 'doc-footnote' });
     htmlParentNode.appendChild(span);
     mapAttributes(span, xmlnode);
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
-  p:  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    let paragraph = createNode(htmldoc, 'p')
-    if (xmlnode.parentNode.closest('p, fn')) paragraph = createNode(htmldoc, 'span', '', {'data-ams-doc': 'paragraph'});
+  p: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    let paragraph = createNode(htmldoc, 'p');
+    if (xmlnode.parentNode.closest('p, fn'))
+      paragraph = createNode(htmldoc, 'span', '', {
+        'data-ams-doc': 'paragraph'
+      });
     mapAttributes(paragraph, xmlnode);
     htmlParentNode.appendChild(paragraph);
     passThrough(xmldoc, htmldoc, paragraph, xmlnode);
   },
-  'def-list':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  'def-list': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dl = createNode(htmldoc, 'dl');
     mapAttributes(dl, xmlnode);
     htmlParentNode.appendChild(dl);
     passThrough(xmldoc, htmldoc, dl, xmlnode);
   },
-  'def-item':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  'def-item': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const isBook = xmldoc.firstElementChild.tagName === 'book';
     if (isBook) {
       passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
@@ -815,7 +866,7 @@ const elementProcessor = {
     htmlParentNode.appendChild(div);
     passThrough(xmldoc, htmldoc, div, xmlnode);
   },
-  'term':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  term: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dt = createNode(htmldoc, 'dt');
     mapAttributes(dt, xmlnode);
     // TODO DT gets id from def-item; cf above.
@@ -823,43 +874,52 @@ const elementProcessor = {
     htmlParentNode.appendChild(dt);
     passThrough(xmldoc, htmldoc, dt, xmlnode);
   },
-  'def':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  def: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dd = createNode(htmldoc, 'dd');
     mapAttributes(dd, xmlnode);
     htmlParentNode.appendChild(dd);
     passThrough(xmldoc, htmldoc, dd, xmlnode);
   },
-  'app-group':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const section = createNode(htmldoc, 'section', '', { role: 'doc-appendix'});
+  'app-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const section = createNode(htmldoc, 'section', '', {
+      role: 'doc-appendix'
+    });
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
-  'app':  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  app: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
     // if book
     if (isBook) {
-    // NOTE (from xslt) app only applies in books since articles always have app within app-group (cf. template for app-group/app above) -->
-    // TODO (from xslt) (BREAKING CHANGE) remove app-group/app and make app-group pass-through - the role should be on each app, not on wrapper from app-group; but watch out for app with Acknowledgements. -->
-    // NOTE (from xslt) should we add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}"? We expect them for heading level computation. -->
-      const section = createNode(htmldoc, 'section', '', { role: 'doc-appendix', 'data-ams-doc-level': 0});
+      // NOTE (from xslt) app only applies in books since articles always have app within app-group (cf. template for app-group/app above) -->
+      // TODO (from xslt) (BREAKING CHANGE) remove app-group/app and make app-group pass-through - the role should be on each app, not on wrapper from app-group; but watch out for app with Acknowledgements. -->
+      // NOTE (from xslt) should we add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}"? We expect them for heading level computation. -->
+      const section = createNode(htmldoc, 'section', '', {
+        role: 'doc-appendix',
+        'data-ams-doc-level': 0
+      });
       htmlParentNode.appendChild(section);
       mapAttributes(section, xmlnode);
       passThrough(xmldoc, htmldoc, section, xmlnode);
       return;
     }
     // if article
-    const section = createNode(htmldoc, 'section', '', { 'data-ams-doc-level': '1'});
+    const section = createNode(htmldoc, 'section', '', {
+      'data-ams-doc-level': '1'
+    });
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);
     passThrough(xmldoc, htmldoc, section, xmlnode);
-  },
-  };
+  }
+};
 
 elementProcessor['secondary'] = elementProcessor['primary'];
 
-const tagToDataStyle =  (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-  const span = createNode(htmldoc, 'span', '', {'data-ams-style': xmlnode.tagName});
+const tagToDataStyle = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  const span = createNode(htmldoc, 'span', '', {
+    'data-ams-style': xmlnode.tagName
+  });
   htmlParentNode.appendChild(span);
   passThrough(xmldoc, htmldoc, span, xmlnode);
 };
@@ -902,7 +962,7 @@ const passThroughElements = [
   'back',
   'alternatives',
   'tex-math',
-  'title-group',
+  'title-group'
   // 'xref/x'
 ];
 const enablePassThrough = tagname => {
