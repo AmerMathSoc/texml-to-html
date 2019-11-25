@@ -19,7 +19,6 @@ const attributeDictionary = {
   'content-type': 'data-ams-content-type',
   'has-qed-box': 'data-ams-qed-box',
   hidden: 'hidden',
-  position: 'data-ams-position',
   style: 'data-ams-style',
   'specific-use': 'data-ams-specific-use' // NOTE generic fallback; elementProcessors who do something different should remove the attribute from the xmlnode before calling mapAttributes
 };
@@ -301,6 +300,14 @@ const elementProcessor = {
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
   label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // handle fig, fig-group via caption
+    if (
+      xmlnode.parentNode.tagName === 'fig' ||
+      xmlnode.parentNode.tagName === 'fig-group'
+    ) {
+      elementProcessor['caption'](xmldoc, htmldoc, htmlParentNode, xmlnode);
+      return;
+    }
     const nextSibling = xmlnode.nextElementSibling;
     // NOTE if a label is followed by a title, we skip (and pull in the label later on when processing title)
     if (nextSibling && nextSibling.tagName === 'title') return;
@@ -834,6 +841,11 @@ const elementProcessor = {
       htmlParentNode.appendChild(footer);
       actualParent = footer;
     }
+    if (xmlnode.parentNode.tagName === 'fig' || xmlnode.parentNode.tagName === 'fig-group' ) {
+      // NOTE firstElementChild should be a figcaption element (cf. caption() )
+      // TODO brittle. Can we do better?
+      actualParent = htmlParentNode.firstElementChild;
+    }
     const node = createNode(htmldoc, 'span');
     actualParent.appendChild(node);
     passThrough(xmldoc, htmldoc, actualParent, xmlnode);
@@ -961,8 +973,38 @@ const elementProcessor = {
     htmlParentNode.appendChild(img);
   },
   fig: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO implement
-    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+    const figure = createNode(htmldoc, 'figure', '', {
+      role: 'group',
+      id: xmlnode.getAttribute('id'),
+      'data-ams-position': xmlnode.getAttribute('position')
+    });
+    htmlParentNode.appendChild(figure);
+    passThrough(xmldoc, htmldoc, figure, xmlnode);
+  },
+  caption: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const isLabel = xmlnode.tagName === 'label';
+    if (isLabel && xmlnode.nextElementSibling && xmlnode.nextElementSibling.tagName === 'caption') {
+      return;
+    }
+    const isSubfigure =
+      xmlnode.parentNode.tagName === 'fig' &&
+      xmlnode.parentNode.parentNode.tagName === 'fig-group';
+    const previousSibling = xmlnode.previousElementSibling;
+    const hasLabel = previousSibling && previousSibling.tagName === 'label';
+
+    const figcaption = createNode(htmldoc, 'figcaption');
+    htmlParentNode.appendChild(figcaption);
+
+    if (isLabel || hasLabel) {
+      const label = isLabel ? xmlnode : previousSibling;
+      const strong = createNode(htmldoc, 'strong');
+      figcaption.appendChild(strong);
+      if (isSubfigure) strong.insertAdjacentText('afterbegin', '(');
+      passThrough(xmldoc, htmldoc, strong, label);
+      strong.insertAdjacentText('beforeend', isSubfigure ? ') ' : '. ');
+    }
+    if (isLabel) return;
+    passThrough(xmldoc, htmldoc, figcaption, xmlnode);
   }
 };
 
@@ -990,6 +1032,8 @@ elementProcessor['dedication'] = elementProcessor['sec'];
 elementProcessor['title'] = elementProcessor['label'];
 
 elementProcessor['inline-graphic'] = elementProcessor['graphic'];
+
+elementProcessor['fig-group'] = elementProcessor['fig'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {

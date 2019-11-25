@@ -238,27 +238,29 @@
             </statement>
         </sec>
         <!-- fig, fig-group, caption, label -->
-        <fig>
-            <label>Label 1</label>
-            <caption>Caption 1</caption>
-        </fig>
-        <fig-group>
-            <label>Grouplabel 1</label>
-            <caption>Groupcaption 1</caption>
-            <fig>
-                <label>Sublabel 1</label>
-                <caption>Subcaption 1</caption>
+        <sec disp-level="1" id="figures" specific-use="section">
+            <fig position="anchor" id="position">
+                <label>Label 1</label>
+                <caption>Caption 1</caption>
             </fig>
-        </fig-group>
-        <fig>
-            <label>Label 2</label>
-        </fig>
-        <fig-group>
-            <label>Grouplabel 2</label>
+            <fig-group>
+                <label>Grouplabel 1</label>
+                <caption>Groupcaption 1</caption>
+                <fig>
+                    <label>Sublabel 1</label>
+                    <caption>Subcaption 1</caption>
+                </fig>
+            </fig-group>
             <fig>
-                <label>Sublabel 2</label>
+                <label>Label 2</label>
             </fig>
-        </fig-group>
+            <fig-group>
+                <label>Grouplabel 2</label>
+                <fig>
+                    <label>Sublabel 2</label>
+                </fig>
+            </fig-group>
+        </sec>
         <!-- graphic, inline-graphic, img -->
         <sec disp-level="1" id="graphics" specific-use="section">
             <fig>
