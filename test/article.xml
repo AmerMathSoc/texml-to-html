@@ -270,6 +270,13 @@
             <inline-graphic  height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use" alt="text"/>
             <img src="file" alt="text"></img>
         </sec>
+        <!-- inline-formula, disp-formula, tex-math -->
+        <sec disp-level="1" id="equations" specific-use="section">
+            <inline-formula>
+            <tex-math><text>Text</text><xref ref-type="fn" rid="fnid1">1</xref><fn id="fnid"></fn><xref ref-type="other" rid="otherid1"></xref></tex-math>
+            </inline-formula>
+            <disp-formula><tex-math has-qed-box="true"><xref ref-type="fn" rid="fnid2">2</xref><fn id="fnid2"></fn><text>Start<xref ref-type="other" rid="otherid2"></xref>End</text></tex-math></disp-formula>
+        </sec>
     </body>
     <back>
         <app-group>

@@ -192,7 +192,24 @@ const elementProcessor = {
       htmlParentNode.appendChild(htmldoc.createTextNode(', '));
   },
   xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // TODO many more cases to cover later
+    // case tex-math/xref, tex-math/text/xref
+    if (xmlnode.closest('tex-math')) {
+      const refType = xmlnode.getAttribute('ref-type');
+      const rid = xmlnode.getAttribute('rid');
+      const isInText = xmlnode.closest('text');
+      const isFootnoteRef = refType === 'fn';
+      if (isInText) htmlParentNode.insertAdjacentText('beforeend', `$`);
+      htmlParentNode.insertAdjacentText(
+        'beforeend',
+        `\\xhref[${refType}]{#${rid}}{`
+      );
+      if (isFootnoteRef) htmlParentNode.insertAdjacentText('beforeend', `{}^{`);
+      htmlParentNode.insertAdjacentText('beforeend', xmlnode.textContent);
+      if (isFootnoteRef) htmlParentNode.insertAdjacentText('beforeend', `}`);
+      htmlParentNode.insertAdjacentText('beforeend', `}`);
+      if (isInText) htmlParentNode.insertAdjacentText('beforeend', `$`);
+      return;
+    }
     // case contrib/xref[ref-type="aff"]
     if (xmlnode.getAttribute('ref-type') === 'aff') {
       const dd = createNode(htmldoc, 'dd');
@@ -1014,7 +1031,10 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, figcaption, xmlnode);
   },
   toc: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const nav = createNode(htmldoc, 'nav', '', { role: 'doc-toc', 'data-ams-doc-level': '0'});
+    const nav = createNode(htmldoc, 'nav', '', {
+      role: 'doc-toc',
+      'data-ams-doc-level': '0'
+    });
     htmlParentNode.appendChild(nav);
     recurseTheDom(xmldoc, htmldoc, nav, xmlnode.querySelector('title-group'));
     const ol = createNode(htmldoc, 'ol');
@@ -1026,12 +1046,18 @@ const elementProcessor = {
   'toc-entry': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const li = createNode(htmldoc, 'li');
     htmlParentNode.appendChild(li);
-    const anchor = createNode(htmldoc, 'a', '', { href: `#${xmlnode.querySelector('nav-pointer').getAttribute('rid')}`});
+    const anchor = createNode(htmldoc, 'a', '', {
+      href: `#${xmlnode.querySelector('nav-pointer').getAttribute('rid')}`
+    });
     li.appendChild(anchor);
     // TODO unify label/title processing with label() - requires some form of new wrapper around content in lieu of heading (or have it add the anchor but then the nav-pointer will be odd to pull in)
     const firstElementChild = xmlnode.firstElementChild;
-    const label = firstElementChild.tagName === 'label' ? firstElementChild : null;
-    const title =  firstElementChild.tagName === 'label' ? firstElementChild.nextElementSibling : firstElementChild;
+    const label =
+      firstElementChild.tagName === 'label' ? firstElementChild : null;
+    const title =
+      firstElementChild.tagName === 'label'
+        ? firstElementChild.nextElementSibling
+        : firstElementChild;
     if (label && label.innerHTML.trim !== '') {
       passThrough(xmldoc, htmldoc, anchor, label);
       anchor.insertAdjacentText('beforeend', '. ');
@@ -1044,6 +1070,27 @@ const elementProcessor = {
     xmlnode
       .querySelectorAll('toc-entry')
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, ol));
+  },
+  'inline-formula': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const mathMode = xmlnode.tagName === 'inline-formula' ? 'inline' : 'block';
+    const span = createNode(htmldoc, 'span', '', {
+      'data-ams-doc': `math ${mathMode}`
+    });
+    htmlParentNode.appendChild(span);
+    if (xmlnode.querySelector('tex-math[has-qed-box]'))
+      span.setAttribute('data-ams-qed-box', 'true'); // NOTE has-qed-box should only occur in disp-formula
+    passThrough(xmldoc, htmldoc, span, xmlnode);
+    // NOTE tex-math may include some foonotes which we must push to the end
+    span
+      .querySelectorAll('span[role="doc-footnote"]')
+      .forEach(node => span.insertAdjacentElement('afterend', node));
+  },
+  text: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    if (xmlnode.closest('tex-math')) {
+      htmlParentNode.insertAdjacentText('beforeend', '\\text{');
+      passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+      htmlParentNode.insertAdjacentText('beforeend', '}');
+    }
   }
 };
 
@@ -1073,6 +1120,8 @@ elementProcessor['title'] = elementProcessor['label'];
 elementProcessor['inline-graphic'] = elementProcessor['graphic'];
 
 elementProcessor['fig-group'] = elementProcessor['fig'];
+
+elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {

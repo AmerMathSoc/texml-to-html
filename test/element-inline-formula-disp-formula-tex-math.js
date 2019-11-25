@@ -6,10 +6,10 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
   t.plan(10);
   const input = path.resolve(
     __dirname,
-    'element-inline-formula-disp-formula-tex-math.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
-  const inlineformula = document.querySelector('[data-ams-doc="math inline"]');
+  const inlineformula = document.querySelector('#equations [data-ams-doc="math inline"]');
   t.ok(inlineformula, 'Inline formula');
   const tex = inlineformula.innerHTML;
   t.ok(tex.includes('\\text{Text}'), 'tex-math/text');
@@ -27,7 +27,7 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
     'Inline-formula Footnote'
   );
 
-  const displayformula = document.querySelector('[data-ams-doc="math block"]');
+  const displayformula = document.querySelector('#equations [data-ams-doc="math block"]');
   const disptex = displayformula.innerHTML;
   t.ok(displayformula, 'Display formula');
   t.equal(
