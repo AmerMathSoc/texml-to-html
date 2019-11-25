@@ -8,6 +8,25 @@
         </permissions>
     </book-meta>
     <front-matter>
+        <toc>
+            <title-group>
+            <title>Contents</title>
+            </title-group>
+            <toc-entry>
+            <title>Chunk</title>
+            <nav-pointer rid="tocid1"/>
+            </toc-entry>
+            <toc-entry>
+                <label>2</label>
+                <title>Chunk</title>
+                <nav-pointer rid="tocid2"/>
+                <toc-entry>
+                    <label>1</label>
+                    <title>SubChunk</title>
+                    <nav-pointer rid="tocid3"/>
+                </toc-entry>
+            </toc-entry>
+        </toc>
         <preface/>
         <front-matter-part id="fmlabeltitle" disp-level="1"  specific-use="use">
             <label>Label</label>

@@ -841,7 +841,10 @@ const elementProcessor = {
       htmlParentNode.appendChild(footer);
       actualParent = footer;
     }
-    if (xmlnode.parentNode.tagName === 'fig' || xmlnode.parentNode.tagName === 'fig-group' ) {
+    if (
+      xmlnode.parentNode.tagName === 'fig' ||
+      xmlnode.parentNode.tagName === 'fig-group'
+    ) {
       // NOTE firstElementChild should be a figcaption element (cf. caption() )
       // TODO brittle. Can we do better?
       actualParent = htmlParentNode.firstElementChild;
@@ -983,7 +986,11 @@ const elementProcessor = {
   },
   caption: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const isLabel = xmlnode.tagName === 'label';
-    if (isLabel && xmlnode.nextElementSibling && xmlnode.nextElementSibling.tagName === 'caption') {
+    if (
+      isLabel &&
+      xmlnode.nextElementSibling &&
+      xmlnode.nextElementSibling.tagName === 'caption'
+    ) {
       return;
     }
     const isSubfigure =
@@ -1005,6 +1012,38 @@ const elementProcessor = {
     }
     if (isLabel) return;
     passThrough(xmldoc, htmldoc, figcaption, xmlnode);
+  },
+  toc: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const nav = createNode(htmldoc, 'nav', '', { role: 'doc-toc', 'data-ams-doc-level': '0'});
+    htmlParentNode.appendChild(nav);
+    recurseTheDom(xmldoc, htmldoc, nav, xmlnode.querySelector('title-group'));
+    const ol = createNode(htmldoc, 'ol');
+    nav.appendChild(ol);
+    xmlnode
+      .querySelectorAll('toc-entry')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, ol));
+  },
+  'toc-entry': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const li = createNode(htmldoc, 'li');
+    htmlParentNode.appendChild(li);
+    const anchor = createNode(htmldoc, 'a', '', { href: `#${xmlnode.querySelector('nav-pointer').getAttribute('rid')}`});
+    li.appendChild(anchor);
+    // TODO unify label/title processing with label() - requires some form of new wrapper around content in lieu of heading (or have it add the anchor but then the nav-pointer will be odd to pull in)
+    const firstElementChild = xmlnode.firstElementChild;
+    const label = firstElementChild.tagName === 'label' ? firstElementChild : null;
+    const title =  firstElementChild.tagName === 'label' ? firstElementChild.nextElementSibling : firstElementChild;
+    if (label && label.innerHTML.trim !== '') {
+      passThrough(xmldoc, htmldoc, anchor, label);
+      anchor.insertAdjacentText('beforeend', '. ');
+    }
+    if (title) passThrough(xmldoc, htmldoc, anchor, title);
+    if (!xmlnode.querySelector('toc-entry')) return;
+    // nested toc-entries means we have a sub-toc
+    const ol = createNode(htmldoc, 'ol');
+    li.appendChild(ol);
+    xmlnode
+      .querySelectorAll('toc-entry')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, ol));
   }
 };
 
