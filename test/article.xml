@@ -254,6 +254,20 @@
                 <title>Title</title>
                 <subtitle>Subtitle</subtitle>
             </app>
+            <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
+            <app id="secmeta" disp-level="1" specific-use="section">
+                <sec-meta>
+                    <contrib-group content-type="authors">
+                        <contrib contrib-type="author">
+                        <name name-style="western">
+                            <surname>Surname</surname>
+                            <given-names>GivenName</given-names>
+                        </name>
+                        </contrib>
+                    </contrib-group>
+                </sec-meta>
+                <label>Appendix 1</label>
+            </app>
         </app-group>
     </back>
 
