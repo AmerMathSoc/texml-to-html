@@ -65,7 +65,7 @@
             <article-citation/>
             <kwd-group/>
             <custom-meta-group>
-                <custom-meta specific-use='communicated-by'>
+                <custom-meta specific-use="communicated-by">
                     <meta-name>meta-name</meta-name>
                     <meta-value>meta-value</meta-value>
                 </custom-meta>
@@ -236,6 +236,37 @@
                     <title>secheading</title>
                 </secheading>
             </statement>
+        </sec>
+        <!-- fig, fig-group, caption, label -->
+        <fig>
+            <label>Label 1</label>
+            <caption>Caption 1</caption>
+        </fig>
+        <fig-group>
+            <label>Grouplabel 1</label>
+            <caption>Groupcaption 1</caption>
+            <fig>
+                <label>Sublabel 1</label>
+                <caption>Subcaption 1</caption>
+            </fig>
+        </fig-group>
+        <fig>
+            <label>Label 2</label>
+        </fig>
+        <fig-group>
+            <label>Grouplabel 2</label>
+            <fig>
+                <label>Sublabel 2</label>
+            </fig>
+        </fig-group>
+        <!-- graphic, inline-graphic, img -->
+        <sec disp-level="1" id="graphics" specific-use="section">
+            <fig>
+                <graphic height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
+                <alt-text>text</alt-text>
+            </fig>
+            <inline-graphic  height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use" alt="text"/>
+            <img src="file" alt="text"></img>
         </sec>
     </body>
     <back>

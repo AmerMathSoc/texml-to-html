@@ -940,8 +940,33 @@ const elementProcessor = {
       // TODO his does not match label/title punctuation where a title without label would get a period.
     }
     passThrough(xmldoc, htmldoc, span, title);
+  },
+  graphic: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const img = createNode(htmldoc, 'img', '', {
+      'data-ams-doc': xmlnode.tagName,
+      src: xmlnode.getAttribute('xlink:href'),
+      'data-ams-style': xmlnode.getAttribute('specific-use'),
+      'data-ams-width': xmlnode.getAttribute('width'),
+      'data-ams-height': xmlnode.getAttribute('height')
+    });
+    const altText = xmlnode.parentNode.querySelector('alt-text');
+    if (altText) img.setAttribute('alt', altText.textContent);
+    htmlParentNode.appendChild(img);
+  },
+  img: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const img = createNode(htmldoc, 'img', '', {
+      src: xmlnode.getAttribute('src'),
+      alt: xmlnode.getAttribute('alt')
+    });
+    htmlParentNode.appendChild(img);
+  },
+  fig: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO implement
+    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
   }
 };
+
+// other mappings
 
 elementProcessor['secondary'] = elementProcessor['primary'];
 
@@ -963,6 +988,8 @@ elementProcessor['front-matter-part'] = elementProcessor['sec'];
 elementProcessor['dedication'] = elementProcessor['sec'];
 
 elementProcessor['title'] = elementProcessor['label'];
+
+elementProcessor['inline-graphic'] = elementProcessor['graphic'];
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
