@@ -132,6 +132,10 @@
             <disp-quote specific-use="use">
                 <attrib/>
             </disp-quote>
+            <fig id="figattrib">
+                <caption>Caption</caption>
+                <attrib>Attrib</attrib>
+            </fig>
             <xref ref-type="type" rid="rid1">ref</xref>
             <xref ref-type="fn" rid="rid2">ref</xref>
             <xref ref-type="bibr" rid="rid3">ref</xref>

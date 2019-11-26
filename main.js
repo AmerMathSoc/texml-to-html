@@ -891,9 +891,10 @@ const elementProcessor = {
       // TODO brittle. Can we do better?
       actualParent = htmlParentNode.firstElementChild;
     }
-    const node = createNode(htmldoc, 'span');
-    actualParent.appendChild(node);
-    passThrough(xmldoc, htmldoc, actualParent, xmlnode);
+    const span = createNode(htmldoc, 'span');
+    actualParent.insertAdjacentText('beforeend', ' '); // NOTE needed inside fig-caption
+    actualParent.appendChild(span);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
   },
   fn: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const span = createNode(htmldoc, 'span', '', { role: 'doc-footnote' });
