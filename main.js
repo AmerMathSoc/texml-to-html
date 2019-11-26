@@ -1019,7 +1019,8 @@ const elementProcessor = {
     const figure = createNode(htmldoc, 'figure', '', {
       role: 'group',
       id: xmlnode.getAttribute('id'),
-      'data-ams-position': xmlnode.getAttribute('position')
+      'data-ams-position': xmlnode.getAttribute('position'),
+      'data-ams-doc': xmlnode.tagName
     });
     htmlParentNode.appendChild(figure);
     passThrough(xmldoc, htmldoc, figure, xmlnode);
@@ -1160,6 +1161,7 @@ elementProcessor['title'] = elementProcessor['label'];
 elementProcessor['inline-graphic'] = elementProcessor['graphic'];
 
 elementProcessor['fig-group'] = elementProcessor['fig'];
+elementProcessor['verse-group'] = elementProcessor['fig'];
 
 elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
