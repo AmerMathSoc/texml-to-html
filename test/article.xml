@@ -319,7 +319,8 @@
             <title>References</title>
             <ref id="ref">
                 <label>Label</label>
-                Reference
+                <raw-citation>Raw</raw-citation>
+                <mixed-citation>Mixed</mixed-citation>
             </ref>
         </ref-list>
     </back>

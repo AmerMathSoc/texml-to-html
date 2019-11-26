@@ -4,7 +4,7 @@ const tape = require('tape');
 
 tape('Template: mixed-citation', async function(t) {
   t.plan(2);
-  const input = path.resolve(__dirname, 'element-mixed-citation.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   const mixedCitation = document.querySelector(
     'dd > div[role="doc-biblioentry"]'

@@ -328,6 +328,7 @@ const elementProcessor = {
     const code = createNode(htmldoc, 'code', rawCitation.textContent, {
       'data-ams-doc': 'amsref'
     });
+    div.appendChild(code);
   },
   label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // handle ref
@@ -339,6 +340,7 @@ const elementProcessor = {
       const span = createNode(htmldoc, 'span'); // TODO can the wrapping span be dropped?
       dt.appendChild(span);
       passThrough(xmldoc, htmldoc, span, xmlnode);
+      return;
     }
     // handle fig, fig-group via caption
     if (
