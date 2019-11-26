@@ -610,6 +610,7 @@
 
 <!-- NOTE chapters currently only appear in books -->
 <!-- TODO add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}" ?-->
+<!-- NOTE in JS: unify with sec -->
 <xsl:template match="sec[@specific-use='chapter']">
     <section role="doc-chapter">
         <xsl:apply-templates select="@id|node()"/>
@@ -642,6 +643,7 @@
     </section>
 </xsl:template>
 
+<!-- NOTE in JS: subtitle: drop data-ams-doc-level  -->
 <xsl:template match="sec/title | sec/label | app/title | app/label | front-matter-part/title | front-matter-part/label">
 <xsl:if test="not(following-sibling::title[1])">
     <xsl:variable name="displevel" select="../@disp-level"/>
@@ -763,6 +765,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE alt-text only in figures, only in mbk-103 photo inlay -->
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
@@ -776,6 +779,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: @position support restricted to fig; added data-ams-doc=tagname -->
 <xsl:template match="fig | fig-group">
     <figure role="group">
         <xsl:apply-templates select="@id|@position|node()"/>
@@ -795,6 +799,9 @@
   </figcaption>
 </xsl:template>
 
+<!-- NOTE this does not match label handling in next template. -->
+<!-- NOTE in JS, we will only match next template -->
+<!-- NOTE so far no publication seems to have fig/fig-group without caption -->
 <xsl:template match="fig/label | fig-group/label">
   <xsl:if test="not(following-sibling::caption[1])">
     <figcaption>
@@ -934,11 +941,13 @@
 
 <xsl:template match="tex-math//text">\text{<xsl:apply-templates/>}</xsl:template>
 
+<!-- NOTE this does not handle the footnote case (cf tex-math/xref above). -->
+<!-- NOTE in JS, we will fix this -->
 <xsl:template match="tex-math//text/xref">$\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$</xsl:template>
 
 <!-- GROUP -->
 
-<!-- TODO unify with book-back//ref-list template? -->
+<!-- TODO unify with book-back//ref-list template? (YES - unified in JS)-->
 <xsl:template match="ref-list">
     <section role="doc-bibliography">
         <xsl:apply-templates select="title"/>
@@ -949,7 +958,7 @@
 </xsl:template>
 
 <xsl:template match="title">
-<!-- TODO only seems used in ref-list/title -->
+<!-- TODO only seems used in ref-list/title  (YES, unified with title in JS)-->
      <xsl:choose>
       <xsl:when test="/article">
           <h2><xsl:apply-templates select="@*|node()"/></h2>
@@ -960,6 +969,7 @@
      </xsl:choose>
 </xsl:template>
 
+<!-- NOTE in JS pass-through. dt handled in label, dd in mixed-citation -->
 <xsl:template match="ref-list/ref">
   <dt id="{@id}">
     <xsl:apply-templates select="label"/>
@@ -976,6 +986,7 @@
 <xsl:template match="mixed-citation">
     <dd>
       <div role="doc-biblioentry">
+      <!-- NOTE currently no publication has a mixed-citation with an attributes; dropping attributes in JS -->
         <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="../raw-citation">
           <code data-ams-doc="amsref">
@@ -997,6 +1008,7 @@
 <!-- GROUP -->
 
 <!-- NOTE node() intentionally has no test, should it? -->
+<!-- NOTE in JS, we default to dropping unknown nodes -->
 <xsl:template match="node()">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
@@ -1045,6 +1057,8 @@
 
 <!-- GROUP -->
 
+<!-- NOTE only used on fig -->
+<!-- NOTE in JS only supported on fig -->
 <xsl:template match="@position">
       <xsl:attribute name="data-ams-position">
         <xsl:value-of select="."/>
@@ -1078,6 +1092,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS mapped to fig -->
 <xsl:template match="verse-group"><figure data-ams-doc="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
 
 </xsl:stylesheet>
