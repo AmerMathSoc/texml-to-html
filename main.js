@@ -88,8 +88,7 @@ const elementProcessor = {
     footer.appendChild(footerDL);
     const footerDT = createNode(htmldoc, 'dt', 'Published by');
     footerDL.appendChild(footerDT);
-    const publisher = xmlnode.querySelector('publisher');
-    if (publisher) recurseTheDom(xmldoc, htmldoc, footerDL, publisher);
+    xmlnode.querySelectorAll('publisher').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, footerDL));
 
     const copyrightStatement = xmlnode.querySelector('copyright-statement');
     if (copyrightStatement)
