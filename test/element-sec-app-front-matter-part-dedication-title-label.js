@@ -60,6 +60,6 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   // NOTE sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
   // TODO find a cleaner solution, e.g., general purpose markup + publication specific customization
   t.ok(document.querySelector('#secmeta section[data-ams-doc="sec-meta"] dl'), 'article sec-meta');
-  t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] p span[data-ams-doc="stringname"]'), 'book sec-meta');
+  t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] p span'), 'book sec-meta');
   t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] section[role="doc-abstract"]'), 'book sec-meta');
 });

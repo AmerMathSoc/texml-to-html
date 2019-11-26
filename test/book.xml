@@ -96,10 +96,10 @@
                 <sec disp-level="1"  specific-use="part">
                     <sec disp-level="2"  specific-use="chapter">
                         <sec id="inparttitle" disp-level="3"  specific-use="use">
-                        <title></title>
+                        <title>Title</title>
                         </sec>
                         <sec id="inpartlabel" disp-level="3"  specific-use="use">
-                        <label></label>
+                        <label>Label</label>
                         </sec>
                     </sec>
                 </sec>

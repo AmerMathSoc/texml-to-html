@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: article', async function(t) {
-  t.plan(42);
+  t.plan(43);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.head, 'document head');
@@ -61,7 +61,8 @@ tape('Template: article', async function(t) {
   t.notOk(dedication.nextElementSibling, 'dedication is last child of titlepage header');
 
   const abstract = header.nextElementSibling;
-  t.equal(abstract.outerHTML, '<section data-ams-doc-level="2" role="doc-abstract"></section>', 'abstract following titlepage header');
+  t.equal(abstract.getAttribute('role'), 'doc-abstract', 'abstract following titlepage header');
+  t.ok(abstract.querySelector('h2'), 'abstract heading');
   t.notOk(abstract.nextElementSibling, 'abstract last child of titlepage');
 
   const articlemeta = titlepage.nextElementSibling;
