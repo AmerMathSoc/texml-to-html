@@ -1,8 +1,31 @@
 <book xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
     <book-meta>
+        <book-id assigning-authority="AMS" book-id-type="publ_key">series</book-id>
+        <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>
+        <book-id assigning-authority="crossref" book-id-type="doi">doi</book-id>
         <book-title-group>
             <book-title>title</book-title>
+            <subtitle>subtitle</subtitle>
         </book-title-group>
+        <publisher>
+            <publisher-name>name1</publisher-name>
+            <publisher-loc>loc</publisher-loc>
+        </publisher>
+        <contrib-group content-type="contrib-group-type">
+            <contrib contrib-type="contrib-type">
+            <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+            <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+            <name name-style="western">
+                <surname>Sur</surname>
+                <given-names>Given</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1"/>
+            <email>email</email>
+            <uri>uri</uri>
+            </contrib>
+            <aff id="aff1">aff</aff>
+            <author-comment>comment</author-comment>
+        </contrib-group>
         <permissions>
             <copyright-statement/>
         </permissions>
