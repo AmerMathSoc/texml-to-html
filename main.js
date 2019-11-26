@@ -353,6 +353,8 @@ const elementProcessor = {
     const nextSibling = xmlnode.nextElementSibling;
     // NOTE if a label is followed by a title, we skip (and pull in the label later on when processing title)
     if (nextSibling && nextSibling.tagName === 'title') return;
+    // NOTE ignore empty label
+    if (xmlnode.tagName === 'label' && xmlnode.innerHTML.trim() === '') return;
     const previousSibling = xmlnode.previousElementSibling;
     const hasLabelSibling =
       previousSibling &&

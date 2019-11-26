@@ -165,6 +165,9 @@
             <string-name></string-name>
             <target id="target"></target>
             <verse-group></verse-group>
+            <statement id="emptyLabel">
+                <label/>
+            </statement>
         </sec>
         <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
         <!-- TODO remove title+label variations -->
