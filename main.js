@@ -1151,6 +1151,16 @@ elementProcessor['fig-group'] = elementProcessor['fig'];
 
 elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
+const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  const copy = createNode(htmldoc, xmlnode.tagName);
+  htmlParentNode.appendChild(copy)
+  mapAttributes(copy, xmlnode);
+  passThrough(xmldoc, htmldoc, copy, xmlnode);
+}
+
+['table', 'tbody', 'thead', 'th', 'tr', 'td'].forEach( tag => elementProcessor[tag] = copyElement);
+
+
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   if (!xmlnode) return;
