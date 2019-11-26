@@ -105,11 +105,15 @@
                 <sec disp-level="1" id="secmeta" specific-use="chapter">
                     <sec-meta>
                         <contrib-group>
-                        <string-name>Name</string-name>
+                        <author-comment>
+                            comment
+                        </author-comment>
                         </contrib-group>
-                        <abstract/>
+                        <abstract>
+                            <title>Abstract</title>
+                        </abstract>
                     </sec-meta>
-                    <label/>
+                    <title>Title</title>
                 </sec>
 
                 <!-- statement etc -->

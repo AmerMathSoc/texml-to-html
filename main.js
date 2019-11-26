@@ -122,6 +122,15 @@ const elementProcessor = {
     if (xmlnode.parentNode.tagName === 'sec-meta') {
       const p = createNode(htmldoc, 'p');
       htmlParentNode.appendChild(p);
+      // TODO very hacky.
+      // NOTE sec-meta>contrib-group>author-comment without contrib only appears in MCL01, MCL14
+      const firstElementChild =
+        xmlnode.firstElementChild;
+      if (firstElementChild.tagName === 'author-comment') {
+        const span = createNode(htmldoc, 'span');
+        p.appendChild(span);
+        passThrough(xmldoc, htmldoc, span, firstElementChild);
+      }
       passThrough(xmldoc, htmldoc, p, xmlnode);
       return;
     }
