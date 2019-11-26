@@ -1116,13 +1116,21 @@ const elementProcessor = {
     }
   },
   'ext-link': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const anchor = createNode(htmldoc, 'a', '', { href: xmlnode.getAttribute('xlink:href')});
+    const anchor = createNode(htmldoc, 'a', '', {
+      href: xmlnode.getAttribute('xlink:href')
+    });
     htmlParentNode.appendChild(anchor);
     passThrough(xmldoc, htmldoc, anchor, xmlnode);
   },
   break: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const br = createNode(htmldoc, 'br');
     htmlParentNode.appendChild(br);
+  },
+  target: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const span = createNode(htmldoc, 'span');
+    htmlParentNode.appendChild(span);
+    mapAttributes(span, xmlnode);
+    passThrough(xmldoc, htmldoc, span, xmlnode);
   }
 };
 
@@ -1157,13 +1165,14 @@ elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
 const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   const copy = createNode(htmldoc, xmlnode.tagName);
-  htmlParentNode.appendChild(copy)
+  htmlParentNode.appendChild(copy);
   mapAttributes(copy, xmlnode);
   passThrough(xmldoc, htmldoc, copy, xmlnode);
-}
+};
 
-['table', 'tbody', 'thead', 'th', 'tr', 'td'].forEach( tag => elementProcessor[tag] = copyElement);
-
+['table', 'tbody', 'thead', 'th', 'tr', 'td'].forEach(
+  tag => (elementProcessor[tag] = copyElement)
+);
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
