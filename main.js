@@ -1119,6 +1119,10 @@ const elementProcessor = {
     const anchor = createNode(htmldoc, 'a', '', { href: xmlnode.getAttribute('xlink:href')});
     htmlParentNode.appendChild(anchor);
     passThrough(xmldoc, htmldoc, anchor, xmlnode);
+  },
+  break: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const br = createNode(htmldoc, 'br');
+    htmlParentNode.appendChild(br);
   }
 };
 
