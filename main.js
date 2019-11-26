@@ -339,7 +339,9 @@ const elementProcessor = {
     div.appendChild(code);
   },
   label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // handle ref
+    // handle fn
+    if (xmlnode.parentNode.tagName === 'fn') return;
+      // handle ref
     if (xmlnode.parentNode.tagName === 'ref') {
       const dt = createNode(htmldoc, 'dt', '', {
         id: xmlnode.parentNode.getAttribute('id')
