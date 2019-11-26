@@ -1114,6 +1114,11 @@ const elementProcessor = {
       passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
       htmlParentNode.insertAdjacentText('beforeend', '}');
     }
+  },
+  'ext-link': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const anchor = createNode(htmldoc, 'a', '', { href: xmlnode.getAttribute('xlink:href')});
+    htmlParentNode.appendChild(anchor);
+    passThrough(xmldoc, htmldoc, anchor, xmlnode);
   }
 };
 
