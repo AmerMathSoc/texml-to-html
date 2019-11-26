@@ -309,6 +309,13 @@
                 <label>Appendix 1</label>
             </app>
         </app-group>
+        <ref-list content-type="biblist" id="reflist">
+            <title>References</title>
+            <ref id="ref">
+                <label>Label</label>
+                Reference
+            </ref>
+        </ref-list>
     </back>
 
 </article>

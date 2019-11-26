@@ -302,7 +302,7 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, span, xmlnode);
   },
   'ref-list': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const level = xmldoc.firstElementChild.tagName === 'book' ? '1' : '2'; // NOTE checks if document is a book
+    const level = xmldoc.firstElementChild.tagName === 'book' ? '0' : '1'; // NOTE checks if document is a book
     const section = createNode(htmldoc, 'section', '', {
       role: 'doc-bibliography',
       'data-ams-doc-level': level
@@ -316,7 +316,30 @@ const elementProcessor = {
       .querySelectorAll('ref')
       .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, dl));
   },
+  'mixed-citation': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    const div = createNode(htmldoc, 'div', '', { role: 'doc-biblioentry' });
+    dd.appendChild(div);
+    // NOTE xslt would map attributes but we have no content with attributes on mixed-citations
+    passThrough(xmldoc, htmldoc, div, xmlnode);
+    const rawCitation = xmlnode.parentNode.querySelector('raw-citation');
+    if (!rawCitation) return;
+    const code = createNode(htmldoc, 'code', rawCitation.textContent, {
+      'data-ams-doc': 'amsref'
+    });
+  },
   label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // handle ref
+    if (xmlnode.parentNode.tagName === 'ref') {
+      const dt = createNode(htmldoc, 'dt', '', {
+        id: xmlnode.parentNode.getAttribute('id')
+      });
+      htmlParentNode.appendChild(dt);
+      const span = createNode(htmldoc, 'span'); // TODO can the wrapping span be dropped?
+      dt.appendChild(span);
+      passThrough(xmldoc, htmldoc, span, xmlnode);
+    }
     // handle fig, fig-group via caption
     if (
       xmlnode.parentNode.tagName === 'fig' ||
@@ -1151,7 +1174,8 @@ const passThroughElements = [
   'back',
   'alternatives',
   'tex-math',
-  'title-group'
+  'title-group',
+  'ref'
   // 'xref/x'
 ];
 const enablePassThrough = tagname => {

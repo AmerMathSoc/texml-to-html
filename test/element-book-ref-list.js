@@ -5,12 +5,12 @@ const tape = require('tape');
 tape('Template: book-back/ref-list ', async function(t) {
   t.plan(3);
 
-  const input = path.resolve(__dirname, 'element-book-ref-list.xml');
+  const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
-  const bibl = document.querySelector('section#id[data-ams-doc-level="1"][role="doc-bibliography"]');
+  const bibl = document.querySelector('section#reflist[role="doc-bibliography"]');
   t.ok(bibl, 'ref-list becomes section with id, role, doc-level');
-  const title = bibl.firstElementChild;
+  const title = bibl.querySelector('h1');
   t.equal(title.outerHTML, '<h1>title</h1>', 'ref-list title as heading');
-  const list = title.nextElementSibling;
-  t.equal(list.tagName, 'DL', 'dl created for ref items');
+  const list = bibl.querySelector('dl');
+  t.ok(list, 'dl created for ref items');
 });

@@ -120,5 +120,8 @@
         <app id="apptitle" disp-level="1"  specific-use="chapter">
             <title>Title</title>
         </app>
+        <ref-list id="reflist">
+            <title>title</title>
+        </ref-list>
     </book-back>
 </book>
