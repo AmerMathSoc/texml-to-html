@@ -156,7 +156,7 @@
                 </def-item>
             </def-list>
             <ext-link xlink:href="https://"></ext-link>
-            <table ><tr><td id="tdattributes" colspan="1" rowspan="2"></td></tr></table>
+            <table><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></table>
         </sec>
         <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
         <!-- TODO remove title+label variations -->
