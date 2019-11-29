@@ -88,7 +88,9 @@ const elementProcessor = {
     footer.appendChild(footerDL);
     const footerDT = createNode(htmldoc, 'dt', 'Published by');
     footerDL.appendChild(footerDT);
-    xmlnode.querySelectorAll('publisher').forEach(recurseTheDom.bind(null, xmldoc, htmldoc, footerDL));
+    xmlnode
+      .querySelectorAll('publisher')
+      .forEach(recurseTheDom.bind(null, xmldoc, htmldoc, footerDL));
 
     const copyrightStatement = xmlnode.querySelector('copyright-statement');
     if (copyrightStatement)
@@ -117,14 +119,14 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'contrib-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // if sec-meta
-    if (xmlnode.parentNode.tagName === 'sec-meta') {
+    const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
+    // if sec-meta in Book
+    if (isBook && xmlnode.parentNode.tagName === 'sec-meta') {
       const p = createNode(htmldoc, 'p');
       htmlParentNode.appendChild(p);
       // TODO very hacky.
       // NOTE sec-meta>contrib-group>author-comment without contrib only appears in MCL01, MCL14
-      const firstElementChild =
-        xmlnode.firstElementChild;
+      const firstElementChild = xmlnode.firstElementChild;
       if (firstElementChild.tagName === 'author-comment') {
         const span = createNode(htmldoc, 'span');
         p.appendChild(span);
@@ -196,7 +198,10 @@ const elementProcessor = {
     htmlParentNode.appendChild(
       createNode(htmldoc, 'a', text, { href: `mailto://${text}` })
     );
-    if (xmlnode.nextElementSibling && xmlnode.nextElementSibling.tagName === 'email')
+    if (
+      xmlnode.nextElementSibling &&
+      xmlnode.nextElementSibling.tagName === 'email'
+    )
       htmlParentNode.appendChild(htmldoc.createTextNode(', '));
   },
   xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
@@ -341,7 +346,7 @@ const elementProcessor = {
   label: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     // handle fn
     if (xmlnode.parentNode.tagName === 'fn') return;
-      // handle ref
+    // handle ref
     if (xmlnode.parentNode.tagName === 'ref') {
       const dt = createNode(htmldoc, 'dt', '', {
         id: xmlnode.parentNode.getAttribute('id')
@@ -375,13 +380,20 @@ const elementProcessor = {
       nextSibling.tagName === 'subtitle' &&
       nextSibling.innerHTML.trim !== '';
     // TODO refactor
-    const hasSecmetaSibling =
-      (previousSibling &&
-        previousSibling.tagName === 'sec-meta' &&
-        previousSibling.innerHTML.trim !== '') ||
-      (previousSibling && previousSibling.previousElementSibling
-        && previousSibling.previousElementSibling.tagName === 'sec-meta' &&
-        previousSibling.previousElementSibling.innerHTML.trim !== '');
+    let maybeSecmetaSibling = null;
+    if (
+      previousSibling &&
+      previousSibling.tagName === 'sec-meta' &&
+      previousSibling.innerHTML.trim !== ''
+    )
+      maybeSecmetaSibling = previousSibling;
+    if (
+      previousSibling &&
+      previousSibling.previousElementSibling &&
+      previousSibling.previousElementSibling.tagName === 'sec-meta' &&
+      previousSibling.previousElementSibling.innerHTML.trim !== ''
+    )
+      maybeSecmetaSibling = previousSibling.previousElementSibling;
     const isStatement = xmlnode.parentNode.tagName === 'statement';
     const level = getParentLevel(htmlParentNode) + 1;
     const header = createNode(htmldoc, 'header');
@@ -396,7 +408,7 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, heading, xmlnode);
     if (isStatement) heading.appendChild(htmldoc.createTextNode('. '));
     if (hasSubtitleSibling) recurseTheDom(xmldoc, htmldoc, header, nextSibling);
-    if (hasSecmetaSibling) {
+    if (maybeSecmetaSibling) {
       // NOTE (from xslt) sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
       // TODO (from xslt) find a cleaner solution, e.g., general purpose markup + publication specific customization
       const secmetaSection = createNode(htmldoc, 'section', '', {
@@ -410,21 +422,21 @@ const elementProcessor = {
           xmldoc,
           htmldoc,
           dl,
-          previousSibling.querySelector('contrib-group')
+          maybeSecmetaSibling.querySelector('contrib-group')
         );
       } else {
         recurseTheDom(
           xmldoc,
           htmldoc,
           secmetaSection,
-          previousSibling.querySelector('contrib-group')
+          maybeSecmetaSibling.querySelector('contrib-group')
         );
       }
       recurseTheDom(
         xmldoc,
         htmldoc,
         secmetaSection,
-        previousSibling.querySelector('abstract')
+        maybeSecmetaSibling.querySelector('abstract')
       );
     }
   },
@@ -667,7 +679,7 @@ const elementProcessor = {
     dd.appendChild(ul);
     passThrough(xmldoc, htmldoc, ul, xmlnode);
   },
-  'kwd': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+  kwd: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const li = createNode(htmldoc, 'li');
     htmlParentNode.appendChild(li);
     passThrough(xmldoc, htmldoc, li, xmlnode);
@@ -939,7 +951,8 @@ const elementProcessor = {
     const dl = createNode(htmldoc, 'dl');
     mapAttributes(dl, xmlnode);
     // NOTE DOM let's us insert DL in p, which is invalid
-    if (htmlParentNode.tagName === 'P') htmlParentNode.insertAdjacentElement('afterend', dl);
+    if (htmlParentNode.tagName === 'P')
+      htmlParentNode.insertAdjacentElement('afterend', dl);
     else htmlParentNode.appendChild(dl);
     passThrough(xmldoc, htmldoc, dl, xmlnode);
   },
@@ -1193,7 +1206,16 @@ elementProcessor['verse-group'] = elementProcessor['fig'];
 
 elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
-const elementsToCopy = ['sup', 'sub', 'table', 'tbody', 'thead', 'th', 'tr', 'td'];
+const elementsToCopy = [
+  'sup',
+  'sub',
+  'table',
+  'tbody',
+  'thead',
+  'th',
+  'tr',
+  'td'
+];
 const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   const copy = createNode(htmldoc, xmlnode.tagName);
   htmlParentNode.appendChild(copy);
@@ -1201,9 +1223,7 @@ const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   passThrough(xmldoc, htmldoc, copy, xmlnode);
 };
 
-elementsToCopy.forEach(
-  tag => (elementProcessor[tag] = copyElement)
-);
+elementsToCopy.forEach(tag => (elementProcessor[tag] = copyElement));
 
 // pass through elements
 const passThrough = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
