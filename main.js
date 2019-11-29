@@ -935,7 +935,9 @@ const elementProcessor = {
   'def-list': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dl = createNode(htmldoc, 'dl');
     mapAttributes(dl, xmlnode);
-    htmlParentNode.appendChild(dl);
+    // NOTE DOM let's us insert DL in p, which is invalid
+    if (htmlParentNode.tagName === 'P') htmlParentNode.insertAdjacentElement('afterend', dl);
+    else htmlParentNode.appendChild(dl);
     passThrough(xmldoc, htmldoc, dl, xmlnode);
   },
   'def-item': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {

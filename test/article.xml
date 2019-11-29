@@ -155,12 +155,14 @@
             </def-list>
             <fn id="pid3"><p/></fn>
             <!-- element-def-list-def-item-def-term -->
-            <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
-                <def-item id="ditem1">
-                    <term>•</term>
-                    <def><p>Item 1</p></def>
-                </def-item>
-            </def-list>
+            <p id="dlistp">
+                <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
+                    <def-item id="ditem1">
+                        <term>•</term>
+                        <def><p>Item 1</p></def>
+                    </def-item>
+                </def-list>
+            </p>
             <ext-link xlink:href="https://"></ext-link>
             <table><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></table>
             <break></break>
