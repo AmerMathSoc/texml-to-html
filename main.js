@@ -658,7 +658,16 @@ const elementProcessor = {
   },
   'kwd-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Keywords'));
-    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
+    const dd = createNode(htmldoc, 'dd');
+    htmlParentNode.appendChild(dd);
+    const ul = createNode(htmldoc, 'ul');
+    dd.appendChild(ul);
+    passThrough(xmldoc, htmldoc, ul, xmlnode);
+  },
+  'kwd': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const li = createNode(htmldoc, 'li');
+    htmlParentNode.appendChild(li);
+    passThrough(xmldoc, htmldoc, li, xmlnode);
   },
   'funding-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Additional Notes'));

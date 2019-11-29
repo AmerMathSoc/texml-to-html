@@ -8,6 +8,6 @@ tape('Template: kwd-group, kwd', async function(t) {
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.querySelector('section[data-ams-doc="copyright-page"] ul'), 'kwd-group to ul');
-  t.ok(document.querySelector('section[data-ams-doc="copyright-page"] ul li'), 'kwd to li');
+  t.equal(document.querySelector('section[data-ams-doc="copyright-page"] ul li').innerHTML, 'keyword', 'kwd to li with content');
 });
 
