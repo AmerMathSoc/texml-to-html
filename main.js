@@ -374,11 +374,14 @@ const elementProcessor = {
       nextSibling &&
       nextSibling.tagName === 'subtitle' &&
       nextSibling.innerHTML.trim !== '';
+    // TODO refactor
     const hasSecmetaSibling =
-      previousSibling &&
-      previousSibling.tagName === 'sec-meta' &&
-      previousSibling.innerHTML.trim !== ''; // NOTE this will not work if sec-meta+label+title
-
+      (previousSibling &&
+        previousSibling.tagName === 'sec-meta' &&
+        previousSibling.innerHTML.trim !== '') ||
+      (previousSibling && previousSibling.previousElementSibling
+        && previousSibling.previousElementSibling.tagName === 'sec-meta' &&
+        previousSibling.previousElementSibling.innerHTML.trim !== '');
     const isStatement = xmlnode.parentNode.tagName === 'statement';
     const level = getParentLevel(htmlParentNode) + 1;
     const header = createNode(htmldoc, 'header');
