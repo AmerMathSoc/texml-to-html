@@ -488,7 +488,6 @@ const elementProcessor = {
         { 'data-ams-doc': 'journal volume' }
       )
     );
-    journalLocation.appendChild(htmldoc.createTextNode(', '));
     journalLocation.appendChild(
       createNode(
         htmldoc,
