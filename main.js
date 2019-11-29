@@ -939,7 +939,7 @@ const elementProcessor = {
   },
   p: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     let paragraph = createNode(htmldoc, 'p');
-    if (xmlnode.parentNode.closest('p, fn'))
+    if (htmlParentNode.closest('p, span[role=doc-footnote]'))
       paragraph = createNode(htmldoc, 'span', '', {
         'data-ams-doc': 'paragraph'
       });

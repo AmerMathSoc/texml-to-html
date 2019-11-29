@@ -147,12 +147,14 @@
             <fn><label>Label</label></fn>
             <!-- element-p-p.js -->
             <p id="pid1"><p/></p>
-            <def-list id="pid2">
-                <def-item>
-                    <term>•</term>
-                    <def><p/></def>
-                </def-item>
-            </def-list>
+            <p>
+                <def-list id="pid2">
+                    <def-item>
+                        <term>•</term>
+                        <def><p/></def>
+                    </def-item>
+                </def-list>
+            </p>
             <fn id="pid3"><p/></fn>
             <!-- element-def-list-def-item-def-term -->
             <p id="dlistp">
