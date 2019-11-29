@@ -196,7 +196,7 @@ const elementProcessor = {
     htmlParentNode.appendChild(
       createNode(htmldoc, 'a', text, { href: `mailto://${text}` })
     );
-    if (xmlnode.nextElementSibling.tagName === 'email')
+    if (xmlnode.nextElementSibling && xmlnode.nextElementSibling.tagName === 'email')
       htmlParentNode.appendChild(htmldoc.createTextNode(', '));
   },
   xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
