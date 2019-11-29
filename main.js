@@ -1190,6 +1190,7 @@ elementProcessor['verse-group'] = elementProcessor['fig'];
 
 elementProcessor['disp-formula'] = elementProcessor['inline-formula'];
 
+const elementsToCopy = ['sup', 'sub', 'table', 'tbody', 'thead', 'th', 'tr', 'td'];
 const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   const copy = createNode(htmldoc, xmlnode.tagName);
   htmlParentNode.appendChild(copy);
@@ -1197,7 +1198,7 @@ const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   passThrough(xmldoc, htmldoc, copy, xmlnode);
 };
 
-['table', 'tbody', 'thead', 'th', 'tr', 'td'].forEach(
+elementsToCopy.forEach(
   tag => (elementProcessor[tag] = copyElement)
 );
 
