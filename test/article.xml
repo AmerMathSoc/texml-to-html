@@ -33,6 +33,17 @@
                     <email>email</email>
                     <uri>uri</uri>
                 </contrib>
+                <contrib contrib-type="contribA">
+                    <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+                    <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+                    <name name-style="western">
+                        <surname>Sur2</surname>
+                        <given-names>Given2</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="aff"/>
+                    <email>email</email>
+                    <uri>uri</uri>
+                </contrib>
                 <aff id="aff">aff</aff>
                 <author-comment>comment</author-comment>
             </contrib-group>

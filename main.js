@@ -136,34 +136,34 @@ const elementProcessor = {
       return;
     }
     // if book-meta or article-meta
-    let contentType = xmlnode.getAttribute('content-type');
-    contentType =
+    const contentType = xmlnode.getAttribute('content-type');
+    const contentTypeCased =
       contentType[0].toUpperCase() +
       contentType.substring(1, contentType.length - 1);
     htmlParentNode.appendChild(
-      createNode(htmldoc, 'dt', `${contentType} Information`)
+      createNode(htmldoc, 'dt', `${contentTypeCased} Information`)
     );
-    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
-  },
-  contrib: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const contentType = xmlnode.getAttribute('contrib-type');
     const dd = createNode(htmldoc, 'dd', '', {
-      'data-ams-doc-contrib': `${contentType}s`
+      'data-ams-doc-contrib': `${contentType}`
     });
     // NOTE (from xslt): author-comment needs to fit in a sentence
     // TODO (from xslt): this looks very hacky; should only apply to articles (thus should test for it).
-    const authorComment = xmlnode.parentNode.querySelector('author-comment');
+    const authorComment = xmlnode.querySelector('author-comment');
     if (authorComment)
       dd.setAttribute(
         'data-ams-doc-contrib-comment',
         authorComment.textContent
       );
     htmlParentNode.appendChild(dd);
-
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
+  },
+  contrib: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const contentType = xmlnode.getAttribute('contrib-type');
+    // TODO (long term) One DL per contrib seems odd. Should contrib-group create a single DL around the contrib's DT+DDs?
     const dl = createNode(htmldoc, 'dl', '', {
       'data-ams-doc-contrib': contentType
     });
-    dd.appendChild(dl);
+    htmlParentNode.appendChild(dl);
     // TODO could be a name etc method
     dl.appendChild(
       createNode(
