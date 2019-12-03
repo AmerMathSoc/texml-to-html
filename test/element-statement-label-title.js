@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(20);
+  t.plan(21);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -77,6 +77,17 @@ tape('Template: statement, label, title', async function(t) {
     statement6.querySelector('[data-ams-doc="secheading"]').innerHTML,
     'Label 6. secheading',
     'sec-heading with title+label within statement'
+  );
+
+  const statement7 = document.querySelector(
+    'section[data-ams-doc="statement"]#statement7'
+  );
+  const statement8 = statement7.querySelector(
+    ' #statement8'
+  );
+  t.equal(
+    statement8.getAttribute('data-ams-doc-level'), statement7.getAttribute('data-ams-doc-level'),
+    'nested statement does not increase data-ams-doc-level'
   );
 
   const input2 = path.resolve(__dirname, 'book.xml');

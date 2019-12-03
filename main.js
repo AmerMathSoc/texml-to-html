@@ -214,7 +214,7 @@ const elementProcessor = {
       if (isInText) htmlParentNode.insertAdjacentText('beforeend', `$`);
       htmlParentNode.insertAdjacentText(
         'beforeend',
-        `\\xhref[${refType}]{#${rid}}{`
+        ` \\xhref[${refType}]{#${rid}}{` // TODO HACK: the leading whitespace avoids a MathJax bug (Theorem with footnotes in test01.xml)
       );
       if (isFootnoteRef) htmlParentNode.insertAdjacentText('beforeend', `{}^{`);
       htmlParentNode.insertAdjacentText('beforeend', xmlnode.textContent);
@@ -244,12 +244,6 @@ const elementProcessor = {
       });
       htmlParentNode.appendChild(span);
       passThrough(xmldoc, htmldoc, span, xmlnode);
-      return;
-    }
-    if (xmlnode.parentNode.tagName === 'tex-math') {
-      const text = htmldoc.createTextNode('');
-      // TODO
-      htmlParentNode.appendChild(text);
       return;
     }
     const refType = xmlnode.getAttribute('ref-type');
@@ -855,9 +849,11 @@ const elementProcessor = {
 
     const specificUse = xmlnode.getAttribute('specific-use');
     const ancestorWithLevel = htmlParentNode.closest('[data-ams-doc-level]');
-    const parentLevel = ancestorWithLevel
+    let parentLevel = ancestorWithLevel
       ? parseInt(ancestorWithLevel.getAttribute('data-ams-doc-level'))
       : baseLevel;
+    // NOTE HACK for articles with leading subsection since texml output cannot add a section wrapper.
+    if (!isBook && !ancestorWithLevel && xmlnode.getAttribute('specific-use') === 'subsection') parentLevel = 1;
     const level =
       specificUse === 'chapter' || specificUse === 'part' ? 0 : parentLevel + 1;
 
@@ -1015,7 +1011,7 @@ const elementProcessor = {
   statement: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const section = createNode(htmldoc, 'section', '', {
       'data-ams-doc': 'statement',
-      'data-ams-doc-level': getParentLevel(htmlParentNode) + 1
+      'data-ams-doc-level': htmlParentNode.getAttribute('data-ams-doc') === 'statement' ? getParentLevel(htmlParentNode) : getParentLevel(htmlParentNode) + 1
     });
     mapAttributes(section, xmlnode);
     htmlParentNode.appendChild(section);

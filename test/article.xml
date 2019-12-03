@@ -160,7 +160,7 @@
             <p id="pid1"><p/></p>
             <p>
                 <def-list id="pid2">
-                    <def-item>
+                    <def-item id="term1">
                         <term>•</term>
                         <def><p/></def>
                     </def-item>
@@ -208,6 +208,9 @@
             <dedication id="ded"/>
         </front-matter>
 
+        <sec id="subsec" disp-level="2" specific-use="subsection">
+        <label>Subsection</label>
+        </sec>
         <sec id="seclabeltitle" disp-level="1"  specific-use="use">
             <label>Label</label>
             <title>Title</title>
@@ -267,6 +270,11 @@
                     <label>Label 6</label>
                     <title>secheading</title>
                 </secheading>
+            </statement>
+            <statement content-type="proof proof" has-qed-box="true" id="statement7">
+                <statement content-type="content type" id="statement8" style="style">
+                    <label>Nested Theorem</label>
+                </statement>
             </statement>
         </sec>
         <!-- fig, fig-group, caption, label -->

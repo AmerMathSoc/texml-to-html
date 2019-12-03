@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(36);
+  t.plan(37);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -21,6 +21,8 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
 
   // NOTE only books have apps without app-group.
   // t.ok(document.querySelector('#applabeltitle[role="doc-appendix"]'), 'standalone app to role doc-appendix');
+
+  t.equal(document.querySelector('#subsec header h3').innerHTML, 'Subsection', 'subsection without wrapping section gets correct level');
 
   t.equal(document.querySelector('#seclabeltitle header h2').innerHTML, 'Label. Title', 'sec with label+title: heading level and content');
   t.equal(document.querySelector('#sectitle header h2').innerHTML, 'Title', 'sec with title: heading level and content');

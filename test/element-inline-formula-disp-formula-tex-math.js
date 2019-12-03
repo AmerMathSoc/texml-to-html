@@ -44,5 +44,5 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
     'doc-footnote',
     'Display-formula Footnote'
   );
-  t.ok(disptex.includes('\\text{Start$\\xhref[other]{#otherid2}{}$End}'), 'tex-math/text/xref');
+  t.ok(disptex.includes('\\text{Start$ \\xhref[other]{#otherid2}{}$End}'), 'tex-math/text/xref');
 });
