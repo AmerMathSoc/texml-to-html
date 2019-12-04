@@ -41,6 +41,10 @@ const setHead = (xmldoc, htmldoc) => {
   viewportmeta.setAttribute('name', 'viewport');
   viewportmeta.setAttribute('content', 'width=device-width');
   htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+  // add charset meta tag
+  const charset = htmldoc.createElement('meta');
+  charset.setAttribute('charset', 'utf8');
+  htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
   // set title
   const xmlTitle =
     xmldoc.querySelector('front>article-meta>title-group>alt-title') ||
