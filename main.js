@@ -44,7 +44,7 @@ const setHead = (xmldoc, htmldoc) => {
   // add charset meta tag
   const charset = htmldoc.createElement('meta');
   charset.setAttribute('charset', 'utf8');
-  htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+  htmldoc.head.insertAdjacentElement('afterbegin', charset);
   // set title
   const xmlTitle =
     xmldoc.querySelector('front>article-meta>title-group>alt-title') ||
