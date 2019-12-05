@@ -778,18 +778,21 @@ const elementProcessor = {
       .querySelector('history>date[date-type="received"]')
       .getAttribute('iso-8601-date');
     dd.appendChild(createNode(htmldoc, 'time', rectime, { datetime: rectime }));
-    const rev = xmlnode.parentNode.querySelector(
+    // revision dates
+    const revs = xmlnode.parentNode.querySelectorAll(
       'history>date[date-type="rev-recd"]'
     );
-    if (rev) {
+    if (revs.length > 0) dd.appendChild(htmldoc.createTextNode(`,\u00A0revised on `));
+    else dd.insertAdjacentText('beforeend', ' ')
+    revs.forEach (rev => {
       const revtime = rev.getAttribute('iso-8601-date');
       // TODO should be a time element like the others
-      dd.appendChild(htmldoc.createTextNode(`,\u00A0revised on `));
       dd.appendChild(
         createNode(htmldoc, 'time', revtime, { datetime: revtime })
       );
-    }
-    dd.appendChild(htmldoc.createTextNode(',  and published on '));
+      dd.insertAdjacentText('beforeend', ', ')
+    })
+    dd.appendChild(htmldoc.createTextNode(' and published on ')); // TODO extra space b/c xslt does this; can be dropped later
     const pubtime = xmlnode.getAttribute('iso-8601-date');
     dd.appendChild(createNode(htmldoc, 'time', pubtime, { datetime: pubtime }));
     dd.appendChild(htmldoc.createTextNode('.'));
