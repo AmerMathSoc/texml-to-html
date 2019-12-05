@@ -664,11 +664,13 @@ const elementProcessor = {
   },
   primary: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const key = xmlnode.querySelector('key').textContent;
-    const description = xmlnode.querySelector('description').textContent;
-    const anchor = createNode(htmldoc, 'a', `${key} (${description})`, {
+    const anchor = createNode(htmldoc, 'a', `${key} (`, {
       href: `http://www.ams.org/msc/msc2010.html?t=${key}`
     });
     htmlParentNode.appendChild(anchor);
+    const description = xmlnode.querySelector('description');
+    passThrough(xmldoc, htmldoc, anchor, description);
+    anchor.insertAdjacentText('beforeend', ')')
     const text =
       xmlnode.nextElementSibling &&
       xmlnode.nextElementSibling.tagName === xmlnode.tagName
@@ -1252,7 +1254,7 @@ const passThroughElements = [
   'named-book-part-body',
   'book-part-meta',
   'body',
-  'description',
+  'description', // TODO can this be removed here?
   'custom-meta-group',
   'custom-meta',
   'permissions',
