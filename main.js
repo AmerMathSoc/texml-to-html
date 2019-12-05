@@ -1152,8 +1152,8 @@ const elementProcessor = {
       'data-ams-doc': `math ${mathMode}`
     });
     htmlParentNode.appendChild(span);
-    if (xmlnode.querySelector('tex-math[has-qed-box]'))
-      span.setAttribute('data-ams-qed-box', 'true'); // NOTE has-qed-box should only occur in disp-formula
+    if (mathMode === 'block' && xmlnode.querySelector('tex-math[has-qed-box]'))
+      span.setAttribute('data-ams-qed-box', 'true'); // TODO xslt only did this for disp-formula; but bproc 10 (then again: only bproc10) has inline-formula with qed-box
     passThrough(xmldoc, htmldoc, span, xmlnode);
     // NOTE tex-math may include some foonotes which we must push to the end
     span
