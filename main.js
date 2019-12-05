@@ -36,14 +36,20 @@ const mapAttributes = (htmlNode, xmlNode) => {
 };
 
 const setHead = (xmldoc, htmldoc) => {
-  // add viewport meta tag
-  const viewportmeta = htmldoc.createElement('meta');
-  viewportmeta.setAttribute('name', 'viewport');
-  viewportmeta.setAttribute('content', 'width=device-width');
-  htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+  // TODO not in xslt but ams-html; change after switch to JS
+  // // add viewport meta tag
+  // const viewportmeta = htmldoc.createElement('meta');
+  // viewportmeta.setAttribute('name', 'viewport');
+  // viewportmeta.setAttribute('content', 'width=device-width');
+  // htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+
   // add charset meta tag
   const charset = htmldoc.createElement('meta');
-  charset.setAttribute('charset', 'utf-8');
+  // TODO switch to modern charset and remove xslt matching code below
+  // charset.setAttribute('charset', 'utf-8');
+  // matches xslt
+  charset.setAttribute('http-equiv', 'Content-Type');
+  charset.setAttribute('content', 'text/html; charset=utf-8');
   htmldoc.head.insertAdjacentElement('afterbegin', charset);
   // set title
   const xmlTitle =
