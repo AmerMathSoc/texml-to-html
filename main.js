@@ -693,13 +693,14 @@ const elementProcessor = {
   },
   'funding-group': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     htmlParentNode.appendChild(createNode(htmldoc, 'dt', 'Additional Notes'));
-    passThrough(xmldoc, htmldoc, htmlParentNode, xmlnode);
-  },
-  'funding-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const dd = createNode(htmldoc, 'dd');
     htmlParentNode.appendChild(dd);
+    passThrough(xmldoc, htmldoc, dd, xmlnode);
+  },
+  'funding-statement': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    // TODO map funding-statement() to p()?
     const p = createNode(htmldoc, 'p');
-    dd.appendChild(p);
+    htmlParentNode.appendChild(p);
     passThrough(xmldoc, htmldoc, p, xmlnode);
   },
   'meta-name': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
