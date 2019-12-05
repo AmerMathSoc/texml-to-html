@@ -36,12 +36,13 @@ const mapAttributes = (htmlNode, xmlNode) => {
 };
 
 const setHead = (xmldoc, htmldoc) => {
-  // TODO not in xslt but ams-html; change after switch to JS
-  // // add viewport meta tag
-  // const viewportmeta = htmldoc.createElement('meta');
-  // viewportmeta.setAttribute('name', 'viewport');
-  // viewportmeta.setAttribute('content', 'width=device-width');
-  // htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
+  // TODO not in xslt not for articles but added by ams-html; change after switch to JS
+  // add viewport meta tag
+  const viewportmeta = htmldoc.createElement('meta');
+  viewportmeta.setAttribute('name', 'viewport');
+  viewportmeta.setAttribute('content', 'width=device-width');
+  const isBook = xmldoc.firstElementChild.tagName === 'book'; // TODO extract into property or function?
+  if (isBook) htmldoc.head.insertAdjacentElement('afterbegin', viewportmeta);
 
   // add charset meta tag
   const charset = htmldoc.createElement('meta');
