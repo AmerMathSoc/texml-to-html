@@ -1167,6 +1167,10 @@ const elementProcessor = {
     // TODO we (sometimes?) get extra whitespace from childnodes; needs test
     const text = span.innerHTML;
     span.innerHTML = text.replace(/\s+/g, ' ');
+    // NOTE ensures prettier will not format TeX strings
+    // NOTE ams-xml-to-html.js removes them again after serialization.
+    // TODO prettier/prettier#7103 is preventing prettier
+    // span.insertAdjacentHTML('beforebegin', '<!-- prettier-ignore -->')
   },
   text: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     if (xmlnode.closest('tex-math')) {
