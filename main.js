@@ -669,6 +669,7 @@ const elementProcessor = {
     });
     htmlParentNode.appendChild(anchor);
     const description = xmlnode.querySelector('description');
+    description.innerHTML = description.innerHTML.trim(); // NOTE since we add ( earlier, we need to trim whitespace that texml creates TODO update test case after switch to JS
     passThrough(xmldoc, htmldoc, anchor, description);
     anchor.insertAdjacentText('beforeend', ')')
     const text =
@@ -1264,7 +1265,7 @@ const passThroughElements = [
   'named-book-part-body',
   'book-part-meta',
   'body',
-  'description', // TODO can this be removed here?
+  'description',
   'custom-meta-group',
   'custom-meta',
   'permissions',
