@@ -151,6 +151,11 @@
             <disp-quote specific-use="use">
                 <attrib/>
             </disp-quote>
+            <p>
+                <disp-quote specific-use="use">
+                    <attrib/>
+                </disp-quote>
+            </p>
             <fig id="figattrib">
                 <caption>Caption</caption>
                 <attrib>Attrib</attrib>

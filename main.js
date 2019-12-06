@@ -918,11 +918,13 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, node, xmlnode);
   },
   'disp-quote': (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const node = createNode(htmldoc, 'blockquote', '', {
+    const blockquote = createNode(htmldoc, 'blockquote', '', {
       'data-ams-style': xmlnode.getAttribute('specific-use')
     });
-    htmlParentNode.appendChild(node);
-    passThrough(xmldoc, htmldoc, node, xmlnode);
+    if (htmlParentNode.tagName === 'P')
+      htmlParentNode.insertAdjacentElement('afterend', blockquote);
+    else htmlParentNode.appendChild(blockquote);
+    passThrough(xmldoc, htmldoc, blockquote, xmlnode);
   },
   attrib: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     let actualParent = htmlParentNode;
