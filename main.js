@@ -1164,6 +1164,9 @@ const elementProcessor = {
     span
       .querySelectorAll('span[role="doc-footnote"]')
       .forEach(node => span.insertAdjacentElement('afterend', node));
+    // TODO we (sometimes?) get extra whitespace from childnodes; needs test
+    const text = span.innerHTML;
+    span.innerHTML = text.replace(/\s+/g, ' ');
   },
   text: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     if (xmlnode.closest('tex-math')) {
