@@ -5,6 +5,7 @@
                 <msc scheme="scheme">
                     <primary>
                         <key>key1</key>
+                        <!-- NOTE descriptions are indented; causing whitespace issues. But we can't get both xsl and js to pass. TODO fix after switch to JS  -->
                         <description>Formal groups, <inline-formula content-type="math/tex"><tex-math>p</tex-math></inline-formula>-divisible groups</description>
                     </primary>
                     <primary>
