@@ -12,7 +12,7 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
   const inlineformula = document.querySelector('#equations [data-ams-doc="math inline"]');
   t.ok(inlineformula, 'Inline formula');
   const tex = inlineformula.innerHTML;
-  t.ok(tex.includes('\\text{Text}'), 'tex-math/text');
+  t.ok(tex.includes('\\text{Text }'), 'tex-math/text (with unicode spacing characters)');
   t.ok(
     tex.includes('\\xhref[fn]{#fnid1}{{}^{1}}'),
     'tex-math/xref@ref-type="fn"'

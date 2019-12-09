@@ -1170,7 +1170,7 @@ const elementProcessor = {
       .forEach(node => span.insertAdjacentElement('afterend', node));
     // TODO we (sometimes?) get extra whitespace from childnodes; needs test
     const text = span.innerHTML;
-    span.innerHTML = text.replace(/\s+/g, ' ');
+    span.innerHTML = text.replace(/[ \n]+/g, ' ');
     // NOTE ensures prettier will not format TeX strings
     // NOTE ams-xml-to-html.js removes them again after serialization.
     // TODO prettier/prettier#7103 is preventing prettier
