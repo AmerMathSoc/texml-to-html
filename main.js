@@ -1281,7 +1281,8 @@ const passThroughElements = [
   'alternatives',
   'tex-math',
   'title-group',
-  'ref'
+  'ref',
+  'cite-group'
   // 'xref/x'
 ];
 const enablePassThrough = tagname => {

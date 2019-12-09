@@ -331,6 +331,10 @@
             </inline-formula>
             <disp-formula><tex-math has-qed-box="true"><xref ref-type="fn" rid="fnid2">2</xref><fn id="fnid2"></fn><text>Start<xref ref-type="other" rid="otherid2"></xref>End</text></tex-math></disp-formula>
         </sec>
+        <!-- inline-formula, disp-formula, tex-math -->
+        <sec disp-level="1" id="citegroup" specific-use="section">
+            <cite-group><x>[</x><xref ref-type="type" rid="rid1">ref</xref><x>, </x><xref ref-type="fn" rid="rid2">ref</xref><x>]</x></cite-group>
+        </sec>
     </body>
     <back>
         <app-group>
