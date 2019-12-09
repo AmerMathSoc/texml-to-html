@@ -1059,16 +1059,19 @@ const elementProcessor = {
       src: xmlnode.getAttribute('xlink:href'),
       'data-ams-style': xmlnode.getAttribute('specific-use'),
       'data-ams-width': xmlnode.getAttribute('width'),
-      'data-ams-height': xmlnode.getAttribute('height')
+      'data-ams-height': xmlnode.getAttribute('height'),
+      'alt': ''
     });
+    htmlParentNode.appendChild(img);
+    if (xmlnode.parentNode.tagName !== 'fig') return;
+    // NOTE We assume alt-text appears only in figures; cf. AmerMathSoc/texml#55
     const altText = xmlnode.parentNode.querySelector('alt-text');
     if (altText) img.setAttribute('alt', altText.textContent);
-    htmlParentNode.appendChild(img);
   },
   img: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
     const img = createNode(htmldoc, 'img', '', {
       src: xmlnode.getAttribute('src'),
-      alt: xmlnode.getAttribute('alt')
+      alt: xmlnode.getAttribute('alt') || ''
     });
     htmlParentNode.appendChild(img);
   },
