@@ -1237,7 +1237,8 @@ const elementsToCopy = [
   'thead',
   'th',
   'tr',
-  'td'
+  'td',
+  'pre'
 ];
 const copyElement = (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
   const copy = createNode(htmldoc, xmlnode.tagName);
