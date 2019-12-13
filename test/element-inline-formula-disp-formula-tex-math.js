@@ -3,16 +3,18 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('inline-formula, disp-formula, tex-math', async function(t) {
-  t.plan(11);
-  const input = path.resolve(
-    __dirname,
-    'article.xml'
-  );
+  t.plan(12);
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
-  const inlineformula = document.querySelector('#equations [data-ams-doc="math inline"]');
+  const inlineformula = document.querySelector(
+    '#equations [data-ams-doc="math inline"]'
+  );
   t.ok(inlineformula, 'Inline formula');
   const tex = inlineformula.innerHTML;
-  t.ok(tex.includes('\\text{Text }'), 'tex-math/text (with unicode spacing characters)');
+  t.ok(
+    tex.includes('\\text{Text }'),
+    'tex-math/text (with unicode spacing characters)'
+  );
   t.ok(
     tex.includes('\\xhref[fn]{#fnid1}{{}^{1}}'),
     'tex-math/xref@ref-type="fn"'
@@ -21,13 +23,17 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
     tex.includes('\\xhref[other]{#otherid1}{}'),
     'tex-math/xref@ref-type="other"'
   );
+  const footnote = inlineformula.nextElementSibling;
   t.ok(
-    inlineformula.nextElementSibling.getAttribute('role'),
+    footnote.getAttribute('role'),
     'doc-footnote',
     'Inline-formula Footnote'
   );
+  t.ok(footnote.querySelector('a'), 'xref in footnote within tex-math not rewritten to TeX macro')
 
-  const displayformula = document.querySelector('#equations [data-ams-doc="math block"]');
+  const displayformula = document.querySelector(
+    '#equations [data-ams-doc="math block"]'
+  );
   const disptex = displayformula.innerHTML;
   t.ok(displayformula, 'Display formula');
   t.equal(
@@ -47,5 +53,8 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
   // NOTE JS implementation removed extra space between the two strings
   // TODO unify
   t.ok(disptex.includes('\\text{Start$'), 'tex-math/text/xref partial');
-  t.ok(disptex.includes('\\xhref[other]{#otherid2}{}$End}'), 'tex-math/text/xref partial');
+  t.ok(
+    disptex.includes('\\xhref[other]{#otherid2}{}$End}'),
+    'tex-math/text/xref partial'
+  );
 });

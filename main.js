@@ -226,8 +226,10 @@ const elementProcessor = {
       htmlParentNode.appendChild(htmldoc.createTextNode(', '));
   },
   xref: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    // case tex-math/xref, tex-math/text/xref
-    if (xmlnode.closest('tex-math')) {
+    // case tex-math/xref, tex-math/text/xref (with a check for footnotes in tex-math)
+    const texmathAncestor = xmlnode.closest('tex-math');
+    const foonoteAncestor = xmlnode.closest('fn');
+    if (texmathAncestor && !(foonoteAncestor && [...texmathAncestor.querySelectorAll('*')].includes(foonoteAncestor))) {
       const refType = xmlnode.getAttribute('ref-type');
       const rid = xmlnode.getAttribute('rid');
       const isInText = xmlnode.closest('text');
