@@ -23,6 +23,16 @@ const attributeDictionary = {
   'specific-use': 'data-ams-specific-use' // NOTE generic fallback; elementProcessors who do something different should remove the attribute from the xmlnode before calling mapAttributes
 };
 
+const sectioningDictionary = {
+  'part': 0,
+  'chapter': 0,
+  'section': 1,
+  'subsection': 2,
+  'subsubsection': 3,
+  'paragraph': 4,
+  'subparagraph': 5
+}
+
 const mapAttribute = (htmlNode, xmlNode, attributeName) => {
   const attributeValue = xmlNode.getAttribute(attributeName);
   if (!attributeValue) return;
@@ -862,19 +872,12 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
   sec: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
-    const isBook = xmldoc.firstElementChild.tagName === 'book';
-    const baseLevel = isBook ? -1 : 0;
-
     const specificUse = xmlnode.getAttribute('specific-use');
+    const hasDictionaryEntry = sectioningDictionary[specificUse] !== undefined;
     const ancestorWithLevel = htmlParentNode.closest('[data-ams-doc-level]');
-    let parentLevel = ancestorWithLevel
-      ? parseInt(ancestorWithLevel.getAttribute('data-ams-doc-level'))
-      : baseLevel;
-    // NOTE HACK for articles with leading subsection since texml output cannot add a section wrapper.
-    if (!isBook && !ancestorWithLevel && xmlnode.getAttribute('specific-use') === 'subsection') parentLevel = 1;
-    const level =
-      specificUse === 'chapter' || specificUse === 'part' ? 0 : parentLevel + 1;
-
+    // if there is no sectioningDictionary entry, we use the ancestor to decide, if 0 or 5 is appropriate.
+    // NOTE front-matter (aliased to sec()) doesn't have an ancestor.
+    const level = hasDictionaryEntry ?  sectioningDictionary[specificUse] : ancestorWithLevel ? 5 : 0;
     const section = createNode(htmldoc, 'section', '', {
       'data-ams-doc-level': level,
       'data-ams-doc': specificUse,

@@ -54,15 +54,17 @@
             </toc-entry>
         </toc>
         <preface/>
-        <front-matter-part id="fmlabeltitle" disp-level="1"  specific-use="use">
+        <front-matter-part id="fmlabeltitle" disp-level="1">
             <label>Label</label>
             <title>Title</title>
         </front-matter-part>
-        <front-matter-part id="fmlabel" disp-level="1"  specific-use="use">
+        <front-matter-part id="fmlabel" disp-level="1">
             <label>Label</label>
+            <subtitle>Subtitle</subtitle>
         </front-matter-part>
-        <front-matter-part id="fmtitle" disp-level="1"  specific-use="use">
+        <front-matter-part id="fmtitle" disp-level="1">
             <title>Title</title>
+            <subtitle>Subtitle</subtitle>
         </front-matter-part>
     </front-matter>
     <book-body>
@@ -76,29 +78,29 @@
                     </def-list>
                 </sec>
                 <sec disp-level="1" id="chapter2" specific-use="chapter">
-                    <sec id="ack3" disp-level="2"  specific-use="use">
+                    <sec id="ack3" disp-level="2"  specific-use="section">
                         <title>Acknowledg</title>
                     </sec>
-                    <sec id="intro2" disp-level="2"  specific-use="use">
+                    <sec id="intro2" disp-level="2"  specific-use="section">
                         <title>Introduction</title>
                     </sec>
-                    <sec id="seclabeltitle" disp-level="2"  specific-use="use">
+                    <sec id="seclabeltitle" disp-level="2"  specific-use="section">
                         <label>Label</label>
                         <title>Title</title>
                     </sec>
-                    <sec id="seclabel" disp-level="2"  specific-use="use">
+                    <sec id="seclabel" disp-level="2"  specific-use="section">
                         <label>Label</label>
                     </sec>
-                    <sec id="sectitle" disp-level="2"  specific-use="use">
+                    <sec id="sectitle" disp-level="2"  specific-use="section">
                         <title>Title</title>
                     </sec>
                 </sec>
                 <sec disp-level="1"  specific-use="part">
                     <sec disp-level="2"  specific-use="chapter">
-                        <sec id="inparttitle" disp-level="3"  specific-use="use">
+                        <sec id="inparttitle" disp-level="3"  specific-use="section">
                         <title>Title</title>
                         </sec>
-                        <sec id="inpartlabel" disp-level="3"  specific-use="use">
+                        <sec id="inpartlabel" disp-level="3"  specific-use="section">
                         <label>Label</label>
                         </sec>
                     </sec>

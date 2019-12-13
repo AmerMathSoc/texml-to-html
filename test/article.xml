@@ -203,18 +203,18 @@
         </sec>
         <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
         <!-- TODO remove title+label variations -->
-        <ack id="ack1" disp-level="1"  specific-use="use">
+        <ack id="ack1" disp-level="1">
         </ack>
-        <front-matter-part id="ack2" disp-level="1"  specific-use="use">
+        <front-matter-part id="ack2" disp-level="1">
             <title>Acknowledg</title>
         </front-matter-part>
-        <front-matter-part id="intro1" disp-level="1"  specific-use="use">
+        <front-matter-part id="intro1" disp-level="1">
             <title>Introduction</title>
         </front-matter-part>
-        <sec id="ack3" disp-level="1"  specific-use="use">
+        <sec id="ack3" disp-level="1"  specific-use="section">
             <title>Acknowledg</title>
         </sec>
-        <sec id="intro2" disp-level="1"  specific-use="use">
+        <sec id="intro2" disp-level="1"  specific-use="section">
             <title>Introduction</title>
         </sec>
         <front-matter>
@@ -224,32 +224,18 @@
         <sec id="subsec" disp-level="2" specific-use="subsection">
         <label>Subsection</label>
         </sec>
-        <sec id="seclabeltitle" disp-level="1"  specific-use="use">
+        <sec id="seclabeltitle" disp-level="1"  specific-use="section">
             <label>Label</label>
             <title>Title</title>
         </sec>
-        <sec id="seclabel" disp-level="1"  specific-use="use">
+        <sec id="seclabel" disp-level="1"  specific-use="section">
             <label>Label</label>
             <subtitle>Subtitle</subtitle>
         </sec>
-        <sec id="sectitle" disp-level="1"  specific-use="use">
+        <sec id="sectitle" disp-level="1"  specific-use="section">
             <title>Title</title>
             <subtitle>Subtitle</subtitle>
         </sec>
-
-        <front-matter-part id="fmlabeltitle" disp-level="1"  specific-use="use">
-            <label>Label</label>
-            <title>Title</title>
-        </front-matter-part>
-        <front-matter-part id="fmlabel" disp-level="1"  specific-use="use">
-            <label>Label</label>
-            <subtitle>Subtitle</subtitle>
-        </front-matter-part>
-        <front-matter-part id="fmtitle" disp-level="1"  specific-use="use">
-            <title>Title</title>
-            <subtitle>Subtitle</subtitle>
-        </front-matter-part>
-
         <!-- statement -->
         <sec disp-level="1" id="statements" specific-use="section">
             <statement content-type="content type" id="statement1" style="style">
@@ -339,16 +325,16 @@
     <back>
         <app-group>
           <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
-            <ack id="ack1" disp-level="1"  specific-use="use"></ack>
-            <app id="applabeltitle" disp-level="1"  specific-use="use">
+            <ack id="ack1" disp-level="1"></ack>
+            <app id="applabeltitle" disp-level="1"  specific-use="section">
                 <label>Label</label>
                 <title>Title</title>
             </app>
-            <app id="applabel" disp-level="1"  specific-use="use">
+            <app id="applabel" disp-level="1"  specific-use="section">
                 <label>Label</label>
                 <subtitle>Subtitle</subtitle>
             </app>
-            <app id="apptitle" disp-level="1"  specific-use="use">
+            <app id="apptitle" disp-level="1"  specific-use="section">
                 <title>Title</title>
                 <subtitle>Subtitle</subtitle>
             </app>

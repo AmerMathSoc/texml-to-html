@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(37);
+  t.plan(34);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -27,17 +27,12 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.equal(document.querySelector('#seclabeltitle header h2').innerHTML, 'Label. Title', 'sec with label+title: heading level and content');
   t.equal(document.querySelector('#sectitle header h2').innerHTML, 'Title', 'sec with title: heading level and content');
   t.equal(document.querySelector('#seclabel header h2').innerHTML, 'Label', 'sec with label: heading level and content');
-  t.equal(document.querySelector('#fmlabeltitle header h2').innerHTML, 'Label. Title', 'front-matter-part with label+title: heading level and content');
-  t.equal(document.querySelector('#fmtitle header h2').innerHTML, 'Title', 'front-matter-part with title: heading level and content');
-  t.equal(document.querySelector('#fmlabel header h2').innerHTML, 'Label', 'front-matter-part with label: heading level and content');
   t.equal(document.querySelector('#applabeltitle header h2').innerHTML, 'Label. Title', 'app with label+title: heading level and content');
   t.equal(document.querySelector('#apptitle header h2').innerHTML, 'Title', 'app with title: heading level and content');
   t.equal(document.querySelector('#applabel header h2').innerHTML, 'Label', 'app with label: heading level and content');
 
   t.ok(document.querySelector('#sectitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
   t.ok(document.querySelector('#seclabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
-  t.ok(document.querySelector('#fmtitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
-  t.ok(document.querySelector('#fmlabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
   t.ok(document.querySelector('#apptitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
   t.ok(document.querySelector('#applabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
 
@@ -64,4 +59,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.ok(document.querySelector('#secmeta section[data-ams-doc="sec-meta"] dl'), 'article sec-meta');
   t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] p span'), 'book sec-meta');
   t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] section[role="doc-abstract"]'), 'book sec-meta');
+
+  t.ok(document2.querySelector('#fmtitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
+  t.ok(document2.querySelector('#fmlabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
 });
