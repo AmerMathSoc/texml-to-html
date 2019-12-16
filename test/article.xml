@@ -325,7 +325,9 @@
     <back>
         <app-group>
           <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
-            <ack id="ack1" disp-level="1"></ack>
+            <ack id="ack1" disp-level="1">
+                <title/>
+            </ack>
             <app id="applabeltitle" disp-level="1"  specific-use="section">
                 <label>Label</label>
                 <title>Title</title>

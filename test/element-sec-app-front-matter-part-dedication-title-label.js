@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(34);
+  t.plan(35);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -12,7 +12,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   // t.equal(document.querySelectorAll('[data-ams-doc-level="1"]').length, 11, 'disp-level attribute to data-ams-doc-level'); //app, dedication don't preserve these (yet) but need it for heading computation
   // t.equal(document.querySelectorAll('[data-ams-doc="use"]').length, 11, 'specific-use attribute to data-ams-doc'); //app, dedication don't preserve these (yet)
 
-  t.ok(document.querySelector('#ack1[role="doc-acknowledgments"]'), 'ack to role doc-acknowledgments');
+  t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
   t.ok(document.querySelector('#ack2[role="doc-acknowledgments"]'), 'front-matter-part with matching title text to role doc-acknowledgments');
   t.ok(document.querySelector('#ack3[role="doc-acknowledgments"]'), 'sec with matching title text to role doc-acknowledgments');
   t.ok(document.querySelector('#intro1[role="doc-introduction"]'), 'front-matter-part with matching title text to role doc-introduction');
@@ -62,4 +62,5 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
 
   t.ok(document2.querySelector('#fmtitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
   t.ok(document2.querySelector('#fmlabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
+  t.ok(document2.querySelector('#ack1[role="doc-acknowledgments"] h1'), 'ack to role doc-acknowledgments with data-ams-doc-level'); // NOTE should be testing doc-level but they differ in XSL vs JS
 });

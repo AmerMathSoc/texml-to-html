@@ -155,5 +155,8 @@
         <ref-list id="reflist">
             <title>title</title>
         </ref-list>
+        <ack id="ack1" disp-level="1">
+            <title/>
+        </ack>
     </book-back>
 </book>

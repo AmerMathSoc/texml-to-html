@@ -898,8 +898,11 @@ const elementProcessor = {
     if (
       xmlnode.tagName === 'ack' ||
       (titleChild && titleChild.textContent.startsWith('Acknowledg'))
-    )
+    ){
       section.setAttribute('role', 'doc-acknowledgments');
+      const isBook = xmldoc.firstElementChild.tagName === 'book';
+      if (xmlnode.tagName === 'ack' && !isBook) section.setAttribute('data-ams-doc-level', '1')
+    }
     if (titleChild && titleChild.textContent.startsWith('Introduction'))
       section.setAttribute('role', 'doc-introduction');
 
