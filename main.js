@@ -874,14 +874,17 @@ const elementProcessor = {
     passThrough(xmldoc, htmldoc, section, xmlnode);
   },
   sec: (xmldoc, htmldoc, htmlParentNode, xmlnode) => {
+    const isBook = xmldoc.firstElementChild.tagName === 'book';
+    const tagName = xmlnode.tagName;
     const specificUse = xmlnode.getAttribute('specific-use');
+    const articleWithPartIncrement = (!isBook && xmldoc.querySelector('sec[specific-use="part"]')) ? 1 : 0; // NOTE only jams882 TODO can we do better?
     const hasDictionaryEntry = sectioningDictionary[specificUse] !== undefined;
     const ancestorWithLevel = htmlParentNode.closest('[data-ams-doc-level]');
     // if there is no sectioningDictionary entry, we use the ancestor to decide, if 0 or 5 is appropriate.
     // NOTE front-matter (aliased to sec()) doesn't have an ancestor.
     const level = hasDictionaryEntry ?  sectioningDictionary[specificUse] : ancestorWithLevel ? 5 : 0;
     const section = createNode(htmldoc, 'section', '', {
-      'data-ams-doc-level': level,
+      'data-ams-doc-level': level+articleWithPartIncrement,
       'data-ams-doc': specificUse,
       id: xmlnode.getAttribute('id')
     });
@@ -891,18 +894,17 @@ const elementProcessor = {
       section.setAttribute('role', 'doc-chapter');
       section.removeAttribute('specific-use');
     }
-    if (xmlnode.tagName === 'dedication')
+    if (tagName === 'dedication')
       section.setAttribute('role', 'doc-dedication');
 
     const titleChild = xmlnode.querySelector('title');
     if (
-      xmlnode.tagName === 'ack' ||
+      tagName === 'ack' ||
       (titleChild && titleChild.textContent.startsWith('Acknowledg'))
     ){
       section.setAttribute('role', 'doc-acknowledgments');
-      const isBook = xmldoc.firstElementChild.tagName === 'book';
-      if (xmlnode.tagName === 'ack' && !isBook) section.setAttribute('data-ams-doc-level', '1')
     }
+    if (tagName === 'ack' && !isBook) section.setAttribute('data-ams-doc-level', '1')
     if (titleChild && titleChild.textContent.startsWith('Introduction'))
       section.setAttribute('role', 'doc-introduction');
 

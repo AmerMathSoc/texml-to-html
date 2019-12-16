@@ -118,6 +118,11 @@
       <notes notes-type="dedication"/>
   </front>
   <body>
-      <sec id="sec" disp-level="1" specific-use="section"/>
+    <sec id="sec" disp-level="0" specific-use="part">
+        <sec id="seclabeltitle" disp-level="1"  specific-use="section">
+            <label>Label</label>
+            <title>Title</title>
+        </sec>
+    </sec>
   </body>
 </article>
