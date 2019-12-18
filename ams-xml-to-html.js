@@ -5,7 +5,7 @@ const path = require('path');
 // const prettierConfig = {
 //   parser: 'html'
 // };
-const xml2html = require('./main.js');
+const xml2html = require('./lib/main.js');
 
 const inputFileName = process.argv[2];
 const outputFileName = process.argv[3];
