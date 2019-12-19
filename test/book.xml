@@ -53,7 +53,16 @@
                 </toc-entry>
             </toc-entry>
         </toc>
-        <preface/>
+        <preface disp-level="1" id="preface">
+            <book-part-meta>
+                <title-group>
+                    <title>Preface</title>
+                </title-group>
+            </book-part-meta>
+            <named-book-part-body>
+                <p/>
+            </named-book-part-body>
+        </preface>
         <front-matter-part id="fmlabeltitle" disp-level="1">
             <label>Label</label>
             <title>Title</title>
