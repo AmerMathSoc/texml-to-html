@@ -50,6 +50,11 @@
                     <label>1</label>
                     <title>SubChunk</title>
                     <nav-pointer rid="tocid3"/>
+                    <toc-entry>
+                        <label>1</label>
+                        <title>SubSubChunk</title>
+                        <nav-pointer rid="tocid4"/>
+                    </toc-entry>
                 </toc-entry>
             </toc-entry>
         </toc>
