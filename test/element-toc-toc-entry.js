@@ -13,7 +13,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   t.ok(title, 'toc: title-group passthrough, title becomes heading');
   const list = toc.querySelector('ol');
   t.ok(list, 'toc: ordered list');
-  t.equal(list.childNodes.length, 2, 'Nested toc-entries remain nested')
+  t.equal(list.children.length, 2, 'Nested toc-entries remain nested')
   t.equal(
     list.querySelector('li a[href="#tocid1"]').innerHTML,
     'Chunk',
@@ -24,7 +24,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
     '2. Chunk',
     'toc-entry, label, nav-pointer'
   );
-  t.equal(list.querySelector('ol').childNodes.length, 1, 'Doubly nested toc-entries remain nested');
+  t.equal(list.querySelector('ol').children.length, 1, 'Doubly nested toc-entries remain nested');
   t.equal(
     list.querySelector('li a[href="#tocid2"]+ol li a[href="#tocid3"]').innerHTML,
     '1. SubChunk',
