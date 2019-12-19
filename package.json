@@ -29,6 +29,9 @@
   "devDependencies": {
     "standard-version": "~6",
     "tape": "~4",
+    "prettier": "~1"
+  },
+  "dependencies": {
     "jsdom": "~15"
   }
 }
