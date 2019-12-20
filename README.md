@@ -1,3 +1,3 @@
 # ams-xml-to-html
 
-An xslt for converting JATS-like XML to html
+Converting JATS/BITS-like XML to HTML.
