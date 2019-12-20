@@ -8,6 +8,6 @@ tape('Template: book preface ', async function(t) {
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
   const preface = document.querySelector('section[role="doc-preface"]');
-  t.ok(preface, 'preface as section with role doc-prefaces');
+  t.ok(preface, 'preface as section with role doc-preface');
   t.ok(preface.querySelector('h1'), 'Preface title should become an h1');
 });
