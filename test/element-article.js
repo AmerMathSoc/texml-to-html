@@ -3,8 +3,8 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: article', async function(t) {
-  t.plan(42);
-  const input = path.resolve(__dirname, 'element-article.xml');
+  t.plan(43);
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
@@ -38,7 +38,7 @@ tape('Template: article', async function(t) {
   const jdate = jissue.nextElementSibling;
   t.equal(jdate.tagName, 'SPAN', 'journal date span');
   t.equal(jdate.getAttribute('data-ams-doc'), 'journal date', 'journal date data-ams-doc "journal date"');
-  t.equal(jdate.innerHTML, '(isodate)', 'journal date content from article-meta/pubdate');
+  t.equal(jdate.innerHTML, '(2000-04-13)', 'journal date content from article-meta/pubdate');
   t.notOk(jdate.nextElementSibling, 'journal date last child of journal volume');
 
   const jpii = journalloc.nextElementSibling;
@@ -61,7 +61,8 @@ tape('Template: article', async function(t) {
   t.notOk(dedication.nextElementSibling, 'dedication is last child of titlepage header');
 
   const abstract = header.nextElementSibling;
-  t.equal(abstract.outerHTML, '<section data-ams-doc-level="1" role="doc-abstract"></section>', 'abstract following titlepage header');
+  t.equal(abstract.getAttribute('role'), 'doc-abstract', 'abstract following titlepage header');
+  t.ok(abstract.querySelector('h2'), 'abstract heading');
   t.notOk(abstract.nextElementSibling, 'abstract last child of titlepage');
 
   const articlemeta = titlepage.nextElementSibling;
@@ -77,7 +78,7 @@ tape('Template: article', async function(t) {
 
   t.notOk(article.nextElementSibling, 'article last child of body')
 
-  const input2 = path.resolve(__dirname, 'element-article--alttitle.xml');
+  const input2 = path.resolve(__dirname, 'article--alttitle.xml');
   const document2 = await xsltproc(input2);
   t.equal(document2.title, 'alttitle', 'alttitle');
 });

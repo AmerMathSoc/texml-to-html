@@ -1,0 +1,176 @@
+<book xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
+    <book-meta>
+        <book-id assigning-authority="AMS" book-id-type="publ_key">series</book-id>
+        <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>
+        <book-id assigning-authority="crossref" book-id-type="doi">doi</book-id>
+        <book-title-group>
+            <book-title>title</book-title>
+            <subtitle>subtitle</subtitle>
+        </book-title-group>
+        <publisher>
+            <publisher-name>name1</publisher-name>
+            <publisher-loc>loc</publisher-loc>
+        </publisher>
+        <publisher>
+            <publisher-name>name2</publisher-name>
+        </publisher>
+        <contrib-group content-type="contrib-group-type">
+            <contrib contrib-type="contrib-type">
+            <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+            <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+            <name name-style="western">
+                <surname>Sur</surname>
+                <given-names>Given</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1"/>
+            <email>email</email>
+            <uri>uri</uri>
+            </contrib>
+            <aff id="aff1">aff</aff>
+            <author-comment>comment</author-comment>
+        </contrib-group>
+        <permissions>
+            <copyright-statement/>
+        </permissions>
+    </book-meta>
+    <front-matter>
+        <toc>
+            <title-group>
+            <title>Contents</title>
+            </title-group>
+            <toc-entry>
+            <title>Chunk</title>
+            <nav-pointer rid="tocid1"/>
+            </toc-entry>
+            <toc-entry>
+                <label>2</label>
+                <title>Chunk</title>
+                <nav-pointer rid="tocid2"/>
+                <toc-entry>
+                    <label>1</label>
+                    <title>SubChunk</title>
+                    <nav-pointer rid="tocid3"/>
+                    <toc-entry>
+                        <label>1</label>
+                        <title>SubSubChunk</title>
+                        <nav-pointer rid="tocid4"/>
+                    </toc-entry>
+                </toc-entry>
+            </toc-entry>
+        </toc>
+        <preface disp-level="1" id="preface">
+            <book-part-meta>
+                <title-group>
+                    <title>Preface</title>
+                </title-group>
+            </book-part-meta>
+            <named-book-part-body>
+                <p/>
+            </named-book-part-body>
+        </preface>
+        <front-matter-part id="fmlabeltitle" disp-level="1">
+            <label>Label</label>
+            <title>Title</title>
+        </front-matter-part>
+        <front-matter-part id="fmlabel" disp-level="1">
+            <label>Label</label>
+            <subtitle>Subtitle</subtitle>
+        </front-matter-part>
+        <front-matter-part id="fmtitle" disp-level="1">
+            <title>Title</title>
+            <subtitle>Subtitle</subtitle>
+        </front-matter-part>
+    </front-matter>
+    <book-body>
+        <book-part>
+            <body>
+                <sec disp-level="2" id="chapter" specific-use="chapter">
+                    <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
+                        <def-item id="ditem1">
+                            <term>•</term> <def><p>Item 1</p></def>
+                        </def-item>
+                    </def-list>
+                </sec>
+                <sec disp-level="1" id="chapter2" specific-use="chapter">
+                    <sec id="ack3" disp-level="2"  specific-use="section">
+                        <title>Acknowledg</title>
+                    </sec>
+                    <sec id="intro2" disp-level="2"  specific-use="section">
+                        <title>Introduction</title>
+                    </sec>
+                    <sec id="seclabeltitle" disp-level="2"  specific-use="section">
+                        <label>Label</label>
+                        <title>Title</title>
+                    </sec>
+                    <sec id="seclabel" disp-level="2"  specific-use="section">
+                        <label>Label</label>
+                    </sec>
+                    <sec id="sectitle" disp-level="2"  specific-use="section">
+                        <title>Title</title>
+                    </sec>
+                </sec>
+                <sec disp-level="1"  specific-use="part">
+                    <sec disp-level="2"  specific-use="chapter">
+                        <sec id="inparttitle" disp-level="3"  specific-use="section">
+                        <title>Title</title>
+                        </sec>
+                        <sec id="inpartlabel" disp-level="3"  specific-use="section">
+                        <label>Label</label>
+                        </sec>
+                    </sec>
+                </sec>
+
+                <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
+                <sec disp-level="1" id="secmeta" specific-use="chapter">
+                    <sec-meta>
+                        <contrib-group>
+                        <author-comment>
+                            comment
+                        </author-comment>
+                        </contrib-group>
+                        <abstract>
+                            <title>Abstract</title>
+                        </abstract>
+                    </sec-meta>
+                    <title>Title</title>
+                </sec>
+
+                <!-- statement etc -->
+                <sec disp-level="1" id="statementchapter" specific-use="chapter">
+                    <statement content-type="content type" id="statement2" style="style">
+                        <label>Theorem 1</label>
+                        <p></p>
+                    </statement>
+                </sec>
+                <sec disp-level="1" id="statementpart" specific-use="part">
+                    <sec disp-level="2" id="statementpartchapter" specific-use="chapter">
+                        <sec disp-level="3" id="statementsection" specific-use="section">
+                            <statement content-type="content type" id="statement4" style="style">
+                                <label>Theorem 1</label>
+                                <p></p>
+                            </statement>
+                        </sec>
+                    </sec>
+                </sec>
+            </body>
+        </book-part>
+    </book-body>
+    <book-back>
+        <app id="applabeltitle" disp-level="1"  specific-use="chapter">
+        <label>Label</label>
+        <title>Title</title>
+        </app>
+        <app id="applabel" disp-level="1"  specific-use="chapter">
+            <label>Label</label>
+        </app>
+        <app id="apptitle" disp-level="1"  specific-use="chapter">
+            <title>Title</title>
+        </app>
+        <ref-list id="reflist">
+            <title>title</title>
+        </ref-list>
+        <ack id="ack1" disp-level="1">
+            <title/>
+        </ack>
+    </book-back>
+</book>

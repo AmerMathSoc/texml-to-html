@@ -6,14 +6,14 @@ tape('Template: contrib', async function(t) {
   t.plan(9);
   const input = path.resolve(
     __dirname,
-    'element-contrib-group-contrib.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
-  const contrib = document.querySelector('dl[data-ams-doc-contrib="contrib-type"]');
+  const contrib = document.querySelector('dl[data-ams-doc-contrib="contribA"]');
   t.ok(contrib, 'contrib creates dl with data-ams-doc-contrib of type');
   const name = contrib.firstElementChild;
   t.equal(name.tagName, 'DT', 'dl has dt for (contributor) name as firstElementChild');
-  t.equal(name.getAttribute('data-ams-doc-contrib'), 'contrib-type name', 'dt (name) has data-ams-doc-contrib with contrib-typ and "name"');
+  t.equal(name.getAttribute('data-ams-doc-contrib'), 'contribA name', 'dt (name) has data-ams-doc-contrib with contrib-typ and "name"');
   t.equal(name.innerHTML, 'Given&nbsp;Sur', 'dt(name) gets content from name, given-name, surname');
   const aff = name.nextElementSibling;
   t.equal(aff.outerHTML, '<dd>aff</dd>', 'nextSibling is DD with aff data');

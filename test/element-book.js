@@ -5,7 +5,7 @@ const tape = require('tape');
 tape('Template: book', async function(t) {
   t.plan(5);
 
-  const input = path.resolve(__dirname, 'element-book.xml');
+  const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
   const head = document.head;

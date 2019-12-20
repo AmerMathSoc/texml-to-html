@@ -6,11 +6,11 @@ tape('Template: copyright-statement', async function(t) {
   t.plan(3);
   const input = path.resolve(
     __dirname,
-    'element-copyright-statement--article.xml'
+    'article.xml'
   );
   const document = await xsltproc(input);
   const article_copyright = document.querySelector(
-    'section[data-ams-doc="article"] dt+dd[data-ams-doc="copyright"]'
+    'section[data-ams-doc="copyright-page"] dt+dd[data-ams-doc="copyright"]'
   );
   t.equal(
     article_copyright.previousElementSibling.outerHTML,
@@ -23,7 +23,7 @@ tape('Template: copyright-statement', async function(t) {
   );
   const input2 = path.resolve(
     __dirname,
-    'element-copyright-statement--book.xml'
+    'book.xml'
   );
   const document2 = await xsltproc(input2);
   t.ok(

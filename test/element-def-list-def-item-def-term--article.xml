@@ -1,6 +1,0 @@
-<article>
-    <def-list content-type="itemize" html:style="list-style-type: disc">
-        <def-item id="item1">
-        <term>•</term> <def><p>Item 1</p></def></def-item>
-    </def-list>
-</article>

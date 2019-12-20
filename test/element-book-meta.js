@@ -3,9 +3,9 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: book-meta', async function(t) {
-  t.plan(14);
+  t.plan(15);
 
-  const input = path.resolve(__dirname, 'element-book-meta.xml');
+  const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
   t.ok(titlepage, 'book-meta creates section with data-ams-doc=titlepage');
@@ -26,7 +26,9 @@ tape('Template: book-meta', async function(t) {
   t.equal(publishedBy.outerHTML, '<dt>Published by</dt>', 'dt "Published By"');
   const publisher = publishedBy.nextElementSibling;
   t.equal(publisher.tagName, 'DD', 'publisher template called');
-  t.notOk(publisher.nextElementSibling, 'publisher is last child of list');
+  const publisher2 = publisher.nextElementSibling;
+  t.equal(publisher2.tagName, 'DD', 'publisher template called');
+  t.notOk(publisher2.nextElementSibling, 'publisher is last child of list');
 
   const copyright = publisherlist.nextElementSibling;
   t.equal(copyright.tagName, 'P', 'list of publishers followed by p from copyright-statment template');

@@ -2,29 +2,31 @@ const path = require('path');
 const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
-tape('Template: toc, toc-entry', async function(t) {
-  t.plan(6);
-  const input = path.resolve(__dirname, 'element-toc-toc-entry.xml');
+tape('Template: (book) toc, toc-entry', async function(t) {
+  t.plan(8);
+  const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
   const toc = document.querySelector('nav[role="doc-toc"]');
   t.ok(toc, 'toc: wrapping nav element with role=doc-toc');
-  const title = document.querySelector('nav[role="doc-toc"]>h1');
+  const title = document.querySelector('nav[role="doc-toc"] h1'); // NOTE xslt will have nav>h1, JS will have nav>header>h1
   t.ok(title, 'toc: title-group passthrough, title becomes heading');
   const list = toc.querySelector('ol');
   t.ok(list, 'toc: ordered list');
+  t.equal(list.children.length, 2, 'Nested toc-entries remain nested')
   t.equal(
-    list.querySelector('li a[href="#id1"]').innerHTML,
+    list.querySelector('li a[href="#tocid1"]').innerHTML,
     'Chunk',
     'toc-entry and nav-pointer'
   );
   t.equal(
-    list.querySelector('li a[href="#id2"]').innerHTML,
+    list.querySelector('li a[href="#tocid2"]').innerHTML,
     '2. Chunk',
     'toc-entry, label, nav-pointer'
   );
+  t.equal(list.querySelector('ol').children.length, 1, 'Doubly nested toc-entries remain nested');
   t.equal(
-    list.querySelector('li a[href="#id2"]+ol li a[href="#id3"]').innerHTML,
+    list.querySelector('li a[href="#tocid2"]+ol li a[href="#tocid3"]').innerHTML,
     '1. SubChunk',
     'Nested toc-entry, label, nav-pointer'
   );

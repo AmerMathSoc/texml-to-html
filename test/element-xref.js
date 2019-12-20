@@ -5,7 +5,7 @@ const tape = require('tape');
 
 tape('Template: xref', async function(t) {
   t.plan(6);
-  const input = path.resolve(__dirname, 'element-xref.xml');
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.querySelector('a[href="#rid1"][data-ams-ref="type"]'), 'xref as anchor with href, data-ams-ref');
   t.ok(document.querySelector('a[href="#rid2"][data-ams-ref="fn"][role="doc-noteref"]'), 'xref with ref-type fn has role doc-noteref');
@@ -14,4 +14,3 @@ tape('Template: xref', async function(t) {
   t.equal(document.querySelector('a[href="#rid5"][data-ams-ref="type"]').innerHTML, 'Context ref', 'xref with generic type with x child preserved');
   t.ok(document.querySelector('span[data-ams-ref="notrid"]'), 'xref without rid as span with data-ams-ref notrid');
 });
-

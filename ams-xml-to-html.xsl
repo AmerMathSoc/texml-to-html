@@ -146,6 +146,7 @@
 <!-- GROUP -->
 
 <!-- TODO unify with ref-list -->
+<!-- NOTE unified in JS (always adding -level) -->
 <xsl:template match="book-back//ref-list">
     <section data-ams-doc-level="1" role="doc-bibliography" id="{@id}">
         <xsl:apply-templates select="title"/>
@@ -176,6 +177,7 @@
         <xsl:text>&#xa;</xsl:text>
         <aside data-ams-doc="journal"><!-- TODO cf. front/journal-meta: should this duplication be done in ams-html? -->
         <xsl:text>&#xa;</xsl:text>
+        <!-- NOTE in JS: we still pick and leave the general method for the article-meta processing -->
         <p data-ams-doc="journal title"><xsl:value-of select="front/journal-meta/journal-title-group/journal-title/text()"/></p>
         <p data-ams-doc="journal location"><span data-ams-doc="journal volume">Volume <xsl:value-of select="front/article-meta/volume/text()"/>, </span><span data-ams-doc="journal issue">Issue <xsl:value-of select="front/article-meta/issue/text()"/></span><span data-ams-doc="journal date">(<xsl:value-of select="front/article-meta/pub-date/@iso-8601-date"/>)</span></p>
         <p data-ams-doc="journal pii"><a href="https://doi.org/{front/article-meta/article-id[@pub-id-type = 'doi']/text()}"><xsl:value-of select="front/article-meta/article-id[@pub-id-type = 'pii']/text()"/></a></p>
@@ -227,12 +229,14 @@
       </xsl:if>
       <xsl:apply-templates select="contrib-group"/>
       <xsl:apply-templates select="funding-group"/>
+      <!-- NOTE in JS: separate methods for meta-name, meta-value (and pass-through custom-meta-group, custom-meta) -->
       <xsl:if test="custom-meta-group/custom-meta[@specific-use='communicated-by']">
         <dt><xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-name/text()"/></dt>
         <dd>
           <xsl:apply-templates select="custom-meta-group/custom-meta[@specific-use='communicated-by']/meta-value/text()"/>
         </dd>
       </xsl:if>
+      <!-- NOTE in JS: dt and dd added by journal-meta method -->
       <dt>Journal Information</dt>
       <dd>
         <xsl:apply-templates select="../journal-meta"/>
@@ -296,6 +300,7 @@
 <!-- GROUP -->
 
 <!-- TODO match="contrib" should be ok -->
+<!-- NOTE in JS, contrib will take over creating the wrapping dd -->
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
@@ -326,6 +331,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: folded into xref method-->
 <xsl:template match="contrib-group/contrib/xref[@ref-type='aff']">
   <dd>
   <xsl:variable name="link" select="./@rid" />
@@ -342,6 +348,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: replace apply-templates with text() since the href assumes this already-->
 <xsl:template match="email">
   <a href="mailto://{text()}">
     <xsl:apply-templates/>
@@ -353,6 +360,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE for JS: dropped apply-templates call (shouldn't be doing anything since ignore template includes pubdate/* -->
 <xsl:template match="article-meta/pub-date">
     This article was received on <time datetime="{../history/date[@date-type='received']/@iso-8601-date}"><xsl:value-of select="../history/date[@date-type='received']/@iso-8601-date"/></time><xsl:if test="../history/date[@date-type='rev-recd']"><xsl:text>,&#xA0;</xsl:text>revised on <xsl:apply-templates select="../history/date[@date-type='rev-recd']"/></xsl:if> and published on <time datetime="{@iso-8601-date}"><xsl:value-of select="@iso-8601-date"/></time>.<xsl:apply-templates/>
 </xsl:template>
@@ -454,7 +462,7 @@
 </xsl:template>
 
 <!-- the "pass-through" template -->
-<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group | xref/x">
+<xsl:template match="article/body | article-meta/title-group/article-title | permissions| article-meta/custom-meta-group | ams-meta-group//description  | statement/secheading | table-wrap | toc-entry/title/xref | back | alternatives | tex-math | title-group | xref/x | cite-group">
     <xsl:apply-templates/>
 </xsl:template>
 
@@ -602,6 +610,7 @@
 
 <!-- NOTE chapters currently only appear in books -->
 <!-- TODO add data-ams-doc-level="{@disp-level}" data-ams-doc="{@specific-use}" ?-->
+<!-- NOTE in JS: unify with sec -->
 <xsl:template match="sec[@specific-use='chapter']">
     <section role="doc-chapter">
         <xsl:apply-templates select="@id|node()"/>
@@ -634,6 +643,7 @@
     </section>
 </xsl:template>
 
+<!-- NOTE in JS: subtitle: drop data-ams-doc-level  -->
 <xsl:template match="sec/title | sec/label | app/title | app/label | front-matter-part/title | front-matter-part/label">
 <xsl:if test="not(following-sibling::title[1])">
     <xsl:variable name="displevel" select="../@disp-level"/>
@@ -679,12 +689,15 @@
 
 <!-- GROUP -->
 
+<!-- NOTE hardcoded, wrong doc-level that appears never to be used; affects book//sec-meta/abstract in MCL01, MCL14 (but no negative side effects). But level not used for abstrac/title (also hardcoded there but to h2) so let's use the usual doc-level calc in JS -->
+<!-- NOTE changed for JS from level=1 to level=2 -->
 <xsl:template match="abstract">
-    <section data-ams-doc-level="1" role="doc-abstract">
+    <section data-ams-doc-level="2" role="doc-abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
 
+<!-- NOTE for JS: cf. abstract above. This looks to be any other title but hard-coded because abstract's don't have disp-level - we can look levels up in the HTML tree. In Books, only MCL01, MCL14 have abstracts but no headings so no problem  -->
 <xsl:template match="abstract/title">
   <header>
     <h2><xsl:apply-templates select="@*|node()"/></h2>
@@ -752,6 +765,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE alt-text only in figures, only in mbk-103 photo inlay -->
 <xsl:template match="graphic | inline-graphic">
     <img data-ams-doc="{name()}" src="{@xlink:href}" alt="{../alt-text/text()}" data-ams-style="{@specific-use}" data-ams-width="{@width}" data-ams-height="{@height}"/>
 </xsl:template>
@@ -765,6 +779,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS: @position support restricted to fig; added data-ams-doc=tagname -->
 <xsl:template match="fig | fig-group">
     <figure role="group">
         <xsl:apply-templates select="@id|@position|node()"/>
@@ -784,6 +799,9 @@
   </figcaption>
 </xsl:template>
 
+<!-- NOTE this does not match label handling in next template. -->
+<!-- NOTE in JS, we will only match next template -->
+<!-- NOTE so far no publication seems to have fig/fig-group without caption -->
 <xsl:template match="fig/label | fig-group/label">
   <xsl:if test="not(following-sibling::caption[1])">
     <figcaption>
@@ -923,11 +941,13 @@
 
 <xsl:template match="tex-math//text">\text{<xsl:apply-templates/>}</xsl:template>
 
+<!-- NOTE this does not handle the footnote case (cf tex-math/xref above). -->
+<!-- NOTE in JS, we will fix this -->
 <xsl:template match="tex-math//text/xref">$\xhref[<xsl:value-of select="@ref-type"/>]{#<xsl:value-of select="@rid"/>}{<xsl:value-of select="text()"/>}$</xsl:template>
 
 <!-- GROUP -->
 
-<!-- TODO unify with book-back//ref-list template? -->
+<!-- TODO unify with book-back//ref-list template? (YES - unified in JS)-->
 <xsl:template match="ref-list">
     <section role="doc-bibliography">
         <xsl:apply-templates select="title"/>
@@ -938,7 +958,7 @@
 </xsl:template>
 
 <xsl:template match="title">
-<!-- TODO only seems used in ref-list/title -->
+<!-- TODO only seems used in ref-list/title  (YES, unified with title in JS)-->
      <xsl:choose>
       <xsl:when test="/article">
           <h2><xsl:apply-templates select="@*|node()"/></h2>
@@ -949,6 +969,7 @@
      </xsl:choose>
 </xsl:template>
 
+<!-- NOTE in JS pass-through. dt handled in label, dd in mixed-citation -->
 <xsl:template match="ref-list/ref">
   <dt id="{@id}">
     <xsl:apply-templates select="label"/>
@@ -965,6 +986,7 @@
 <xsl:template match="mixed-citation">
     <dd>
       <div role="doc-biblioentry">
+      <!-- NOTE currently no publication has a mixed-citation with an attributes; dropping attributes in JS -->
         <xsl:apply-templates select="@*|node()"/>
         <xsl:if test="../raw-citation">
           <code data-ams-doc="amsref">
@@ -986,6 +1008,7 @@
 <!-- GROUP -->
 
 <!-- NOTE node() intentionally has no test, should it? -->
+<!-- NOTE in JS, we default to dropping unknown nodes -->
 <xsl:template match="node()">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
@@ -1034,6 +1057,8 @@
 
 <!-- GROUP -->
 
+<!-- NOTE only used on fig -->
+<!-- NOTE in JS only supported on fig -->
 <xsl:template match="@position">
       <xsl:attribute name="data-ams-position">
         <xsl:value-of select="."/>
@@ -1067,6 +1092,7 @@
 
 <!-- GROUP -->
 
+<!-- NOTE in JS mapped to fig -->
 <xsl:template match="verse-group"><figure data-ams-doc="verse-group"><xsl:apply-templates select="@*|node()"/></figure></xsl:template>
 
 </xsl:stylesheet>

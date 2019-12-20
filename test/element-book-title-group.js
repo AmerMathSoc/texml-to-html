@@ -5,7 +5,7 @@ const tape = require('tape');
 tape('Template: book-title-group, title, subtitle', async function(t) {
   t.plan(5);
 
-  const input = path.resolve(__dirname, 'element-book-title-group.xml');
+  const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
   const titlegroup = document.querySelector('header');
   t.ok(titlegroup, 'book-title-group to header');
@@ -16,5 +16,4 @@ tape('Template: book-title-group, title, subtitle', async function(t) {
   const subtitle = title.nextElementSibling;
   t.equal(subtitle.tagName, 'P', 'title followed by p for subtitle');
   t.equal(subtitle.innerHTML, 'subtitle', 'subtitle with subtitle content');
-
 });

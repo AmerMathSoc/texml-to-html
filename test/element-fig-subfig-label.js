@@ -4,10 +4,12 @@ const tape = require('tape');
 
 
 tape('Template: fig, fig-group, caption, label', async function(t) {
-  t.plan(6);
-  const input = path.resolve(__dirname, 'element-fig-subfig-label.xml');
+  t.plan(7);
+  const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
-  const labels = document.querySelectorAll('strong');
+  const figurePosition = document.querySelector('#figures figure#position');
+  t.equal(figurePosition.getAttribute('data-ams-position'), 'anchor', 'Figure with data-ams-position attribute');
+  const labels = document.querySelectorAll('#figures figure strong');
   t.equal(labels[0].innerHTML, 'Label 1. ', 'Fig label with caption gets period');
   t.equal(labels[1].innerHTML, 'Grouplabel 1. ', 'Fig-group label with caption gets period');
   t.equal(labels[2].innerHTML,'(Sublabel 1) ', 'Subfigure label with caption gets parentheses');
