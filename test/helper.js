@@ -8,7 +8,7 @@ const {promisify} = require('util');
 const execAsync = promisify(exec);
 const prettier = require("prettier");
 
-const xml2html = require('../lib/main.js');
+const xml2html = require('../ams-xml-to-html');
 
 exports.xsltproc = async input => {
   const output = await execAsync(`xsltproc ${xslt} ${input}`);
