@@ -90,6 +90,7 @@
                             <term>•</term> <def><p>Item 1</p></def>
                         </def-item>
                     </def-list>
+                    <p id="pwithx">Is <x>not</x> ignored.</p>
                 </sec>
                 <sec disp-level="1" id="chapter2" specific-use="chapter">
                     <sec id="ack3" disp-level="2"  specific-use="section">
