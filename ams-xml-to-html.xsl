@@ -690,10 +690,10 @@
 
 <!-- GROUP -->
 
-<!-- NOTE hardcoded, wrong doc-level that appears never to be used; affects book//sec-meta/abstract in MCL01, MCL14 (but no negative side effects). But level not used for abstrac/title (also hardcoded there but to h2) so let's use the usual doc-level calc in JS -->
-<!-- NOTE changed for JS from level=1 to level=2 -->
+<!-- NOTE used to have hardcoded (wrong) data-ams-doc-level="2" that appeared never to be used; affects book//sec-meta/abstract in MCL01, MCL14 (but no negative side effects). But level not used for abstract/title (also hardcoded there but to h2) so let's use the usual doc-level calc in JS -->
+<!-- NOTE changed for JS from level=1 to level=2, later adjusted here as well -->
 <xsl:template match="abstract">
-    <section data-ams-doc-level="2" role="doc-abstract">
+    <section data-ams-doc-level="1" role="doc-abstract">
         <xsl:apply-templates select="@id|node()"/>
     </section>
 </xsl:template>
