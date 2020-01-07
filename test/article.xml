@@ -342,6 +342,8 @@
             </app>
             <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
             <app id="secmeta" disp-level="1" specific-use="section">
+                <label>Appendix 1</label>
+                <title>A criterion for kitchen representations</title>
                 <sec-meta>
                     <contrib-group content-type="authors">
                         <contrib contrib-type="author">
@@ -352,8 +354,6 @@
                         </contrib>
                     </contrib-group>
                 </sec-meta>
-                <label>Appendix 1</label>
-                <title>A criterion for kitchen representations</title>
             </app>
         </app-group>
         <ref-list content-type="biblist" id="reflist">

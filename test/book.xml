@@ -122,6 +122,7 @@
 
                 <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
                 <sec disp-level="1" id="secmeta" specific-use="chapter">
+                    <title>Title</title>
                     <sec-meta>
                         <contrib-group>
                         <author-comment>
@@ -132,7 +133,6 @@
                             <title>Abstract</title>
                         </abstract>
                     </sec-meta>
-                    <title>Title</title>
                 </sec>
 
                 <!-- statement etc -->

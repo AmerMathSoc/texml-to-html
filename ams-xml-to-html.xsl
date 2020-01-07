@@ -666,7 +666,10 @@
     <p data-ams-doc="subtitle" data-ams-doc-level="{$level}"><xsl:apply-templates select="following-sibling::subtitle" mode="generic"/></p>
     </xsl:if>
   </header>
-    <xsl:if test="preceding-sibling::sec-meta">
+</xsl:if>
+</xsl:template>
+
+<xsl:template match="sec-meta">
     <!-- NOTE sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations -->
     <!-- TODO find a cleaner solution, e.g., general purpose markup + publication specific customization -->
     <section data-ams-doc="sec-meta">
@@ -674,17 +677,15 @@
         <xsl:choose>
         <xsl:when test="ancestor::article"><!-- jams410 only -->
         <dl>
-            <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
+            <xsl:apply-templates select="contrib-group"/>
         </dl>
         </xsl:when>
         <xsl:otherwise><!-- MCL01, MCL14 only -->
-            <xsl:apply-templates select="preceding-sibling::sec-meta/contrib-group"/>
+            <xsl:apply-templates select="contrib-group"/>
         </xsl:otherwise>
         </xsl:choose>
-        <xsl:apply-templates select="preceding-sibling::sec-meta/abstract"/>
+        <xsl:apply-templates select="abstract"/>
     </section>
-    </xsl:if>
-</xsl:if>
 </xsl:template>
 
 <!-- GROUP -->
