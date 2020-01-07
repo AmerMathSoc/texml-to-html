@@ -458,7 +458,7 @@
 
 <!-- SHARED -->
 <!-- the "ignore" template -->
-<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | sec-meta | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form | math | fn/label | front | metainfo">
+<xsl:template match="name | surname | given-names | aff | contrib-id | pub-date/* | history | volume | issue | copyright-year | x | article-categories | raw-citation | alt-text | author-comment | table-wrap/caption | table-wrap/label | fig/attrib | subtitle | def-list/@style | def-list/@type | def-item/@value | tex-math/fn | disp-formula/alternatives/textual-form | inline-formula/alternatives/textual-form | math | fn/label | front | metainfo">
 </xsl:template>
 
 <!-- the "pass-through" template -->
