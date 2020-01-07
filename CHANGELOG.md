@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.0.0...v4.0.1) (2020-01-07)
+
+
+### Bug Fixes
+
+* doc-level for abstract in XSL ([4750873](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4750873)), closes [#252](https://github.com/AmerMathSoc/ams-xml-to-html/issues/252)
+
+
+
 ## [4.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v3.6.0...v4.0.0) (2020-01-07)
 
 
