@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.0.1...v4.1.0) (2020-01-14)
+
+
+### Features
+
+* **book-meta:** expose book-volume-number ([8d12f13](https://github.com/AmerMathSoc/ams-xml-to-html/commit/8d12f13)), closes [#253](https://github.com/AmerMathSoc/ams-xml-to-html/issues/253)
+
+
+
 ### [4.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.0.0...v4.0.1) (2020-01-07)
 
 
