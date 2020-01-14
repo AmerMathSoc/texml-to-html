@@ -7,6 +7,7 @@
             <book-title>title</book-title>
             <subtitle>subtitle</subtitle>
         </book-title-group>
+        <book-volume-number>volume</book-volume-number>
         <publisher>
             <publisher-name>name1</publisher-name>
             <publisher-loc>loc</publisher-loc>

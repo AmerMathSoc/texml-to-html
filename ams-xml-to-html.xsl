@@ -95,6 +95,9 @@
         <span data-ams-doc="series">
           <xsl:value-of select="book-id[@book-id-type = 'publ_key']/text()"/>
         </span>
+        <span data-ams-doc="volume">
+          <xsl:value-of select="book-volume-number/text()"/>
+        </span>
         <dl>
         <xsl:apply-templates select="contrib-group"/>
         </dl>

@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: book-meta', async function(t) {
-  t.plan(15);
+  t.plan(17);
 
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
@@ -14,7 +14,10 @@ tape('Template: book-meta', async function(t) {
   const series = booktitlegroup.nextElementSibling;
   t.equal(series.tagName, 'SPAN', 'titlegroup next sibling is span for book series');
   t.equal(series.innerHTML, 'series', 'series content from book-id@book-id-type=publ_key');
-  const contribswrapper = series.nextElementSibling;
+  const volume = series.nextElementSibling;
+  t.equal(volume.tagName, 'SPAN', 'series next sibling is span for book volume');
+  t.equal(volume.innerHTML, 'volume', 'volume content from book-volume-number');
+  const contribswrapper = volume.nextElementSibling;
   t.equal(contribswrapper.tagName, 'DL', 'Wrapping dl for contrib-groups');
   t.ok(contribswrapper.firstElementChild, 'contrib groups create some nodes');
 
