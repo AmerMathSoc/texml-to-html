@@ -154,6 +154,13 @@
                         </sec>
                     </sec>
                 </sec>
+
+                <!-- statement etc -->
+                <sec disp-level="1" id="reflistchapter" specific-use="chapter">
+                    <ref-list id="chapterreflist">
+                        <title>title</title>
+                    </ref-list>
+                </sec>
             </body>
         </book-part>
     </book-body>

@@ -962,7 +962,7 @@
 </xsl:template>
 
 <xsl:template match="title">
-<!-- TODO only seems used in ref-list/title  (YES, unified with title in JS)-->
+<!-- TODO used in preface (at this position because we used to think this was only for ref-list, cf. below)-->
      <xsl:choose>
       <xsl:when test="/article">
           <h2><xsl:apply-templates select="@*|node()"/></h2>
@@ -972,6 +972,18 @@
       </xsl:otherwise>
      </xsl:choose>
 </xsl:template>
+<xsl:template match="ref-list/title">
+<!-- in JS, calculated by level -->
+     <xsl:choose>
+      <xsl:when test="ancestor::book-back">
+          <h1><xsl:apply-templates select="@*|node()"/></h1>
+        </xsl:when>
+      <xsl:otherwise>
+          <h2><xsl:apply-templates select="@*|node()"/></h2>
+      </xsl:otherwise>
+     </xsl:choose>
+</xsl:template>
+
 
 <!-- NOTE in JS pass-through. dt handled in label, dd in mixed-citation -->
 <xsl:template match="ref-list/ref">
