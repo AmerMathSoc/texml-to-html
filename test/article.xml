@@ -364,6 +364,9 @@
                 <raw-citation>Raw</raw-citation>
                 <mixed-citation>Mixed</mixed-citation>
             </ref>
+            <ref id="refnolabel">
+                <mixed-citation>Mixed</mixed-citation>
+            </ref>
         </ref-list>
     </back>
 
