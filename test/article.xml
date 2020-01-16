@@ -276,6 +276,22 @@
                     <label>Nested Theorem</label>
                 </statement>
             </statement>
+            <p>
+                <def-list id="statementlist">
+                    <def-item id="statementlistterm">
+                        <term>•</term>
+                        <def>
+                            <p>
+                                <statement content-type="content type" id="statement9" style="style">
+                                <label>Label 1</label>
+                                <title>Title 1</title>
+                                <p></p>
+                                </statement>
+                            </p>
+                        </def>
+                    </def-item>
+                </def-list>
+            </p>
         </sec>
         <!-- fig, fig-group, caption, label -->
         <sec disp-level="1" id="figures" specific-use="section">

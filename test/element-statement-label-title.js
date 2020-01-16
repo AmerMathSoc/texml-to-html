@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(21);
+  t.plan(22);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -88,6 +88,14 @@ tape('Template: statement, label, title', async function(t) {
   t.equal(
     statement8.getAttribute('data-ams-doc-level'), statement7.getAttribute('data-ams-doc-level'),
     'nested statement does not increase data-ams-doc-level'
+  );
+
+  const statement9 = document.querySelector(
+    ' #statement9'
+  );
+  t.equal(
+    statement9.getAttribute('data-ams-doc-level'), '2',
+    'statement in list item data-ams-doc-level'
   );
 
   const input2 = path.resolve(__dirname, 'book.xml');
