@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.1...v4.1.2) (2020-01-16)
+
+
+### Bug Fixes
+
+* support ref without label ([8234571](https://github.com/AmerMathSoc/ams-xml-to-html/commit/8234571)), closes [#256](https://github.com/AmerMathSoc/ams-xml-to-html/issues/256)
+
+
+
 ### [4.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.0...v4.1.1) (2020-01-15)
 
 
