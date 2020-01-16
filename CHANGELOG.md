@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.2...v4.1.3) (2020-01-16)
+
+
+### Bug Fixes
+
+* **preface.js:** preserve attributes ([0b60924](https://github.com/AmerMathSoc/ams-xml-to-html/commit/0b60924)), closes [#258](https://github.com/AmerMathSoc/ams-xml-to-html/issues/258)
+* **statement.js:** ensure valid level ([57cfa22](https://github.com/AmerMathSoc/ams-xml-to-html/commit/57cfa22)), closes [#257](https://github.com/AmerMathSoc/ams-xml-to-html/issues/257)
+
+
+
 ### [4.1.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.1...v4.1.2) (2020-01-16)
 
 
