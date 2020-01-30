@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0-0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.3...v5.0.0-0) (2020-01-30)
+
+
+### Features
+
+* revise appendix handling ([597ae25](https://github.com/AmerMathSoc/ams-xml-to-html/commit/597ae25)), closes [#260](https://github.com/AmerMathSoc/ams-xml-to-html/issues/260)
+
+
+### BREAKING CHANGES
+
+* in journals, changes section nesting for app-group+app
+
+
+
 ### [4.1.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v4.1.2...v4.1.3) (2020-01-16)
 
 
