@@ -597,14 +597,10 @@
 
 <!-- GROUP -->
 
-<xsl:template match="back/app-group">
-    <section role="doc-appendix">
-        <xsl:apply-templates select="@*|node()"/>
-    </section>
-</xsl:template>
+<xsl:template match="back/app-group"><xsl:apply-templates select="@*|node()"/></xsl:template>
 
 <xsl:template match="back/app-group/app">
-    <section data-ams-doc-level="1">
+    <section role="doc-appendix" data-ams-doc-level="1">
         <xsl:apply-templates select="@*|node()"/>
     </section>
 </xsl:template>
