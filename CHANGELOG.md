@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.0...v5.0.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **package.json:** set "bin": "ams-xml-to-html.js" ([9aa9b42](https://github.com/AmerMathSoc/ams-xml-to-html/commit/9aa9b42)), closes [#263](https://github.com/AmerMathSoc/ams-xml-to-html/issues/263)
+
+
+
 ## [5.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.0-0...v5.0.0) (2020-02-03)
 
 
