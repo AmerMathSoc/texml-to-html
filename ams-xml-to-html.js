@@ -1,7 +1,13 @@
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-const recurseTheDom = require('./lib/recurseTheDom');
+let recurseTheDom = {};
+// for npx usage
+try {
+  recurseTheDom = require('ams-xml-to-html');
+} catch (e) {
+  recurseTheDom = require('./lib/recurseTheDom');
+}
 
 const setHead = (xmldoc, htmldoc) => {
   // TODO not in xslt not for articles but added by ams-html; change after switch to JS

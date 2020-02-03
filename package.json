@@ -8,6 +8,7 @@
     "test": "tape test/*.js"
   },
   "bin": "./ams-xml-to-html.js",
+  "main": "./lib/recurseTheDom.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmerMathSoc/ams-xml-to-html.git"
