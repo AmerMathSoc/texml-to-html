@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: article', async function(t) {
-  t.plan(43);
+  t.plan(45);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.head, 'document head');
@@ -81,4 +81,8 @@ tape('Template: article', async function(t) {
   const input2 = path.resolve(__dirname, 'article--alttitle.xml');
   const document2 = await xsltproc(input2);
   t.equal(document2.title, 'alttitle', 'alttitle');
+  const jvol2 = document2.querySelector('[data-ams-doc="journal volume"]');
+  t.equal(jvol2.innerHTML, 'Volume , ')
+  const jissue2 = document2.querySelector('[data-ams-doc="journal issue"]');
+  t.equal(jissue2.innerHTML, 'Issue ')
 });

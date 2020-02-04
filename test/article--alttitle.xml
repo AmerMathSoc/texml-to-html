@@ -74,8 +74,6 @@
             <article-title>article-title</article-title>
             <alt-title>alttitle</alt-title>
         </title-group>
-        <volume>volume</volume>
-        <issue>issue</issue>
         <pub-date date-type="pub" iso-8601-date="2000-04-13" publication-format="electronic">
             <day>13</day>
             <month>4</month>
@@ -96,8 +94,6 @@
             <string-date>2019-07-04T02:36:54Z</string-date>
             </date>
         </history>
-        <volume>1</volume>
-        <issue>11</issue>
         <article-id pub-id-type="doi">doi</article-id>
         <article-id pub-id-type="pii">pii</article-id>
         <abstract/>
