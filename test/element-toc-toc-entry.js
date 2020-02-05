@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: (book) toc, toc-entry', async function(t) {
-  t.plan(8);
+  t.plan(9);
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
@@ -29,5 +29,10 @@ tape('Template: (book) toc, toc-entry', async function(t) {
     list.querySelector('li a[href="#tocid2"]+ol li a[href="#tocid3"]').innerHTML,
     '1. SubChunk',
     'Nested toc-entry, label, nav-pointer'
+  );
+  t.equal(
+    list.querySelector('li a[href="#tocid4"]').innerHTML,
+    '1. SubSubChunk with Link',
+    'toc-entry with xref in title'
   );
 });

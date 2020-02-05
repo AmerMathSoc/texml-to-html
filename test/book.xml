@@ -53,7 +53,7 @@
                     <nav-pointer rid="tocid3"/>
                     <toc-entry>
                         <label>1</label>
-                        <title>SubSubChunk</title>
+                        <title>SubSubChunk with <xref ref-label="chapter" ref-type="sec" rid="chapter" specific-use="ref">Link</xref></title>
                         <nav-pointer rid="tocid4"/>
                     </toc-entry>
                 </toc-entry>
