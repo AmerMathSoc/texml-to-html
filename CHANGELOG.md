@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.5](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.4...v5.0.5) (2020-02-05)
+
+
+### Bug Fixes
+
+* **ams-xml-to-html.js:** set lang=en on html ([bff4307](https://github.com/AmerMathSoc/ams-xml-to-html/commit/bff4307)), closes [#268](https://github.com/AmerMathSoc/ams-xml-to-html/issues/268)
+
+
+
 ### [5.0.4](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.3...v5.0.4) (2020-02-04)
 
 
