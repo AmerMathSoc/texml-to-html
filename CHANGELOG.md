@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.6](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.5...v5.0.6) (2020-02-05)
+
+
+### Bug Fixes
+
+* preserve hr ([ae40fc4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ae40fc4)), closes [#270](https://github.com/AmerMathSoc/ams-xml-to-html/issues/270)
+
+
+
 ### [5.0.5](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.4...v5.0.5) (2020-02-05)
 
 
