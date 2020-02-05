@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('setHead()', async function(t) {
-  t.plan(3);
+  t.plan(4);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   const metaCharset = document.head.firstElementChild;
@@ -17,4 +17,5 @@ tape('setHead()', async function(t) {
   // const viewport = document.head.querySelector('meta[name="viewport"][content="width=device-width"]');
   // t.ok(viewport);
   // t.equal(document.title, 'article-title', 'title tag is set');
+  t.equal(document.querySelector('html').getAttribute('lang'), 'en', 'Language attribute on html tag');
 });
