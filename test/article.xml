@@ -201,6 +201,7 @@
             <sup>1</sup>
             <sub>1</sub>
             <pre>preformatted</pre>
+            <hr/>
         </sec>
         <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
         <!-- TODO remove title+label variations -->

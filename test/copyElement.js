@@ -12,7 +12,8 @@ tape('"copied" elements', async function(t) {
     'th',
     'tr',
     'td',
-    'pre'
+    'pre',
+    'hr'
   ];
   t.plan(copyElements.length);
   const input = path.resolve(__dirname, 'article.xml');
