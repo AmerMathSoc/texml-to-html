@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.8](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.7...v5.0.8) (2020-02-06)
+
+
+### Bug Fixes
+
+* **book-meta.js:** process all contrib-groups ([7cf1a83](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7cf1a83)), closes [#276](https://github.com/AmerMathSoc/ams-xml-to-html/issues/276)
+* **contrib.js:** ensure DT gets at least 1 DD ([be8f60b](https://github.com/AmerMathSoc/ams-xml-to-html/commit/be8f60b)), closes [#277](https://github.com/AmerMathSoc/ams-xml-to-html/issues/277)
+* **subtitle.js:** add level when in header ([f55ac29](https://github.com/AmerMathSoc/ams-xml-to-html/commit/f55ac29)), closes [#275](https://github.com/AmerMathSoc/ams-xml-to-html/issues/275)
+
+
+
 ### [5.0.7](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.6...v5.0.7) (2020-02-06)
 
 
