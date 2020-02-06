@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.7](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.6...v5.0.7) (2020-02-06)
+
+
+### Bug Fixes
+
+* **label.js:** call trim correctly ([b1c4fbc](https://github.com/AmerMathSoc/ams-xml-to-html/commit/b1c4fbc)), closes [#273](https://github.com/AmerMathSoc/ams-xml-to-html/issues/273)
+* **xref.js:** pass-trough inside toc-entry ([f68509a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/f68509a)), closes [#271](https://github.com/AmerMathSoc/ams-xml-to-html/issues/271)
+
+
+
 ### [5.0.6](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.5...v5.0.6) (2020-02-05)
 
 
