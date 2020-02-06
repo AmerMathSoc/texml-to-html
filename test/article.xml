@@ -198,6 +198,10 @@
             <statement id="emptyLabel">
                 <label/>
             </statement>
+            <statement id="titleEmptyLabel">
+                <label/>
+                <title>Title</title>
+            </statement>
             <sup>1</sup>
             <sub>1</sub>
             <pre>preformatted</pre>
