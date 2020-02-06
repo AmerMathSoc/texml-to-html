@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: book-meta', async function(t) {
-  t.plan(17);
+  t.plan(18);
 
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
@@ -20,6 +20,8 @@ tape('Template: book-meta', async function(t) {
   const contribswrapper = volume.nextElementSibling;
   t.equal(contribswrapper.tagName, 'DL', 'Wrapping dl for contrib-groups');
   t.ok(contribswrapper.firstElementChild, 'contrib groups create some nodes');
+
+  t.equal(document.querySelectorAll('dd[data-ams-doc-contrib]').length, 2, 'number of contrib-group DLs');
 
   const footer = contribswrapper.nextElementSibling;
   t.equal(footer.tagName, 'FOOTER', 'Wrapping footer for publisher and permissions');
