@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('Template: fig, fig-group, caption, label', async function(t) {
-  t.plan(7);
+  t.plan(8);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   const figurePosition = document.querySelector('#figures figure#position');
@@ -16,4 +16,5 @@ tape('Template: fig, fig-group, caption, label', async function(t) {
   t.equal(labels[3].innerHTML,'Label 2. ', 'Fig label without caption gets period');
   t.equal(labels[4].innerHTML, 'Grouplabel 2. ', 'Fig-group label without caption gets period');
   t.equal(labels[5].innerHTML, '(Sublabel 2) ', 'Subfigure label without caption gets parentheses');
+  t.notOk(figurePosition.nextElementSibling.hasAttribute('id'), 'Fig without id does not create a (bad) id');
 });
