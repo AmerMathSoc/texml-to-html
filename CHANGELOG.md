@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.9](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.8...v5.0.9) (2020-02-06)
+
+
+### Bug Fixes
+
+* **fig.js:** check id before assigning ([df4ba0d](https://github.com/AmerMathSoc/ams-xml-to-html/commit/df4ba0d)), closes [#278](https://github.com/AmerMathSoc/ams-xml-to-html/issues/278)
+
+
+
 ### [5.0.8](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.7...v5.0.8) (2020-02-06)
 
 
