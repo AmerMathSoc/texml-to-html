@@ -5,7 +5,7 @@ const { JSDOM } = jsdom;
 let recurseTheDom = {};
 // for npx usage
 try {
-  recurseTheDom = require('ams-xml-to-html');
+  recurseTheDom = require(require.resolve('ams-xml-to-html')+'/lib/recurseTheDom');
 } catch (e) {
   recurseTheDom = require('./lib/recurseTheDom');
 }
