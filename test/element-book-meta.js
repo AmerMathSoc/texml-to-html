@@ -20,8 +20,7 @@ tape('Template: book-meta', async function(t) {
   const contribswrapper = volume.nextElementSibling;
   t.equal(contribswrapper.tagName, 'DL', 'Wrapping dl for contrib-groups');
   t.ok(contribswrapper.firstElementChild, 'contrib groups create some nodes');
-
-  t.equal(document.querySelectorAll('dd[data-ams-doc-contrib]').length, 2, 'number of contrib-group DLs');
+  t.equal(document.querySelectorAll('dd[data-ams-doc-contrib]').length, 3, 'number of contrib-group DLs');
 
   const footer = contribswrapper.nextElementSibling;
   t.equal(footer.tagName, 'FOOTER', 'Wrapping footer for publisher and permissions');

@@ -307,7 +307,7 @@
 <xsl:template match="contrib-group/contrib">
   <dl data-ams-doc-contrib="{@contrib-type}">
     <dt data-ams-doc-contrib="{@contrib-type} name">
-      <xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/>
+        <xsl:choose><xsl:when test="string-name"><xsl:apply-templates select="string-name"/></xsl:when><xsl:otherwise><xsl:value-of select="name/given-names"/>&#160;<xsl:value-of select="name/surname"/></xsl:otherwise></xsl:choose>
     </dt>
     <xsl:if test="not (xref[@ref-type='aff'])"><dd></dd></xsl:if>
     <xsl:apply-templates select="xref[@ref-type='aff']"/>

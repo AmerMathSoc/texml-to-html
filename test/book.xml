@@ -26,7 +26,7 @@
                 <xref ref-type="aff" rid="aff1"/>
                 <email>email</email>
                 <uri>uri</uri>
-                </contrib>
+            </contrib>
             <aff id="aff1">aff</aff>
             <author-comment>comment</author-comment>
         </contrib-group>
@@ -36,7 +36,16 @@
                     <surname>Sur</surname>
                     <given-names>Given</given-names>
                 </name>
-                </contrib>
+            </contrib>
+        </contrib-group>
+        <contrib-group content-type="contrib-group-type3">
+            <author-comment>comment</author-comment>
+            <contrib contrib-type="contrib-type3">
+                <name name-style="given-only">
+                    <given-names>should be ignored</given-names>
+                </name>
+                <string-name>String Name</string-name>
+            </contrib>
         </contrib-group>
         <permissions>
             <copyright-statement/>

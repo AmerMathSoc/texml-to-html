@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: contrib', async function(t) {
-  t.plan(10);
+  t.plan(11);
   const input = path.resolve(
     __dirname,
     'article.xml'
@@ -27,8 +27,7 @@ tape('Template: contrib', async function(t) {
   t.equal(orcid.outerHTML, '<dd><a href="orcidid">ORCID</a></dd>', 'nextSibling is orcidID content');
 
   const input2 = path.resolve(__dirname, 'book.xml');
-  const document2 = await xsltproc(input);
-
-
+  const document2 = await xsltproc(input2);
   t.equal(document2.querySelectorAll('dt').length, document2.querySelectorAll('dt+dd').length, 'every DT has a consecutive DD');
+  t.equal(document2.querySelector('dt[data-ams-doc-contrib="contrib-type3 name"] span[data-ams-doc="stringname"]').innerHTML, 'String Name', 'Contributor with string-name')
 });
