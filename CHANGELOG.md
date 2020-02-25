@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* **contrib.js:** support string-name ([d3436e6](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d3436e6)), closes [AmerMathSoc/texml#69](https://github.com/AmerMathSoc/ams-xml-to-html/issues/69) [#69](https://github.com/AmerMathSoc/ams-xml-to-html/issues/69)
+* **contrib.js:** support string-name ([d3436e6](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d3436e6)), closes [#281](https://github.com/AmerMathSoc/ams-xml-to-html/issues/281)
 
 
 
@@ -434,7 +434,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
-* 
+*
 
 
 
