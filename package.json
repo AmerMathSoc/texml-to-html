@@ -1,6 +1,6 @@
 {
   "name": "ams-xml-to-html",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "An xslt for converting JATS-like XML to html",
   "private": true,
   "scripts": {

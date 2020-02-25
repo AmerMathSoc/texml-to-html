@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.1.0...v5.2.0) (2020-02-25)
+
+
+### Features
+
+* **contrib.js:** support string-name ([d3436e6](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d3436e6)), closes [AmerMathSoc/texml#69](https://github.com/AmerMathSoc/ams-xml-to-html/issues/69) [#69](https://github.com/AmerMathSoc/ams-xml-to-html/issues/69)
+
+
+
 ## [5.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.0.9...v5.1.0) (2020-02-19)
 
 
