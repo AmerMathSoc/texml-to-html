@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.0.0...v6.0.1) (2020-03-24)
+
+
+### Bug Fixes
+
+* **label.js:** data-ams-doc-alttitle should include label content ([4723367](https://github.com/AmerMathSoc/ams-xml-to-html/commit/472336717e71e6f72a704f52262b1d06a22d1839)), closes [#290](https://github.com/AmerMathSoc/ams-xml-to-html/issues/290)
+
 ## [6.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.2.0...v6.0.0) (2020-03-24)
 
 
