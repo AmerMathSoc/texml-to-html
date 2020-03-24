@@ -183,6 +183,12 @@
                         <title>title</title>
                     </ref-list>
                 </sec>
+
+                <!-- alt-title -->
+                <sec disp-level="1" id="alttitle" specific-use="chapter">
+                    <title>Title</title>
+                    <alt-title>Alt title</alt-title>
+                </sec>
             </body>
         </book-part>
     </book-body>
