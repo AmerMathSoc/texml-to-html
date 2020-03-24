@@ -37,7 +37,7 @@ const setHead = (xmldoc, htmldoc) => {
 
   const root = xmldoc.querySelector('article, book');
   const lang = root.getAttribute('xml:lang') || 'en';
-  htmldoc.querySelector('html').setAttribute('lang', lang); // TODO look up language (e.g., jams has articles in French)
+  htmldoc.querySelector('html').setAttribute('lang', lang);
 };
 
 const xml2html = xmlstring => {
