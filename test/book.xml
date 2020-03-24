@@ -188,6 +188,7 @@
 
                 <!-- alt-title -->
                 <sec disp-level="1" id="alttitle" specific-use="chapter">
+                    <label>Label</label>
                     <title>Title</title>
                     <alt-title>Alt title</alt-title>
                 </sec>
