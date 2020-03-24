@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: (book) toc, toc-entry', async function(t) {
-  t.plan(9);
+  t.plan(10);
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
@@ -13,7 +13,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   t.ok(title, 'toc: title-group passthrough, title becomes heading');
   const list = toc.querySelector('ol');
   t.ok(list, 'toc: ordered list');
-  t.equal(list.children.length, 2, 'Nested toc-entries remain nested')
+  t.equal(list.children.length, 3, 'Nested toc-entries remain nested')
   t.equal(
     list.querySelector('li a[href="#tocid1"]').innerHTML,
     'Chunk',
@@ -34,5 +34,10 @@ tape('Template: (book) toc, toc-entry', async function(t) {
     list.querySelector('li a[href="#tocid4"]').innerHTML,
     '1. SubSubChunk with Link',
     'toc-entry with xref in title'
+  );
+  t.equal(
+    list.querySelector('li a[href="#tocid5"]').innerHTML,
+    'Alt title',
+    'toc-entry with alt-title'
   );
 });

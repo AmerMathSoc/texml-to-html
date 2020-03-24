@@ -75,6 +75,11 @@
                     </toc-entry>
                 </toc-entry>
             </toc-entry>
+            <toc-entry>
+                <title>Chunk with alt title</title>
+                <alt-title>Alt title</alt-title>
+                <nav-pointer rid="tocid5"/>
+            </toc-entry>
         </toc>
         <preface disp-level="1" id="preface">
             <book-part-meta>
