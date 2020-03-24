@@ -34,7 +34,10 @@ const setHead = (xmldoc, htmldoc) => {
       'book-meta>book-title-group>book-title, front>article-meta>title-group>article-title'
     );
   htmldoc.title = xmlTitle ? xmlTitle.textContent : 'AMS Publication';
-  htmldoc.querySelector('html').setAttribute('lang', 'en'); // TODO look up language (e.g., jams has articles in French)
+
+  const root = xmldoc.querySelector('article, book');
+  const lang = root.getAttribute('xml:lang') || 'en';
+  htmldoc.querySelector('html').setAttribute('lang', lang); // TODO look up language (e.g., jams has articles in French)
 };
 
 const xml2html = xmlstring => {
