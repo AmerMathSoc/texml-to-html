@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.2.0...v6.0.0) (2020-03-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* removes XSL implementation
+
+### Features
+
+* support lang attribute on document root ([32691b8](https://github.com/AmerMathSoc/ams-xml-to-html/commit/32691b836d468aad6787ff4626a1052dc0411f51)), closes [#288](https://github.com/AmerMathSoc/ams-xml-to-html/issues/288)
+* support sans-serif elements ([ee8265d](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ee8265dc00872fd3c5ab69eb7007fdb7a00ab1c5)), closes [#285](https://github.com/AmerMathSoc/ams-xml-to-html/issues/285)
+* **label.js:** preserve alt-title in books ([baaf62f](https://github.com/AmerMathSoc/ams-xml-to-html/commit/baaf62ff8871df1c74ee6124baf7f37a724ab14f)), closes [#287](https://github.com/AmerMathSoc/ams-xml-to-html/issues/287)
+* **toc-entry.js:** use alt-title in TOC ([5fa007f](https://github.com/AmerMathSoc/ams-xml-to-html/commit/5fa007fe76290bc340d97a49a44e6ea5caac7ffd)), closes [#284](https://github.com/AmerMathSoc/ams-xml-to-html/issues/284)
+* remove XSL ([ee82700](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ee82700f938197406d884c54ce0a462fa7b1d134)), closes [#266](https://github.com/AmerMathSoc/ams-xml-to-html/issues/266)
+
 ## [5.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v5.1.0...v5.2.0) (2020-02-25)
 
 
