@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.1d1 20130915//EN" "JATS-archivearticle1-mathml3.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="fr">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher">noti20-1C</journal-id>
+    </journal-meta>
+    <article-meta>
+      <title-group>
+        <article-title>Structures in Representation Stability</article-title>
+      </title-group>
+      <contrib-group content-type="authors">
+        <contrib contrib-type="author">
+          <name>
+            <given-names>Steven V Sam</given-names>
+          </name>
+        </contrib>
+      </contrib-group>
+      <history>
+        <date date-type="issue-date">
+          <month>1</month>
+          <year>2020</year>
+        </date>
+        <date date-type="xml-last-modified" iso-8601-date="2019-12-04T21:36:43Z">
+          <string-date>2019-12-04T21:36:43Z</string-date>
+        </date>
+      </history>
+      <volume>67</volume>
+      <issue>1</issue>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec" disp-level="1" specific-use="part">
+        <sec id="seclabeltitle" disp-level="2"  specific-use="section">
+            <label>Label</label>
+            <title>Title</title>
+        </sec>
+    </sec>
+  </body>
+</article>

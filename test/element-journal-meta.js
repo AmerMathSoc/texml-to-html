@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: journal-meta, ...', async function(t) {
-  t.plan(3);
+  t.plan(4);
   const input = path.resolve(
     __dirname,
     'article.xml'
@@ -19,4 +19,7 @@ tape('Template: journal-meta, ...', async function(t) {
   t.equal(jvol2.innerHTML, 'Volume , ')
   const jissue2 = document2.querySelector('[data-ams-doc="journal issue"]');
   t.equal(jissue2.innerHTML, 'Issue ')
+  const input3 = path.resolve(__dirname, 'article--nometa.xml');
+  const document3 = await xsltproc(input3);
+  t.ok(document3, 'Article without meta data');
 });
