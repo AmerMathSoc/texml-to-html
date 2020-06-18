@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.0.2...v6.1.0) (2020-06-18)
+
+
+### Features
+
+* support boxed-text ([012fb9e](https://github.com/AmerMathSoc/ams-xml-to-html/commit/012fb9e73ad7ace7acb2aefbabc5a14dd3b89231)), closes [#294](https://github.com/AmerMathSoc/ams-xml-to-html/issues/294)
+
 ### [6.0.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.0.1...v6.0.2) (2020-04-01)
 
 
