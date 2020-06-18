@@ -155,6 +155,9 @@
             <disp-quote specific-use="use">
                 <attrib/>
             </disp-quote>
+            <boxed-text content-type="framed">
+                <p>A boxed paragraph</p>
+            </boxed-text>
             <p>
                 <disp-quote specific-use="use">
                     <attrib/>
