@@ -54,7 +54,7 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
   // TODO unify
   t.ok(disptex.includes('\\text{Start$'), 'tex-math/text/xref partial');
   t.ok(
-    disptex.includes('\\xhref[other]{#otherid2}{}$End}'),
+    disptex.includes('\\xhref[other]{#otherid2}{\\text{}}$End}'),
     'tex-math/text/xref partial'
   );
 });
