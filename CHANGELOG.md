@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.1.0...v6.1.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* **xref.js:** tex-math/text/xref needs \text{} ([4ac0b4e](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4ac0b4ea8aab282ae4789c2bad029554108b9e8e)), closes [#295](https://github.com/AmerMathSoc/ams-xml-to-html/issues/295)
+
 ## [6.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.0.2...v6.1.0) (2020-06-18)
 
 
