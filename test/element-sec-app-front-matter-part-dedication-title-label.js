@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(43);
+  t.plan(45);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -45,6 +45,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.equal(document2.querySelector('#apptitle h1').innerHTML, 'Title', 'app with title: heading level and content');
   t.equal(document2.querySelector('#applabel h1').innerHTML, 'Label', 'app with label: heading level and content');
 
+  t.equal(document2.querySelector('#part').getAttribute('role'), 'doc-part', 'part role');
   t.ok(document2.querySelector('#inparttitle h2'), 'sec with title in chapter in part: heading level reduced');
   t.ok(document2.querySelector('#inpartlabel h2'), 'sec with label in chapter in part: heading level reduced');
 
@@ -71,4 +72,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.ok(document3.querySelector('section[data-ams-doc-level="1"]'), 'Article with part gets increased doc-levels');
   t.ok(document3.querySelector('section[data-ams-doc-level="2"]'), 'Article with part gets increased doc-levels');
 
+  const input4 = path.resolve(__dirname, 'article--nometa.xml');
+  const document4 = await xsltproc(input4);
+  t.equal(document4.querySelector('#sec').getAttribute('role'), 'doc-part', 'part in article: role');
 });

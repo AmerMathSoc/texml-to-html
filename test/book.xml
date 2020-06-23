@@ -135,7 +135,7 @@
                         <title>Title</title>
                     </sec>
                 </sec>
-                <sec disp-level="1"  specific-use="part">
+                <sec id="part" disp-level="1"  specific-use="part">
                     <sec disp-level="2"  specific-use="chapter">
                         <sec id="inparttitle" disp-level="3"  specific-use="section">
                         <title>Title</title>
