@@ -4,13 +4,9 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(39);
+  t.plan(43);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
-
-  // NOTE these are brittle and somewhat stupid test. We'll indirectly test this via headings later.
-  // t.equal(document.querySelectorAll('[data-ams-doc-level="1"]').length, 11, 'disp-level attribute to data-ams-doc-level'); //app, dedication don't preserve these (yet) but need it for heading computation
-  // t.equal(document.querySelectorAll('[data-ams-doc="use"]').length, 11, 'specific-use attribute to data-ams-doc'); //app, dedication don't preserve these (yet)
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
   t.ok(document.querySelector('#ack2[role="doc-acknowledgments"]'), 'front-matter-part with matching title text to role doc-acknowledgments');
@@ -18,9 +14,6 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.ok(document.querySelector('#intro1[role="doc-introduction"]'), 'front-matter-part with matching title text to role doc-introduction');
   t.ok(document.querySelector('#intro2[role="doc-introduction"]'), 'sec with matching title text to role doc-introduction');
   t.ok(document.querySelector('#ded[role="doc-dedication"]'), 'dedication to role doc-dedication');
-
-  // NOTE only books have apps without app-group.
-  // t.ok(document.querySelector('#applabeltitle[role="doc-appendix"]'), 'standalone app to role doc-appendix');
 
   t.equal(document.querySelector('#subsec h3').innerHTML, 'Subsection', 'subsection without wrapping section gets correct level');
 
@@ -66,6 +59,12 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.ok(document2.querySelector('#ack1[role="doc-acknowledgments"] h1'), 'ack to role doc-acknowledgments with data-ams-doc-level'); // NOTE should be testing doc-level but they differ in XSL vs JS
 
   t.equal(document2.querySelector('#alttitle h1').getAttribute('data-ams-doc-alttitle'), 'Label. Alt title', 'sec with title: subtitle to p with data-ams-doc');
+
+  const bookAppGroup = document2.querySelector('#book-app-group');
+  t.equal(bookAppGroup.getAttribute('role'), 'doc-part', 'book-app-group role');
+  t.equal(bookAppGroup.getAttribute('data-ams-doc'), 'part', 'book-app-group data-ams-doc');
+  t.equal(bookAppGroup.getAttribute('data-ams-doc-level'), '0', 'book-app-group data-ams-level');
+  t.equal(document2.querySelector('#applabeltitle').getAttribute('role'), 'doc-appendix', 'book-app role');
 
   const input3 = path.resolve(__dirname, 'article--alttitle.xml');
   const document3 = await xsltproc(input3);

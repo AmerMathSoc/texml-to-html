@@ -196,16 +196,18 @@
         </book-part>
     </book-body>
     <book-back>
-        <app id="applabeltitle" disp-level="1"  specific-use="chapter">
-        <label>Label</label>
-        <title>Title</title>
-        </app>
-        <app id="applabel" disp-level="1"  specific-use="chapter">
-            <label>Label</label>
-        </app>
-        <app id="apptitle" disp-level="1"  specific-use="chapter">
-            <title>Title</title>
-        </app>
+        <book-app-group id="book-app-group">
+            <book-app id="applabeltitle" disp-level="1"  specific-use="chapter">
+                <label>Label</label>
+                <title>Title</title>
+            </book-app>
+            <book-app id="applabel" disp-level="1"  specific-use="chapter">
+                <label>Label</label>
+            </book-app>
+            <book-app id="apptitle" disp-level="1"  specific-use="chapter">
+                <title>Title</title>
+            </book-app>
+        </book-app-group>
         <ref-list id="reflist">
             <title>title</title>
         </ref-list>
