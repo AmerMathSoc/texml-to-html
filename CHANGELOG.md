@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.1.1...v6.2.0) (2020-06-23)
+
+
+### Features
+
+* map specific-use="part" to  role="doc-part" ([1bdb4a4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/1bdb4a48c272a10c25278ecf871976b4d984b858)), closes [#296](https://github.com/AmerMathSoc/ams-xml-to-html/issues/296)
+* support book-app-group, book-app ([54ef045](https://github.com/AmerMathSoc/ams-xml-to-html/commit/54ef0455547ed3ce9a470e6e55bf17a148f5bb0e)), closes [#280](https://github.com/AmerMathSoc/ams-xml-to-html/issues/280)
+
 ### [6.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.1.0...v6.1.1) (2020-06-22)
 
 
