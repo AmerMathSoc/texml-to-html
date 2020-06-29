@@ -83,6 +83,11 @@
                 <nav-pointer rid="tocid5"/>
             </toc-entry>
         </toc>
+        <notes notes-type="publishers-note" specific-use="epub-opening-page">
+            <title>Publisher's Notice</title>
+            <p>Some notes.
+            </p>
+        </notes>
         <preface disp-level="1" id="preface">
             <book-part-meta>
                 <title-group>
