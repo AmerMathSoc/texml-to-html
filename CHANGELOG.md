@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.3.0...v6.3.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* **toc-entry:** fix check for empty label ([0eac3d5](https://github.com/AmerMathSoc/ams-xml-to-html/commit/0eac3d5c3248e2a076591b7326b48e336261e25d)), closes [#299](https://github.com/AmerMathSoc/ams-xml-to-html/issues/299)
+* **toc-entry:** work around :scope bug ([868a9c4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/868a9c4f12e05ce2e7796e2096a7ba06724dcd23)), closes [#300](https://github.com/AmerMathSoc/ams-xml-to-html/issues/300)
+* update test/element-articles.js ([e688f2a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e688f2a06e04117ce2c7576031ef2dbb3bb78564)), closes [#297](https://github.com/AmerMathSoc/ams-xml-to-html/issues/297)
+
 ## [6.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.2.0...v6.3.0) (2020-06-29)
 
 
