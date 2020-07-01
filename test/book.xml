@@ -83,6 +83,15 @@
                 <alt-title>Alt title</alt-title>
                 <nav-pointer rid="tocid5"/>
             </toc-entry>
+            <toc-entry>
+                <title>Chunk without label but subchunk with label</title>
+                <nav-pointer rid="tocid6"/>
+                <toc-entry>
+                    <label>1</label>
+                    <title>SubChunk</title>
+                    <nav-pointer rid="tocid7"/>
+                </toc-entry>
+            </toc-entry>
         </toc>
         <notes notes-type="publishers-note" specific-use="epub-opening-page">
             <title>Publisher's Notice</title>
