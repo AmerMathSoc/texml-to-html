@@ -57,7 +57,7 @@ tape('Template: article', async function(t) {
   t.equal(titlepageheading.innerHTML, 'article-title', 'titlepage heading content from article-title');
 
   const dedication = titlepageheading.nextElementSibling;
-  t.equal(dedication.outerHTML, '<div role="doc-dedication"></div>', 'dedication following titlepage heading');
+  t.equal(dedication.outerHTML, '<section data-ams-content-type="dedication" role="doc-dedication"></section>', 'dedication following titlepage heading');
   t.notOk(dedication.nextElementSibling, 'dedication is last child of titlepage header');
 
   const abstract = header.nextElementSibling;
