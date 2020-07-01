@@ -78,6 +78,7 @@
                 </toc-entry>
             </toc-entry>
             <toc-entry>
+                <label/>
                 <title>Chunk with alt title</title>
                 <alt-title>Alt title</alt-title>
                 <nav-pointer rid="tocid5"/>
