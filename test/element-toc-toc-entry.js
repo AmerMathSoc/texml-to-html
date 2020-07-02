@@ -7,8 +7,8 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
-  const toc = document.querySelector('nav[role="doc-toc"]');
-  t.ok(toc, 'toc: wrapping nav element with role=doc-toc');
+  const toc = document.querySelector('nav[role="doc-toc"]#toc');
+  t.ok(toc, 'toc: wrapping nav element with role=doc-toc and id');
   const title = document.querySelector('nav[role="doc-toc"] h1'); // NOTE xslt will have nav>h1, JS will have nav>header>h1
   t.ok(title, 'toc: title-group passthrough, title becomes heading');
   const list = toc.querySelector('ol');

@@ -54,7 +54,7 @@
         </permissions>
     </book-meta>
     <front-matter>
-        <toc>
+        <toc id="toc">
             <title-group>
             <title>Contents</title>
             </title-group>
