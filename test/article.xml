@@ -163,6 +163,11 @@
                     <attrib/>
                 </disp-quote>
             </p>
+            <p>
+                <disp-quote specific-use="epigraph">
+                    <attrib/>
+                </disp-quote>
+            </p>
             <fig id="figattrib">
                 <caption>Caption</caption>
                 <attrib>Attrib</attrib>
