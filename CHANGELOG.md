@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.4.1...v6.5.0) (2020-08-21)
+
+
+### Features
+
+* **disp-quote:** add role for epigraphs ([2152d70](https://github.com/AmerMathSoc/ams-xml-to-html/commit/2152d70c65ef1377229116e028056560980ccbf2)), closes [#245](https://github.com/AmerMathSoc/ams-xml-to-html/issues/245)
+
 ### [6.4.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.4.0...v6.4.1) (2020-07-29)
 
 
