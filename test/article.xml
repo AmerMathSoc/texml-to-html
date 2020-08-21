@@ -164,7 +164,7 @@
                 </disp-quote>
             </p>
             <p>
-                <disp-quote specific-use="epigraph">
+                <disp-quote content-type="epigraph">
                     <attrib/>
                 </disp-quote>
             </p>
