@@ -20,7 +20,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement1Heading, 'statement heading level in article');
   t.equal(
     statement1Heading.innerHTML,
-    'Label 1 Title 1. ',
+    '<span data-ams-doc="label">Label 1 </span>Title 1. ',
     'statement with label+title creates space before and period after title'
   );
   const statement2 = document.querySelector(
@@ -61,7 +61,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement5, 'statement 5');
   t.equal(
     statement5.querySelector('h3').innerHTML,
-    'Label 5 Proof. ',
+    '<span data-ams-doc="label">Label 5 </span>Proof. ',
     'proof statement with label+title'
   );
   t.equal(

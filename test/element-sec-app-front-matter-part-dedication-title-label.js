@@ -17,10 +17,10 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
 
   t.equal(document.querySelector('#subsec h3').innerHTML, 'Subsection', 'subsection without wrapping section gets correct level');
 
-  t.equal(document.querySelector('#seclabeltitle h2').innerHTML, 'Label. Title', 'sec with label+title: heading level and content');
+  t.equal(document.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'sec with label+title: heading level and content');
   t.equal(document.querySelector('#sectitle h2').innerHTML, 'Title', 'sec with title: heading level and content');
   t.equal(document.querySelector('#seclabel h2').innerHTML, 'Label', 'sec with label: heading level and content');
-  t.equal(document.querySelector('#applabeltitle h2').innerHTML, 'Label. Title', 'app with label+title: heading level and content');
+  t.equal(document.querySelector('#applabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'app with label+title: heading level and content');
   t.equal(document.querySelector('#apptitle h2').innerHTML, 'Title', 'app with title: heading level and content');
   t.equal(document.querySelector('#applabel h2').innerHTML, 'Label', 'app with label: heading level and content');
 
@@ -35,13 +35,13 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   const document2 = await xsltproc(input2);
   t.ok(document2.querySelector('#chapter[role="doc-chapter"]'), 'sec with specific-use chapter to role doc-chapter'); // NOTE so far, chapters only occur in books but the xslt doesn't check for it
 
-  t.equal(document2.querySelector('#seclabeltitle h2').innerHTML, 'Label. Title', 'sec with label+title: heading level and content');
+  t.equal(document2.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'sec with label+title: heading level and content');
   t.equal(document2.querySelector('#sectitle h2').innerHTML, 'Title', 'sec with title: heading level and content');
   t.equal(document2.querySelector('#seclabel h2').innerHTML, 'Label', 'sec with label: heading level and content');
-  t.equal(document2.querySelector('#fmlabeltitle h1').innerHTML, 'Label. Title', 'front-matter-part with label+title: heading level and content');
+  t.equal(document2.querySelector('#fmlabeltitle h1').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'front-matter-part with label+title: heading level and content');
   t.equal(document2.querySelector('#fmtitle h1').innerHTML, 'Title', 'front-matter-part with title: heading level and content');
   t.equal(document2.querySelector('#fmlabel h1').innerHTML, 'Label', 'front-matter-part with label: heading level and content');
-  t.equal(document2.querySelector('#applabeltitle h1').innerHTML, 'Label. Title', 'app with label+title: heading level and content');
+  t.equal(document2.querySelector('#applabeltitle h1').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'app with label+title: heading level and content');
   t.equal(document2.querySelector('#apptitle h1').innerHTML, 'Title', 'app with title: heading level and content');
   t.equal(document2.querySelector('#applabel h1').innerHTML, 'Label', 'app with label: heading level and content');
 
