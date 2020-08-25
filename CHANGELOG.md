@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.6.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.6.0...v6.6.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **contrib.js:** preserve <suffix> ([3aa3ab3](https://github.com/AmerMathSoc/ams-xml-to-html/commit/3aa3ab3afe210582ab949b4841387c0db7ccdd81)), closes [#305](https://github.com/AmerMathSoc/ams-xml-to-html/issues/305)
+
 ## [6.6.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.5.1...v6.6.0) (2020-08-24)
 
 
