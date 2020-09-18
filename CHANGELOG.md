@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.6.1...v6.7.0) (2020-09-18)
+
+
+### Features
+
+* add table wrapper ([a550218](https://github.com/AmerMathSoc/ams-xml-to-html/commit/a5502189f776cd13f069c6bb49f4e2d76ef4cf8a)), closes [#306](https://github.com/AmerMathSoc/ams-xml-to-html/issues/306)
+
 ### [6.6.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.6.0...v6.6.1) (2020-08-25)
 
 
