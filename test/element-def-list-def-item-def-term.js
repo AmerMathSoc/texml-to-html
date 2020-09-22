@@ -31,7 +31,7 @@ tape('def-list, def-item, def, term', async function(t) {
   const document2 = await xsltproc(input2);
   t.equal(
     document2.querySelector('dl#dlist1').firstElementChild.tagName,
-    'DT',
+    'DIV',
     'Def-item in book'
   );
 });
