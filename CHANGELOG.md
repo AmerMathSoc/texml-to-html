@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.7.0...v6.8.0) (2020-09-22)
+
+
+### Features
+
+* **def-item:** always add wrapping div ([7948e3a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7948e3a4bf72fdf7ad3825c72dd904cd12f245de)), closes [#307](https://github.com/AmerMathSoc/ams-xml-to-html/issues/307)
+
 ## [6.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.6.1...v6.7.0) (2020-09-18)
 
 
