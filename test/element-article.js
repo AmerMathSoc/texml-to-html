@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: article', async function(t) {
-  t.plan(45);
+  t.plan(46);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
   t.ok(document.head, 'document head');
@@ -11,6 +11,7 @@ tape('Template: article', async function(t) {
 
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
   t.ok(titlepage, 'section with data-ams-doc=titlepage');
+  t.equal(titlepage.getAttribute('data-ams-manid'), 'journalIdmanuscriptId', 'manid data-ams-manid attribute of titlepage');
 
   const header = titlepage.firstElementChild;
   t.equal(header.tagName, 'HEADER', 'titlepage header');

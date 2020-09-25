@@ -123,11 +123,13 @@
             <article-id pub-id-type="doi">doi</article-id>
             <article-id pub-id-type="pii">pii</article-id>
             <article-id pub-id-type="mr">mr</article-id>
+            <article-id pub-id-type="manuscript">manuscriptId</article-id>
             <abstract>
                 <title>Abstract</title>
             </abstract>
         </article-meta>
         <journal-meta>
+            <journal-id journal-id-type="publisher">journalId</journal-id>
             <journal-title-group>
                 <journal-title>journal-title</journal-title>
                 <abbrev-journal-title>abbrev-journal-title</abbrev-journal-title>
