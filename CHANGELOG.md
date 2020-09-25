@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.9.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.8.0...v6.9.0) (2020-09-25)
+
+
+### Features
+
+* **article.js:** add data-ams-manid to titlepage ([99c3994](https://github.com/AmerMathSoc/ams-xml-to-html/commit/99c39947f3278321de3cbc9714e08bda5a572a8a)), closes [#269](https://github.com/AmerMathSoc/ams-xml-to-html/issues/269)
+
 ## [6.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.7.0...v6.8.0) (2020-09-22)
 
 
