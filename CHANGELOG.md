@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.10.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.9.0...v6.10.0) (2020-11-10)
+
+
+### Features
+
+* revise underline handling ([944f76d](https://github.com/AmerMathSoc/ams-xml-to-html/commit/944f76d2618309c80fd831e6980746bda03f9794)), closes [#223](https://github.com/AmerMathSoc/ams-xml-to-html/issues/223)
+
 ## [6.9.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.8.0...v6.9.0) (2020-09-25)
 
 
