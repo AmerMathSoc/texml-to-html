@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.10.0...v7.0.0) (2020-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* statement output changed from section to figure tags #222
+
+### Features
+
+* revise statement handling ([a613ab0](https://github.com/AmerMathSoc/ams-xml-to-html/commit/a613ab0854efc602c5132d23e2aa97a2d7ff892b)), closes [#222](https://github.com/AmerMathSoc/ams-xml-to-html/issues/222)
+
 ## [6.10.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.9.0...v6.10.0) (2020-11-10)
 
 
