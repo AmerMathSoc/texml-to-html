@@ -8,7 +8,7 @@ tape('Template: statement, label, title', async function(t) {
   const document = await xsltproc(input);
 
   const statement1 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement1'
+    'figure[data-ams-doc="statement"]#statement1'
   );
   t.ok(statement1, 'statement as section with data-ams-doc');
   t.equal(
@@ -16,7 +16,7 @@ tape('Template: statement, label, title', async function(t) {
     '2',
     'statement data-ams-doc-level'
   );
-  const statement1Heading = statement1.querySelector('h3');
+  const statement1Heading = statement1.querySelector('figcaption');
   t.ok(statement1Heading, 'statement heading level in article');
   t.equal(
     statement1Heading.innerHTML,
@@ -24,29 +24,29 @@ tape('Template: statement, label, title', async function(t) {
     'statement with label+title creates space before and period after title'
   );
   const statement2 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement2'
+    'figure[data-ams-doc="statement"]#statement2'
   );
   t.ok(statement2, 'statement 2');
   t.equal(
-    statement2.querySelector('h3').innerHTML,
+    statement2.querySelector('figcaption').innerHTML,
     'Label 2. ',
     'statement with label creates period after'
   );
   const statement3 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement3'
+    'figure[data-ams-doc="statement"]#statement3'
   );
   t.ok(statement3, 'statement 3');
   t.equal(
-    statement3.querySelector('h3').innerHTML,
+    statement3.querySelector('figcaption').innerHTML,
     'Title 3. ',
     'statement with title creates period after'
   );
   const statement4 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement4'
+    'figure[data-ams-doc="statement"]#statement4'
   );
   t.ok(statement4, 'statement 4');
   t.equal(
-    statement4.querySelector('h3').innerHTML,
+    statement4.querySelector('figcaption').innerHTML,
     'Proof. ',
     'title in proof statement now also gets extra period'
   );
@@ -56,11 +56,11 @@ tape('Template: statement, label, title', async function(t) {
     'sec-heading with title within statement'
   );
   const statement5 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement5'
+    'figure[data-ams-doc="statement"]#statement5'
   );
   t.ok(statement5, 'statement 5');
   t.equal(
-    statement5.querySelector('h3').innerHTML,
+    statement5.querySelector('figcaption').innerHTML,
     '<span data-ams-doc="label">Label 5 </span>Proof. ',
     'proof statement with label+title'
   );
@@ -70,7 +70,7 @@ tape('Template: statement, label, title', async function(t) {
     'sec-heading with label within statement'
   );
   const statement6 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement6'
+    'figure[data-ams-doc="statement"]#statement6'
   );
   t.ok(statement6, 'statement 6');
   t.equal(
@@ -80,7 +80,7 @@ tape('Template: statement, label, title', async function(t) {
   );
 
   const statement7 = document.querySelector(
-    'section[data-ams-doc="statement"]#statement7'
+    'figure[data-ams-doc="statement"]#statement7'
   );
   const statement8 = statement7.querySelector(
     ' #statement8'
@@ -101,17 +101,17 @@ tape('Template: statement, label, title', async function(t) {
   const input2 = path.resolve(__dirname, 'book.xml');
   const document2 = await xsltproc(input2);
   const statement2_1 = document2.querySelector(
-    'section[data-ams-doc="statement"]#statement2'
+    'figure[data-ams-doc="statement"]#statement2'
   );
   t.ok(statement2_1, 'statement as section with data-ams-doc');
-  t.ok(statement2_1.querySelector('h2'), 'statement heading level in book');
+  t.ok(statement2_1.querySelector('figcaption'), 'statement heading level in book');
 
   const statement_part = document2.querySelector(
-    'section[data-ams-doc="statement"]#statement4'
+    'figure[data-ams-doc="statement"]#statement4'
   );
   t.ok(statement_part, 'statement as section with data-ams-doc');
   t.ok(
-    statement_part.querySelector('h3'),
+    statement_part.querySelector('figcaption'),
     'statement heading level in part (in book)'
   );
 });
