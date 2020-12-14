@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.0.0...v7.1.0) (2020-12-14)
+
+
+### Features
+
+* support disp-formula-group ([7147ce3](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7147ce33056845ded4c42ba38c953ab4782c971d)), closes [#309](https://github.com/AmerMathSoc/ams-xml-to-html/issues/309)
+
 ## [7.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v6.10.0...v7.0.0) (2020-11-24)
 
 
