@@ -4,7 +4,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(45);
+  t.plan(46);
   const input = path.resolve(__dirname, 'article.xml');
   const document = await xsltproc(input);
 
@@ -30,6 +30,8 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.ok(document.querySelector('#applabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
 
   t.notOk(document.querySelector('#alttitle h2').hasAttribute('data-ams-doc-alttitle'), 'sec with title: subtitle to p with data-ams-doc');
+
+  t.equal(document.querySelector('#appack').getAttribute('role'), 'doc-acknowledgments', 'appendix with title "Acknowledg": role');
 
   const input2 = path.resolve(__dirname, 'book.xml');
   const document2 = await xsltproc(input2);
