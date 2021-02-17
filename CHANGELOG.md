@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.1.0...v7.2.0) (2021-02-17)
+
+
+### Features
+
+* **app.js:** add heuristics for acknowledgments ([d85f161](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d85f1617d4638bd4f851cd886973dbfed5d1ad52)), closes [#262](https://github.com/AmerMathSoc/ams-xml-to-html/issues/262)
+* **toc-entry:** support contributor info ([97f64cd](https://github.com/AmerMathSoc/ams-xml-to-html/commit/97f64cd2061198f29e2749776f59989a4c3f022d)), closes [#312](https://github.com/AmerMathSoc/ams-xml-to-html/issues/312)
+
 ## [7.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.0.0...v7.1.0) (2020-12-14)
 
 
