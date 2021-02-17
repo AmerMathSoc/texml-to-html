@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: (book) toc, toc-entry', async function(t) {
-  t.plan(11);
+  t.plan(13);
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
@@ -13,7 +13,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   t.ok(title, 'toc: title-group passthrough, title becomes heading');
   const list = toc.querySelector('ol');
   t.ok(list, 'toc: ordered list');
-  t.equal(list.children.length, 4, 'Nested toc-entries remain nested')
+  t.equal(list.children.length, 6, 'Nested toc-entries remain nested')
   t.equal(
     list.querySelector('li a[href="#tocid1"]').innerHTML,
     'Chunk',
@@ -44,5 +44,15 @@ tape('Template: (book) toc, toc-entry', async function(t) {
     list.querySelector('li a[href="#tocid6"]').innerHTML,
     'Chunk without label but subchunk with label',
     'toc-entry without label but sub-entry with label'
+  );
+  t.equal(
+    list.querySelector('li a[href="#tocid8"]+br+em').innerHTML,
+    'Chapter Author',
+    'toc-entry with contributor'
+  );
+  t.equal(
+    list.querySelector('li a[href="#tocid9"]+br+em+em').innerHTML,
+    'A Nother Author',
+    'toc-entry with contributors'
   );
 });

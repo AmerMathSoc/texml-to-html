@@ -92,6 +92,29 @@
                     <nav-pointer rid="tocid7"/>
                 </toc-entry>
             </toc-entry>
+            <toc-entry>
+                <label/>
+                <title>Chunk with contrib</title>
+                 <contrib-group>
+                    <contrib>
+                        <string-name>Chapter Author</string-name>
+                    </contrib>
+                </contrib-group>
+                <nav-pointer rid="tocid8"/>
+            </toc-entry>
+            <toc-entry>
+                <label/>
+                <title>Chunk with multiple contribs</title>
+                 <contrib-group>
+                    <contrib>
+                        <string-name>Chapter Author</string-name>
+                    </contrib>
+                    <contrib>
+                        <string-name>A Nother Author</string-name>
+                    </contrib>
+                </contrib-group>
+                <nav-pointer rid="tocid9"/>
+            </toc-entry>
         </toc>
         <notes notes-type="publishers-note" specific-use="epub-opening-page">
             <title>Publisher's Notice</title>
