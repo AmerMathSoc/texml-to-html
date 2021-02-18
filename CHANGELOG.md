@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.2.0...v7.3.0) (2021-02-18)
+
+
+### Features
+
+* **toc-entry.js:** revise alt-title handling ([7152007](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7152007cfa0c20fd8d6d9d1b9139727c9e9dc7c3)), closes [#314](https://github.com/AmerMathSoc/ams-xml-to-html/issues/314)
+
+
+### Bug Fixes
+
+* **toc-entry:** fix check for contribs. ([9657a1c](https://github.com/AmerMathSoc/ams-xml-to-html/commit/9657a1c9732f01d1da7f0bcfdf2e1bf45a19cc93))
+
 ## [7.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.1.0...v7.2.0) (2021-02-17)
 
 
