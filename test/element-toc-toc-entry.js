@@ -3,7 +3,7 @@ const xsltproc = require('./helper.js').xsltproc;
 const tape = require('tape');
 
 tape('Template: (book) toc, toc-entry', async function(t) {
-  t.plan(13);
+  t.plan(14);
   const input = path.resolve(__dirname, 'book.xml');
   const document = await xsltproc(input);
 
@@ -37,8 +37,13 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   );
   t.equal(
     list.querySelector('li a[href="#tocid5"]').innerHTML,
+    'Chunk with alt title',
+    'toc-entry with alt-title: content'
+  );
+  t.equal(
+    list.querySelector('li a[href="#tocid5"]').getAttribute('data-ams-doc-alttitle'),
     'Alt title',
-    'toc-entry with alt-title'
+    'toc-entry with alt-title: data-ams-doc-alttitle'
   );
   t.equal(
     list.querySelector('li a[href="#tocid6"]').innerHTML,
