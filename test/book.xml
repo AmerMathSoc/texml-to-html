@@ -230,6 +230,14 @@
                     <title>Title</title>
                     <alt-title>Alt title</alt-title>
                 </sec>
+                <!-- simpletabbing -->
+                <sec disp-level="1" id="tabbing" specific-use="chapter">
+                    <title>Tabbing</title>
+                    <simpletabbing id="simpletabbing">
+                        <line id="simpletabbing-line">Line</line>
+                        <line indent="1">Indented line.</line>
+                    </simpletabbing>
+                </sec>
             </body>
         </book-part>
     </book-body>
