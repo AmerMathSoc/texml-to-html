@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.3.0...v7.4.0) (2021-02-25)
+
+
+### Features
+
+* support simpletabbing, line ([347b2f1](https://github.com/AmerMathSoc/ams-xml-to-html/commit/347b2f1f11345fee245f8bd194b4968526a31414)), closes [#315](https://github.com/AmerMathSoc/ams-xml-to-html/issues/315)
+
 ## [7.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.2.0...v7.3.0) (2021-02-18)
 
 
