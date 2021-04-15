@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.4.0...v7.5.0) (2021-04-15)
+
+
+### Features
+
+* **article-id:** add MR number to MR link ([23799fa](https://github.com/AmerMathSoc/ams-xml-to-html/commit/23799fab9d1d7c817100bd5bffbfc077495f86ef)), closes [#316](https://github.com/AmerMathSoc/ams-xml-to-html/issues/316)
+
 ## [7.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.3.0...v7.4.0) (2021-02-25)
 
 
