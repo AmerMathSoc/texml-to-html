@@ -29,11 +29,11 @@
   },
   "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
   "devDependencies": {
-    "prettier": "^2.0.2",
-    "standard-version": "^8.0.0",
-    "tape": "^5.0.1"
+    "prettier": "^2.2.1",
+    "standard-version": "^9.2.0",
+    "tape": "^5.2.2"
   },
   "dependencies": {
-    "jsdom": "^16.2.2"
+    "jsdom": "^16.5.3"
   }
 }
