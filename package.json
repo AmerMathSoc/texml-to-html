@@ -7,7 +7,6 @@
     "release": "standard-version",
     "test": "tape test/*.js"
   },
-  "bin": "./ams-xml-to-html.js",
   "main": "./ams-xml-to-html.js",
   "repository": {
     "type": "git",

@@ -1,15 +1,8 @@
-#!/usr/bin/env node
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-let recurseTheDom = {};
-// for npx usage
-try {
-  recurseTheDom = require(require.resolve('ams-xml-to-html')+'/lib/recurseTheDom');
-} catch (e) {
-  recurseTheDom = require('./lib/recurseTheDom');
-}
 
+const recurseTheDom = require('./lib/recurseTheDom');
 const setHead = (xmldoc, htmldoc) => {
   // TODO not in xslt not for articles but added by ams-html; change after switch to JS
   // add viewport meta tag
