@@ -1,11 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: (book) toc, toc-entry', async function(t) {
   t.plan(14);
-  const input = path.resolve(__dirname, 'book.xml');
-  const document = await xsltproc(input);
+  const document = book;
 
   const toc = document.querySelector('nav[role="doc-toc"]#toc');
   t.ok(toc, 'toc: wrapping nav element with role=doc-toc and id');

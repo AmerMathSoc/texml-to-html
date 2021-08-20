@@ -1,14 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: contrib-group', async function(t) {
   t.plan(5);
-  const input = path.resolve(
-    __dirname,
-    'article.xml'
-  );
-  const document = await xsltproc(input);
+  const document = article;
   const contribgroups = document.querySelectorAll('section[data-ams-doc="copyright-page"] dl dd[data-ams-doc-contrib="contribAs"]');
   t.equal(contribgroups.length, 1, 'Only one contribute group of type "ContribAs"');
   const contribgroup = contribgroups[0];

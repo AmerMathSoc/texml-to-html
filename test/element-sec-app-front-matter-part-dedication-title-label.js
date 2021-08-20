@@ -1,12 +1,10 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, articleAlttitle, articleNometa, book } = require('./helper.js');
 const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
   t.plan(46);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
   t.ok(document.querySelector('#ack2[role="doc-acknowledgments"]'), 'front-matter-part with matching title text to role doc-acknowledgments');
@@ -33,8 +31,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
 
   t.equal(document.querySelector('#appack').getAttribute('role'), 'doc-acknowledgments', 'appendix with title "Acknowledg": role');
 
-  const input2 = path.resolve(__dirname, 'book.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = book;
   t.ok(document2.querySelector('#chapter[role="doc-chapter"]'), 'sec with specific-use chapter to role doc-chapter'); // NOTE so far, chapters only occur in books but the xslt doesn't check for it
 
   t.equal(document2.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span>Title', 'sec with label+title: heading level and content');
@@ -69,12 +66,10 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.equal(bookAppGroup.getAttribute('data-ams-doc-level'), '0', 'book-app-group data-ams-level');
   t.equal(document2.querySelector('#applabeltitle').getAttribute('role'), 'doc-appendix', 'book-app role');
 
-  const input3 = path.resolve(__dirname, 'article--alttitle.xml');
-  const document3 = await xsltproc(input3);
+  const document3 = articleAlttitle;
   t.ok(document3.querySelector('section[data-ams-doc-level="1"]'), 'Article with part gets increased doc-levels');
   t.ok(document3.querySelector('section[data-ams-doc-level="2"]'), 'Article with part gets increased doc-levels');
 
-  const input4 = path.resolve(__dirname, 'article--nometa.xml');
-  const document4 = await xsltproc(input4);
+  const document4 = articleNometa;
   t.equal(document4.querySelector('#sec').getAttribute('role'), 'doc-part', 'part in article: role');
 });

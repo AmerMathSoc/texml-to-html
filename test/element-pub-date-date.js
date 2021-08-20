@@ -1,15 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: pub-date, history/date', async function(t) {
   t.plan(1);
-  const input = path.resolve(
-    __dirname,
-    'article.xml'
-  );
-  const document = await xsltproc(input);
-
+  const document = article;
   let pubDate = {};
   document.querySelectorAll('section[data-ams-doc="copyright-page"] dt').forEach(node => {
     if (node.innerHTML === 'Publication History') pubDate = node.nextElementSibling;

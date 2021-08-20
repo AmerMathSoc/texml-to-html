@@ -1,11 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('def-list, def-item, def, term', async function(t) {
   t.plan(7);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
 
   const wrappingParagraph = document.querySelector(
     'section[data-ams-doc="article"] p#dlistp'
@@ -27,8 +25,7 @@ tape('def-list, def-item, def, term', async function(t) {
     'Def-list ID moved to DT'
   );
   t.ok(deflist.querySelector('div>dt+dd'), 'Def');
-  const input2 = path.resolve(__dirname, 'book.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = book;
   t.equal(
     document2.querySelector('dl#dlist1').firstElementChild.tagName,
     'DIV',

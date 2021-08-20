@@ -1,12 +1,11 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { article, articleNometa } = require('./helper.js');
 const tape = require('tape');
 
 
 tape('setHead()', async function(t) {
   t.plan(4);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
   const metaCharset = document.head.firstElementChild;
   t.equal(metaCharset.tagName, 'META', 'first Child of head is a meta tag');
   t.equal(metaCharset.getAttribute('charset'), 'utf-8', 'first Child of head is meta charset');
@@ -18,7 +17,6 @@ tape('setHead()', async function(t) {
   // t.equal(document.title, 'article-title', 'title tag is set');
   t.equal(document.querySelector('html').getAttribute('lang'), 'en', 'Language attribute on html tag');
 
-  const input2 = path.resolve(__dirname, 'article--alttitle.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = articleNometa;
   t.equal(document2.querySelector('html').getAttribute('lang'), 'fr', 'Language attribute on html tag (not the default)');
 });

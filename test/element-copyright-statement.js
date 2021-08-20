@@ -1,14 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: copyright-statement', async function(t) {
   t.plan(3);
-  const input = path.resolve(
-    __dirname,
-    'article.xml'
-  );
-  const document = await xsltproc(input);
+  const document = article;
   const article_copyright = document.querySelector(
     'section[data-ams-doc="copyright-page"] dt+dd[data-ams-doc="copyright"]'
   );
@@ -21,11 +16,7 @@ tape('Template: copyright-statement', async function(t) {
     article_copyright,
     'copyright-statement (in permissions in article-meta) creates DD with data-ams-doc copyright'
   );
-  const input2 = path.resolve(
-    __dirname,
-    'book.xml'
-  );
-  const document2 = await xsltproc(input2);
+  const document2 = book;
   t.ok(
     document2.querySelector('p[data-ams-doc="book copyright"]'),
     'copyright-statement (in permissions in book-meta) li with a attributes and content'

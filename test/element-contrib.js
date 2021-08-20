@@ -1,14 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: contrib', async function(t) {
   t.plan(11);
-  const input = path.resolve(
-    __dirname,
-    'article.xml'
-  );
-  const document = await xsltproc(input);
+  const document = article;
   const contrib = document.querySelector('dl[data-ams-doc-contrib="contribA"]');
   t.ok(contrib, 'contrib creates dl with data-ams-doc-contrib of type');
   const name = contrib.firstElementChild;
@@ -26,8 +21,7 @@ tape('Template: contrib', async function(t) {
   const orcid = mr.nextElementSibling;
   t.equal(orcid.outerHTML, '<dd><a href="orcidid">ORCID</a></dd>', 'nextSibling is orcidID content');
 
-  const input2 = path.resolve(__dirname, 'book.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = book;
   t.equal(document2.querySelectorAll('dt').length, document2.querySelectorAll('dt+dd').length, 'every DT has a consecutive DD');
   t.equal(document2.querySelector('dt[data-ams-doc-contrib="contrib-type3 name"] span[data-ams-doc="stringname"]').innerHTML, 'String Name', 'Contributor with string-name')
 });

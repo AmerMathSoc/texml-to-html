@@ -1,11 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('inline-formula, disp-formula, tex-math', async function(t) {
   t.plan(12);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
   );

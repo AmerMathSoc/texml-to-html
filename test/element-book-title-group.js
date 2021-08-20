@@ -1,12 +1,10 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: book-title-group, title, subtitle', async function(t) {
   t.plan(5);
 
-  const input = path.resolve(__dirname, 'book.xml');
-  const document = await xsltproc(input);
+  const document = book;
   const titlegroup = document.querySelector('header');
   t.ok(titlegroup, 'book-title-group to header');
   const title = titlegroup.firstElementChild;

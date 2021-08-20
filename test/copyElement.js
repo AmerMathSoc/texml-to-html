@@ -1,5 +1,4 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('"copied" elements', async function(t) {
@@ -16,8 +15,7 @@ tape('"copied" elements', async function(t) {
     'hr'
   ];
   t.plan(copyElements.length);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
   copyElements.forEach(selector =>
     t.ok(document.querySelector(selector), `${selector} copied to output`)
   );

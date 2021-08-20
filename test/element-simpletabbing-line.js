@@ -1,12 +1,11 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { book } = require('./helper.js');
 const tape = require('tape');
 
 
 tape('Template: simpletabbing, line', async function(t) {
   t.plan(4);
-  const input = path.resolve(__dirname, 'book.xml');
-  const document = await xsltproc(input);
+  const document = book;
   const tabbing = document.querySelector('section#simpletabbing');
   t.equal(tabbing.getAttribute('data-ams-doc'), 'simpletabbing', 'Tabbing as section with data-ams-doc attribute');
   const lines = document.querySelectorAll('section#simpletabbing > p');

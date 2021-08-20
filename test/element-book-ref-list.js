@@ -1,12 +1,11 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: book-back/ref-list ', async function(t) {
   t.plan(4);
 
-  const input = path.resolve(__dirname, 'book.xml');
-  const document = await xsltproc(input);
+  const document = book;
   const bibl = document.querySelector('section#reflist[role="doc-bibliography"]');
   t.ok(bibl, 'ref-list becomes section with id, role, doc-level');
   const title = bibl.querySelector('h1');

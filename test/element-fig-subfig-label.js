@@ -1,12 +1,11 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 
 tape('Template: fig, fig-group, caption, label', async function(t) {
   t.plan(8);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
   const figurePosition = document.querySelector('#figures figure#position');
   t.equal(figurePosition.getAttribute('data-ams-position'), 'anchor', 'Figure with data-ams-position attribute');
   const labels = document.querySelectorAll('#figures figure strong');

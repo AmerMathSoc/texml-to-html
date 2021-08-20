@@ -1,11 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, articleAlttitle } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: article', async function(t) {
   t.plan(47);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
 
@@ -70,18 +68,17 @@ tape('Template: article', async function(t) {
   const articlemeta = titlepage.nextElementSibling;
   t.equal(articlemeta.getAttribute('data-ams-doc'), 'copyright-page', 'copyright-page following abstract');
 
-  const article = articlemeta.nextElementSibling;
-  t.equal(article.tagName, 'SECTION', 'section for article');
-  t.equal(article.getAttribute('data-ams-doc'), 'article', 'section for article with data-ams-doc article');
-  const articletitle = article.firstElementChild;
+  const artarticle = articlemeta.nextElementSibling;
+  t.equal(artarticle.tagName, 'SECTION', 'section for article');
+  t.equal(artarticle.getAttribute('data-ams-doc'), 'article', 'section for article with data-ams-doc article');
+  const articletitle = artarticle.firstElementChild;
   t.equal(articletitle.tagName, 'H1', 'article first child is heading');
   t.equal(articletitle.innerHTML, 'article-title', 'article heading content from article-title');
   t.equal(articletitle.nextElementSibling.getAttribute('data-ams-doc'), 'section', 'articletitle followed by body/sec');
 
-  t.notOk(article.nextElementSibling, 'article last child of body')
+  t.notOk(artarticle.nextElementSibling, 'article last child of body')
 
-  const input2 = path.resolve(__dirname, 'article--alttitle.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = articleAlttitle;
   t.equal(document2.title, 'alttitle', 'alttitle');
   const jvol2 = document2.querySelector('[data-ams-doc="journal volume"]');
   t.equal(jvol2.innerHTML, 'Volume , ')

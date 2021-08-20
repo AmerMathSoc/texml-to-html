@@ -1,12 +1,11 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: book-meta/publisher, publisher-name, publisher-loc', async function(t) {
   t.plan(5);
 
-  const input = path.resolve(__dirname, 'book.xml');
-  const document = await xsltproc(input);
+  const document = book;
   const publisher1 = document.querySelectorAll('dd[data-ams-doc="book publisher"]')[0];
   t.ok(publisher1, 'publisher as dd with data-ams-doc publisher');
 

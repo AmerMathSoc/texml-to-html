@@ -1,11 +1,10 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+
+const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('subtitle', async function(t) {
   t.plan(2);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
 
   const subtitle = document.querySelector('p[data-ams-doc="subtitle"]');
   t.ok(subtitle, 'subtitle to p with data-ams-doc');

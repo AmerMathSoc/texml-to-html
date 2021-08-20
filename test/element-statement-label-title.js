@@ -1,11 +1,9 @@
-const path = require('path');
-const xsltproc = require('./helper.js').xsltproc;
+const { article, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
   t.plan(22);
-  const input = path.resolve(__dirname, 'article.xml');
-  const document = await xsltproc(input);
+  const document = article;
 
   const statement1 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement1'
@@ -98,8 +96,7 @@ tape('Template: statement, label, title', async function(t) {
     'statement in list item data-ams-doc-level'
   );
 
-  const input2 = path.resolve(__dirname, 'book.xml');
-  const document2 = await xsltproc(input2);
+  const document2 = book;
   const statement2_1 = document2.querySelector(
     'figure[data-ams-doc="statement"]#statement2'
   );
