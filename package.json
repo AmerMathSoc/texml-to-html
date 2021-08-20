@@ -33,6 +33,6 @@
     "tape": "^5.2.2"
   },
   "dependencies": {
-    "jsdom": "^16.5.3"
+    "linkedom": "^0.11.2"
   }
 }
