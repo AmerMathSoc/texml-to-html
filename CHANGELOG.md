@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0-0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.5.0...v8.0.0-0) (2021-08-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Switch from jsdom to linkedom #319
+* ams-xml-to-html will no longer run via npx
+
+### Features
+
+* remove ability to call via npx ([46dfb12](https://github.com/AmerMathSoc/ams-xml-to-html/commit/46dfb12a969cc0c5e3e258b0a09bde5f746d28a0)), closes [#320](https://github.com/AmerMathSoc/ams-xml-to-html/issues/320)
+* replace jsdom with linkedom ([d18a8ef](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d18a8efd8ac8b042e2da32127ed15157b996d340)), closes [#319](https://github.com/AmerMathSoc/ams-xml-to-html/issues/319)
+
 ## [7.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v7.4.0...v7.5.0) (2021-04-15)
 
 
