@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
   "devDependencies": {
-    "prettier": "^2.2.1",
     "standard-version": "^9.2.0",
     "tape": "^5.2.2"
   },
