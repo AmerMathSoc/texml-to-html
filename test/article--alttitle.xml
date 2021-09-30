@@ -34,6 +34,7 @@
             <xref ref-type="aff" rid="aff"/>
             <email>email</email>
             <uri>uri</uri>
+            <bio>Some biographical info with <email>email</email></bio>
           </contrib>
           <aff id="aff">aff</aff>
           <author-comment>comment</author-comment>

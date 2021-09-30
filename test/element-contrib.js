@@ -1,8 +1,8 @@
-const { article, book } = require('./helper.js');
+const { article, articleAlttitle, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: contrib', async function(t) {
-  t.plan(11);
+  t.plan(12);
   const document = article;
   const contrib = document.querySelector('dl[data-ams-doc-contrib="contribA"]');
   t.ok(contrib, 'contrib creates dl with data-ams-doc-contrib of type');
@@ -24,4 +24,7 @@ tape('Template: contrib', async function(t) {
   const document2 = book;
   t.equal(document2.querySelectorAll('dt').length, document2.querySelectorAll('dt+dd').length, 'every DT has a consecutive DD');
   t.equal(document2.querySelector('dt[data-ams-doc-contrib="contrib-type3 name"] span[data-ams-doc="stringname"]').innerHTML, 'String Name', 'Contributor with string-name')
+
+  const document3 = articleAlttitle;
+  t.ok(document3.querySelector('dl[data-ams-doc-contrib="contribA"] > dd[data-ams-specific-use="bio"]'));
 });
