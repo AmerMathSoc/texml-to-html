@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.1.1...v8.2.0) (2021-10-26)
+
+
+### Features
+
+* **sec.js:** support refhead ([1ba27d4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/1ba27d4086c3b2e512769a78436c61543d9ce59b)), closes [#328](https://github.com/AmerMathSoc/ams-xml-to-html/issues/328)
+
 ### [8.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.1.0...v8.1.1) (2021-10-01)
 
 ## [8.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.0.0...v8.1.0) (2021-09-30)
