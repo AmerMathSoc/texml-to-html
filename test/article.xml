@@ -256,6 +256,9 @@
             <title>Title</title>
             <subtitle>Subtitle</subtitle>
         </sec>
+        <sec id="refhead" disp-level="1"  specific-use="refhead">
+            <title>Refhead</title>
+        </sec>
         <!-- statement -->
         <sec disp-level="1" id="statements" specific-use="section">
             <statement content-type="content type" id="statement1" style="style">

@@ -3,7 +3,7 @@ const tape = require('tape');
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(46);
+  t.plan(47);
   const document = article;
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
@@ -30,6 +30,8 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.notOk(document.querySelector('#alttitle h2').hasAttribute('data-ams-doc-alttitle'), 'sec with title: subtitle to p with data-ams-doc');
 
   t.equal(document.querySelector('#appack').getAttribute('role'), 'doc-acknowledgments', 'appendix with title "Acknowledg": role');
+
+  t.ok(document.querySelector('#refhead h2'), 'refhead heading level');
 
   const document2 = book;
   t.ok(document2.querySelector('#chapter[role="doc-chapter"]'), 'sec with specific-use chapter to role doc-chapter'); // NOTE so far, chapters only occur in books but the xslt doesn't check for it
