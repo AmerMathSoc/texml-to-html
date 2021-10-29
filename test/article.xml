@@ -88,6 +88,14 @@
                     <meta-value>meta-value</meta-value>
                 </custom-meta>
             </custom-meta-group>
+            <custom-meta-group>
+                <custom-meta specific-use="titlepic">
+                <meta-name>titlepic</meta-name>
+                <meta-value>
+                    <inline-graphic height="218pt" mimetype="image/svg+xml" width="493pt" xlink:href="Images/imgc920fa78a62d5705041ab0ad31b3c7df.svg"/>
+                </meta-value>
+                </custom-meta>
+            </custom-meta-group>
             <title-group>
                 <article-title>article-title</article-title>
             </title-group>
