@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.2.0...v8.3.0) (2021-10-29)
+
+
+### Features
+
+* support multiple custom-meta elements ([65f7ac9](https://github.com/AmerMathSoc/ams-xml-to-html/commit/65f7ac9637dd2459097cc67a33b1ecd316734e51)), closes [#324](https://github.com/AmerMathSoc/ams-xml-to-html/issues/324)
+
 ## [8.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.1.1...v8.2.0) (2021-10-26)
 
 
