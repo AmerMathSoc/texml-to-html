@@ -2,7 +2,7 @@ const { article, articleAlttitle, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: contrib', async function(t) {
-  t.plan(12);
+  t.plan(13);
   const document = article;
   const contrib = document.querySelector('dl[data-ams-doc-contrib="contribA"]');
   t.ok(contrib, 'contrib creates dl with data-ams-doc-contrib of type');
@@ -27,4 +27,5 @@ tape('Template: contrib', async function(t) {
 
   const document3 = articleAlttitle;
   t.ok(document3.querySelector('dl[data-ams-doc-contrib="contribA"] > dd[data-ams-specific-use="bio"]'));
+  t.equal(document3.querySelector('dl[data-ams-doc-contrib="contribA"]').firstElementChild.innerHTML, 'Given&nbsp;Sur, Jr.', 'suffix with comma')
 });

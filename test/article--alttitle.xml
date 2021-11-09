@@ -30,6 +30,7 @@
             <name name-style="western">
                 <surname>Sur</surname>
                 <given-names>Given</given-names>
+                <suffix><x>, </x>Jr.</suffix>
             </name>
             <xref ref-type="aff" rid="aff"/>
             <email>email</email>
