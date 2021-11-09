@@ -115,7 +115,7 @@
           </publisher>
           <self-uri xlink:href="href"/>
       </journal-meta>
-      <notes notes-type="dedication"/>
+      <notes notes-type="article"/>
   </front>
   <body>
     <sec id="sec" disp-level="1" specific-use="part">

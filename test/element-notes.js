@@ -1,8 +1,8 @@
-const { article, book } = require('./helper.js');
+const { article, articleAlttitle, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: front/notes@notes-type=dedication', async function (t) {
-  t.plan(2);
+  t.plan(3);
 
   const document = article;
   t.ok(
@@ -16,5 +16,11 @@ tape('Template: front/notes@notes-type=dedication', async function (t) {
       'section[data-ams-specific-use="epub-opening-page"][data-ams-content-type="publishers-note"][data-ams-doc-level="0"]'
     ),
     'notes creates section with data-ams attributes'
+  );
+
+  const document3 = articleAlttitle;
+  t.ok(
+    document3.querySelector('section[data-ams-doc="notes"][data-ams-content-type="article"]'),
+    'notes with notes-type article'
   );
 });
