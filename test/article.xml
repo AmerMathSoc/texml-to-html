@@ -282,6 +282,10 @@
                 <title>Title 3</title>
                 <p></p>
             </statement>
+            <statement content-type="content type" id="statement-title-period" style="style">
+                <title>Title 4.</title>
+                <p></p>
+            </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement4">
                 <title>Proof</title>
                 <secheading id="statement4secheading" disp-level="3" specific-use="subsection">

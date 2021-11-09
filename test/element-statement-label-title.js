@@ -2,7 +2,7 @@ const { article, book } = require('./helper.js');
 const tape = require('tape');
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(22);
+  t.plan(23);
   const document = article;
 
   const statement1 = document.querySelector(
@@ -38,6 +38,14 @@ tape('Template: statement, label, title', async function(t) {
     statement3.querySelector('figcaption').innerHTML,
     'Title 3. ',
     'statement with title creates period after'
+  );
+  const statementTitlePeriod = document.querySelector(
+    'figure[data-ams-doc="statement"]#statement-title-period'
+  );
+  t.equal(
+    statementTitlePeriod.querySelector('figcaption').innerHTML,
+    'Title 4. ',
+    'statement with title with period does not have extra period after'
   );
   const statement4 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement4'
