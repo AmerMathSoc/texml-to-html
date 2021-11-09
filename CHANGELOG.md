@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.3.1...v8.4.0) (2021-11-09)
+
+
+### Features
+
+* **label.js:** check for trailing period ([1f85fa4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/1f85fa4531c2c895a5a604a69739d068aaec5fe5)), closes [#310](https://github.com/AmerMathSoc/ams-xml-to-html/issues/310)
+
 ### [8.3.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.3.0...v8.3.1) (2021-11-09)
 
 
