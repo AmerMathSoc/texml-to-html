@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.3.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.3.0...v8.3.1) (2021-11-09)
+
+
+### Bug Fixes
+
+* support all <notes> in articles ([8aed454](https://github.com/AmerMathSoc/ams-xml-to-html/commit/8aed45453f08c499f51b82cad436ade486cba309)), closes [#329](https://github.com/AmerMathSoc/ams-xml-to-html/issues/329)
+* **contrib:** check suffix for leading comma ([bffb948](https://github.com/AmerMathSoc/ams-xml-to-html/commit/bffb948005bceaa7fcc1feed023b3626f9bae0bc)), closes [#330](https://github.com/AmerMathSoc/ams-xml-to-html/issues/330)
+
 ## [8.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.2.0...v8.3.0) (2021-10-29)
 
 
