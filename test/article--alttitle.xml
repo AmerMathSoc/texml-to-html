@@ -125,4 +125,17 @@
         </sec>
     </sec>
   </body>
+  <back>
+    <ref-list content-type="biblist" id="reflist">
+        <title>References</title>
+        <ref-list content-type="biblist" id="reflist2">
+            <title>Inner References</title>
+            <ref id="ref">
+            <label>Label</label>
+            <raw-citation>Raw</raw-citation>
+            <mixed-citation>Mixed</mixed-citation>
+            </ref>
+        </ref-list>
+    </ref-list>
+  </back>
 </article>
