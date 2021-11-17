@@ -4,10 +4,11 @@ const tape = require('tape');
 
 
 tape('Template: fig, fig-group, caption, label', async function(t) {
-  t.plan(8);
+  t.plan(9);
   const document = article;
   const figurePosition = document.querySelector('#figures figure#position');
   t.equal(figurePosition.getAttribute('data-ams-position'), 'anchor', 'Figure with data-ams-position attribute');
+  t.notOk(figurePosition.getAttribute('role'), 'Figure has no explicit role');
   const labels = document.querySelectorAll('#figures figure strong');
   t.equal(labels[0].innerHTML, 'Label 1. ', 'Fig label with caption gets period');
   t.equal(labels[1].innerHTML, 'Grouplabel 1. ', 'Fig-group label with caption gets period');
