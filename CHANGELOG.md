@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.4.0...v8.5.0) (2021-11-17)
+
+
+### Features
+
+* **ref-list.js:** support nested ref-list ([fa6f4b9](https://github.com/AmerMathSoc/ams-xml-to-html/commit/fa6f4b9c5d5d7a6dee939dfd528d1fca11ab2e83)), closes [#331](https://github.com/AmerMathSoc/ams-xml-to-html/issues/331)
+
+
+### Bug Fixes
+
+* **fig.js:** drop explicit role ([bb4fe4c](https://github.com/AmerMathSoc/ams-xml-to-html/commit/bb4fe4cad37586ba72efcc2ebc240c339f255532)), closes [#325](https://github.com/AmerMathSoc/ams-xml-to-html/issues/325)
+
 ## [8.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.3.1...v8.4.0) (2021-11-09)
 
 
