@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.6.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.5.0...v8.6.0) (2021-11-18)
+
+
+### Features
+
+* **styled-content:** support color attributes ([8cb0656](https://github.com/AmerMathSoc/ams-xml-to-html/commit/8cb0656cf83ced2ccb994823086f6bed3febd9b5)), closes [#333](https://github.com/AmerMathSoc/ams-xml-to-html/issues/333)
+
 ## [8.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.4.0...v8.5.0) (2021-11-17)
 
 
