@@ -124,6 +124,26 @@
             <title>Title</title>
         </sec>
     </sec>
+    <sec disp-level="1" id="secmeta" specific-use="section">
+      <sec-meta>
+        <contrib-group content-type="authors">
+          <contrib contrib-type="author">
+            <string-name>Author 1</string-name>
+            <bio>Author 1 Bio</bio>
+          </contrib>
+        </contrib-group>
+        <contrib-group content-type="contributors">
+          <author-comment>with</author-comment>
+          <contrib contrib-type="contributor">
+            <string-name>Author 2</string-name>
+            <bio>Author 2 Bio</bio>
+          </contrib>
+        </contrib-group>
+        <notes notes-type="article">
+          <p>A sec-meta note.</p>
+        </notes>
+      </sec-meta>
+    </sec>
   </body>
   <back>
     <ref-list content-type="biblist" id="reflist">
