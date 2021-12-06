@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.7.0...v8.8.0) (2021-12-06)
+
+
+### Features
+
+* support tcolorbox output ([e187228](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e187228946d3b29dc3bcb5aee5c65bbbeccd1ffd)), closes [#334](https://github.com/AmerMathSoc/ams-xml-to-html/issues/334)
+
 ## [8.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.6.0...v8.7.0) (2021-12-03)
 
 
