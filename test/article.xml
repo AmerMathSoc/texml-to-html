@@ -167,7 +167,10 @@
                 <attrib/>
             </disp-quote>
             <boxed-text content-type="framed">
-                <p>A boxed paragraph</p>
+                <p>A boxed paragraph from framed input</p>
+            </boxed-text>
+            <boxed-text content-type="tcolorbox" position="anchor" border-color="black" background-color="lightgray">
+                <p>A boxed paragraph from tcolorbox input</p>
             </boxed-text>
             <p>
                 <disp-quote specific-use="use">
