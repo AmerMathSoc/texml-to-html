@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.9.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.8.0...v8.9.0) (2021-12-10)
+
+
+### Features
+
+* handle xref and ext-link inside xref ([13489f7](https://github.com/AmerMathSoc/ams-xml-to-html/commit/13489f76aa9cc045995a6d039302d4b583408142)), closes [#332](https://github.com/AmerMathSoc/ams-xml-to-html/issues/332)
+
 ## [8.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.7.0...v8.8.0) (2021-12-06)
 
 
