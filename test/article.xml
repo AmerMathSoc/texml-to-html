@@ -192,6 +192,7 @@
             <xref ref-type="bibr" rid="rid4">ref<x>,</x> note</xref>
             <xref ref-type="type" rid="rid5"><x>Context</x> ref</xref>
             <xref ref-type="type">ref</xref>
+            <xref ref-type="nested" rid="rid6"><ext-link xlink:href="https://nested"></ext-link></xref>
             <fn><label>Label</label></fn>
             <p id="pwithx">Is <x>not</x> ignored.</p>
             <!-- element-p-p.js -->
