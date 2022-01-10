@@ -337,7 +337,7 @@
                 <label>Label 1</label>
                 <caption>Caption 1</caption>
             </fig>
-            <fig-group>
+            <fig-group specific-use="special">
                 <label>Grouplabel 1</label>
                 <caption>Groupcaption 1</caption>
                 <fig>
