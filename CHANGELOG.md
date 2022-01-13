@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.10.0...v9.0.0) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* footnote no longer drops its label.
+* foonotes now `div` (instead of `span`) and moved out of ancestors.
+
+### Features
+
+* revise footnote handling ([46483d4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/46483d4e383aa60fe5993811b95edb3ddcee678b)), closes [#336](https://github.com/AmerMathSoc/ams-xml-to-html/issues/336)
+
+
+### Bug Fixes
+
+* **label.js:** for ref, remove wrapping span ([1b2c9db](https://github.com/AmerMathSoc/ams-xml-to-html/commit/1b2c9db7ce62d283b90a1fafc3fc9e7c571d7813)), closes [#343](https://github.com/AmerMathSoc/ams-xml-to-html/issues/343)
+
+
+* feat!(label.js): preserve label in fn ([6b956f5](https://github.com/AmerMathSoc/ams-xml-to-html/commit/6b956f5b4b426a886a39996eb1182713da1e387a)), closes [#342](https://github.com/AmerMathSoc/ams-xml-to-html/issues/342)
+
 ## [8.10.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.9.1...v8.10.0) (2022-01-10)
 
 
