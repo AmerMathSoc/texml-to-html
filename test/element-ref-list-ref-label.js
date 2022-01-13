@@ -9,7 +9,7 @@ tape('ref-list, ref-list/title, ref, ref/label', async function (t) {
   t.ok(bibliography, 'Section with role doc-bibliography');
   t.ok(bibliography.querySelector('h2'), 'Bibliography heading in article');
   t.ok(bibliography.querySelector('dl dt#ref'), 'Reference as DT with ID');
-  t.ok(bibliography.querySelector('dl dt#ref span'), 'Reference label as span');
+  t.equal(bibliography.querySelector('dl dt#ref').innerHTML, 'Label', 'Reference label in DT');
 
   t.ok(bibliography.querySelector('dl dt#refnolabel+dd'), 'Reference without label');
 
