@@ -1,8 +1,8 @@
 const { article } = require('./helper.js');
 const tape = require('tape');
 
-tape('inline-formula, disp-formula, tex-math', async function(t) {
-  t.plan(12);
+tape('inline-formula, disp-formula, tex-math', async function (t) {
+  t.plan(13);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -21,12 +21,13 @@ tape('inline-formula, disp-formula, tex-math', async function(t) {
     tex.includes('\\xhref[other]{#otherid1}{}'),
     'tex-math/xref@ref-type="other"'
   );
-  const footnote = inlineformula.nextElementSibling;
+  const footnote = document.querySelector('#fnid');
   t.ok(
     footnote.getAttribute('role'),
     'doc-footnote',
     'Inline-formula Footnote'
   );
+  t.notOk(footnote.closest('p, span'), 'footnote moved out of span and paragraph');
   t.ok(footnote.querySelector('a'), 'xref in footnote within tex-math not rewritten to TeX macro')
 
   const displayformula = document.querySelector(
