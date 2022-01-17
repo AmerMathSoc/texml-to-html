@@ -11,7 +11,7 @@ tape('Template: fn, fn/label', async function(t) {
   const footnoteLabel = footnote.firstElementChild;
   t.equal(footnoteLabel.tagName, 'SPAN', 'footnote label');
   t.equal(footnoteLabel.getAttribute('data-ams-doc'), 'label', 'footnote label data attribute');
-  t.equal(footnoteLabel.innerHTML, 'Label', 'footnote label content');
+  t.equal(footnoteLabel.innerHTML, '<sup>Label</sup>', 'footnote label content');
   t.notOk(document.querySelector('#fnid').closest('p'), 'footnote moved out of paragraph')
 });
 
