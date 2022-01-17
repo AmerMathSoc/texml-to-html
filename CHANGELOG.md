@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v9.0.0...v9.0.1) (2022-01-17)
+
+
+### Bug Fixes
+
+* **footnote:** wrap footnote marker in superscript ([9962791](https://github.com/AmerMathSoc/ams-xml-to-html/commit/99627918725cd7aad3991787c4e00229ce400ada)), closes [#344](https://github.com/AmerMathSoc/ams-xml-to-html/issues/344)
+
 ## [9.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v8.10.0...v9.0.0) (2022-01-13)
 
 
