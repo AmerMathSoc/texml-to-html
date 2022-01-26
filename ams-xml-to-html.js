@@ -18,18 +18,3 @@ const xml2html = xmlstring => {
 };
 
 module.exports = xml2html;
-
-if (require.main === module) {
-  const fs = require('fs');
-  const path = require('path');
-
-  const inputFileName = process.argv[2];
-  const outputFileName = process.argv[3];
-
-  const inputString = fs.readFileSync(path.resolve(inputFileName));
-  const dom = xml2html(inputString);
-  fs.writeFileSync(
-    path.resolve(outputFileName),
-    '<!DOCTYPE html>\n' + dom.querySelector('html').outerHTML
-  );
-}
