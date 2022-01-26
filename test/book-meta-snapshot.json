@@ -1,0 +1,65 @@
+{
+    "book": {
+        "identifiers": {
+            "AMS": {
+                "publKey": "series",
+                "volumeId": "volume",
+                "volumeNr": "volume"
+            },
+            "crossref": {
+                "doi": "doi"
+            },
+            "issn": {
+                "print": "issn print"
+            },
+            "isbn": {
+                "electronic": "isbn pdf",
+                "google": "isbn google pdf",
+                "print": "isbn print",
+                "epub": "isbn epub"
+            }
+        },
+        "title": "<h1>title</h1>",
+        "subtitle": "<p data-ams-doc=\"subtitle\">subtitle</p>",
+        "alttitle": "title"
+    },
+    "publishers": [
+        {
+            "name": "name1",
+            "location": "loc"
+        },
+        {
+            "name": "name2"
+        }
+    ],
+    "contributors": {
+        "authors": [
+            {
+                "name": "Given Sur Jr.",
+                "affiliations": [
+                    "aff"
+                ],
+                "emails": [
+                    "<a href=\"mailto://email\">email</a>"
+                ]
+            }
+        ],
+        "contrib-group-type2": [
+            {
+                "name": "Given Sur",
+                "affiliations": [],
+                "emails": []
+            }
+        ],
+        "contrib-group-type3": [
+            {
+                "name": "String Name",
+                "affiliations": [],
+                "emails": []
+            }
+        ]
+    },
+    "permissions": {
+        "copyrightStatement": "Copyright 2020 American Mathematical Society"
+    }
+}

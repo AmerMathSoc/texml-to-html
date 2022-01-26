@@ -17,13 +17,14 @@
         <publisher>
             <publisher-name>name2</publisher-name>
         </publisher>
-        <contrib-group content-type="contrib-group-type">
-            <contrib contrib-type="contrib-type">
+        <contrib-group content-type="authors">
+            <contrib contrib-type="author">
                 <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
                 <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
                 <name name-style="western">
                     <surname>Sur</surname>
                     <given-names>Given</given-names>
+                    <suffix>Jr.</suffix>
                 </name>
                 <xref ref-type="aff" rid="aff1"/>
                 <email>email</email>
@@ -49,8 +50,15 @@
                 <string-name>String Name</string-name>
             </contrib>
         </contrib-group>
+        <issn publication-format="print">issn print</issn>
+        <isbn publication-format="electronic">isbn pdf</isbn>
+        <isbn publication-format="google">isbn google pdf</isbn>
+        <isbn publication-format="print">isbn print</isbn>
+        <isbn publication-format="epub">isbn epub</isbn>
         <permissions>
-            <copyright-statement/>
+            <copyright-statement>Copyright 2020 American Mathematical Society</copyright-statement>
+            <copyright-year>2020</copyright-year>
+            <copyright-holder>American Mathematical Society</copyright-holder>
         </permissions>
     </book-meta>
     <front-matter>
