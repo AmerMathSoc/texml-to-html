@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.0.0-0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v9.0.1...v10.0.0-0) (2022-01-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove (broken) CLI mode
+* book metadata output is now a JSON blob.
+
+### Features
+
+* redesign book metadata ([3864eb9](https://github.com/AmerMathSoc/ams-xml-to-html/commit/3864eb9f84a81229c919700fd320bb08bbb3912b)), closes [#254](https://github.com/AmerMathSoc/ams-xml-to-html/issues/254)
+
+
+### Bug Fixes
+
+* unnest links within ext-link ([14f7426](https://github.com/AmerMathSoc/ams-xml-to-html/commit/14f742653939da6628552b72f259ba62898bd38b)), closes [#347](https://github.com/AmerMathSoc/ams-xml-to-html/issues/347)
+
+
+* fix!(ams-xml-to-html.js): remove (broken) CLI mode ([e26e967](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e26e96788cbc716713325d4f3b70f967697f4dbd))
+
 ### [9.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v9.0.0...v9.0.1) (2022-01-17)
 
 
