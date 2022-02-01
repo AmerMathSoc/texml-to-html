@@ -4,6 +4,7 @@
   "description": "An xslt for converting JATS-like XML to html",
   "private": true,
   "scripts": {
+    "coverage": "nyc npm run test && nyc report --reporter html",
     "release": "standard-version",
     "test": "tape test/*.js"
   },
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/AmerMathSoc/ams-xml-to-html#readme",
   "devDependencies": {
+    "nyc": "15.1.0",
     "standard-version": "9.3.2",
     "tape": "5.4.1"
   },
