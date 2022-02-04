@@ -10,7 +10,7 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.ok(inlineformula, 'Inline formula');
   const tex = inlineformula.innerHTML;
   t.ok(
-    tex.includes('\\text{Text }'),
+    tex.includes('\\text{Te\\#t }'),
     'tex-math/text (with unicode spacing characters)'
   );
   t.ok(
