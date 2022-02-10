@@ -77,6 +77,7 @@
         <title-group>
             <article-title>article-title</article-title>
             <alt-title>alttitle</alt-title>
+            <subtitle>article-subtitle</subtitle>
         </title-group>
         <pub-date date-type="pub" iso-8601-date="2000-04-13" publication-format="electronic">
             <day>13</day>
