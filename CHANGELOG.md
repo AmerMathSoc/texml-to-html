@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.1.0...v10.1.1) (2022-02-11)
+
+
+### Bug Fixes
+
+* **fn.js:** multiple footnotes in ancestor ([cb77f1d](https://github.com/AmerMathSoc/ams-xml-to-html/commit/cb77f1db5959e908514255b81cb54ce407d7dbde)), closes [#352](https://github.com/AmerMathSoc/ams-xml-to-html/issues/352)
+
 ## [10.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.0.0...v10.1.0) (2022-02-10)
 
 
