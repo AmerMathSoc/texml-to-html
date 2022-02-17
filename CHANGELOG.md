@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.1.1...v10.2.0) (2022-02-17)
+
+
+### Features
+
+* support subj-group & subject ([ce8ff45](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ce8ff45a851ceaca22cdfbb80a266e68d26e07b1)), closes [#355](https://github.com/AmerMathSoc/ams-xml-to-html/issues/355)
+
 ### [10.1.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.1.0...v10.1.1) (2022-02-11)
 
 
