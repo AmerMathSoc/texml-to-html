@@ -1,13 +1,13 @@
 
-const { article } = require('./helper.js');
+const { article, articleAlttitle } = require('./helper.js');
 const tape = require('tape');
 
 
-tape('Template: article-meta', async function(t) {
-  t.plan(29);
+tape('Template: article-meta', async function (t) {
+  t.plan(31);
   const document = article;
   const copyrightpage = document.querySelector('section[data-ams-doc="copyright-page"]');
-  t.ok (copyrightpage, 'article-meta creates wrapping section with data-ams-doc=copyright-page');
+  t.ok(copyrightpage, 'article-meta creates wrapping section with data-ams-doc=copyright-page');
   t.equal(copyrightpage.firstElementChild.outerHTML, '<h2>Article Information</h2>', 'copyright page heading');
   const dl = copyrightpage.querySelector('dl');
   t.ok(dl, 'Wrapping dl for metadata');
@@ -38,5 +38,9 @@ tape('Template: article-meta', async function(t) {
   t.equal(dts[10].nextElementSibling.tagName, 'DD', 'dt followed by dd');
   t.equal(dts[10].nextElementSibling.firstElementChild.tagName, 'UL', 'dt followed by dd with ul (reference list)');
   t.ok(dts[10].nextElementSibling.firstElementChild.childElementCount > 2, 'dt followed by dd with ul has at least two children');
+  const document2 = articleAlttitle;
+  const dts2 = document2.querySelectorAll('section[data-ams-doc="copyright-page"]>dl>dt');
+  t.equal(dts2[1].innerHTML, 'Subjects', 'subject-group');
+  t.equal(dts2[1].nextElementSibling.innerHTML, 'subject', 'subject');
 });
 

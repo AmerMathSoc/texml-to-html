@@ -74,6 +74,9 @@
             <meta-value>meta-value</meta-value>
           </custom-meta>
       </custom-meta-group>
+      <subj-group>
+        <subject>subject</subject>
+      </subj-group>
         <title-group>
             <article-title>article-title</article-title>
             <alt-title>alttitle</alt-title>
