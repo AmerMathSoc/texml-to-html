@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE book PUBLIC "-//NLM//DTD BITS Book Interchange DTD v1.0 20131225//EN" "BITS-book1.dtd">
 <book xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
+    <collection-meta>
+        <title-group>
+            <title>Collection Title</title>
+        </title-group>
+        <volume-in-collection>
+            <volume-number>volume</volume-number>
+        </volume-in-collection>
+        <issn publication-format="print">issn</issn>
+        <publisher>
+            <publisher-name>American Mathematical Society</publisher-name>
+            <publisher-loc>Providence, Rhode Island</publisher-loc>
+        </publisher>
+        <custom-meta-group>
+            <custom-meta>
+                <meta-name>subseries</meta-name>
+                <meta-value>subseriesName</meta-value>
+            </custom-meta>
+        </custom-meta-group>
+    </collection-meta>
     <book-meta>
         <book-id assigning-authority="AMS" book-id-type="publ_key">series</book-id>
         <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>

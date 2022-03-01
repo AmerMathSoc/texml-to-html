@@ -61,5 +61,9 @@
     },
     "permissions": {
         "copyrightStatement": "Copyright 2020 American Mathematical Society"
+    },
+    "collection": {
+        "title": "Collection Title",
+        "subseries": "subseriesName"
     }
 }
