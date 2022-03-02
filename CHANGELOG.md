@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.4.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.0...v10.4.1) (2022-03-02)
+
+
+### Bug Fixes
+
+* handle nested inline-formula elements ([77f0a64](https://github.com/AmerMathSoc/ams-xml-to-html/commit/77f0a64fa1c8aa241a8ece71cbaaae3462b18ab7)), closes [#356](https://github.com/AmerMathSoc/ams-xml-to-html/issues/356) [#357](https://github.com/AmerMathSoc/ams-xml-to-html/issues/357)
+
 ## [10.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.3.0...v10.4.0) (2022-03-02)
 
 
