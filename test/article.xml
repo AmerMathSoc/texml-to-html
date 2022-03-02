@@ -380,7 +380,7 @@
             </disp-formula-group>
             <p>
                 <inline-formula>
-                    <tex-math><text>Te$t<tex-math>x^2</tex-math></text></tex-math>
+                    <tex-math><text>Te$t<inline-formula><tex-math>x^2</tex-math></inline-formula></text></tex-math>
                 </inline-formula>
             </p>
         </sec>
