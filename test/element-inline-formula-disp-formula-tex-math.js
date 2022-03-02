@@ -2,7 +2,7 @@ const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(13);
+  t.plan(14);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -56,4 +56,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     disptex.includes('\\xhref[other]{#otherid2}{\\text{}}$End}'),
     'tex-math/text/xref partial'
   );
+  const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"]')[1];
+  t.equal(formulaNestedTeX.innerHTML, ' \\text{Te\\$t$x^2$} ')
 });
