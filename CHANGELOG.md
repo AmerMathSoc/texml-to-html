@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.4.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.2...v10.4.3) (2022-03-07)
+
+
+### Bug Fixes
+
+*  upgrade linkedom ([4cb4091](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4cb4091947a3b9f5ab8d4744bd5786986759226d))
+
 ### [10.4.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.1...v10.4.2) (2022-03-02)
 
 
