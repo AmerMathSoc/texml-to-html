@@ -2,7 +2,7 @@ const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(13);
+  t.plan(14);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -57,4 +57,10 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   );
   const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"]')[1];
   t.equal(formulaNestedTeX.innerHTML, ' \\text{Te\\$t$x^2$} ');
+
+  // text-mode text styling
+  const dispWithText = document.querySelectorAll(
+    '#equations [data-ams-doc="math block"]'
+  )[1];
+  t.equal(dispWithText.innerHTML, ' \\text{\\textup{roman\\#} \\mathsc{sc\\$} \\textit{italic} \\textbf{bold} \\textsf{sans-serif} \\texttt{monospace} \\href{https://ext}{ext-link} inside text} ', 'Text markup inside text');
 });
