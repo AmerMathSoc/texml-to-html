@@ -2,7 +2,7 @@ const { article } = require('./helper.js');
 const tape = require('tape');
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(14);
+  t.plan(13);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -51,11 +51,10 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   );
   // NOTE JS implementation removed extra space between the two strings
   // TODO unify
-  t.ok(disptex.includes('\\text{Start$'), 'tex-math/text/xref partial');
-  t.ok(
-    disptex.includes('\\xhref[other]{#otherid2}{\\text{}}$End}'),
-    'tex-math/text/xref partial'
+  t.equal(
+    disptex, ' \\xhref[fn]{#fnid2}{{}^{2}}\\text{Start \\xhref[other]{#otherid2}{\\$}End}',
+    'tex-math/text/xref'
   );
   const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"]')[1];
-  t.equal(formulaNestedTeX.innerHTML, ' \\text{Te\\$t$x^2$} ')
+  t.equal(formulaNestedTeX.innerHTML, ' \\text{Te\\$t$x^2$} ');
 });
