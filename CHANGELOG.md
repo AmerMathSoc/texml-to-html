@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.5.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.0...v10.5.1) (2022-03-14)
+
+
+### Bug Fixes
+
+* **roman.js:** replace textup with textrm ([ee33ebb](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ee33ebb00344db55562e47a67733c97ad268cc08)), closes [#362](https://github.com/AmerMathSoc/ams-xml-to-html/issues/362)
+
 ## [10.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.3...v10.5.0) (2022-03-14)
 
 
