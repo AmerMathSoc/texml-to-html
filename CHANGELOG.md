@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.3...v10.5.0) (2022-03-14)
+
+
+### Features
+
+* support text-styling within tex-math ([115c27a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/115c27a08bab6e55b351914cfd6d6ce38f3c5419)), closes [#359](https://github.com/AmerMathSoc/ams-xml-to-html/issues/359)
+
+
+### Bug Fixes
+
+* **xref.js:** adjust to up&downstream changes ([fa1e6f0](https://github.com/AmerMathSoc/ams-xml-to-html/commit/fa1e6f07a9203c19a990aec4a1f19c8d7b3e5c42)), closes [#311](https://github.com/AmerMathSoc/ams-xml-to-html/issues/311)
+
 ### [10.4.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.4.2...v10.4.3) (2022-03-07)
 
 
