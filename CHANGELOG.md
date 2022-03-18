@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.5.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.1...v10.5.2) (2022-03-18)
+
+
+### Bug Fixes
+
+* multiple TeX-escaping issues ([e2d0f60](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e2d0f607c812fe53df66d8540638e73e55dc2f0d)), closes [#363](https://github.com/AmerMathSoc/ams-xml-to-html/issues/363)
+
 ### [10.5.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.0...v10.5.1) (2022-03-14)
 
 
