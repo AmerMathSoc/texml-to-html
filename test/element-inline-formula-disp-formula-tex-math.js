@@ -52,7 +52,7 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   // NOTE JS implementation removed extra space between the two strings
   // TODO unify
   t.equal(
-    disptex, ' \\xhref[fn]{#fnid2}{{}^{2}}\\text{Start \\xhref[other]{#otherid2}{\\$}End}',
+    disptex, '\\xhref[fn]{#fnid2}{{}^{2}}\\text{Start\\xhref[other]{#otherid2}{\\$}End}',
     'tex-math/text/xref'
   );
   const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"]')[1];
@@ -62,5 +62,5 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   const dispWithText = document.querySelectorAll(
     '#equations [data-ams-doc="math block"]'
   )[1];
-  t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} \\mathsc{sc\\$} \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text');
+  t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} \\mathsc{sc\\$} \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif} \\texttt{monospace} \\xhref[external]{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text');
 });
