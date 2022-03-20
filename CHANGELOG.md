@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.5.4](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.3...v10.5.4) (2022-03-20)
+
+
+### Bug Fixes
+
+* **xref.js:** remove leading space ([80e466b](https://github.com/AmerMathSoc/ams-xml-to-html/commit/80e466bf82bbb8bd02bac5279aeef61b49e405f1)), closes [#365](https://github.com/AmerMathSoc/ams-xml-to-html/issues/365)
+
 ### [10.5.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.2...v10.5.3) (2022-03-18)
 
 
