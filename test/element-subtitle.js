@@ -1,6 +1,6 @@
 
-const { article, articleAlttitle } = require('./helper.js');
-const tape = require('tape');
+import { article, articleAlttitle } from './helper.js';
+import tape from 'tape';
 
 tape('subtitle', async function(t) {
   t.plan(4);

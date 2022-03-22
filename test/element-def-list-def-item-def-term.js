@@ -1,5 +1,5 @@
-const { article, book } = require('./helper.js');
-const tape = require('tape');
+import { article, book } from './helper.js';
+import tape from 'tape';
 
 tape('def-list, def-item, def, term', async function(t) {
   t.plan(7);

@@ -1,6 +1,6 @@
-const { xmlDom, htmlDom } = require('./lib/doms.js');
-const { setHead } = require('./lib/head.js');
-const recurseTheDom = require('./lib/recurseTheDom');
+import { xmlDom, htmlDom } from './lib/doms.js';
+import { setHead } from './lib/head.js';
+import recurseTheDom from './lib/recurseTheDom.js';
 
 const xml2html = xmlstring => {
   const xml = xmlDom(xmlstring);
@@ -17,4 +17,4 @@ const xml2html = xmlstring => {
   return html;
 };
 
-module.exports = xml2html;
+export default xml2html;

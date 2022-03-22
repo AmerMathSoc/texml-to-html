@@ -1,5 +1,5 @@
-const { article, articleAlttitle, articleNometa } = require('./helper.js');
-const tape = require('tape');
+import { article, articleAlttitle, articleNometa } from './helper.js';
+import tape from 'tape';
 
 tape('Template: journal-meta, ...', async function(t) {
   t.plan(4);

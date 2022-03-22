@@ -1,5 +1,5 @@
-const { article, articleAlttitle, book } = require('./helper.js');
-const tape = require('tape');
+import { article, articleAlttitle, book } from './helper.js';
+import tape from 'tape';
 
 tape('Template: front/notes@notes-type=dedication', async function (t) {
   t.plan(3);

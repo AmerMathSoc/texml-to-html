@@ -1,6 +1,6 @@
 
-const { article, articleNometa } = require('./helper.js');
-const tape = require('tape');
+import { article, articleNometa } from './helper.js';
+import tape from 'tape';
 
 
 tape('setHead()', async function(t) {
