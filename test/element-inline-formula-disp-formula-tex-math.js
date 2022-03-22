@@ -62,5 +62,5 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   const dispWithText = document.querySelectorAll(
     '#equations [data-ams-doc="math block"]'
   )[1];
-  t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} \\mathsc{sc\\$} \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif} \\texttt{monospace} \\xhref[external]{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text');
+  t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} \\mathsc{sc\\$} \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text');
 });
