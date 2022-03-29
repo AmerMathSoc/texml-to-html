@@ -1,6 +1,6 @@
 import { xmlDom, htmlDom } from './lib/doms.js';
 import { setHead } from './lib/head.js';
-import recurseTheDom from './lib/recurseTheDom.js';
+import { Transformer } from './lib/transformer.js';
 
 const xml2html = xmlstring => {
   const xml = xmlDom(xmlstring);
@@ -12,7 +12,8 @@ const xml2html = xmlstring => {
   setHead(xmldoc, htmldoc);
 
   const root = xmldoc.querySelector('book, article');
-  recurseTheDom(htmldoc)(htmldoc.body, root);
+  const transformer = new Transformer(htmldoc);
+  transformer.recurseTheDom(htmldoc.body, root);
 
   return html;
 };
