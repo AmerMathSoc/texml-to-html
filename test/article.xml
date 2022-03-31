@@ -410,6 +410,69 @@
             <xref ref-type="fn" rid="fnid3">4</xref><fn id="fnid3"><label>3</label><p>Footnote 3</p></fn>
             <xref ref-type="fn" rid="fnid4">4</xref><fn id="fnid4"><label>4</label><p>Footnote 4</p></fn>
         </p>
+        <sec disp-level="1" id="alg:algorithm" specific-use="section">
+            <title>Algorithm sample</title>
+            <alg:algorithm linenodelimiter=":">
+                <alg:line>
+                    <alg:require>
+                    <bold>Require:</bold> something</alg:require>
+                </alg:line>
+                <alg:line>
+                    <alg:statement>Statement</alg:statement>
+                    <alg:comment>Comment</alg-comment>
+                </alg:line>
+                <alg:if>
+                    <alg:condition>
+                    <alg:line>
+                        <alg:statement>
+                        <bold>if</bold> condition <bold>then</bold></alg:statement>
+                    </alg:line>
+                    </alg:condition>
+                    <alg:block>
+                        <alg:line lineno="3">
+                            <alg:statement>true</alg:statement>
+                        </alg:line>
+                        </alg:block>
+                        <alg:else>
+                        <alg:line lineno="6">
+                            <alg:statement>
+                            <bold>else</bold>
+                            </alg:statement>
+                        </alg:line>
+                        <alg:block>
+                            <alg:line>
+                            <alg:statement>false</alg:statement>
+                            </alg:line>
+                            <alg:block>
+                                <alg:line lineno="8">
+                                    <alg:statement>Nested for loop</alg:statement>
+                                </alg:line>
+                                <alg:for>
+                                    <alg:condition>
+                                    <alg:line lineno="9">
+                                        <alg:statement>
+                                        <bold>for</bold> condition <bold>do</bold></alg:statement>
+                                    </alg:line>
+                                    </alg:condition>
+                                    <alg:block>
+                                    <alg:line lineno="10">
+                                        <alg:statement>loop</alg:statement>
+                                    </alg:line>
+                                    </alg:block>
+                                    <alg:line lineno="">
+                                    <alg:statement>
+                                        <bold>end</bold> <bold>for</bold></alg:statement>
+                                    </alg:line>
+                                </alg:for>
+                            </alg:block>
+                        </alg:block>
+                    </alg:else>
+                    <alg:line>
+                        <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
+                    </alg:line>
+                </alg:if>
+            </alg:algorithm>
+        </sec>
     </body>
     <back>
         <app-group>
