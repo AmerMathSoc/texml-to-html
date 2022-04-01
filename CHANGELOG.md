@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.6.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.4...v10.6.0) (2022-04-01)
+
+
+### Features
+
+* support alg:* elements ([f85a311](https://github.com/AmerMathSoc/ams-xml-to-html/commit/f85a3112ce06b7126a85d1b394a966087fce7e80)), closes [#40](https://github.com/AmerMathSoc/ams-xml-to-html/issues/40)
+
 ### [10.5.4](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.5.3...v10.5.4) (2022-03-20)
 
 
