@@ -41,7 +41,8 @@
                 ],
                 "emails": [
                     "<a href=\"mailto://email\">email</a>"
-                ]
+                ],
+                "byline": "comment"
             }
         ],
         "contrib-group-type2": [
@@ -55,7 +56,8 @@
             {
                 "name": "String Name",
                 "affiliations": [],
-                "emails": []
+                "emails": [],
+                "byline": "comment"
             }
         ]
     },
