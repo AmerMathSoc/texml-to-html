@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.6.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.6.2...v10.6.3) (2022-04-29)
+
+
+### Bug Fixes
+
+* **sc.js:** in tex-math, wrap \mathsc in $...$ ([b36d7e7](https://github.com/AmerMathSoc/ams-xml-to-html/commit/b36d7e7c637787ba76814a32460f1ed7869f2372)), closes [#370](https://github.com/AmerMathSoc/ams-xml-to-html/issues/370)
+
 ### [10.6.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.6.1...v10.6.2) (2022-04-25)
 
 
