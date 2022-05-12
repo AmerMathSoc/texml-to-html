@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.6.3...v10.7.0) (2022-05-12)
+
+
+### Features
+
+* **mapAttributes.js:** preserve class attribute ([241e006](https://github.com/AmerMathSoc/ams-xml-to-html/commit/241e00676084cd96991f1346f683ba965fb18830)), closes [#371](https://github.com/AmerMathSoc/ams-xml-to-html/issues/371)
+
 ### [10.6.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.6.2...v10.6.3) (2022-04-29)
 
 
