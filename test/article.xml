@@ -217,7 +217,7 @@
                 </def-list>
             </p>
             <ext-link xlink:href="https://"></ext-link>
-            <table><thead><tr><th>Head 1</th><th>Head 2</th></tr></thead><tbody><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></tbody></table>
+            <table class="tbl"><thead><tr><th>Head 1</th><th>Head 2</th></tr></thead><tbody><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></tbody></table>
             <break></break>
             <string-name></string-name>
             <target id="target"></target>
