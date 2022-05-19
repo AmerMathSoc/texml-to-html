@@ -4,7 +4,7 @@ import tape from 'tape';
 
 
 tape('Element: alg:* elements', async function (t) {
-      t.plan(10);
+      t.plan(14);
     const document = article;
     // alg:algorithm
     const algorithm = document.querySelector('alg-algorithm');
@@ -27,5 +27,14 @@ tape('Element: alg:* elements', async function (t) {
     t.equal(algBlock.getAttribute('data-ams-alg-blocklevel'), '1', 'alg:block data-ams-alg-blocklevel');
     const algBlockNested = document.querySelector('alg-block > alg-block');
     t.equal(algBlockNested.getAttribute('data-ams-alg-blocklevel'), '2', 'Nested alg:block data-ams-alg-blocklevel');
+    // pass-through elements
+    const cond = [...algorithm.querySelectorAll('alg-line > alg-statement')].find(node => node.textContent.trim() === 'if condition then');
+    t.ok(cond, 'alg:condition (and thus alg:if) pass through');
+    const fr = [...algorithm.querySelectorAll('alg-line > alg-statement > *:first-of-type')].find(node => node.textContent === 'for');
+    t.ok(fr, 'alg:for pass through');
+    const func = [...algorithm.querySelectorAll('alg-line > alg-statement > *:first-of-type')].find(node => node.textContent === 'Function');
+    t.ok(func, 'alg:function pass through');
+    const proc = [...algorithm.querySelectorAll('alg-line > alg-statement > *:first-of-type')].find(node => node.textContent === 'Procedure');
+    t.ok(proc, 'alg:procedure pass through');
 });
 

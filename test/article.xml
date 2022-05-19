@@ -471,6 +471,12 @@
                         <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
                     </alg:line>
                 </alg:if>
+                <alg:function>
+                    <alg:line><alg:statement><bold>Function</bold> <sc>Check</sc></alg:line>
+                </alg:function>
+                <alg:procedure>
+                    <alg:line><alg:statement><bold>Procedure</bold> <sc>Do</sc></alg:line>
+                </alg:procedure>
             </alg:algorithm>
         </sec>
     </body>
