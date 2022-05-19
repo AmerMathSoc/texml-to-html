@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.7.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.7.0...v10.7.1) (2022-05-19)
+
 ## [10.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.6.3...v10.7.0) (2022-05-12)
 
 
