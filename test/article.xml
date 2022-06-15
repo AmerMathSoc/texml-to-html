@@ -359,7 +359,7 @@
         <!-- graphic, inline-graphic, img -->
         <sec disp-level="1" id="graphics" specific-use="section">
             <fig>
-                <graphic height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
+                <graphic height="100pt" mimetype="mime" width="100" xlink:href="file" specific-use="use"/>
                 <alt-text>text</alt-text>
             </fig>
             <inline-graphic  height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
