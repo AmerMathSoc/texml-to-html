@@ -21,7 +21,7 @@
         </custom-meta-group>
     </collection-meta>
     <book-meta>
-        <book-id assigning-authority="AMS" book-id-type="publ_key">series</book-id>
+        <book-id assigning-authority="AMS" book-id-type="publisher">series</book-id>
         <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>
         <book-id assigning-authority="crossref" book-id-type="doi">doi</book-id>
         <book-title-group>
