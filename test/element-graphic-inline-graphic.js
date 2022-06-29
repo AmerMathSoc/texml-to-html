@@ -2,8 +2,8 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 
-tape('Template: img', async function(t) {
-  t.plan(9);
+tape('Template: img, graphics', async function(t) {
+  t.plan(10);
   const document = article;
   const graphic =  document.querySelector('img[data-ams-doc="graphic"]');
   t.ok(graphic, 'img with data-ams-doc=graphic');
@@ -17,5 +17,8 @@ tape('Template: img', async function(t) {
   const inlinegraphic =  document.querySelector('img[data-ams-doc="inline-graphic"]');
   t.ok(inlinegraphic, 'img with data-ams-doc=inline-graphic');
   t.equal(inlinegraphic.getAttribute('alt'), '', 'alt attribute fallback');
+
+  const mathWithGraphic =  [...document.querySelectorAll('[data-ams-doc="math block"]')].find(node => node.innerHTML.trim() === 'x = \\vcenter{\\img[][12pt][12pt][Graphic without alt text]{Images/test.svg}}');
+  t.ok(mathWithGraphic, 'Graphic inside formula');
 });
 

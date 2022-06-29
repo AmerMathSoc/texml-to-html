@@ -388,6 +388,11 @@
                     <tex-math><text>Te$t<inline-formula><tex-math>x^2</tex-math></inline-formula></text></tex-math>
                 </inline-formula>
             </p>
+            <disp-formula content-type="math/tex">
+                <tex-math>
+                    x = <inline-graphic height="12pt" mimetype="image/svg+xml" width="12pt" xlink:href="Images/test.svg"/>
+                </tex-math>
+            </disp-formula>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->
         <sec disp-level="1" id="citegroup" specific-use="section">
