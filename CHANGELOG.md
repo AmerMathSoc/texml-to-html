@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.7.3...v10.8.0) (2022-06-29)
+
+
+### Features
+
+* **graphic.js:** support graphics inside tex-math ([2eca6ba](https://github.com/AmerMathSoc/ams-xml-to-html/commit/2eca6ba4d96d2981f6d2ff1a8ac910209c03a864)), closes [#376](https://github.com/AmerMathSoc/ams-xml-to-html/issues/376)
+
 ### [10.7.3](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.7.2...v10.7.3) (2022-06-22)
 
 
