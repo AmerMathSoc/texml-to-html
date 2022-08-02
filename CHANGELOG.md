@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.9.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.8.0...v10.9.0) (2022-08-02)
+
+
+### Features
+
+* revise fallback alt text for graphics ([924c2f6](https://github.com/AmerMathSoc/ams-xml-to-html/commit/924c2f61d5fa1f5c9abf30bfadf3eea391ca96e9)), closes [#375](https://github.com/AmerMathSoc/ams-xml-to-html/issues/375)
+
 ## [10.8.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.7.3...v10.8.0) (2022-06-29)
 
 
