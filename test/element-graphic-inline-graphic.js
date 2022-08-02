@@ -16,9 +16,9 @@ tape('Template: img, graphics', async function(t) {
 
   const inlinegraphic =  document.querySelector('img[data-ams-doc="inline-graphic"]');
   t.ok(inlinegraphic, 'img with data-ams-doc=inline-graphic');
-  t.equal(inlinegraphic.getAttribute('alt'), '', 'alt attribute fallback');
+  t.equal(inlinegraphic.getAttribute('alt'), 'Graphic without alt text', 'alt attribute fallback');
 
-  const mathWithGraphic =  [...document.querySelectorAll('[data-ams-doc="math block"]')].find(node => node.innerHTML.trim() === 'x = \\vcenter{\\img[][12pt][12pt][Graphic without alt text]{Images/test.svg}}');
+  const mathWithGraphic =  [...document.querySelectorAll('[data-ams-doc="math block"]')].find(node => node.innerHTML.trim() === 'x = \\vcenter{\\img[][12pt][12pt][{custom dictionary alt}]{Images/test.svg}}');
   t.ok(mathWithGraphic, 'Graphic inside formula');
 });
 
