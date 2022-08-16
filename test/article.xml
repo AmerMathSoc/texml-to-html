@@ -198,24 +198,19 @@
             <p id="pwithx">Is <x>not</x> ignored.</p>
             <!-- element-p-p.js -->
             <p id="pid1"><p/></p>
-            <p>
-                <def-list id="pid2">
-                    <def-item id="term1">
-                        <term>•</term>
-                        <def><p/></def>
-                    </def-item>
-                </def-list>
-            </p>
+            <def-list id="pid2">
+                <def-item id="term1">
+                    <term>•</term>
+                    <def><p/></def>
+                </def-item>
+            </def-list>
             <fn id="pid3"><p/></fn>
-            <!-- element-def-list-def-item-def-term -->
-            <p id="dlistp">
-                <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
-                    <def-item id="ditem1">
-                        <term>•</term>
-                        <def><p>Item 1</p></def>
-                    </def-item>
-                </def-list>
-            </p>
+            <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
+                <def-item id="ditem1">
+                    <term>•</term>
+                    <def><p>Item 1</p></def>
+                </def-item>
+            </def-list>
             <ext-link xlink:href="https://"></ext-link>
             <table class="tbl"><thead><tr><th>Head 1</th><th>Head 2</th></tr></thead><tbody><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></tbody></table>
             <break></break>
@@ -315,22 +310,18 @@
                     <label>Nested Theorem</label>
                 </statement>
             </statement>
-            <p>
-                <def-list id="statementlist">
-                    <def-item id="statementlistterm">
-                        <term>•</term>
-                        <def>
-                            <p>
-                                <statement content-type="content type" id="statement9" style="style">
-                                <label>Label 1</label>
-                                <title>Title 1</title>
-                                <p></p>
-                                </statement>
-                            </p>
-                        </def>
-                    </def-item>
-                </def-list>
-            </p>
+            <def-list id="statementlist">
+                <def-item id="statementlistterm">
+                    <term>•</term>
+                    <def>
+                        <statement content-type="content type" id="statement9" style="style">
+                        <label>Label 1</label>
+                        <title>Title 1</title>
+                        <p></p>
+                        </statement>
+                    </def>
+                </def-item>
+            </def-list>
         </sec>
         <!-- fig, fig-group, caption, label -->
         <sec disp-level="1" id="figures" specific-use="section">
@@ -483,6 +474,22 @@
                     <alg:line><alg:statement><bold>Procedure</bold> <sc>Do</sc></alg:line>
                 </alg:procedure>
             </alg:algorithm>
+        </sec>
+        <sec disp-level="1" id="hacks">
+            <p>
+                <def-list>
+                    <def-item>
+                        <term>1</term>
+                        <def><p/></def>
+                    </def-item>
+                </def-list>
+                <def-list>
+                    <def-item>
+                        <term>2</term>
+                        <def><p/></def>
+                    </def-item>
+                </def-list>
+            </p>
         </sec>
     </body>
     <back>

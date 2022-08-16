@@ -2,20 +2,13 @@ import { article, book } from './helper.js';
 import tape from 'tape';
 
 tape('def-list, def-item, def, term', async function(t) {
-  t.plan(7);
+  t.plan(6);
   const document = article;
 
-  const wrappingParagraph = document.querySelector(
-    'section[data-ams-doc="article"] p#dlistp'
-  );
   const deflist = document.querySelector(
     'section[data-ams-doc="article"] dl#dlist1'
   );
   t.ok(deflist, 'Def-list');
-  t.ok(
-    wrappingParagraph.nextElementSibling === deflist,
-    'DL is placed after parent if XML parent is paragraph'
-  );
   const defitem = deflist.firstElementChild;
   t.equal(defitem.tagName, 'DIV', 'Def-item in article');
   t.ok(deflist.querySelector('div>dt'), 'Term');

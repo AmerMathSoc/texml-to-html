@@ -2,6 +2,8 @@ import { xmlDom, htmlDom } from './lib/doms.js';
 import { setHead } from './lib/head.js';
 import { Transformer } from './lib/transformer.js';
 
+import { applyHacks } from './lib/hacks.js'; 
+
 /**
  * 
  * @param {String} xmlstring - XML string
@@ -21,6 +23,7 @@ const xml2html = (xmlstring, imageAltDictionary = {}) => {
   const transformer = new Transformer(htmldoc, imageAltDictionary);
   transformer.recurseTheDom(htmldoc.body, root);
 
+  applyHacks(htmldoc);
   return html;
 };
 
