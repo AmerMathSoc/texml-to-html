@@ -384,6 +384,8 @@
                     x = <inline-graphic height="12pt" mimetype="image/svg+xml" width="12pt" xlink:href="Images/test.svg"/>
                 </tex-math>
             </disp-formula>
+            <!-- formula with footnote with formula -->
+            <disp-formula><tex-math><xref ref-type="fn" rid="fnid5">5</xref><fn id="fnid5"><inline-formula><tex-math>x</tex-math></inline-formula></fn>y</tex-math></disp-formula>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->
         <sec disp-level="1" id="citegroup" specific-use="section">
