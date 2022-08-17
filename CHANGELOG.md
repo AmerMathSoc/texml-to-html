@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.10.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.9.0...v10.10.0) (2022-08-17)
+
+
+### Features
+
+* add hack to workaround flow content in P ([d149afb](https://github.com/AmerMathSoc/ams-xml-to-html/commit/d149afb9985031ea954208ac1082e278db8aa398)), closes [texml#104](https://github.com/AmerMathSoc/texml/issues/104) [#377](https://github.com/AmerMathSoc/ams-xml-to-html/issues/377)
+
+
+### Bug Fixes
+
+* **formula.js:** nested formula handling ([bd6249b](https://github.com/AmerMathSoc/ams-xml-to-html/commit/bd6249b4977423c7b7ca88367d54bd522c72fb90)), closes [#378](https://github.com/AmerMathSoc/ams-xml-to-html/issues/378)
+
 ## [10.9.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.8.0...v10.9.0) (2022-08-02)
 
 
