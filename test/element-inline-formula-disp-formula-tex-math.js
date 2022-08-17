@@ -2,7 +2,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(15);
+  t.plan(16);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -66,4 +66,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
 
   // formula in footnote in formula not treated as nested formula
   t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="math inline">x</span>', 'Formula with footnote with formula');
+  // formula in formula at implicit text mode
+  t.equal(document.querySelectorAll('#equations [data-ams-doc="math block"]')[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
 });
