@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.10.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.10.0...v10.10.1) (2022-08-17)
+
+
+### Bug Fixes
+
+* **formula.js:** nested formula handling ([fbd5861](https://github.com/AmerMathSoc/ams-xml-to-html/commit/fbd5861ac406ddb9cc72d34f76d752dff6886121)), closes [#378](https://github.com/AmerMathSoc/ams-xml-to-html/issues/378) [#379](https://github.com/AmerMathSoc/ams-xml-to-html/issues/379)
+
 ## [10.10.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.9.0...v10.10.0) (2022-08-17)
 
 
