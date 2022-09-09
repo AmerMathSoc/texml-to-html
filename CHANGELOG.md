@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.11.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.10.1...v10.11.0) (2022-09-09)
+
+
+### Features
+
+* **article.js:** keep manid / pubid separate ([0d5cb17](https://github.com/AmerMathSoc/ams-xml-to-html/commit/0d5cb1707805e0bb1c09e99278c1342e51bbdc11)), closes [#383](https://github.com/AmerMathSoc/ams-xml-to-html/issues/383)
+
 ### [10.10.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.10.0...v10.10.1) (2022-08-17)
 
 
