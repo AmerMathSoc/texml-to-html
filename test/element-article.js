@@ -2,7 +2,7 @@ import { article, articleAlttitle } from './helper.js';
 import tape from 'tape';
 
 tape('Template: article', async function(t) {
-  t.plan(48);
+  t.plan(49);
   const document = article;
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
@@ -85,4 +85,5 @@ tape('Template: article', async function(t) {
   t.equal(jvol2.innerHTML, 'Volume , ')
   const jissue2 = document2.querySelector('[data-ams-doc="journal issue"]');
   t.equal(jissue2.innerHTML, 'Issue ')
+  t.equal(document2.querySelector('section[data-ams-doc="titlepage"]').getAttribute('data-ams-pubid'), 'journalId', 'pubid data-ams-pubid attribute of titlepage');
 });

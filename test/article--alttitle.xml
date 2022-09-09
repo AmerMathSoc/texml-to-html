@@ -107,6 +107,7 @@
         <abstract/>
       </article-meta>
       <journal-meta>
+          <journal-id journal-id-type="publisher">journalId</journal-id>
           <journal-title-group>
               <journal-title>journal-title</journal-title>
               <abbrev-journal-title>abbrev-journal-title</abbrev-journal-title>
