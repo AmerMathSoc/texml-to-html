@@ -2,14 +2,15 @@ import { article, articleAlttitle } from './helper.js';
 import tape from 'tape';
 
 tape('Template: article', async function(t) {
-  t.plan(47);
+  t.plan(48);
   const document = article;
   t.ok(document.head, 'document head');
   t.equal(document.title, 'article-title', 'article-title to title');
 
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
   t.ok(titlepage, 'section with data-ams-doc=titlepage');
-  t.equal(titlepage.getAttribute('data-ams-manid'), 'journalIdmanuscriptId', 'manid data-ams-manid attribute of titlepage');
+  t.equal(titlepage.getAttribute('data-ams-manid'), 'manuscriptId', 'manid data-ams-manid attribute of titlepage');
+  t.equal(titlepage.getAttribute('data-ams-pubid'), 'journalId', 'pubid data-ams-pubid attribute of titlepage');
 
   const header = titlepage.firstElementChild;
   t.equal(header.tagName, 'HEADER', 'titlepage header');
