@@ -389,6 +389,8 @@
             <disp-formula><tex-math><xref ref-type="fn" rid="fnid5">5</xref><fn id="fnid5"><inline-formula><tex-math>x</tex-math></inline-formula></fn>y</tex-math></disp-formula>
             <!-- formula with nested math but implicit text context -->
             <disp-formula><tex-math>\tag{<inline-formula><tex-math>x</tex-math></inline-formula>}</tex-math></disp-formula>
+            <!-- formula with nested math but implicit text context -->
+            <disp-formula><tex-math><target id="targetMath">\tag{<inline-formula><tex-math>x</tex-math></inline-formula>}</target></tex-math></disp-formula>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->
         <sec disp-level="1" id="citegroup" specific-use="section">
