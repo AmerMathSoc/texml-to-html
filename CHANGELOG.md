@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.12.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.11.1...v10.12.0) (2022-09-16)
+
+
+### Features
+
+* **journal-meta:** adjust to texml change ([2ebf40b](https://github.com/AmerMathSoc/ams-xml-to-html/commit/2ebf40b0aef7606f6a1fe141d272352f9bafad2c)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386) [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382)
+* support new MSC markup ([5058da4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/5058da4ddb2bcb9417e60ef2b85d4ddb4c98f700)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386) [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382)
+* support private-char ([2484923](https://github.com/AmerMathSoc/ams-xml-to-html/commit/2484923c98d90534679fb9b6db724aec2daf7812)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386) [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382)
+* support target inside tex-math ([bc69a59](https://github.com/AmerMathSoc/ams-xml-to-html/commit/bc69a59ef55ffae2690da2c385045e11e69f96db)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386) [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382)
+* **table-wrap:** adjust to texml change ([7bdc46c](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7bdc46c17be14c590cf824d9b460436b3a31715a)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386) [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382)
+
 ### [10.11.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.11.0...v10.11.1) (2022-09-09)
 
 
