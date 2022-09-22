@@ -212,6 +212,8 @@
             </def-list>
             <ext-link xlink:href="https://"></ext-link>
             <table-wrap>
+            <label>Table 1</label>
+            <caption>Caption</caption>
             <table class="tbl"><thead><tr><th>Head 1</th><th>Head 2</th></tr></thead><tbody><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></tbody></table>
             </table-wrap>
             <break></break>
