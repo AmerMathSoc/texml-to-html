@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.13.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.12.0...v10.13.0) (2022-09-22)
+
+
+### Features
+
+* **hacks.js:** remove empty paragraphs ([98dd2af](https://github.com/AmerMathSoc/ams-xml-to-html/commit/98dd2af6b1c46a849a06782755e0fa8f5fa3f349)), closes [#388](https://github.com/AmerMathSoc/ams-xml-to-html/issues/388)
+
+
+### Bug Fixes
+
+* regressions due to table-wrap adoption ([fd3d321](https://github.com/AmerMathSoc/ams-xml-to-html/commit/fd3d321474f9432cf0df4a16d7a65196a4cd4828)), closes [#382](https://github.com/AmerMathSoc/ams-xml-to-html/issues/382) [#389](https://github.com/AmerMathSoc/ams-xml-to-html/issues/389)
+
 ## [10.12.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.11.1...v10.12.0) (2022-09-16)
 
 
