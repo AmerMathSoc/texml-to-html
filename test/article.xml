@@ -485,7 +485,9 @@
             </alg:algorithm>
         </sec>
         <sec disp-level="1" id="hacks">
+            <!-- DLs will be moved after p (but text node remains) -->
             <p>
+                text node
                 <def-list>
                     <def-item>
                         <term>1</term>
@@ -497,6 +499,11 @@
                         <term>2</term>
                         <def><p/></def>
                     </def-item>
+                </def-list>
+            </p>
+            <!-- paragraph will be trimmed after hack -->
+            <p> 
+                <def-list>
                 </def-list>
             </p>
         </sec>
