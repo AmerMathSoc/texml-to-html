@@ -216,6 +216,20 @@
             <caption>Caption</caption>
             <table class="tbl"><thead><tr><th>Head 1</th><th>Head 2</th></tr></thead><tbody><tr><td id="tdattributes" colspan="1" rowspan="2"></td><td hidden="true"/></tr></tbody></table>
             </table-wrap>
+            <table-wrap-group>
+                <label>Table with subtables</label>
+                <caption>Caption</caption>
+                <table-wrap>
+                    <label>a</label>
+                    <caption>Sub-caption</caption>
+                    <table class="tbl"></table>
+                </table-wrap>
+                <table-wrap>
+                    <label>b</label>
+                    <caption>Sub-caption</caption>
+                    <table class="tbl"></table>
+                </table-wrap>
+            </table-wrap-group>
             <break></break>
             <string-name></string-name>
             <target id="target"></target>
