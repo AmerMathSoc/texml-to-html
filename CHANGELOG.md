@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.15.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.14.0...v10.15.0) (2022-10-31)
+
+
+### Features
+
+* support table-wrap-group ([ae9f47b](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ae9f47b61c6a45553b6e3ce3dd3ec12f7075b417)), closes [#393](https://github.com/AmerMathSoc/ams-xml-to-html/issues/393)
+
 ## [10.14.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.13.1...v10.14.0) (2022-10-26)
 
 
