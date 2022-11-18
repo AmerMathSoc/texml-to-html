@@ -168,7 +168,7 @@
             <boxed-text content-type="framed">
                 <p>A boxed paragraph from framed input</p>
             </boxed-text>
-            <boxed-text content-type="tcolorbox" position="anchor" border-color="black" background-color="lightgray">
+            <boxed-text content-type="tcolorbox" position="anchor" border-color="black" background-color="lightgray" border-style="solid" border-width="medium">
                 <p>A boxed paragraph from tcolorbox input</p>
             </boxed-text>
             <p>
@@ -422,7 +422,7 @@
         <!-- styled content with color -->
         <sec disp-level="1" id="styled_color" specific-use="section">
             <title>Color</title>
-            <styled-content background-color="rgb(0.000%, 0.000%, 1.000%)" border-color="rgb(0, 140, 10)" text-color="Teal">Styled content with color</styled-content>
+            <styled-content background-color="rgb(0.000%, 0.000%, 1.000%)" border-color="rgb(0, 140, 10)" border-width="thin" border-style="solid" text-color="Teal">Styled content with color</styled-content>
         </sec>
         <!-- multiple footnotes -->
         <p id="multifootnotes">
