@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [10.15.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.15.0...v10.15.1) (2022-11-18)
+
+
+### Bug Fixes
+
+* **mapColorAttributes:** map border attributes ([a162a04](https://github.com/AmerMathSoc/ams-xml-to-html/commit/a162a0407a05c4ffdd6d014821b40e917700b13e)), closes [#394](https://github.com/AmerMathSoc/ams-xml-to-html/issues/394)
+
 ## [10.15.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.14.0...v10.15.0) (2022-10-31)
 
 
