@@ -57,7 +57,7 @@ tape('Template: statement, label, title', async function(t) {
     'title in proof statement now also gets extra period'
   );
   t.equal(
-    statement4.querySelector('[data-ams-doc="secheading"]').innerHTML,
+    statement4.querySelector('[data-ams-doc="secheading"][id="statement4secheading"][data-ams-specific-use="subsection"]').innerHTML,
     'secheading',
     'sec-heading with title within statement'
   );
