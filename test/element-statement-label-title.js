@@ -59,7 +59,7 @@ tape('Template: statement, label, title', async function(t) {
   t.equal(
     statement4.querySelector('[data-ams-doc="secheading"][id="statement4secheading"][data-ams-specific-use="subsection"]').innerHTML,
     'secheading',
-    'sec-heading with title within statement'
+    'secheading with title within statement'
   );
   const statement5 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement5'
@@ -73,7 +73,7 @@ tape('Template: statement, label, title', async function(t) {
   t.equal(
     statement5.querySelector('[data-ams-doc="secheading"]').innerHTML,
     'secheading',
-    'sec-heading with label within statement'
+    'secheading with label within statement'
   );
   const statement6 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement6'
@@ -82,7 +82,7 @@ tape('Template: statement, label, title', async function(t) {
   t.equal(
     statement6.querySelector('[data-ams-doc="secheading"]').innerHTML,
     'Label 6. secheading',
-    'sec-heading with title+label within statement'
+    'secheading with title+label within statement'
   );
 
   const statement7 = document.querySelector(
