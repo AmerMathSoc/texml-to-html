@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.15.1...v11.0.0) (2022-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* No longer supports fs.read buffers // needs toString().
+
+### Features
+
+* upgrade linkedom@0.14.20 ([90f88de](https://github.com/AmerMathSoc/ams-xml-to-html/commit/90f88de74d375626d367826e28ab54903823d4c9)), closes [#394](https://github.com/AmerMathSoc/ams-xml-to-html/issues/394)
+
 ### [10.15.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.15.0...v10.15.1) (2022-11-18)
 
 
