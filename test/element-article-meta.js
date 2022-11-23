@@ -40,7 +40,7 @@ tape('Template: article-meta', async function (t) {
   t.ok(dts[10].nextElementSibling.firstElementChild.childElementCount > 2, 'dt followed by dd with ul has at least two children');
   const document2 = articleAlttitle;
   const dts2 = document2.querySelectorAll('section[data-ams-doc="copyright-page"]>dl>dt');
-  t.equal(dts2[1].innerHTML, 'Subjects', 'subject-group');
-  t.equal(dts2[1].nextElementSibling.innerHTML, 'subject', 'subject');
+  t.equal(dts2[0].innerHTML, 'Subjects', 'subject-group');
+  t.equal(dts2[0].nextElementSibling.innerHTML, 'subject', 'subject');
 });
 

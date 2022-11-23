@@ -3,26 +3,6 @@
 <article xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="fr">
   <front>
       <article-meta>
-         <ams-meta-group>
-              <msc scheme="scheme">
-                  <primary>
-                      <key>key1</key>
-                      <description>desc1</description>
-                  </primary>
-                  <primary>
-                      <key>key2</key>
-                      <description>desc2</description>
-                  </primary>
-                  <secondary>
-                      <key>key3</key>
-                      <description>desc3</description>
-                  </secondary>
-                  <secondary>
-                      <key>key4</key>
-                      <description>desc4</description>
-                  </secondary>
-              </msc>
-          </ams-meta-group>
        <contrib-group content-type="contribAs">
           <contrib contrib-type="contribA">
             <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
