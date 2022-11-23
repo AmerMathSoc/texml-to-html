@@ -247,7 +247,6 @@
             <hr/>
         </sec>
         <!-- sec, ack, app, front-matter-part, dedication  &  their title, label -->
-        <!-- TODO remove title+label variations -->
         <ack id="ack1" disp-level="1">
         </ack>
         <front-matter-part id="ack2" disp-level="1">

@@ -50,7 +50,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     'Display-formula Footnote'
   );
   // NOTE JS implementation removed extra space between the two strings
-  // TODO unify
   t.equal(
     disptex, '\\xhref[fn]{#fnid2}{{}^{2}}\\text{Start\\xhref[other]{#otherid2}{\\$}End}',
     'tex-math/text/xref'
