@@ -14,13 +14,15 @@ const xml2html = (xmlstring, imageAltDictionary = {}) => {
   const xml = xmlDom(xmlstring);
   const xmldoc = xml.window.document;
 
+  const root = xmldoc.querySelector('book, article');
+  const isBook = root.tagName === 'book';
+
   const html = htmlDom();
   const htmldoc = html.window.document;
 
-  setHead(xmldoc, htmldoc);
+  setHead(xmldoc, htmldoc, isBook);
 
-  const root = xmldoc.querySelector('book, article');
-  const transformer = new Transformer(htmldoc, imageAltDictionary);
+  const transformer = new Transformer(htmldoc, imageAltDictionary, isBook);
   transformer.recurseTheDom(htmldoc.body, root);
 
   applyHacks(htmldoc);
