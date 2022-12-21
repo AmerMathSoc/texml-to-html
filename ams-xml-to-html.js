@@ -20,7 +20,7 @@ const xml2html = (xmlstring, imageAltDictionary = {}) => {
   const html = htmlDom();
   const htmldoc = html.window.document;
 
-  setHead(xmldoc, htmldoc, isBook);
+  setHead(xmldoc, htmldoc);
 
   const transformer = new Transformer(htmldoc, imageAltDictionary, isBook);
   transformer.recurseTheDom(htmldoc.body, root);
