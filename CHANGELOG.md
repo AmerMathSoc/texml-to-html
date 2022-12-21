@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v11.0.0...v12.0.0) (2022-12-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removes support for deprecated MSC markup #386
+
+### Features
+
+* remove support for deprecated markup ([c7affa9](https://github.com/AmerMathSoc/ams-xml-to-html/commit/c7affa9eab717f678f41ccaeb369712d66c198bf)), closes [#386](https://github.com/AmerMathSoc/ams-xml-to-html/issues/386)
+* **sec-heading.js:** integrate mapAttributes() ([e1481d0](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e1481d0a3530d6259e84b0fd02424ba22a99f38d)), closes [#354](https://github.com/AmerMathSoc/ams-xml-to-html/issues/354)
+* **secheading.js:** add data-ams-doc-level ([8f92d86](https://github.com/AmerMathSoc/ams-xml-to-html/commit/8f92d8661cd376d53ab87100bfc1c43d58238da3)), closes [#322](https://github.com/AmerMathSoc/ams-xml-to-html/issues/322)
+* **xref:** preserve ref-label attribute ([139c473](https://github.com/AmerMathSoc/ams-xml-to-html/commit/139c473bf9e4a01de0d88bcd05a435a201d9c21b)), closes [#272](https://github.com/AmerMathSoc/ams-xml-to-html/issues/272)
+
+
+### Bug Fixes
+
+* remove duplicate viewport meta tag for books ([7550472](https://github.com/AmerMathSoc/ams-xml-to-html/commit/75504724b1e4548c769ce37dc838cf92be5a265b)), closes [#402](https://github.com/AmerMathSoc/ams-xml-to-html/issues/402)
+
 ## [11.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v10.15.1...v11.0.0) (2022-11-22)
 
 
