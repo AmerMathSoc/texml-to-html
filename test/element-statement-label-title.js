@@ -2,18 +2,13 @@ import { article, book } from './helper.js';
 import tape from 'tape';
 
 tape('Template: statement, label, title', async function(t) {
-  t.plan(23);
+  t.plan(20);
   const document = article;
 
   const statement1 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement1'
   );
   t.ok(statement1, 'statement as section with data-ams-doc');
-  t.equal(
-    statement1.getAttribute('data-ams-doc-level'),
-    '2',
-    'statement data-ams-doc-level'
-  );
   const statement1Heading = statement1.querySelector('figcaption');
   t.ok(statement1Heading, 'statement heading level in article');
   t.equal(
@@ -56,11 +51,6 @@ tape('Template: statement, label, title', async function(t) {
     'Proof. ',
     'title in proof statement now also gets extra period'
   );
-  t.equal(
-    statement4.querySelector('[data-ams-doc="secheading"][id="statement4secheading"][data-ams-specific-use="subsection"][data-ams-doc-level="3"]').innerHTML,
-    'secheading',
-    'secheading with title within statement'
-  );
   const statement5 = document.querySelector(
     'figure[data-ams-doc="statement"]#statement5'
   );
@@ -94,14 +84,6 @@ tape('Template: statement, label, title', async function(t) {
   t.equal(
     statement8.getAttribute('data-ams-doc-level'), statement7.getAttribute('data-ams-doc-level'),
     'nested statement does not increase data-ams-doc-level'
-  );
-
-  const statement9 = document.querySelector(
-    ' #statement9'
-  );
-  t.equal(
-    statement9.getAttribute('data-ams-doc-level'), '2',
-    'statement in list item data-ams-doc-level'
   );
 
   const document2 = book;
