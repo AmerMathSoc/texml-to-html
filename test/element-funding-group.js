@@ -4,14 +4,10 @@ import tape from 'tape';
 
 
 tape('Template: funding-group, funding-statement', async function(t) {
-  t.plan(3);
+  t.plan(2);
   const document = article;
-  let fundinggroup = {};
-  document.querySelectorAll('section[data-ams-doc="copyright-page"] dt').forEach ( node => {
-    if (node.innerHTML === "Additional Notes") fundinggroup = node;
-  })
-  t.equal(fundinggroup.innerHTML, 'Additional Notes', 'funding-group produces DT with content');
-  t.equal(fundinggroup.nextElementSibling.tagName, 'DD', 'funding-group produces DT+DD');
-  t.equal(fundinggroup.nextElementSibling.querySelectorAll('p').length, 2, 'funding-group produces DT+DD with a paragraph for each funding-statement');
+  let fundinggroup = document.querySelector('div[data-ams-doc="funding-group"]')
+  t.ok(fundinggroup, 'funding-group produces div with data-ams-doc');
+  t.equal(fundinggroup.querySelectorAll('p').length, 2, 'funding-group contains paragraph for each funding-statement');
 });
 

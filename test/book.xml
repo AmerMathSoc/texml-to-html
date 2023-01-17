@@ -216,8 +216,9 @@
                     <title>Title</title>
                     <sec-meta>
                         <contrib-group>
+                        <!-- NOTE: this contrib-group example is for MCL 1, 14 only; intentionally broken via #254 -->
                         <author-comment>
-                            comment
+                            comment 
                         </author-comment>
                         </contrib-group>
                         <abstract>

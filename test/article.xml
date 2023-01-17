@@ -497,6 +497,9 @@
                 </alg:procedure>
             </alg:algorithm>
         </sec>
+        <sec disp-level="1">
+        <p>Email <email>email</email> in content, not metadata.</p>
+        </sec>
         <sec disp-level="1" id="hacks">
             <!-- DLs will be moved after p (but text node remains) -->
             <p>

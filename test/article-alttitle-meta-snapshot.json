@@ -1,0 +1,91 @@
+{
+    "title": "article-title",
+    "alttitle": "alttitle",
+    "subtitle": "article-subtitle",
+    "identifiers": {
+        "AMS": {
+            "pii": "pii"
+        },
+        "crossref": {
+            "doi": "doi"
+        },
+        "uri": {
+            "abstract": "href",
+            "pdf": "href"
+        },
+        "amsref": ""
+    },
+    "publishers": [
+        {
+            "name": "publisher-name",
+            "location": "publisher-loc"
+        }
+    ],
+    "contributors": {
+        "contribAs": [
+            {
+                "name": "Given Sur, Jr.",
+                "bio": "Some biographical info with <a href=\"mailto://email\">email</a>",
+                "affiliations": [
+                    "aff"
+                ],
+                "emails": [
+                    "email"
+                ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
+                "byline": "comment"
+            }
+        ],
+        "contribBs": [
+            {
+                "name": "Given Sur",
+                "bio": "",
+                "affiliations": [
+                    "<span>Address at time of publication:</span> Aff1",
+                    "Aff2"
+                ],
+                "emails": [
+                    "address1",
+                    "address2"
+                ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
+                "byline": "comment"
+            }
+        ]
+    },
+    "permissions": {
+        "copyrightStatement": ""
+    },
+    "journal": {
+        "title": "journal-title",
+        "identifiers": {
+            "AMS": {
+                "journalId": "journalId"
+            },
+            "issn": {
+                "print": "",
+                "electronic": ""
+            },
+            "uri": ""
+        }
+    },
+    "customMeta": {
+        "communicated-by": "meta-value"
+    },
+    "categories": {
+        "category": "subject"
+    },
+    "volumeInfo": {},
+    "history": {
+        "published": "2000-04-13",
+        "received": "1999-09-15",
+        "rev-recd": [
+            "2000-07-01"
+        ]
+    },
+    "keywords": []
+}

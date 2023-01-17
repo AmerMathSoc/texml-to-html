@@ -3,9 +3,8 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('Template: email', async function(t) {
-  t.plan(2);
+  t.plan(1);
   const document = article;
-  const email = document.querySelector('a[href="mailto://address1"]');
-  t.equal(email.outerHTML, '<a href="mailto://address1">address1</a>', 'email to anchor with mailto address');
-  t.equal(email.nextSibling.textContent, ', ', 'multiple email elements are separated by comma');
+  const email = document.querySelector('a[href="mailto://email"]');
+  t.equal(email.innerHTML, 'email', 'email to anchor with mailto address');
 });

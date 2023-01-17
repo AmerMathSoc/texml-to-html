@@ -3,7 +3,7 @@ import tape from 'tape';
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(47);
+  t.plan(44);
   const document = article;
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
@@ -49,11 +49,6 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.equal(document2.querySelector('#part').getAttribute('role'), 'doc-part', 'part role');
   t.ok(document2.querySelector('#inparttitle h2'), 'sec with title in chapter in part: heading level reduced');
   t.ok(document2.querySelector('#inpartlabel h2'), 'sec with label in chapter in part: heading level reduced');
-
-  // NOTE sec-meta only occurs in 3 publications: MCL01, MCL14 and JAMS410; the tests only test for those specific situations
-  t.ok(document.querySelector('#secmeta section[data-ams-doc="sec-meta"] dl'), 'article sec-meta');
-  t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] p span'), 'book sec-meta');
-  t.ok(document2.querySelector('#secmeta section[data-ams-doc="sec-meta"] section[role="doc-abstract"]'), 'book sec-meta');
 
   t.ok(document2.querySelector('#fmtitle header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');
   t.ok(document2.querySelector('#fmlabel header p[data-ams-doc="subtitle"]'), 'sec with title: subtitle to p with data-ams-doc');

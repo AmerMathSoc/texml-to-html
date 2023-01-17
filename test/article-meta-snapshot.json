@@ -1,0 +1,120 @@
+{
+    "title": "article-title",
+    "alttitle": "article-title",
+    "identifiers": {
+        "AMS": {
+            "manuscriptId": "manuscriptId",
+            "mr": "mr",
+            "pii": "pii"
+        },
+        "crossref": {
+            "doi": "doi"
+        },
+        "uri": {
+            "abstract": "href",
+            "pdf": "href"
+        },
+        "amsref": ""
+    },
+    "publishers": [
+        {
+            "name": "publisher-name",
+            "location": "publisher-loc"
+        }
+    ],
+    "contributors": {
+        "contribAs": [
+            {
+                "name": "Given Sur",
+                "bio": "",
+                "affiliations": [
+                    "aff"
+                ],
+                "emails": [
+                    "email"
+                ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
+                "byline": "comment"
+            },
+            {
+                "name": "Given2 Sur2",
+                "bio": "",
+                "affiliations": [
+                    "aff"
+                ],
+                "emails": [
+                    "email"
+                ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
+                "byline": "comment"
+            }
+        ],
+        "contribBs": [
+            {
+                "name": "Given Sur Jr.",
+                "bio": "",
+                "affiliations": [
+                    "<span>Address at time of publication:</span> Aff1",
+                    "Aff2"
+                ],
+                "emails": [
+                    "address1",
+                    "address2"
+                ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
+                "byline": "comment"
+            }
+        ]
+    },
+    "permissions": {
+        "copyrightStatement": ""
+    },
+    "journal": {
+        "title": "journal-title",
+        "identifiers": {
+            "AMS": {
+                "journalId": "journalId"
+            },
+            "issn": {
+                "print": "print",
+                "electronic": "electronic"
+            },
+            "uri": ""
+        }
+    },
+    "customMeta": {
+        "communicated-by": "meta-value",
+        "titlepic": "<img alt=\"Graphic without alt text\" data-ams-height=\"218pt\" data-ams-width=\"493pt\" data-ams-style=\"null\" src=\"Images/imgc920fa78a62d5705041ab0ad31b3c7df.svg\" data-ams-doc=\"inline-graphic\">"
+    },
+    "categories": {},
+    "volumeInfo": {
+        "volume": "volume",
+        "issue": "issue"
+    },
+    "history": {
+        "published": "2000-04-13",
+        "received": "1999-09-15",
+        "rev-recd": [
+            "2000-07-01",
+            "2000-07-02"
+        ]
+    },
+    "msc": {
+        "vocab": "MSC scheme",
+        "primary": [
+            "key1",
+            "key2"
+        ],
+        "secondary": [
+            "key3",
+            "key4"
+        ]
+    },
+    "keywords": []
+}
