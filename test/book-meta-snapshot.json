@@ -19,8 +19,8 @@
                 "epub": "isbn epub"
             }
         },
-        "title": "<h1>title</h1>",
-        "subtitle": "<p data-ams-doc=\"subtitle\">subtitle</p>",
+        "title": "title",
+        "subtitle": "subtitle",
         "alttitle": "title"
     },
     "publishers": [
@@ -36,18 +36,23 @@
         "authors": [
             {
                 "name": "Given Sur Jr.",
+                "bio": "",
                 "affiliations": [
                     "aff"
                 ],
                 "emails": [
-                    "<a href=\"mailto://email\">email</a>"
+                    "email"
                 ],
+                "mrauth": "mrauthid",
+                "orcid": "orcidid",
+                "uri": "uri",
                 "byline": "comment"
             }
         ],
         "contrib-group-type2": [
             {
                 "name": "Given Sur",
+                "bio": "",
                 "affiliations": [],
                 "emails": []
             }
@@ -55,6 +60,7 @@
         "contrib-group-type3": [
             {
                 "name": "String Name",
+                "bio": "",
                 "affiliations": [],
                 "emails": [],
                 "byline": "comment"
