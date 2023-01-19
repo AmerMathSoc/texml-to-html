@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v12.0.0...v13.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Less markup in book metadata json blob, see #405.
+* Overhaul of article metadata #254. Drops titlepage and copyright-page, introduces metadata as json blob.
+
+### Features
+
+* revise article metadata processing ([4c49d20](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4c49d20ac906c60fb664c64c0de5e3c5a6935357)), closes [#254](https://github.com/AmerMathSoc/ams-xml-to-html/issues/254)
+* revise book metadata handling ([6a5b850](https://github.com/AmerMathSoc/ams-xml-to-html/commit/6a5b85045ac5b02cf8567c0e727e8a8a9de67eca)), closes [#254](https://github.com/AmerMathSoc/ams-xml-to-html/issues/254) [#405](https://github.com/AmerMathSoc/ams-xml-to-html/issues/405)
+
+
+### Bug Fixes
+
+* **secheading.js:** revise level calculation ([75add67](https://github.com/AmerMathSoc/ams-xml-to-html/commit/75add67838b057fe22622ce17277be59df8b4cc2)), closes [#403](https://github.com/AmerMathSoc/ams-xml-to-html/issues/403)
+* **statement.js:** drop data-ams-doc-level ([85e64c7](https://github.com/AmerMathSoc/ams-xml-to-html/commit/85e64c71d3a1efdb4c343ea8933b7986cbbfc787)), closes [#403](https://github.com/AmerMathSoc/ams-xml-to-html/issues/403) [#397](https://github.com/AmerMathSoc/ams-xml-to-html/issues/397)
+
 ## [12.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v11.0.0...v12.0.0) (2022-12-21)
 
 
