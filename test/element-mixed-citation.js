@@ -6,7 +6,7 @@ tape('Template: mixed-citation', async function(t) {
   t.plan(2);
   const document = article;
   const mixedCitation = document.querySelector(
-    'dd > div[role="doc-biblioentry"]'
+    'dd > div[data-ams-doc="biblioentry"]'
   );
   const rawCitation = mixedCitation.querySelector(
     'code[data-ams-doc="amsref"]'
