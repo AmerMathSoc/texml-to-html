@@ -17,7 +17,7 @@ tape('ref-list, ref-list/title, ref, ref/label', async function (t) {
   const bib = document2.querySelector('section[role="doc-bibliography"]');
   t.ok(bib, 'Outer ref-list Section with role doc-bibliography');
   t.ok(bib.querySelector('h2'), 'Outer ref-list heading');
-  t.notOk([...bib.children].filter(node => node.tagName === "DL").length, 'Outer ref-list does not have a DL child');
+  t.notOk(bib.querySelector(':scope>DL'), 'Outer ref-list does not have a DL child');
   const nestedBib = bib.querySelector('section');
   t.ok(nestedBib.querySelector('h3'), 'Inner ref-list heading');
   t.ok(nestedBib.querySelector('dl'), 'Inner ref-list has DL');
