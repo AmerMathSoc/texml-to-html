@@ -75,7 +75,7 @@
             <permissions>
                 <copyright-statement/>
             </permissions>
-            <self-uri xlink:href="href" content-type="type"/>
+            <self-uri xlink:href="href" content-type="abstract"/>
             <self-uri xlink:href="href" content-type="pdf"/>
             <article-citation/>
             <kwd-group>
