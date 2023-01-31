@@ -13,7 +13,8 @@
             "abstract": "href",
             "pdf": "href"
         },
-        "amsref": ""
+        "amsref": "",
+        "basename": "journalIdundefined" 
     },
     "publishers": [
         {

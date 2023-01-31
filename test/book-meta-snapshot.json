@@ -17,7 +17,8 @@
                 "google": "isbn google pdf",
                 "print": "isbn print",
                 "epub": "isbn epub"
-            }
+            },
+            "basename": "seriesvolume"
         },
         "title": "title",
         "subtitle": "subtitle",

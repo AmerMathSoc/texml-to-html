@@ -14,7 +14,8 @@
             "abstract": "href",
             "pdf": "href"
         },
-        "amsref": ""
+        "amsref": "",
+        "basename": "journalIdmanuscriptId"
     },
     "publishers": [
         {
