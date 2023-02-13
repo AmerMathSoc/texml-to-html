@@ -50,8 +50,7 @@
                 ],
                 "mrauth": "mrauthid",
                 "orcid": "orcidid",
-                "uri": "uri",
-                "byline": "comment"
+                "uri": "uri"
             }
         ],
         "contribBs": [
