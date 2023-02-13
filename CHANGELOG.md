@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.0.1...v13.1.0) (2023-02-13)
+
+
+### Features
+
+* generate byline for article- and sec-meta ([97b1a93](https://github.com/AmerMathSoc/ams-xml-to-html/commit/97b1a93e4514d5c0b29f9e21ecbae915fdbf03e4)), closes [#409](https://github.com/AmerMathSoc/ams-xml-to-html/issues/409)
+* **metadata:** add identifier for AMS "manid" ([4759519](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4759519ba3264111f9198cde71c1307191f0b219)), closes [#406](https://github.com/AmerMathSoc/ams-xml-to-html/issues/406)
+
+
+### Bug Fixes
+
+* **article-metadata-json.js:** improve self-uri ([f780b79](https://github.com/AmerMathSoc/ams-xml-to-html/commit/f780b79ae2e9ea611565e752666b41eb63a561c2)), closes [#404](https://github.com/AmerMathSoc/ams-xml-to-html/issues/404)
+* **extractContribGroups.js:** handle groups of same type ([2b777ae](https://github.com/AmerMathSoc/ams-xml-to-html/commit/2b777ae2beb905c6e62534b2860ec7e9b764fdbf)), closes [#408](https://github.com/AmerMathSoc/ams-xml-to-html/issues/408)
+
 ### [13.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.0.0...v13.0.1) (2023-01-27)
 
 
