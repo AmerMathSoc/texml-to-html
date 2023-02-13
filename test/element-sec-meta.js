@@ -2,7 +2,7 @@ import { article, articleAlttitle, book } from './helper.js';
 import tape from 'tape';
 
 tape('Template: sec-meta => contrib-group, author-comment, abstract/title', async function (t) {
-  t.plan(8);
+  t.plan(10);
 
   const document = book;
   const section = document.querySelector('#secmeta');
@@ -16,10 +16,12 @@ tape('Template: sec-meta => contrib-group, author-comment, abstract/title', asyn
   const secmeta = document2.querySelector('#secmeta section[data-ams-doc="sec-meta"]');
   t.ok(secmeta, 'article sec-meta creates section data attribute');
   t.equal(secmeta.getAttribute('data-ams-contributors'), '{"authors":[{"name":"GivenName Surname","bio":"","affiliations":[],"emails":[]}]}', 'article sec-meta');
+  t.equal(secmeta.getAttribute('data-ams-byline'), 'GivenName Surname', 'article sec-meta');
   
   const document3 = articleAlttitle;
   const secmeta3 = document3.querySelector('#secmeta section[data-ams-doc="sec-meta"]');
   t.equal(secmeta3.getAttribute('data-ams-contributors'), '{"authors":[{"name":"Author 1","bio":"Author 1 Bio","affiliations":[],"emails":[]}],"contributors":[{"name":"Author 2","bio":"Author 2 Bio","affiliations":[],"emails":[],"byline":"with"}]}', 'article--alttitle sec-meta');
+  t.equal(secmeta3.getAttribute('data-ams-byline'), 'Author 1, with Author 2', 'article sec-meta');
   
   t.ok(secmeta3.querySelector('section[data-ams-doc="notes"]'), 'sec-meta (non-contrib-group) child content');
 });

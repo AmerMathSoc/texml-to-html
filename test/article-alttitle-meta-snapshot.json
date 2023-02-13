@@ -14,7 +14,7 @@
             "pdf": "href"
         },
         "amsref": "",
-        "basename": "journalIdundefined" 
+        "basename": "journalIdundefined"
     },
     "publishers": [
         {
@@ -58,6 +58,7 @@
             }
         ]
     },
+    "byline": "comment Given Sur, Jr., comment Given Sur",
     "permissions": {
         "copyrightStatement": ""
     },
