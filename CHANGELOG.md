@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.1.0...v13.2.0) (2023-02-22)
+
+
+### Features
+
+* **article-metadata-json.js:** preserve vocab-identifier ([ed9ff61](https://github.com/AmerMathSoc/ams-xml-to-html/commit/ed9ff61ebb297b3bc284efcea9e44dea2adcaf91)), closes [#412](https://github.com/AmerMathSoc/ams-xml-to-html/issues/412)
+
 ## [13.1.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.0.1...v13.1.0) (2023-02-13)
 
 
