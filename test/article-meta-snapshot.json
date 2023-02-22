@@ -108,6 +108,7 @@
     },
     "msc": {
         "vocab": "MSC scheme",
+        "vocabUrl": "https://mathscinet.ams.org/msc/msc2020.html?t=",
         "primary": [
             "key1",
             "key2"
