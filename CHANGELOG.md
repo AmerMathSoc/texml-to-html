@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.2.0...v13.3.0) (2023-03-17)
+
+
+### Features
+
+* disp-formula with content-type="text" ([060b1f1](https://github.com/AmerMathSoc/ams-xml-to-html/commit/060b1f1a43a06168c4402560edd7e03148c78b33)), closes [#413](https://github.com/AmerMathSoc/ams-xml-to-html/issues/413)
+
 ## [13.2.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.1.0...v13.2.0) (2023-02-22)
 
 
