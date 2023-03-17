@@ -2,7 +2,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(16);
+  t.plan(18);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -67,4 +67,9 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="math inline">x</span>', 'Formula with footnote with formula');
   // formula in formula at implicit text mode
   t.equal(document.querySelectorAll('#equations [data-ams-doc="math block"]')[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
+
+  // formula of type text (aka "thingy" environment)
+  t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
+  t.ok(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]+p'), 'Display Formula of content-type=text, label and paragraph');
+
 });
