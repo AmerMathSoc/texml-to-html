@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [13.3.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.3.0...v13.3.1) (2023-03-28)
+
+
+### Bug Fixes
+
+* **fn.js:** aria-label for footnotes ([0ed94bf](https://github.com/AmerMathSoc/ams-xml-to-html/commit/0ed94bf4498840f3ddea6699b5af060d57597daf)), closes [#415](https://github.com/AmerMathSoc/ams-xml-to-html/issues/415)
+
 ## [13.3.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.2.0...v13.3.0) (2023-03-17)
 
 
