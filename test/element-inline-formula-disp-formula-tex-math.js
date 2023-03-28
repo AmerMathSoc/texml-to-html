@@ -64,7 +64,7 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text + escaping active characters');
 
   // formula in footnote in formula not treated as nested formula
-  t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="math inline">x</span>', 'Formula with footnote with formula');
+  t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="label"><sup></sup></span><span data-ams-doc="math inline">x</span>', 'Formula with footnote with formula');
   // formula in formula at implicit text mode
   t.equal(document.querySelectorAll('#equations [data-ams-doc="math block"]')[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
 
