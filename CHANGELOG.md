@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.4.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.3.2...v13.4.0) (2023-06-27)
+
+
+### Features
+
+* **target.js:** heuristics tag extraction ([b901e6a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/b901e6a16625a1a64e462c33361376b858525098)), closes [#401](https://github.com/AmerMathSoc/ams-xml-to-html/issues/401)
+
+
+### Bug Fixes
+
+* replace nyc with c8 ([7219c83](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7219c8354dc215eeb1c54ef724ab83d1c059fc31)), closes [#421](https://github.com/AmerMathSoc/ams-xml-to-html/issues/421)
+
 ### [13.3.2](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.3.1...v13.3.2) (2023-05-08)
 
 ### [13.3.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.3.0...v13.3.1) (2023-03-28)
