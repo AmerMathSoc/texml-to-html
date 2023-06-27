@@ -8,7 +8,7 @@ import { applyHacks } from './lib/hacks.js';
  * 
  * @param {String} xmlstring - XML string
  * @param {Object} imageAltDictionary - Key value store with file names and alt text strings
- * @returns 
+ * @returns  {Document}
  */
 const xml2html = (xmlstring, imageAltDictionary = {}) => {
   const xml = xmlDom(xmlstring);
