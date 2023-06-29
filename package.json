@@ -1,6 +1,6 @@
 {
   "name": "ams-xml-to-html",
-  "version": "13.4.0",
+  "version": "13.5.0",
   "type": "module",
   "description": "A NodeJS library for converting AMS-style JATS XML to HTML",
   "private": true,
