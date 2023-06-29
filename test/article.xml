@@ -403,10 +403,12 @@
             <!-- formula with footnote with formula -->
             <disp-formula><tex-math><xref ref-type="fn" rid="fnid5">5</xref><fn id="fnid5"><label/><inline-formula><tex-math>x</tex-math></inline-formula></fn>y</tex-math></disp-formula>
             <!-- formula with nested math but implicit text context -->
-            <disp-formula><tex-math>\tag{<inline-formula><tex-math>x</tex-math></inline-formula>}</tex-math></disp-formula>
+            <disp-formula><tex-math><tag parens="yes"><inline-formula><tex-math>x</tex-math></inline-formula></tag></tex-math></disp-formula>
             <!-- formula with nested math but implicit text context -->
-            <disp-formula><tex-math><target id="targetMath">_\tag{<inline-formula><tex-math>x</tex-math></inline-formula>}</target></tex-math></disp-formula>
-            <disp-formula><tex-math><target id="targetMath2">\tag{<inline-formula><tex-math>x</tex-math></inline-formula>}</target><target id="targetMath3">\tag{TextTag}</target></tex-math></disp-formula>
+            <disp-formula><tex-math><target id="targetMath">_<tag parens="yes"><inline-formula><tex-math>x</tex-math></inline-formula></tag></target></tex-math></disp-formula>
+            <!-- formula with multiple tags -->
+            <disp-formula><tex-math><tag parens="yes">PlainTag</tag><target id="targetMath2"><tag parens="yes"><inline-formula><tex-math>\mathbb{N}</tex-math></inline-formula></tag></target><target id="targetMath3"><tag parens="yes">TextTag</tag></target></tex-math></disp-formula>
+            <disp-formula><tex-math><tag parens="no">tag*</tag></tex-math></disp-formula>
             <disp-formula content-type="text">
                 <label>(T)</label>
                 <p>Some lengthy complex text fragment.</p>
