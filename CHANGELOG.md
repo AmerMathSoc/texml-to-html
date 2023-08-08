@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [13.5.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.5.0...v13.5.1) (2023-08-08)
+
+
+### Bug Fixes
+
+* adjust to texml changes for "text equations" ([f6910d9](https://github.com/AmerMathSoc/ams-xml-to-html/commit/f6910d9a545559bba64c246d7776ae5d8a6cabc8)), closes [#426](https://github.com/AmerMathSoc/ams-xml-to-html/issues/426)
+
 ## [13.5.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.4.0...v13.5.0) (2023-06-29)
 
 
