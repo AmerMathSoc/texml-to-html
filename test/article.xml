@@ -410,8 +410,10 @@
             <disp-formula><tex-math><tag parens="yes">PlainTag</tag><target id="targetMath2"><tag parens="yes"><inline-formula><tex-math>\mathbb{N}</tex-math></inline-formula></tag></target><target id="targetMath3"><tag parens="yes">TextTag</tag></target></tex-math></disp-formula>
             <disp-formula><tex-math><tag parens="no">tag*</tag></tex-math></disp-formula>
             <disp-formula content-type="text">
-                <label>(T)</label>
                 <p>Some lengthy complex text fragment.</p>
+                <target id="textEquation">
+                  <tag parens="yes">T</tag>
+                </target>
             </disp-formula>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->

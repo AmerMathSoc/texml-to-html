@@ -70,6 +70,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
 
   // formula of type text (aka "thingy" environment)
   t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
-  t.ok(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]+p'), 'Display Formula of content-type=text, label and paragraph');
+  t.equal(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]#textEquation+p').previousElementSibling.innerHTML, '(T)', 'Display Formula of content-type=text, label and paragraph');
 
 });
