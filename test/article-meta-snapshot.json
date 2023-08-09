@@ -17,6 +17,13 @@
         "amsref": "",
         "basename": "journalIdmanuscriptId"
     },
+    "relatedArticles": {
+        "S0894-0347-2023-01025-2": {
+            "type": "erratum-forward",
+            "url": "https://www.ams.org/jams/2023-36-04/S0894-0347-2023-01025-2/",
+            "linkText": "J. Amer. Math. Soc. 36 (2023), 1305-1308."
+        }
+    },
     "publishers": [
         {
             "name": "publisher-name",

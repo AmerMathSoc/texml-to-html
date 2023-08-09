@@ -77,6 +77,10 @@
             </permissions>
             <self-uri xlink:href="href" content-type="abstract"/>
             <self-uri xlink:href="href" content-type="pdf"/>
+            <related-article related-article-type="erratum-forward">
+                <pub-id pub-id-type="pii">S0894-0347-2023-01025-2</pub-id>
+                <ext-link ext-link="https://www.ams.org/jams/2023-36-04/S0894-0347-2023-01025-2/">J. Amer. Math. Soc. 36 (2023), 1305-1308.</ext-link>
+            </related-article>
             <article-citation/>
             <kwd-group>
                 <kwd>keyword</kwd>
