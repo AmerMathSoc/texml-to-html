@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.6.0...v13.7.0) (2023-09-12)
+
+
+### Features
+
+* support xref-group element ([42aa5e4](https://github.com/AmerMathSoc/ams-xml-to-html/commit/42aa5e4232504c3578477127dc95cadfb30ecd4f)), closes [#428](https://github.com/AmerMathSoc/ams-xml-to-html/issues/428)
+
+
+### Bug Fixes
+
+* **xref.js:** remove deprecated ref-label handling ([4da69c3](https://github.com/AmerMathSoc/ams-xml-to-html/commit/4da69c39d51d15cad31a7becdaf39f59776b5bcc)), closes [#427](https://github.com/AmerMathSoc/ams-xml-to-html/issues/427)
+
 ## [13.6.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.5.1...v13.6.0) (2023-08-09)
 
 
