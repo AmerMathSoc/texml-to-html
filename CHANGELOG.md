@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [13.7.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.7.0...v13.7.1) (2023-09-13)
+
+
+### Bug Fixes
+
+* **x.js:** drop x in xref-group ([90cf722](https://github.com/AmerMathSoc/ams-xml-to-html/commit/90cf72242d5a329cd7eae84c48fab706df64a074)), closes [#431](https://github.com/AmerMathSoc/ams-xml-to-html/issues/431)
+* **xref-group:** reduce data-ams-refrange value ([e6ad0b8](https://github.com/AmerMathSoc/ams-xml-to-html/commit/e6ad0b82141cd884f6cee91f9da68a97b7d9b945)), closes [#431](https://github.com/AmerMathSoc/ams-xml-to-html/issues/431)
+
 ## [13.7.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.6.0...v13.7.0) (2023-09-12)
 
 
