@@ -10,7 +10,7 @@ tape('Template: target', async function(t) {
   t.ok(targetSpan, 'Convert to span inside article');
 
   // target in tex-math
-  const equationsBlock = [...document.querySelectorAll('[data-ams-doc="math block"]')];
+  const equationsBlock = [...document.querySelectorAll('[data-ams-doc="math block"]>tex-math')];
   t.ok(equationsBlock.find(node => node.innerHTML === '\\cssId{targetMath}{_\\tag{$x$}}'), 'Convert to \\cssId inside tex-math');
 
 });

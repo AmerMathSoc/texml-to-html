@@ -7,7 +7,7 @@ tape('Template: tag', async function (t) {
   t.plan(4);
   const document = article;
 
-  const equationsBlock = [...document.querySelectorAll('[data-ams-doc="math block"]')];
+  const equationsBlock = [...document.querySelectorAll('[data-ams-doc="math block"] > tex-math')];
 
   t.ok(equationsBlock.find(node => node.innerHTML === '\\cssId{targetMath}{_\\tag{$x$}}'), 'Tag with tex-math');
 

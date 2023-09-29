@@ -33,7 +33,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   const displayformula = document.querySelector(
     '#equations [data-ams-doc="math block"]'
   );
-  const disptex = displayformula.innerHTML;
   t.ok(displayformula, 'Display formula');
   t.equal(
     displayformula.getAttribute('data-ams-qed-box'),
@@ -49,24 +48,25 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     'doc-footnote',
     'Display-formula Footnote'
   );
+  const disptex = displayformula.lastElementChild.innerHTML;
   // NOTE JS implementation removed extra space between the two strings
   t.equal(
     disptex, '\\xhref[fn]{#fnid2}{{}^{2}}\\text{Start\\xhref[other]{#otherid2}{\\$}End}',
     'tex-math/text/xref'
   );
-  const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"]')[1];
-  t.equal(formulaNestedTeX.innerHTML, ' \\text{Te\\$t$x^2$} ');
+  const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"] > tex-math')[1];
+  t.equal(formulaNestedTeX.innerHTML, '\\text{Te\\$t$x^2$}');
 
   // text-mode text styling
   const dispWithText = document.querySelectorAll(
-    '#equations [data-ams-doc="math block"]'
-  )[1];
-  t.equal(dispWithText.innerHTML, ' \\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text + escaping active characters');
+    '#equations [data-ams-doc="math block"] > tex-math'
+  );
+  t.equal(dispWithText[1].innerHTML, ' \\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text + escaping active characters');
 
   // formula in footnote in formula not treated as nested formula
-  t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="label"><sup></sup></span><span data-ams-doc="math inline">x</span>', 'Formula with footnote with formula');
+  t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="label"><sup></sup></span><span data-ams-doc="math inline"><tex-math>x</tex-math></span>', 'Formula with footnote with formula');
   // formula in formula at implicit text mode
-  t.equal(document.querySelectorAll('#equations [data-ams-doc="math block"]')[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
+  t.equal(dispWithText[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
 
   // formula of type text (aka "thingy" environment)
   t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
