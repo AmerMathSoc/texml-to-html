@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.7.1...v14.0.0) (2023-10-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Introduces tex-math elements inside
+data-ams-doc=math which contain the TeX strings as well as
+data-ams-doc="tags" for copies of tags
+
+### Features
+
+* revise formula elements handling ([1896c1a](https://github.com/AmerMathSoc/ams-xml-to-html/commit/1896c1a29a342f6cd546e209c74786a604352403)), closes [#425](https://github.com/AmerMathSoc/ams-xml-to-html/issues/425)
+
 ### [13.7.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.7.0...v13.7.1) (2023-09-13)
 
 
