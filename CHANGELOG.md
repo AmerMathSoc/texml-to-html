@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [14.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v14.0.0...v14.0.1) (2023-10-20)
+
+
+### Bug Fixes
+
+* **extractContribuGroups:** surname-only names ([7ecc1f7](https://github.com/AmerMathSoc/ams-xml-to-html/commit/7ecc1f78fb9a42f5bc61259f6737ed15aafae762)), closes [#432](https://github.com/AmerMathSoc/ams-xml-to-html/issues/432)
+
 ## [14.0.0](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v13.7.1...v14.0.0) (2023-10-04)
 
 
