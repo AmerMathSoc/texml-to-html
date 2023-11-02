@@ -23,7 +23,7 @@
       "email": "peter@krautzource.com"
     }
   ],
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/AmerMathSoc/texml-to-html/issues"
   },
