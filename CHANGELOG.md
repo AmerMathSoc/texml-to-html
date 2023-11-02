@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v14.0.1...v15.0.0) (2023-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename to texml-to-html, prepare publication
+
+### Features
+
+* rename to texml-to-html, prepare publication ([61d141b](https://github.com/AmerMathSoc/texml-to-html/commit/61d141bba054799ae2f430fce814d07ac5fee77b))
+
 ### [14.0.1](https://github.com/AmerMathSoc/ams-xml-to-html/compare/v14.0.0...v14.0.1) (2023-10-20)
 
 
