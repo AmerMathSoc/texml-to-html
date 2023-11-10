@@ -12,3 +12,5 @@ import xml2html from './texml-to-html.js';
 const article = xml2html(fs.readFileSync(path.resolve(process.argv[2])).toString()).window.document;
 console.log(article.toString());
 ```
+
+See also [the examples](./examples).
