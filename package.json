@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/AmerMathSoc/texml-to-html#readme",
   "devDependencies": {
-    "c8": "8.0.0",
-    "standard-version": "9.3.2",
-    "tape": "5.5.0"
+    "c8": "8.0.1",
+    "standard-version": "9.5.0",
+    "tape": "5.7.2"
   },
   "dependencies": {
     "linkedom": "0.16.4"
