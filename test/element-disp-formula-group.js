@@ -23,5 +23,5 @@ tape('disp-formula-group', async function(t) {
   const groupChild = document.querySelector('#equations figure[data-ams-doc="statement"]#disp-formula-group');
   t.ok(groupChild, 'disp-formula-group as figure with data-ams-doc="statement" with id')
   t.equal(groupChild.firstElementChild.tagName, 'FIGCAPTION', 'disp-formula-group label');
-  t.equal(groupChild.firstElementChild.innerHTML, 'Formula Group', 'disp-formula-group passes label along');
+  t.equal(groupChild.firstElementChild.innerHTML, '<span data-ams-doc="label">Formula Group</span>', 'disp-formula-group passes label along');
 });

@@ -29,7 +29,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement1Heading, 'statement heading level in article');
   t.equal(
     statement1Heading.innerHTML,
-    '<span data-ams-doc="label">Label 1 </span>Title 1. ',
+    '<span data-ams-doc="label">Label 1 </span><span data-ams-doc="title">Title 1</span>. ',
     'statement with label+title creates space before and period after title'
   );
   const statement2 = document.querySelector(
@@ -38,7 +38,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement2, 'statement 2');
   t.equal(
     statement2.querySelector('figcaption').innerHTML,
-    'Label 2. ',
+    '<span data-ams-doc="label">Label 2</span>. ',
     'statement with label creates period after'
   );
   const statement3 = document.querySelector(
@@ -47,7 +47,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement3, 'statement 3');
   t.equal(
     statement3.querySelector('figcaption').innerHTML,
-    'Title 3. ',
+    '<span data-ams-doc="title">Title 3</span>. ',
     'statement with title creates period after'
   );
   const statementTitlePeriod = document.querySelector(
@@ -55,7 +55,7 @@ tape('Template: statement, label, title', async function(t) {
   );
   t.equal(
     statementTitlePeriod.querySelector('figcaption').innerHTML,
-    'Title 4. ',
+    '<span data-ams-doc="title">Title 4.</span> ',
     'statement with title with period does not have extra period after'
   );
   const statement4 = document.querySelector(
@@ -64,7 +64,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement4, 'statement 4');
   t.equal(
     statement4.querySelector('figcaption').innerHTML,
-    'Proof. ',
+    '<span data-ams-doc="title">Proof</span>. ',
     'title in proof statement now also gets extra period'
   );
   const statement5 = document.querySelector(
@@ -73,7 +73,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement5, 'statement 5');
   t.equal(
     statement5.querySelector('figcaption').innerHTML,
-    '<span data-ams-doc="label">Label 5 </span>Proof. ',
+    '<span data-ams-doc="label">Label 5 </span><span data-ams-doc="title">Proof</span>. ',
     'proof statement with label+title'
   );
   t.equal(

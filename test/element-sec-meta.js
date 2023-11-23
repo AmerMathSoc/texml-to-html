@@ -25,7 +25,7 @@ tape('Template: sec-meta => contrib-group, author-comment, abstract/title', asyn
   const secMeta = section.querySelector('section[data-ams-doc="sec-meta"]');
   t.equal(secMeta.getAttribute('data-ams-contributors'), '{"null":[]}', 'book sec-meta');
   t.ok(section.querySelector('h1'), 'title becomes h1');
-  t.equal(section.querySelector('h1').innerHTML, 'Title', 'title content in heading');
+  t.equal(section.querySelector('h1').innerHTML, '<span data-ams-doc="title">Title</span>', 'title content in heading');
   t.ok(section.querySelector('[role="doc-abstract"] h2'), 'abstract title becomes h2');
 
   const document2 = article;
