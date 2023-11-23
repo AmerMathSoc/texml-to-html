@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.0.0...v15.1.0) (2023-11-23)
+
+
+### Features
+
+* **label.js:** preserve title and label ([5dae34f](https://github.com/AmerMathSoc/texml-to-html/commit/5dae34f1dfeaf8fa884303f7de2518b35d52c38b)), closes [#327](https://github.com/AmerMathSoc/texml-to-html/issues/327)
+
+
+### Bug Fixes
+
+* **package:** upgrade linkedom ([34ae8a7](https://github.com/AmerMathSoc/texml-to-html/commit/34ae8a7f48c2d6f2744e22c9f07aed4159a1f896))
+
 ## [15.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v14.0.1...v15.0.0) (2023-11-02)
 
 
