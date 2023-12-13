@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [15.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v15.1.0...v15.1.1) (2023-12-13)
+
+
+### Bug Fixes
+
+* **mixed-citation.js:** fix HTML escaping ([4df1462](https://github.com/AmerMathSoc/texml-to-html/commit/4df14624280786ad870c4e0c2940275f6054eae8)), closes [#438](https://github.com/AmerMathSoc/texml-to-html/issues/438)
+
 ## [15.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.0.0...v15.1.0) (2023-11-23)
 
 
