@@ -19,7 +19,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('Template: mixed-citation', async function(t) {
-  t.plan(2);
+  t.plan(3);
   const document = article;
   const mixedCitation = document.querySelector(
     'dd > div[data-ams-doc="biblioentry"]'
@@ -29,4 +29,5 @@ tape('Template: mixed-citation', async function(t) {
   );
   t.ok(mixedCitation, 'Element mixed-citation');
   t.ok(rawCitation, 'Element raw-citation');
+  t.equal(rawCitation.innerHTML, 'Raw &lt;p', 'Raw citation escaping');
 });

@@ -581,7 +581,7 @@
             <title>References</title>
             <ref id="ref">
                 <label>Label</label>
-                <raw-citation>Raw</raw-citation>
+                <raw-citation>Raw &lt;p</raw-citation>
                 <mixed-citation>Mixed</mixed-citation>
             </ref>
             <ref id="refnolabel">
