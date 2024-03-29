@@ -1,6 +1,6 @@
 {
   "name": "@amermathsoc/texml-to-html",
-  "version": "15.1.1",
+  "version": "15.2.0",
   "type": "module",
   "description": "A NodeJS library for converting AMS-style JATS XML to HTML",
   "scripts": {

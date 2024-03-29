@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.1.1...v15.2.0) (2024-03-29)
+
+
+### Features
+
+* **formula.js:** mapAttributes() but from tex-math ([3e1f603](https://github.com/AmerMathSoc/texml-to-html/commit/3e1f603032d278fccc138bd20c2eda746a8f32e2)), closes [#441](https://github.com/AmerMathSoc/texml-to-html/issues/441)
+
 ### [15.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v15.1.0...v15.1.1) (2023-12-13)
 
 
