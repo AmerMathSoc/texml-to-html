@@ -18,7 +18,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(18);
+  t.plan(19);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -54,6 +54,11 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     displayformula.getAttribute('data-ams-qed-box'),
     'true',
     'has-qed-box'
+  );
+  t.equal(
+    displayformula.getAttribute('data-ams-specific-use'),
+    'special',
+    'disp-formula gets attributes from tex-math mapped'
   );
   t.ok(
     displayformula.innerHTML.includes('\\xhref[fn]{#fnid2}{{}^{2}}'),

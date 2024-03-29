@@ -384,7 +384,7 @@
                 <tex-math><text>Te#t </text><xref ref-type="fn" rid="fnid1">1</xref><fn id="fnid"><label>1</label><p><xref ref-type="fn" rid="fnid1">1</xref></p></fn><xref ref-type="other" rid="otherid1"></xref></tex-math>
                 </inline-formula>
             </p>
-            <disp-formula><tex-math has-qed-box="true"><xref ref-type="fn" rid="fnid2">2</xref><fn id="fnid2"><label/></fn><text>Start<xref ref-type="other" rid="otherid2">$</xref>End</text></tex-math></disp-formula>
+            <disp-formula><tex-math has-qed-box="true" specific-use="special"><xref ref-type="fn" rid="fnid2">2</xref><fn id="fnid2"><label/></fn><text>Start<xref ref-type="other" rid="otherid2">$</xref>End</text></tex-math></disp-formula>
             <disp-formula>
                 <tex-math>
                     <text><roman>roman#</roman> <sc>sc$</sc> <italic>italic_</italic> <bold>bold$</bold> <sans-serif>sans-serif&amp;</sans-serif> <monospace>monospace</monospace> <ext-link xlink:href="https://ext~">ext-link~</ext-link> inside text</text>
