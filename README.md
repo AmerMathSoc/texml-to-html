@@ -149,6 +149,8 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
   - graphic | inline-graphic @height
 - data-ams-doc-alttitle
   - alt-title (book only, for sectioning content only)
+- data-ams-href
+  - stores href for span that avoids a nested link (cf. xref, ext-link)
 
 ##### downstream `data-*` attributes
 

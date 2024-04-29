@@ -46,7 +46,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   );
   t.equal(
     list.querySelector('li a[href="#tocid4"]').innerHTML,
-    '1. SubSubChunk with Link',
+    '1. SubSubChunk with <span data-ams-href="chapter">Link</span>',
     'toc-entry with xref in title'
   );
   t.equal(

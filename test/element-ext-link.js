@@ -20,11 +20,10 @@ import tape from 'tape';
 
 
 tape('Template: ext-link', async function (t) {
-  t.plan(3);
+  t.plan(2);
   const document = article;
   const extlink = document.querySelector('a[href="https://"]');
   t.ok(extlink, 'Element ext-link becomes a with href');
-  t.notOk(document.querySelector('a[href="https://nested2"] a'), 'ext-link with xref inside does not produce nested link');
-  t.ok(document.querySelector('a[href="https://nested2"]+span').querySelector('a[data-ams-ref="nested"]'), 'xref inside ext-link moved after ext-link');
+  t.equal(document.querySelector('a[href="https://nested2"]').outerHTML, '<a href="https://nested2"><span data-ams-href="rid6"></span></a>', 'xref inside ext-link flattened');
 });
 
