@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.2.1...v16.0.0) (2024-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Nested `a` are now "flattened" to `span`.
+
+### Features
+
+* revise treatment of nested links ([cdc63a9](https://github.com/AmerMathSoc/texml-to-html/commit/cdc63a970cc14c87ae6faa115ae2484bb03fe339)), closes [#442](https://github.com/AmerMathSoc/texml-to-html/issues/442)
+
+
+### Bug Fixes
+
+* **xref.js:** warn on nested link not inside toc-entry ([a59b69e](https://github.com/AmerMathSoc/texml-to-html/commit/a59b69e205cc9296d65668e364040995144e564e)), closes [#442](https://github.com/AmerMathSoc/texml-to-html/issues/442)
+
 ### [15.2.1](https://github.com/AmerMathSoc/texml-to-html/compare/v15.2.0...v15.2.1) (2024-03-29)
 
 ## [15.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.1.1...v15.2.0) (2024-03-29)
