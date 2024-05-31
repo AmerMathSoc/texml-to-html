@@ -266,6 +266,11 @@
                         <line indent="1">Indented line.</line>
                     </simpletabbing>
                 </sec>
+                <!-- citegroup, cite-detail-->
+                <sec disp-level="1" id="citegroup" specific-use="section">
+                    <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group>
+                </sec>
+
             </body>
         </book-part>
     </book-body>
