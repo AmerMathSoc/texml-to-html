@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('Template: cite-detail', async function(t) {
-  t.plan(2);
+  t.plan(1);
 
   t.equal(article.querySelector('cite-detail').outerHTML, '<cite-detail>, Section 5</cite-detail>', 'cite-detail');
 });
