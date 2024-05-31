@@ -29,9 +29,9 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   t.ok(list, 'toc: ordered list');
   t.equal(list.children.length, 6, 'Nested toc-entries remain nested')
   t.equal(
-    list.querySelector('li a[href="#tocid1"]').innerHTML,
+    list.querySelector('li a[href="#tocid1"][data-ams-ref="chapter"]').innerHTML,
     'Chunk',
-    'toc-entry and nav-pointer'
+    'toc-entry and nav-pointer with href and data-ams-ref'
   );
   t.equal(
     list.querySelector('li a[href="#tocid2"]').innerHTML,

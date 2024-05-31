@@ -85,7 +85,7 @@
             <title-group>
             <title>Contents</title>
             </title-group>
-            <toc-entry>
+            <toc-entry specific-use="chapter">
             <title>Chunk</title>
             <nav-pointer rid="tocid1"/>
             </toc-entry>
