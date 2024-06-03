@@ -137,6 +137,7 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
   - {@ref-type} [expected: bibr, fn, disp-formula, sec, fig, table, algorithm, list, statement]
   - notrid
   - fn-return [added in ams-html output]
+  - `toc-entry@specific-use` [expected: section, chapter, etc.]
 - data-ams-doc-level
   - [0-9]
 - data-ams-content-type
@@ -245,6 +246,7 @@ The following provide a list from the reverse point of view.
 - notes => section with data-ams-doc="notes"
   - @notes-type => @data-ams-content-type (and role=dedication for dedications)
   - use cases: dedication (articles), article and section notes (NOTI only), drm notice & epub note (books)
+- toc-entry@specific-use => data-ams-ref
 - attributes
   - @disp-level => data-ams-doc-level [data-ams-doc-level is also added to some elements that lack disp-level]
   - @content-type => data-ams-content-type
