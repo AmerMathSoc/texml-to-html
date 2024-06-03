@@ -18,6 +18,9 @@
                 "print": "isbn print",
                 "epub": "isbn epub"
             },
+            "loc": {
+                "lccn": "0123456789"
+            },
             "basename": "seriesvolume"
         },
         "title": "title",

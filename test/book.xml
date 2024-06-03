@@ -24,6 +24,7 @@
         <book-id assigning-authority="AMS" book-id-type="publisher">series</book-id>
         <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>
         <book-id assigning-authority="crossref" book-id-type="doi">doi</book-id>
+        <book-id assigning-authority="Library of Congress" book-id-type="lccn">0123456789</book-id>
         <book-title-group>
             <book-title>title</book-title>
             <subtitle>subtitle</subtitle>
