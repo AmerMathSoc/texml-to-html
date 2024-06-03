@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('Hacks', async function (t) {
-    t.plan(4);
+    t.plan(5);
     const document = article;
 
     // moved from test/element-def-list-def-item-def-term.js (for the old def-list.js hack of "move DL after its P parent")
@@ -33,5 +33,9 @@ tape('Hacks', async function (t) {
     t.equal(firstDT.innerHTML, '1', 'DLs moved out of paragraph appear in the correct oder');
 
     t.equal(document.querySelectorAll('#hacks > p').length, 1, 'If paragraph is empty after postprocessing, it is removed.')
+    
+    console.log(article.querySelector('cite-group').parentNode.outerHTML)
+
+    t.equal(document.querySelector('cite-group').parentNode.tagName, 'P', 'Custom elements remain in paragraph');
 });
 

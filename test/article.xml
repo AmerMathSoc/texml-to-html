@@ -422,7 +422,9 @@
         </sec>
         <!-- citegroup, cite-detail-->
         <sec disp-level="1" id="citegroup" specific-use="section">
+         <p>
          <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group>
+         </p>
         </sec>
 
         <!-- alt-title -->
