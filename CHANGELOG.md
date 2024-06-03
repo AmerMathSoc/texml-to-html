@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [16.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v16.1.0...v16.1.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* **hacks.js:** treat custom elements like phrasing content ([ab7c158](https://github.com/AmerMathSoc/texml-to-html/commit/ab7c1583a635f095de6dc9c3315ceb4c3a50d63e)), closes [#447](https://github.com/AmerMathSoc/texml-to-html/issues/447)
+
 ## [16.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v16.0.0...v16.1.0) (2024-06-03)
 
 
