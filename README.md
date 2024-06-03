@@ -46,6 +46,11 @@ Some elements in texml's XML output have the same name (and purpose) as in HTML.
 - tr
 - td
 
+The following custom tag names are preserved:
+
+- cite-group (wrapper around citations)
+- cite-detail (wrapper for optional argument of `\cite`)
+
 ### preseved attributes
 
 Some attributes in texml's XML output have the same name (and purpose) in HTML.
