@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v16.0.0...v16.1.0) (2024-06-03)
+
+
+### Features
+
+* **book-meta.json.js:** preserve LCCN if present ([4426d63](https://github.com/AmerMathSoc/texml-to-html/commit/4426d632aa0e804ac516b39aea62186aa2c32751)), closes [#440](https://github.com/AmerMathSoc/texml-to-html/issues/440)
+* support cite-group and cite-detail ([dc832cf](https://github.com/AmerMathSoc/texml-to-html/commit/dc832cf7a4b002a8c6dc3725df34b814a306239a)), closes [#443](https://github.com/AmerMathSoc/texml-to-html/issues/443)
+* **toc-entry.js:** support specific-use attribute ([b11a3c9](https://github.com/AmerMathSoc/texml-to-html/commit/b11a3c955bc1601b425612a0a9ede0213e163bdd)), closes [#444](https://github.com/AmerMathSoc/texml-to-html/issues/444)
+
 ## [16.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v15.2.1...v16.0.0) (2024-04-29)
 
 
