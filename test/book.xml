@@ -51,7 +51,7 @@
                 <uri>uri</uri>
             </contrib>
             <aff id="aff1">aff</aff>
-            <author-comment>comment</author-comment>
+            <role>comment</role>
         </contrib-group>
         <contrib-group content-type="contrib-group-type2">
             <contrib contrib-type="contrib-type2">
@@ -62,7 +62,7 @@
             </contrib>
         </contrib-group>
         <contrib-group content-type="contrib-group-type3">
-            <author-comment>comment</author-comment>
+            <role>comment</role>
             <contrib contrib-type="contrib-type3">
                 <name name-style="given-only">
                     <given-names>should be ignored</given-names>
@@ -218,9 +218,9 @@
                     <sec-meta>
                         <contrib-group>
                         <!-- NOTE: this contrib-group example is for MCL 1, 14 only; intentionally broken via #254 -->
-                        <author-comment>
+                        <role>
                             comment 
-                        </author-comment>
+                        </role>
                         </contrib-group>
                         <abstract>
                             <title>Abstract</title>

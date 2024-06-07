@@ -47,7 +47,7 @@
                     <uri>uri</uri>
                 </contrib>
                 <aff id="aff">aff</aff>
-                <author-comment>comment</author-comment>
+                <role>comment</role>
             </contrib-group>
             <contrib-group content-type="contribBs">
                 <contrib contrib-type="contribB">
@@ -66,7 +66,7 @@
                 </contrib>
                 <aff id="aff1" specific-use="current">Aff1</aff>
                 <aff id="aff2">Aff2</aff>
-                <author-comment>comment</author-comment>
+                <role>comment</role>
             </contrib-group>
             <funding-group>
                 <funding-statement>Funding 1</funding-statement>

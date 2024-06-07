@@ -17,7 +17,7 @@
 import { article, articleAlttitle, book } from './helper.js';
 import tape from 'tape';
 
-tape('Template: sec-meta => contrib-group, author-comment, abstract/title', async function (t) {
+tape('Template: sec-meta => contrib-group, role, abstract/title', async function (t) {
   t.plan(10);
 
   const document = book;
