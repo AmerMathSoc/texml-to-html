@@ -34,8 +34,6 @@ tape('Hacks', async function (t) {
 
     t.equal(document.querySelectorAll('#hacks > p').length, 1, 'If paragraph is empty after postprocessing, it is removed.')
     
-    console.log(article.querySelector('cite-group').parentNode.outerHTML)
-
     t.equal(document.querySelector('cite-group').parentNode.tagName, 'P', 'Custom elements remain in paragraph');
 });
 
