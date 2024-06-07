@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [17.0.1](https://github.com/AmerMathSoc/texml-to-html/compare/v17.0.0...v17.0.1) (2024-06-07)
+
+
+### Bug Fixes
+
+* handle cite-group, cite-detail inside tex-math ([0df8528](https://github.com/AmerMathSoc/texml-to-html/commit/0df85280d892ee33572f0923f6e56197bbb26a34)), closes [#450](https://github.com/AmerMathSoc/texml-to-html/issues/450)
+
 ## [17.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v16.1.1...v17.0.0) (2024-06-07)
 
 
