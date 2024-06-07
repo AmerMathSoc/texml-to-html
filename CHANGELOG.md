@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v16.1.1...v17.0.0) (2024-06-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Expects role instead author-comment
+
+### Features
+
+* adjust to texml renaming author-comment to role ([c46822b](https://github.com/AmerMathSoc/texml-to-html/commit/c46822b9e6cbd96de1893c8e138f3f14df48492c)), closes [#449](https://github.com/AmerMathSoc/texml-to-html/issues/449)
+
 ### [16.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v16.1.0...v16.1.1) (2024-06-03)
 
 
