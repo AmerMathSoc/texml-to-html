@@ -419,6 +419,12 @@
                   <tag parens="yes">T</tag>
                 </target>
             </disp-formula>
+            <!-- Formula with cite-group and cite-detail -->
+            <disp-formula>
+            <tex-math>
+            <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x></cite-group>
+            </tex-math>
+            </disp-formula>
         </sec>
         <!-- citegroup, cite-detail-->
         <sec disp-level="1" id="citegroup" specific-use="section">

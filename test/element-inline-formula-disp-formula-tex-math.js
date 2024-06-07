@@ -18,7 +18,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(19);
+  t.plan(20);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -93,4 +93,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
   t.equal(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]#textEquation+p').previousElementSibling.innerHTML, '(T)', 'Display Formula of content-type=text, label and paragraph');
 
+  // formula with cite-group and cite-detail
+  t.equal(dispWithText[9].innerHTML, ' \\xhref[bibr]{#bibr-AEG0}{AEG08, Section 5} ', 'Formula with cite-group, cite-detail')
 });
