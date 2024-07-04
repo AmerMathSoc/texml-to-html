@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v17.0.1...v17.1.0) (2024-07-04)
+
+
+### Features
+
+* **toc-entry.js:** add label/title wrappers ([2165072](https://github.com/AmerMathSoc/texml-to-html/commit/2165072dc60ff9fd7c40ad6f65221eaa6f0924a2)), closes [#451](https://github.com/AmerMathSoc/texml-to-html/issues/451)
+
 ### [17.0.1](https://github.com/AmerMathSoc/texml-to-html/compare/v17.0.0...v17.0.1) (2024-06-07)
 
 
