@@ -17,7 +17,7 @@
 import { book } from './helper.js';
 import tape from 'tape';
 
-tape('Template: (book) toc, toc-entry', async function(t) {
+tape('Template: (book) toc, toc-entry', async function (t) {
   t.plan(14);
   const document = book;
 
@@ -30,28 +30,28 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   t.equal(list.children.length, 6, 'Nested toc-entries remain nested')
   t.equal(
     list.querySelector('li a[href="#tocid1"][data-ams-ref="chapter"]').innerHTML,
-    'Chunk',
+    '<span data-ams-doc="title">Chunk</span>',
     'toc-entry and nav-pointer with href and data-ams-ref'
   );
   t.equal(
     list.querySelector('li a[href="#tocid2"]').innerHTML,
-    '2. Chunk',
+    '<span data-ams-doc="label">2</span>. <span data-ams-doc="title">Chunk</span>',
     'toc-entry, label, nav-pointer'
   );
   t.equal(list.querySelector('ol').children.length, 1, 'Doubly nested toc-entries remain nested');
   t.equal(
     list.querySelector('li a[href="#tocid2"]+ol li a[href="#tocid3"]').innerHTML,
-    '1. SubChunk',
+    '<span data-ams-doc="label">1</span>. <span data-ams-doc="title">SubChunk</span>',
     'Nested toc-entry, label, nav-pointer'
   );
   t.equal(
     list.querySelector('li a[href="#tocid4"]').innerHTML,
-    '1. SubSubChunk with <span data-ams-href="chapter">Link</span>',
+    '<span data-ams-doc="label">1</span>. <span data-ams-doc="title">SubSubChunk with <span data-ams-href="chapter">Link</span></span>',
     'toc-entry with xref in title'
   );
   t.equal(
     list.querySelector('li a[href="#tocid5"]').innerHTML,
-    'Chunk with alt title',
+    '<span data-ams-doc="title">Chunk with alt title</span>',
     'toc-entry with alt-title: content'
   );
   t.equal(
@@ -61,7 +61,7 @@ tape('Template: (book) toc, toc-entry', async function(t) {
   );
   t.equal(
     list.querySelector('li a[href="#tocid6"]').innerHTML,
-    'Chunk without label but subchunk with label',
+    '<span data-ams-doc="title">Chunk without label but subchunk with label</span>',
     'toc-entry without label but sub-entry with label'
   );
   t.equal(
