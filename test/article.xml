@@ -517,6 +517,12 @@
                     <alg:line><alg:statement><bold>Procedure</bold> <sc>Do</sc></alg:line>
                 </alg:procedure>
             </alg:algorithm>
+            <alg:algorithm>
+                <alg:line lineno="1">
+                    <alg:statement>
+                    no line delim</alg:statement>
+                </alg:line>
+            </alg:algorithm>
         </sec>
         <sec disp-level="1">
         <p>Email <email>email</email> in content, not metadata.</p>

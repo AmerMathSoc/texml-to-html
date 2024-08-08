@@ -20,10 +20,11 @@ import tape from 'tape';
 
 
 tape('Element: alg:* elements', async function (t) {
-      t.plan(14);
+      t.plan(15);
     const document = article;
     // alg:algorithm
-    const algorithm = document.querySelector('alg-algorithm');
+    const algorithms = document.querySelectorAll('alg-algorithm');
+    const algorithm = algorithms[0];
     t.ok(algorithm, 'alg-algorithm element');
     t.equal(algorithm.getAttribute('data-ams-alg-linenodelimiter'), ':', 'alg-algorithm element');
     // alg:line
@@ -52,5 +53,8 @@ tape('Element: alg:* elements', async function (t) {
     t.ok(func, 'alg:function pass through');
     const proc = [...algorithm.querySelectorAll('alg-line > alg-statement > *:first-of-type')].find(node => node.textContent === 'Procedure');
     t.ok(proc, 'alg:procedure pass through');
+
+    // algorithm with no/empty line delimiter attribute
+    t.equal(algorithms[1].querySelector('alg-lineno').innerHTML, '1', 'alg-lineno without line number delimiter on algorithm root');
 });
 
