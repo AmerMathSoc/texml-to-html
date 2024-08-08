@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
-  t.plan(44);
+  t.plan(43);
   const document = article;
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
@@ -73,8 +73,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   t.equal(document2.querySelector('#alttitle h1').getAttribute('data-ams-doc-alttitle'), 'Label. Alt title', 'sec with title: subtitle to p with data-ams-doc');
 
   const bookAppGroup = document2.querySelector('#book-app-group');
-  t.equal(bookAppGroup.getAttribute('role'), 'doc-part', 'book-app-group role');
-  t.equal(bookAppGroup.getAttribute('data-ams-doc'), 'part', 'book-app-group data-ams-doc');
+  t.equal(bookAppGroup.getAttribute('data-ams-doc'), 'app-group', 'book-app-group data-ams-doc');
   t.equal(bookAppGroup.getAttribute('data-ams-doc-level'), '0', 'book-app-group data-ams-level');
   t.equal(document2.querySelector('#applabeltitle').getAttribute('role'), 'doc-appendix', 'book-app role');
 

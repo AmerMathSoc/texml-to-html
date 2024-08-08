@@ -117,6 +117,7 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
   - tags - container for (duplicated) equation tags
     - container is inside data-ams-doc="math block" elements
     - ams-html uses these to generate the math panel DTs for equations
+  - app-group [from book-app-group]
 - data-ams-doc-contrib
   - {@content-type} [expected: "authors", "editors", "translators", "contributors"]
   - {@contrib-type} [expected: "author", "editor", "translator", "contributor"]
@@ -187,7 +188,6 @@ The following [ARIA-DPUB](https://w3c.github.io/dpub-aria/) role attribute value
 - doc-abstract
 - doc-toc
 - doc-footnote
-- doc-appendix
 
 #### texml XML to `data-*` mappings
 
