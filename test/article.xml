@@ -552,6 +552,7 @@
         </sec>
         <sec id="xrefgroup">
           <p>See groups <xref-group first="xrefgroup1" last="xrefgroup4" middle="xrefgroup2 xrefgroup3" ref-subtype="group" ref-type="grp"><x>(</x><xref ref-subtype="group" ref-type="grp" rid="xrefgroup1" specific-use="ref">2</xref><x>)</x>–<xref ref-subtype="group" ref-type="grp" rid="xrefgroup4" specific-use="ref">5</xref></xref-group></p>
+          <p>Groups in math-mode <inline-formula content-type="math/tex"><tex-math><xref-group first="xrefgroup1" last="xrefgroup4" middle="xrefgroup2 xrefgroup3" ref-subtype="group" ref-type="grp"><x>(</x><xref ref-subtype="group" ref-type="grp" rid="xrefgroup1" specific-use="ref">2</xref><x>)</x>–<xref ref-subtype="group" ref-type="grp" rid="xrefgroup4" specific-use="ref">5</xref></xref-group></inline-formula></tex-math></p>
         </sec>
     </body>
     <back>
