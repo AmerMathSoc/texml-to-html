@@ -94,5 +94,5 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.equal(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]#textEquation+p').previousElementSibling.innerHTML, '(T)', 'Display Formula of content-type=text, label and paragraph');
 
   // formula with cite-group and cite-detail
-  t.equal(dispWithText[9].innerHTML, ' \\xhref[bibr]{#bibr-AEG0}{AEG08, Section 5} ', 'Formula with cite-group, cite-detail')
+  t.equal(dispWithText[9].innerHTML, ' <ams-x>[</ams-x>\\xhref[bibr]{#bibr-AEG0}{AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>}<ams-x></ams-x> ', 'Formula with cite-group, cite-detail')
 });
