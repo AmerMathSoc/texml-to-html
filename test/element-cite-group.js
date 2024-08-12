@@ -21,7 +21,7 @@ import tape from 'tape';
 tape('Template: cite-group', async function (t) {
   t.plan(2);
 
-  t.equal(article.querySelector('cite-group').outerHTML, '<cite-group><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08<cite-detail>, Section 5</cite-detail></a></cite><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08</a></cite></cite-group>', 'cite-group in article');
-  t.equal(book.querySelector('cite-group').outerHTML, '<cite-group>[<cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08<cite-detail>, Section 5</cite-detail></a></cite>; <cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08</a></cite>]</cite-group>', 'cite-group in book');
+  t.equal(article.querySelector('cite-group').outerHTML, '<cite-group><ams-x>[</ams-x><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail></a></cite><ams-x>; </ams-x><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08</a></cite><ams-x>]</ams-x></cite-group>', 'cite-group in article');
+  t.equal(book.querySelector('cite-group').outerHTML, '<cite-group><ams-x>[</ams-x><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail></a></cite><ams-x>; </ams-x><cite><a role="doc-biblioref" data-ams-ref="bibr" href="#bibr-AEG0">AEG08</a></cite><ams-x>]</ams-x></cite-group>', 'cite-group in book');
 
 });
