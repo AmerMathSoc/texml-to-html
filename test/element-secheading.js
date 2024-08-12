@@ -22,7 +22,7 @@ tape('Template: statement, label, title', async function (t) {
 
     t.equal(
         article.querySelector('[data-ams-doc="secheading"][id="statement4secheading"][data-ams-specific-use="subsection"][data-ams-doc-level="2"]').innerHTML,
-        'secheading ',
+        'secheading',
         'secheading with title within statement'
     );
 });

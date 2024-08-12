@@ -78,7 +78,7 @@ tape('Template: statement, label, title', async function(t) {
   );
   t.equal(
     statement5.querySelector('[data-ams-doc="secheading"]').innerHTML,
-    'secheading ',
+    'secheading',
     'secheading with label within statement'
   );
   const statement6 = document.querySelector(
@@ -87,7 +87,7 @@ tape('Template: statement, label, title', async function(t) {
   t.ok(statement6, 'statement 6');
   t.equal(
     statement6.querySelector('[data-ams-doc="secheading"]').innerHTML,
-    'Label 6<ams-x>.</ams-x> secheading ',
+    'Label 6<ams-x>.</ams-x> secheading',
     'secheading with title+label within statement'
   );
 
