@@ -45,7 +45,7 @@ tape('table-wrap element', async function (t) {
         `first child of table caption is table label`
     );
     t.equal(
-        tableLabel.innerHTML, 'Table 1. ',
+        tableLabel.innerHTML, 'Table 1',
         `first child of table caption is table label`
     );
 });

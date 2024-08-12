@@ -346,7 +346,7 @@
         <!-- fig, fig-group, caption, label -->
         <sec disp-level="1" id="figures" specific-use="section">
             <fig position="anchor" id="position">
-                <label>Label 1</label>
+                <label>Label 1<x>.</x></label>
                 <caption>Caption 1</caption>
             </fig>
             <fig-group specific-use="special">
