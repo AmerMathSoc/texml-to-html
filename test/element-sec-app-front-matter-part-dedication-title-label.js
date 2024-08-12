@@ -18,7 +18,7 @@ import { article, articleAlttitle, articleNometa, book } from './helper.js';
 import tape from 'tape';
 
 
-tape('sec, app, front-matter-part, dedication, title, label', async function(t) {
+tape('sec, app, front-matter-part, dedication, title, label', async function (t) {
   t.plan(43);
   const document = article;
 
@@ -31,10 +31,10 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
 
   t.equal(document.querySelector('#subsec h3').innerHTML, '<span data-ams-doc="label">Subsection</span>', 'subsection without wrapping section gets correct level');
 
-  t.equal(document.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span><span data-ams-doc="title">Title</span>', 'sec with label+title: heading level and content');
+  t.equal(document.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label</span> <span data-ams-doc="title">Title</span>', 'sec with label+title: heading level and content');
   t.equal(document.querySelector('#sectitle h2').innerHTML, '<span data-ams-doc="title">Title</span>', 'sec with title: heading level and content');
   t.equal(document.querySelector('#seclabel h2').innerHTML, '<span data-ams-doc="label">Label</span>', 'sec with label: heading level and content');
-  t.equal(document.querySelector('#applabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span><span data-ams-doc="title">Title</span>', 'app with label+title: heading level and content');
+  t.equal(document.querySelector('#applabeltitle h2').innerHTML, '<span data-ams-doc="label">Label</span> <span data-ams-doc="title">Title</span>', 'app with label+title: heading level and content');
   t.equal(document.querySelector('#apptitle h2').innerHTML, '<span data-ams-doc="title">Title</span>', 'app with title: heading level and content');
   t.equal(document.querySelector('#applabel h2').innerHTML, '<span data-ams-doc="label">Label</span>', 'app with label: heading level and content');
 
@@ -52,13 +52,13 @@ tape('sec, app, front-matter-part, dedication, title, label', async function(t) 
   const document2 = book;
   t.ok(document2.querySelector('#chapter[role="doc-chapter"]'), 'sec with specific-use chapter to role doc-chapter'); // NOTE so far, chapters only occur in books but the xslt doesn't check for it
 
-  t.equal(document2.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label. </span><span data-ams-doc="title">Title</span>', 'sec with label+title: heading level and content');
+  t.equal(document2.querySelector('#seclabeltitle h2').innerHTML, '<span data-ams-doc="label">Label</span> <span data-ams-doc="title">Title</span>', 'sec with label+title: heading level and content');
   t.equal(document2.querySelector('#sectitle h2').innerHTML, '<span data-ams-doc="title">Title</span>', 'sec with title: heading level and content');
   t.equal(document2.querySelector('#seclabel h2').innerHTML, '<span data-ams-doc="label">Label</span>', 'sec with label: heading level and content');
-  t.equal(document2.querySelector('#fmlabeltitle h1').innerHTML, '<span data-ams-doc="label">Label. </span><span data-ams-doc="title">Title</span>', 'front-matter-part with label+title: heading level and content');
+  t.equal(document2.querySelector('#fmlabeltitle h1').innerHTML, '<span data-ams-doc="label">Label</span> <span data-ams-doc="title">Title</span>', 'front-matter-part with label+title: heading level and content');
   t.equal(document2.querySelector('#fmtitle h1').innerHTML, '<span data-ams-doc="title">Title</span>', 'front-matter-part with title: heading level and content');
   t.equal(document2.querySelector('#fmlabel h1').innerHTML, '<span data-ams-doc="label">Label</span>', 'front-matter-part with label: heading level and content');
-  t.equal(document2.querySelector('#applabeltitle h1').innerHTML, '<span data-ams-doc="label">Label. </span><span data-ams-doc="title">Title</span>', 'app with label+title: heading level and content');
+  t.equal(document2.querySelector('#applabeltitle h1').innerHTML, '<span data-ams-doc="label">Label<ams-x>.</ams-x></span> <span data-ams-doc="title">Title</span>', 'app with label+title: heading level and content');
   t.equal(document2.querySelector('#apptitle h1').innerHTML, '<span data-ams-doc="title">Title</span>', 'app with title: heading level and content');
   t.equal(document2.querySelector('#applabel h1').innerHTML, '<span data-ams-doc="label">Label</span>', 'app with label: heading level and content');
 

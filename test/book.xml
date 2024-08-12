@@ -255,7 +255,7 @@
 
                 <!-- alt-title -->
                 <sec disp-level="1" id="alttitle" specific-use="chapter">
-                    <label>Label</label>
+                    <label>Label<x>.</x></label>
                     <title>Title</title>
                     <alt-title>Alt title</alt-title>
                 </sec>
@@ -278,7 +278,7 @@
     <book-back>
         <book-app-group id="book-app-group">
             <book-app id="applabeltitle" disp-level="1"  specific-use="chapter">
-                <label>Label</label>
+                <label>Label<x>.</x></label>
                 <title>Title</title>
             </book-app>
             <book-app id="applabel" disp-level="1"  specific-use="chapter">
