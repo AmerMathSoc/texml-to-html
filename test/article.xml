@@ -321,7 +321,7 @@
             </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement6">
                 <secheading id="statement6secheading" disp-level="3" specific-use="subsection">
-                    <label>Label 6</label>
+                    <label>Label 6<x>.</x></label>
                     <title>secheading</title>
                 </secheading>
             </statement>

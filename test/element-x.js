@@ -23,5 +23,5 @@ tape('Template: x', async function(t) {
   t.plan(2);
   const document = article;
   t.equal(document.querySelector('ams-x').innerHTML, ',', 'x tags renamed to ams-x');
-  t.equal(document.querySelectorAll('ams-x').length, 15, 'All x elements are preserved');
+  t.equal(document.querySelectorAll('ams-x').length, 16, 'All x elements are preserved');
 });
