@@ -91,7 +91,7 @@
             <nav-pointer rid="tocid1"/>
             </toc-entry>
             <toc-entry>
-                <label>2</label>
+                <label>2<x>.</x></label>
                 <title>Chunk</title>
                 <nav-pointer rid="tocid2"/>
                 <toc-entry>

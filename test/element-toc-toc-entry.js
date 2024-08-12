@@ -35,18 +35,18 @@ tape('Template: (book) toc, toc-entry', async function (t) {
   );
   t.equal(
     list.querySelector('li a[href="#tocid2"]').innerHTML,
-    '<span data-ams-doc="label">2</span>. <span data-ams-doc="title">Chunk</span>',
+    '<span data-ams-doc="label">2<ams-x>.</ams-x></span> <span data-ams-doc="title">Chunk</span>',
     'toc-entry, label, nav-pointer'
   );
   t.equal(list.querySelector('ol').children.length, 1, 'Doubly nested toc-entries remain nested');
   t.equal(
     list.querySelector('li a[href="#tocid2"]+ol li a[href="#tocid3"]').innerHTML,
-    '<span data-ams-doc="label">1</span>. <span data-ams-doc="title">SubChunk</span>',
+    '<span data-ams-doc="label">1</span> <span data-ams-doc="title">SubChunk</span>',
     'Nested toc-entry, label, nav-pointer'
   );
   t.equal(
     list.querySelector('li a[href="#tocid4"]').innerHTML,
-    '<span data-ams-doc="label">1</span>. <span data-ams-doc="title">SubSubChunk with <span data-ams-href="chapter">Link</span></span>',
+    '<span data-ams-doc="label">1</span> <span data-ams-doc="title">SubSubChunk with <span data-ams-href="chapter">Link</span></span>',
     'toc-entry with xref in title'
   );
   t.equal(
