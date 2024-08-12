@@ -22,7 +22,7 @@ import tape from 'tape';
 tape('Template: xref-group', async function (t) {
     t.plan(2);
     const xrefGroup = article.querySelector('#xrefgroup [data-ams-doc="refgroup"]');
-    t.equal(xrefGroup.outerHTML, '<span data-ams-refrange="xrefgroup2 xrefgroup3" data-ams-ref="grp" data-ams-doc="refgroup"><a data-ams-ref="grp" href="#xrefgroup1">2</a>–<a data-ams-ref="grp" href="#xrefgroup4">5</a></span>', 'xrefgroup snapshot test')
+    t.equal(xrefGroup.outerHTML, '<span data-ams-refrange="xrefgroup2 xrefgroup3" data-ams-ref="grp" data-ams-doc="refgroup"><ams-x>(</ams-x><a data-ams-ref="grp" href="#xrefgroup1">2</a><ams-x>)</ams-x>–<a data-ams-ref="grp" href="#xrefgroup4">5</a></span>', 'xrefgroup snapshot test')
     const xrefGroupMath = article.querySelector('#xrefgroup tex-math [data-ams-doc="refgroup"]');
     t.equal(xrefGroupMath.outerHTML, '<span data-ams-refrange="xrefgroup2 xrefgroup3" data-ams-ref="grp" data-ams-doc="refgroup"><ams-x>(</ams-x>\\xhref[grp]{#xrefgroup1}{2}<ams-x>)</ams-x>–\\xhref[grp]{#xrefgroup4}{5}</span>', 'xrefgroup in math mode snapshot test')
 });
