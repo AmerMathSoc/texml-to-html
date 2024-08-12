@@ -21,5 +21,5 @@ import tape from 'tape';
 tape('Template: cite-detail', async function(t) {
   t.plan(1);
 
-  t.equal(article.querySelector('cite-detail').outerHTML, '<cite-detail>, Section 5</cite-detail>', 'cite-detail');
+  t.equal(article.querySelector('cite-detail').outerHTML, '<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>', 'cite-detail');
 });
