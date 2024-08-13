@@ -1,6 +1,49 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [18.0.0-0](https://github.com/AmerMathSoc/texml-to-html/compare/v17.1.0...v18.0.0-0) (2024-08-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* label.js no longer generates
+punctuation&space in label (with title) but adds space
+between label and title (if both present); also no longer adds
+space and possible punctuation after theorem title.
+* secheading no longer generates
+punctuation+space in label, but spaces after label&title.
+* caption.js no longer generates
+punctuation after label nor parentheses around subfigure
+labels.
+* toc-entry no longer generates
+punctuation after label.
+* xref-group now preserved in tex-math
+* cite-detail no longer unwrapped in tex-math
+* book-app-groups are no longer
+forcibly marked as parts and level.
+* all x elements are now preserved as
+ams-x, i.e. downstream will need to remove unwanted ones.
+
+* feat!(label.js): stop adding "generated text" ([4b9543d](https://github.com/AmerMathSoc/texml-to-html/commit/4b9543d0d04ffb1d0b79f3046b95fc180fa13d92)), closes [#454](https://github.com/AmerMathSoc/texml-to-html/issues/454)
+* feat!(secheading.js): stop adding "generated text" ([d98265e](https://github.com/AmerMathSoc/texml-to-html/commit/d98265e57560690a3f793c49493e74751d9202f9)), closes [#454](https://github.com/AmerMathSoc/texml-to-html/issues/454)
+* feat!(caption.js): stop adding "generated text" ([3d17ff1](https://github.com/AmerMathSoc/texml-to-html/commit/3d17ff1b52ba459d9facda1c01b6ad301b046992)), closes [#454](https://github.com/AmerMathSoc/texml-to-html/issues/454)
+* feat!(toc-entry.js): stop adding "generated text" ([1981ae3](https://github.com/AmerMathSoc/texml-to-html/commit/1981ae371bc1c7770903381c2c22966858b452dd)), closes [#454](https://github.com/AmerMathSoc/texml-to-html/issues/454)
+* feat!(xref-groupl.js): preserve in tex-math ([133d8a5](https://github.com/AmerMathSoc/texml-to-html/commit/133d8a529446fa47d75f3a02bab0ee42c26aba23)), closes [#456](https://github.com/AmerMathSoc/texml-to-html/issues/456)
+* feat!(cite-detail.js): preserve in tex-math ([0a570fe](https://github.com/AmerMathSoc/texml-to-html/commit/0a570feb05678164db0e7834c32977b2fa74182a)), closes [#455](https://github.com/AmerMathSoc/texml-to-html/issues/455)
+* feat!(sec.js): revise book-app-group output ([2f4e06a](https://github.com/AmerMathSoc/texml-to-html/commit/2f4e06a117a62a49489b413c6cc26436773b0a36)), closes [#436](https://github.com/AmerMathSoc/texml-to-html/issues/436)
+* feat!(x.js): preserve all x elements as ams-x ([5b77a86](https://github.com/AmerMathSoc/texml-to-html/commit/5b77a8642fe78bfd56fb5bfc753d67e9bbd3d719)), closes [#445](https://github.com/AmerMathSoc/texml-to-html/issues/445)
+
+
+### Features
+
+* **algorithm.js:** support missing line no. delimiter ([0ef3047](https://github.com/AmerMathSoc/texml-to-html/commit/0ef3047623af712c11bae148c372d623ee611b10)), closes [#453](https://github.com/AmerMathSoc/texml-to-html/issues/453)
+
+
+### Bug Fixes
+
+* **package.json:** replace standard-version ([5db8c62](https://github.com/AmerMathSoc/texml-to-html/commit/5db8c62ccbb441b4902b0bb30db8e568d1a486d2)), closes [#458](https://github.com/AmerMathSoc/texml-to-html/issues/458)
+* secheading, toc-entry should match label.js ([4e9d7ef](https://github.com/AmerMathSoc/texml-to-html/commit/4e9d7eff09e3c481dbb4c917f8e31ac23a6db03e)), closes [#454](https://github.com/AmerMathSoc/texml-to-html/issues/454)
 
 ## [17.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v17.0.1...v17.1.0) (2024-07-04)
 
