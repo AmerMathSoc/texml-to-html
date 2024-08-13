@@ -5,7 +5,7 @@
   "description": "A NodeJS library for converting AMS-style JATS XML to HTML",
   "scripts": {
     "coverage": "c8 npm run test && c8 report --reporter html",
-    "release": "standard-version",
+    "release": "commit-and-tag-version",
     "test": "tape test/*.js"
   },
   "main": "./texml-to-html.js",
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/AmerMathSoc/texml-to-html#readme",
   "devDependencies": {
     "c8": "8.0.1",
-    "standard-version": "9.5.0",
+    "commit-and-tag-version": "12.4.1",
     "tape": "5.7.2"
   },
   "dependencies": {
