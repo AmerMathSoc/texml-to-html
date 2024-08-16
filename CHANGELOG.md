@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.0.0-0...v18.0.0) (2024-08-16)
+
 ## [18.0.0-0](https://github.com/AmerMathSoc/texml-to-html/compare/v17.1.0...v18.0.0-0) (2024-08-13)
 
 
