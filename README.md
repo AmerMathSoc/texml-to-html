@@ -132,7 +132,7 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
   - underline
   - {disp-quote@specific-use}
   - (inline-)graphic{@specific-use}
-  - {@style} [expected: theorem styles]
+  - {@style} [expected: theorem styles, sec styles]
   - boxed (from boxed-text)
 - data-ams-ref
   - {@ref-type} [expected: bibr, fn, disp-formula, sec, fig, table, algorithm, list, statement]
@@ -250,7 +250,7 @@ The following provide a list from the reverse point of view.
 - attributes
   - @disp-level => data-ams-doc-level [data-ams-doc-level is also added to some elements that lack disp-level]
   - @content-type => data-ams-content-type
-  - @style => data-ams-style
+  - @style => data-ams-style [e.g., statement, sec]
   - @specific-use => data-ams-specific-use [sometimes mapped to other attributes, e.g., style]
   - @has-qed-box => data-ams-qed-box
   - @position => data-ams-position

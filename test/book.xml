@@ -209,6 +209,9 @@
                         <sec id="inpartlabel" disp-level="3"  specific-use="section">
                         <label>Label</label>
                         </sec>
+                        <sec id="xcb" disp-level="3"  specific-use="section" style="xcb">
+                        <label>Exercise</label>
+                        </sec>
                     </sec>
                 </sec>
 
