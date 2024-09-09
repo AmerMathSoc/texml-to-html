@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.0.0...v18.1.0) (2024-09-09)
+
+
+### Features
+
+* **sec.js:** support style attribute ([84c7699](https://github.com/AmerMathSoc/texml-to-html/commit/84c769970c4841a696e681766a7348a8a6900b9e)), closes [#461](https://github.com/AmerMathSoc/texml-to-html/issues/461)
+
 ## [18.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.0.0-0...v18.0.0) (2024-08-16)
 
 ## [18.0.0-0](https://github.com/AmerMathSoc/texml-to-html/compare/v17.1.0...v18.0.0-0) (2024-08-13)
