@@ -167,6 +167,7 @@
             <underline/>
             <sans-serif/>
             <disp-quote specific-use="use">
+                <p>Quote</p>
                 <attrib/>
             </disp-quote>
             <boxed-text content-type="framed">
