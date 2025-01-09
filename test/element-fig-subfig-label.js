@@ -20,7 +20,7 @@ import tape from 'tape';
 
 
 tape('Template: fig, fig-group, caption, label', async function(t) {
-  t.plan(11);
+  t.plan(12);
   const document = article;
   const figurePosition = document.querySelector('#figures figure#position');
   t.equal(figurePosition.getAttribute('data-ams-position'), 'anchor', 'Figure with data-ams-position attribute');
@@ -35,4 +35,5 @@ tape('Template: fig, fig-group, caption, label', async function(t) {
   t.notOk(figurePosition.nextElementSibling.hasAttribute('id'), 'Fig without id does not create a (bad) id');
   t.notOk(figurePosition.nextElementSibling.getAttribute('data-ams-position'), 'Fig without position does not create a (bad) data attribute');
   t.equal(figurePosition.nextElementSibling.getAttribute('data-ams-specific-use'), 'special', 'Fig with specific-use');
+  t.ok(document.querySelector('figure#figattrib figcaption span'), 'Fig: attrib moved into figcaption');
 });

@@ -118,6 +118,7 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
     - container is inside data-ams-doc="math block" elements
     - ams-html uses these to generate the math panel DTs for equations
   - app-group [from book-app-group]
+  - attribution [from attrib]
 - data-ams-doc-contrib
   - {@content-type} [expected: "authors", "editors", "translators", "contributors"]
   - {@contrib-type} [expected: "author", "editor", "translator", "contributor"]
@@ -247,6 +248,7 @@ The following provide a list from the reverse point of view.
   - @notes-type => @data-ams-content-type (and role=dedication for dedications)
   - use cases: dedication (articles), article and section notes (NOTI only), drm notice & epub note (books)
 - toc-entry@specific-use => data-ams-ref
+- attrib => data-ams-doc="attribution"
 - attributes
   - @disp-level => data-ams-doc-level [data-ams-doc-level is also added to some elements that lack disp-level]
   - @content-type => data-ams-content-type
