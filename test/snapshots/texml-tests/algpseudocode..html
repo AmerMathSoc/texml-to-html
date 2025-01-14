@@ -1,0 +1,522 @@
+<!DOCTYPE html> <html dir="ltr" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><title>algpseudocode</title></head><body><section data-ams-doc="article">
+  <section data-ams-doc="frontmatter"><script type="application/json">{
+    "title": "algpseudocode",
+    "alttitle": "algpseudocode",
+    "identifiers": {
+        "AMS": {},
+        "crossref": {},
+        "uri": {},
+        "basename": null
+    },
+    "relatedArticles": {},
+    "publishers": [],
+    "contributors": {},
+    "permissions": {},
+    "journal": {
+        "identifiers": {
+            "AMS": {},
+            "issn": {
+                "print": "",
+                "electronic": ""
+            }
+        }
+    },
+    "customMeta": {},
+    "categories": {},
+    "byline": "",
+    "volumeInfo": {},
+    "history": {
+        "rev-recd": []
+    },
+    "keywords": []
+}</script>
+        <h1>algpseudocode</h1>
+      </section>
+  
+    <section id="ltxid3" data-ams-doc="section" data-ams-doc-level="1">
+      <p>hello, world</p>
+    </section>
+    <section id="ltxid4" data-ams-doc="section" data-ams-doc-level="1">
+      
+      <h2><span data-ams-doc="label">1<ams-x>.</ams-x></span> <span data-ams-doc="title">Basic forms</span></h2>
+      <section id="ltxid5" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.1<ams-x>.</ams-x></span> <span data-ams-doc="title">The Simple Statement<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno>1:</alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>S \leftarrow O</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+        </alg-algorithm>
+      </section>
+      <section id="ltxid6" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.2<ams-x>.</ams-x></span> <span data-ams-doc="title">Unnumbered Simple Statement<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno></alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>S \leftarrow O</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+          <alg-lineno>1:</alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>S \leftarrow O</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+        </alg-algorithm>
+      </section>
+      <section id="ltxid7" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.3<ams-x>.</ams-x></span> <span data-ams-doc="title">Simple Statement with Comment<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno>1:</alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>S \leftarrow O</tex-math> </span>
+            </alg-statement>
+            <alg-comment>comment</alg-comment>
+          </alg-line>
+        </alg-algorithm>
+      </section>
+      <section id="ltxid8" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.4<ams-x>.</ams-x></span> <span data-ams-doc="title">The Precondition (never numbered)<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno></alg-lineno><alg-line data-ams-alg-spanslineno="">
+            <alg-statement><strong>Require:</strong> <span data-ams-doc="math inline"><tex-math>x \neq 0</tex-math></span> and <span data-ams-doc="math inline"><tex-math>n \geq 0</tex-math></span></alg-statement>
+            <alg-comment>blah blah blah</alg-comment>
+          </alg-line>
+        </alg-algorithm>
+      </section>
+      <section id="ltxid9" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.5<ams-x>.</ams-x></span> <span data-ams-doc="title">The Postcondition (never numbered)<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno></alg-lineno><alg-line data-ams-alg-spanslineno="">
+            <alg-statement><strong>Ensure:</strong> <span data-ams-doc="math inline"><tex-math>x \neq 0</tex-math></span> and <span data-ams-doc="math inline"><tex-math>n \geq 0</tex-math></span></alg-statement>
+            <alg-comment>blah blah blah</alg-comment>
+          </alg-line>
+        </alg-algorithm>
+      </section>
+      <section id="ltxid10" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.6<ams-x>.</ams-x></span> <span data-ams-doc="title">Procedure<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            <alg-lineno>1:</alg-lineno><alg-line>
+              <alg-statement><strong>procedure</strong> <span data-ams-style="sc">Euclid</span> (<span data-ams-doc="math inline"><tex-math>a,b</tex-math></span>)</alg-statement>
+              <alg-comment>The g.c.d. of a and b</alg-comment>
+            </alg-line>
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>
+                  <span data-ams-doc="math inline"> <tex-math>r\gets a\bmod b</tex-math> </span>
+                </alg-statement>
+              </alg-line>
+              
+                
+                  <alg-lineno>3:</alg-lineno><alg-line>
+                    <alg-statement><strong>while</strong> <span data-ams-doc="math inline"><tex-math>r\not =0</tex-math></span> <strong>do</strong></alg-statement>
+                    <alg-comment>We have the answer if r is 0</alg-comment>
+                  </alg-line>
+                
+                <alg-block data-ams-alg-blocklevel="2">
+                  <alg-lineno>4:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>a\gets b</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                  <alg-lineno>5:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>b\gets r</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                  <alg-lineno>6:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>r\gets a\bmod b</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                </alg-block>
+                <alg-lineno>7:</alg-lineno><alg-line>
+                  <alg-statement><strong>end</strong> <strong>while</strong></alg-statement>
+                </alg-line>
+              
+              <alg-lineno>8:</alg-lineno><alg-line>
+                <alg-statement><strong>return</strong> <span data-ams-doc="math inline"><tex-math>b</tex-math></span></alg-statement>
+                <alg-comment>The gcd is b</alg-comment>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>9:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>procedure</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid11" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.7<ams-x>.</ams-x></span> <span data-ams-doc="title">Function<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            <alg-lineno>1:</alg-lineno><alg-line>
+              <alg-statement><strong>function</strong> <span data-ams-style="sc">Euclid</span> (<span data-ams-doc="math inline"><tex-math>a,b</tex-math></span>)</alg-statement>
+            </alg-line>
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>
+                  <span data-ams-doc="math inline"> <tex-math>r\gets a\bmod b</tex-math> </span>
+                </alg-statement>
+              </alg-line>
+              
+                
+                  <alg-lineno>3:</alg-lineno><alg-line>
+                    <alg-statement><strong>while</strong> <span data-ams-doc="math inline"><tex-math>r\not =0</tex-math></span> <strong>do</strong></alg-statement>
+                  </alg-line>
+                
+                <alg-block data-ams-alg-blocklevel="2">
+                  <alg-lineno>4:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>a\gets b</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                  <alg-lineno>5:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>b\gets r</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                  <alg-lineno>6:</alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>r\gets a\bmod b</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                </alg-block>
+                <alg-lineno>7:</alg-lineno><alg-line>
+                  <alg-statement><strong>end</strong> <strong>while</strong></alg-statement>
+                </alg-line>
+              
+              <alg-lineno>8:</alg-lineno><alg-line>
+                <alg-statement><strong>return</strong> <span data-ams-doc="math inline"><tex-math>b</tex-math></span></alg-statement>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>9:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>function</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid12" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.8<ams-x>.</ams-x></span> <span data-ams-doc="title">The <em>if-then-else</em> Statement<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement><strong>if</strong> some condition is true <strong>then</strong></alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>do some processing</alg-statement>
+              </alg-line>
+            </alg-block>
+            
+              
+                <alg-lineno>3:</alg-lineno><alg-line>
+                  <alg-statement><strong>else</strong> <strong>if</strong> some other condition is true <strong>then</strong></alg-statement>
+                  <alg-comment>comment</alg-comment>
+                </alg-line>
+              
+              <alg-block data-ams-alg-blocklevel="1">
+                <alg-lineno>4:</alg-lineno><alg-line>
+                  <alg-statement>do some different processing</alg-statement>
+                </alg-line>
+              </alg-block>
+            
+            
+              
+                <alg-lineno>5:</alg-lineno><alg-line>
+                  <alg-statement><strong>else</strong> <strong>if</strong> some even more bizarre condition is met <strong>then</strong></alg-statement>
+                  <alg-comment>comment</alg-comment>
+                </alg-line>
+              
+              <alg-block data-ams-alg-blocklevel="1">
+                <alg-lineno>6:</alg-lineno><alg-line>
+                  <alg-statement>do something else</alg-statement>
+                </alg-line>
+              </alg-block>
+            
+            
+              <alg-lineno>7:</alg-lineno><alg-line>
+                <alg-statement>
+                  <strong>else</strong>
+                </alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+              <alg-block data-ams-alg-blocklevel="1">
+                <alg-lineno>8:</alg-lineno><alg-line>
+                  <alg-statement>do the default actions</alg-statement>
+                </alg-line>
+              </alg-block>
+            
+            <alg-lineno>9:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>if</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid13" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.9<ams-x>.</ams-x></span> <span data-ams-doc="title">The <em>for</em> Loop<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement><strong>for</strong> <span data-ams-doc="math inline"><tex-math>i=0</tex-math></span> to <span data-ams-doc="math inline"><tex-math>10</tex-math></span> <strong>do</strong></alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>carry out some processing</alg-statement>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>3:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>for</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement><strong>for all</strong> <span data-ams-doc="math inline"><tex-math>i</tex-math></span> such that <span data-ams-doc="math inline"><tex-math>0\leq i\leq 10</tex-math></span> <strong>do</strong></alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>carry out some processing</alg-statement>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>3:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>for</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid14" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.10<ams-x>.</ams-x></span> <span data-ams-doc="title">The <em>while</em> Loop<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement><strong>while</strong> some condition holds <strong>do</strong></alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>carry out some processing</alg-statement>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>3:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>while</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid15" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.11<ams-x>.</ams-x></span> <span data-ams-doc="title">The <em>repeat-until</em> Loop<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement>
+                  <strong>repeat</strong>
+                </alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>carry out some processing</alg-statement>
+              </alg-line>
+            </alg-block>
+            
+              
+                <alg-lineno>3:</alg-lineno><alg-line>
+                  <alg-statement><strong>until</strong> some condition is met</alg-statement>
+                </alg-line>
+              
+            
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid16" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.12<ams-x>.</ams-x></span> <span data-ams-doc="title">The Infinite Loop<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          
+            
+              <alg-lineno>1:</alg-lineno><alg-line>
+                <alg-statement>
+                  <strong>loop</strong>
+                </alg-statement>
+                <alg-comment>comment</alg-comment>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>2:</alg-lineno><alg-line>
+                <alg-statement>this processing will be repeated forever</alg-statement>
+              </alg-line>
+            </alg-block>
+            <alg-lineno>3:</alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>loop</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid17" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">1.13<ams-x>.</ams-x></span> <span data-ams-doc="title">Returning Values<ams-x>.</ams-x></span></h3>
+      </section>
+    </section>
+    <section id="ltxid18" data-ams-doc="section" data-ams-doc-level="1">
+      
+      <h2><span data-ams-doc="label">2<ams-x>.</ams-x></span> <span data-ams-doc="title">Some longer examples</span></h2>
+      <section id="ltxid19" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">2.1<ams-x>.</ams-x></span> <span data-ams-doc="title"><em>if-elsif-else</em><ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno></alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>a \leftarrow 1</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+          
+            
+              <alg-lineno></alg-lineno><alg-line>
+                <alg-statement><strong>if</strong> <span data-ams-doc="math inline"><tex-math>a</tex-math></span> is even <strong>then</strong></alg-statement>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              <alg-lineno>3:</alg-lineno><alg-line>
+                <alg-statement><strong>PRINT</strong> “<span data-ams-doc="math inline"><tex-math>a</tex-math></span> is even”</alg-statement>
+              </alg-line>
+            </alg-block>
+            
+              
+                <alg-lineno></alg-lineno><alg-line>
+                  <alg-statement><strong>else</strong> <strong>if</strong> <span data-ams-doc="math inline"><tex-math>a</tex-math></span> is odd <strong>then</strong></alg-statement>
+                </alg-line>
+              
+              <alg-block data-ams-alg-blocklevel="1">
+                <alg-lineno></alg-lineno><alg-line>
+                  <alg-statement><strong>PRINT</strong> “<span data-ams-doc="math inline"><tex-math>a</tex-math></span> is odd”</alg-statement>
+                </alg-line>
+              </alg-block>
+            
+            
+              <alg-lineno>6:</alg-lineno><alg-line>
+                <alg-statement>
+                  <strong>else</strong>
+                </alg-statement>
+              </alg-line>
+              <alg-block data-ams-alg-blocklevel="1">
+                <alg-lineno></alg-lineno><alg-line>
+                  <alg-statement><strong>PRINT</strong> “<span data-ams-doc="math inline"><tex-math>a</tex-math></span> is really weird”</alg-statement>
+                </alg-line>
+              </alg-block>
+            
+            <alg-lineno></alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>if</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+      <section id="ltxid20" data-ams-doc="subsection" data-ams-doc-level="2">
+        
+        <h3><span data-ams-doc="label">2.2<ams-x>.</ams-x></span> <span data-ams-doc="title">Nested structures<ams-x>.</ams-x></span></h3>
+        <alg-algorithm data-ams-alg-linenodelimiter=":">
+          <alg-lineno></alg-lineno><alg-line data-ams-alg-spanslineno="">
+            <alg-statement><strong>Require:</strong> <span data-ams-doc="math inline"><tex-math>n \geq 0</tex-math></span></alg-statement>
+          </alg-line>
+          <alg-lineno></alg-lineno><alg-line data-ams-alg-spanslineno="">
+            <alg-statement><strong>Ensure:</strong> <span data-ams-doc="math inline"><tex-math>y = x^n</tex-math></span></alg-statement>
+          </alg-line>
+          <alg-lineno></alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>y \leftarrow 1</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+          <alg-lineno></alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>X \leftarrow x</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+          <alg-lineno></alg-lineno><alg-line>
+            <alg-statement>
+              <span data-ams-doc="math inline"> <tex-math>N \leftarrow n</tex-math> </span>
+            </alg-statement>
+          </alg-line>
+          
+            
+              <alg-lineno></alg-lineno><alg-line>
+                <alg-statement><strong>while</strong> <span data-ams-doc="math inline"><tex-math>N \neq 0</tex-math></span> <strong>do</strong></alg-statement>
+              </alg-line>
+            
+            <alg-block data-ams-alg-blocklevel="1">
+              
+                
+                  <alg-lineno></alg-lineno><alg-line>
+                    <alg-statement><strong>if</strong> <span data-ams-doc="math inline"><tex-math>N</tex-math></span> is even <strong>then</strong></alg-statement>
+                  </alg-line>
+                
+                <alg-block data-ams-alg-blocklevel="2">
+                  <alg-lineno></alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>X \leftarrow X \times X</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                  <alg-lineno></alg-lineno><alg-line>
+                    <alg-statement>
+                      <span data-ams-doc="math inline"> <tex-math>N \leftarrow N / 2</tex-math> </span>
+                    </alg-statement>
+                  </alg-line>
+                </alg-block>
+                
+                  <alg-lineno></alg-lineno><alg-line>
+                    <alg-statement>
+                      <strong>else</strong>
+                    </alg-statement>
+                    <alg-comment><span data-ams-doc="math inline"><tex-math>N</tex-math></span> is odd</alg-comment>
+                  </alg-line>
+                  <alg-block data-ams-alg-blocklevel="2">
+                    <alg-lineno></alg-lineno><alg-line>
+                      <alg-statement>
+                        <span data-ams-doc="math inline"> <tex-math>y \leftarrow y \times X</tex-math> </span>
+                      </alg-statement>
+                    </alg-line>
+                    <alg-lineno></alg-lineno><alg-line>
+                      <alg-statement>
+                        <span data-ams-doc="math inline"> <tex-math>N \leftarrow N - 1</tex-math> </span>
+                      </alg-statement>
+                    </alg-line>
+                  </alg-block>
+                
+                <alg-lineno></alg-lineno><alg-line>
+                  <alg-statement><strong>end</strong> <strong>if</strong></alg-statement>
+                </alg-line>
+              
+            </alg-block>
+            <alg-lineno></alg-lineno><alg-line>
+              <alg-statement><strong>end</strong> <strong>while</strong></alg-statement>
+            </alg-line>
+          
+        </alg-algorithm>
+      </section>
+    </section>
+  
+</section></body></html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//AMS TEXML//DTD MODIFIED JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3d2 20201130//EN" "texml-jats-1-3d2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front id="ltxid1">
+    <article-meta>
+      <title-group>
+        <article-title>hhline</article-title>
+      </title-group>
+    </article-meta>
+  </front>
+  <body id="ltxid2">
+    <sec disp-level="1" id="ltxid3" specific-use="section">
+      <p>I tested these on Firefox, chromium-browser, and Safari.</p>
+      <p>These work pretty well: <monospace>|</monospace> <monospace>:</monospace> <monospace>-</monospace> <monospace>~</monospace></p>
+      <p>These kind of work but aren’t great or consistent between browsers: <monospace>= t b</monospace>.</p>
+      <p>I don’t know how to implement <monospace>#</monospace>. (Note that in <monospace>hline.pdf</monospace>, the double lines between the second and third rows of the first table cut through the vertical rules.)</p>
+      <table-wrap id="ltxid4" specific-use="table">
+        <table class="texml-bcc" id="tblrid1">
+          <tr>
+            <td class="texml-bldc texml-bttdc texml-pl texml-pr texml-tac">a</td>
+            <td class="texml-brdc texml-bttdc texml-pl texml-pr texml-tac">b</td>
+            <td class="texml-brtsc texml-bttdc texml-pl texml-pr texml-tac">c</td>
+            <td class="texml-brdc texml-bttdc texml-pl texml-pr texml-tac">d</td>
+          </tr>
+          <tr>
+            <td class="texml-bldc texml-bttdc texml-pl texml-pr texml-tac">1</td>
+            <td class="texml-brdc texml-bttdc texml-pl texml-pr texml-tac">2</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">3</td>
+            <td class="texml-brdc texml-pl texml-pr texml-tac">4</td>
+          </tr>
+          <tr>
+            <td class="texml-bldc texml-bttdc texml-pl texml-pr texml-tac">i</td>
+            <td class="texml-brdc texml-bttdc texml-pl texml-pr texml-tac">j</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">k</td>
+            <td class="texml-brdc texml-bttdc texml-pl texml-pr texml-tac">l</td>
+          </tr>
+          <tr>
+            <td class="texml-bbtdc texml-bldc texml-bttsc texml-pl texml-pr texml-tac">w</td>
+            <td class="texml-bbtdc texml-brdc texml-bttsc texml-pl texml-pr texml-tac">x</td>
+            <td class="texml-bbtdc texml-brtsc texml-bttsc texml-pl texml-pr texml-tac">y</td>
+            <td class="texml-bbtdc texml-brdc texml-bttsc texml-pl texml-pr texml-tac">z</td>
+          </tr>
+        </table>
+      </table-wrap>
+      <table-wrap id="ltxid5" specific-use="table">
+        <table class="texml-bcc" id="tblrid2">
+          <tr>
+            <td class="texml-bltsc texml-brtsc texml-bttsc texml-pl texml-pr texml-tac">1</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">2</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">3</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">4</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">5</td>
+          </tr>
+          <tr>
+            <td class="texml-bltsc texml-brtsc texml-pl texml-pr texml-tac">1</td>
+            <td class="texml-brtsc texml-bttsc texml-pl texml-pr texml-tac">2</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">3</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">4</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">5</td>
+          </tr>
+          <tr>
+            <td class="texml-bltsc texml-brtsc texml-pl texml-pr texml-tac">1</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">2</td>
+            <td class="texml-brtsc texml-bttsc texml-pl texml-pr texml-tac">3</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">4</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">5</td>
+          </tr>
+          <tr>
+            <td class="texml-bltsc texml-brtsc texml-pl texml-pr texml-tac">1</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">2</td>
+            <td class="texml-brtsc texml-pl texml-pr texml-tac">3</td>
+            <td class="texml-brtsc texml-bttdc texml-pl texml-pr texml-tac">4</td>
+            <td class="texml-bbtsc texml-brtsc texml-pl texml-pr texml-tac">5</td>
+          </tr>
+        </table>
+      </table-wrap>
+    </sec>
+  </body>
+</article>

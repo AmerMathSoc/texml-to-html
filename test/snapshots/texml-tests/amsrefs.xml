@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//AMS TEXML//DTD MODIFIED JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3d2 20201130//EN" "texml-jats-1-3d2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front id="ltxid1">
+    <article-meta>
+      <title-group>
+        <article-title>Title</article-title>
+      </title-group>
+    </article-meta>
+  </front>
+  <body id="ltxid2">
+    <sec disp-level="1" id="ltxid3" specific-use="section">
+      <p>hello, world</p>
+      <p>AEGO: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group></p>
+      <p>AEG0,AEGO: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>, </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group></p>
+      <p>AEG0, Section 5: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>]</x></cite-group></p>
+      <p>AEG0*, Section 5: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>]</x></cite-group></p>
+      <p>AEG0, Section 5, AEG0: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group></p>
+      <p>AEG0, Section 5: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group></p>
+      <p>AEG0, Section 5: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>theorem 4</cite-detail></xref><x>]</x></cite-group></p>
+      <p>Undefined: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-nosuchcite" specific-use="cite"><monospace>?nosuchcite</monospace></xref><x>]</x></cite-group></p>
+      <p>Eng 1: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-Enna1" specific-use="cite">Enga</xref><x>]</x></cite-group></p>
+      <p>Eng 2: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-Enna2" specific-use="cite">Engb</xref><x>]</x></cite-group></p>
+      <p>Eng 3: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-Enna3" specific-use="cite">Engc</xref><x>]</x></cite-group></p>
+      <p>Eng 4: <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-Enna4" specific-use="cite">Engd</xref><x>]</x></cite-group></p>
+    </sec>
+  </body>
+  <back id="ltxid4">
+    <ref-list content-type="biblist" id="ltxid5">
+      <title>References</title>
+      <ref id="bibr-Enna1">
+        <label><x>[</x>Enga<x>]</x></label>
+        <raw-citation type="amsrefs">\bib{Enna1}{book}{
+  author={Engel, Klaus-Jochen},
+  title={1},
+}
+</raw-citation>
+        <mixed-citation> Klaus-Jochen Engel, <italic>1</italic>.</mixed-citation>
+      </ref>
+      <ref id="bibr-Enna2">
+        <label><x>[</x>Engb<x>]</x></label>
+        <raw-citation type="amsrefs">\bib{Enna2}{book}{
+  author={Engel, Klaus-Jochen},
+  title={2},
+}
+</raw-citation>
+        <mixed-citation> Klaus-Jochen Engel, <italic>2</italic>.</mixed-citation>
+      </ref>
+      <ref id="bibr-Enna3">
+        <label><x>[</x>Engc<x>]</x></label>
+        <raw-citation type="amsrefs">\bib{Enna3}{book}{
+  author={Engel, Klaus-Jochen},
+  title={3},
+}
+</raw-citation>
+        <mixed-citation> Klaus-Jochen Engel, <italic>3</italic>.</mixed-citation>
+      </ref>
+      <ref id="bibr-Enna4">
+        <label><x>[</x>Engd<x>]</x></label>
+        <raw-citation type="amsrefs">\bib{Enna4}{book}{
+  author={Engel, Klaus-Jochen},
+  title={4},
+}
+</raw-citation>
+        <mixed-citation> Klaus-Jochen Engel, <italic>4</italic>.</mixed-citation>
+      </ref>
+      <ref id="bibr-AEG0">
+        <label><x>[</x>AEG08<x>]</x></label>
+        <raw-citation type="amsrefs">\bib{AEG0}{article}{
+  author={Aledo, Juan A.},
+  author={Espinar, Jos{\'e} M.},
+  author={G{\'a}lvez, Jos{\'e} A.},
+  title={Height estimates for surfaces with positive constant mean curvature in $\mathbb {M}^2\times \mathbb {R}$},
+  journal={Illinois J. Math.},
+  volume={52},
+  date={2008},
+  number={1},
+  pages={203--211},
+  issn={0019-2082},
+  review={\MR {2507241 (2010e:53006)}},
+}
+</raw-citation>
+        <mixed-citation> Juan A. Aledo, José M. Espinar, and José A. Gálvez, <italic>Height estimates for surfaces with positive constant mean curvature in <inline-formula content-type="math/tex"><tex-math>\mathbb{M}^2\times \mathbb{R}</tex-math></inline-formula></italic>, Illinois J. Math. <bold>52</bold> (2008), no. 1, 203–211. MR<ext-link xlink:href="https://mathscinet.ams.org/mathscinet-getitem?mr=2507241">2507241 (2010e:53006)</ext-link></mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

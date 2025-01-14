@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//AMS TEXML//DTD MODIFIED JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3d2 20201130//EN" "texml-jats-1-3d2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <p>hello, world</p>
+  <p>See section <xref-group><xref ref-subtype="section" ref-type="sec" rid="ltxid1" specific-use="ref">1</xref></xref-group>.</p>
+  <p>See <xref-group><xref ref-type="sec" rid="ltxid1" specific-use="hyperref">the next section</xref></xref-group>.</p>
+  <sec disp-level="1" id="ltxid1" specific-use="section">
+    <label>1<x>.</x></label>
+    <title>The next section</title>
+    <p>See me!</p>
+  </sec>
+</article>

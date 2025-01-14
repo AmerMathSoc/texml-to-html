@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//AMS TEXML//DTD MODIFIED JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3d2 20201130//EN" "texml-jats-1-3d2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front id="ltxid1">
+    <article-meta>
+      <title-group>
+        <article-title>algorithmic</article-title>
+      </title-group>
+    </article-meta>
+  </front>
+  <body id="ltxid2">
+    <sec disp-level="1" id="ltxid3" specific-use="section">
+      <p>hello, world</p>
+    </sec>
+    <sec disp-level="1" id="ltxid4" specific-use="section">
+      <label>1<x>.</x></label>
+      <title>Basic forms</title>
+      <sec disp-level="2" id="ltxid5" specific-use="subsection">
+        <label>1.1<x>.</x></label>
+        <title>The Simple Statement<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line lineno="1">
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>S \leftarrow O</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid6" specific-use="subsection">
+        <label>1.2<x>.</x></label>
+        <title>Simple Statement with Comment<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line lineno="1">
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>S \leftarrow O</tex-math>
+              </inline-formula>
+            </alg:statement>
+            <alg:comment>comment</alg:comment>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid7" specific-use="subsection">
+        <label>1.3<x>.</x></label>
+        <title>The Precondition (never numbered)<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:require><bold>Require:</bold> <inline-formula content-type="math/tex"><tex-math>x \neq 0</tex-math></inline-formula> and <inline-formula content-type="math/tex"><tex-math>n \geq 0</tex-math></inline-formula></alg:require>
+            <alg:comment>blah blah blah</alg:comment>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid8" specific-use="subsection">
+        <label>1.4<x>.</x></label>
+        <title>The Postcondition (never numbered)<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:ensure><bold>Ensure:</bold> <inline-formula content-type="math/tex"><tex-math>x \neq 0</tex-math></inline-formula> and <inline-formula content-type="math/tex"><tex-math>n \geq 0</tex-math></inline-formula></alg:ensure>
+            <alg:comment>blah blah blah</alg:comment>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid9" specific-use="subsection">
+        <label>1.5<x>.</x></label>
+        <title>Globals<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line lineno="1">
+            <alg:globals><bold>globals</bold> <inline-formula content-type="math/tex"><tex-math>x</tex-math></inline-formula>, <inline-formula content-type="math/tex"><tex-math>y</tex-math></inline-formula></alg:globals>
+            <alg:comment>blah blah blah</alg:comment>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid10" specific-use="subsection">
+        <label>1.6<x>.</x></label>
+        <title>Inputs<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:inputs>
+            <alg:line lineno="1">
+              <alg:statement>
+                <bold>inputs</bold>
+              </alg:statement>
+              <alg:comment>comment</alg:comment>
+            </alg:line>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement><inline-formula content-type="math/tex"><tex-math>x</tex-math></inline-formula>, <inline-formula content-type="math/tex"><tex-math>y</tex-math></inline-formula></alg:statement>
+              </alg:line>
+            </alg:block>
+          </alg:inputs>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid11" specific-use="subsection">
+        <label>1.7<x>.</x></label>
+        <title>Outputs<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:outputs>
+            <alg:line lineno="1">
+              <alg:statement>
+                <bold>outputs</bold>
+              </alg:statement>
+              <alg:comment>comment</alg:comment>
+            </alg:line>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement><inline-formula content-type="math/tex"><tex-math>x</tex-math></inline-formula>, <inline-formula content-type="math/tex"><tex-math>y</tex-math></inline-formula></alg:statement>
+              </alg:line>
+            </alg:block>
+          </alg:outputs>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid12" specific-use="subsection">
+        <label>1.8<x>.</x></label>
+        <title>The body<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:body>
+            <alg:line lineno="1">
+              <alg:statement>
+                <bold>do</bold>
+              </alg:statement>
+              <alg:comment>comment</alg:comment>
+            </alg:line>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>something 1</alg:statement>
+              </alg:line>
+              <alg:line lineno="3">
+                <alg:statement>something 2</alg:statement>
+              </alg:line>
+            </alg:block>
+          </alg:body>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid13" specific-use="subsection">
+        <label>1.9<x>.</x></label>
+        <title>The <italic toggle="yes">if-then-else</italic> Statement<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:if>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement><bold>if</bold> some condition is true <bold>then</bold></alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>do some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:elsif>
+              <alg:condition>
+                <alg:line lineno="3">
+                  <alg:statement><bold>else</bold> <bold>if</bold> some other condition is true <bold>then</bold></alg:statement>
+                  <alg:comment>comment</alg:comment>
+                </alg:line>
+              </alg:condition>
+              <alg:block>
+                <alg:line lineno="4">
+                  <alg:statement>do some different processing</alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:elsif>
+            <alg:elsif>
+              <alg:condition>
+                <alg:line lineno="5">
+                  <alg:statement><bold>else</bold> <bold>if</bold> some even more bizarre condition is met <bold>then</bold></alg:statement>
+                  <alg:comment>comment</alg:comment>
+                </alg:line>
+              </alg:condition>
+              <alg:block>
+                <alg:line lineno="6">
+                  <alg:statement>do something else</alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:elsif>
+            <alg:else>
+              <alg:line lineno="7">
+                <alg:statement>
+                  <bold>else</bold>
+                </alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+              <alg:block>
+                <alg:line lineno="8">
+                  <alg:statement>do the default actions</alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:else>
+            <alg:line lineno="9">
+              <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
+            </alg:line>
+          </alg:if>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid14" specific-use="subsection">
+        <label>1.10<x>.</x></label>
+        <title>The <italic toggle="yes">for</italic> Loop<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:for>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>i=0</tex-math></inline-formula> to <inline-formula content-type="math/tex"><tex-math>10</tex-math></inline-formula> <bold>do</bold></alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>carry out some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line lineno="3">
+              <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+            </alg:line>
+          </alg:for>
+        </alg:algorithm>
+        <alg:algorithm linenodelimiter=":">
+          <alg:forall>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement><bold>for all</bold> <inline-formula content-type="math/tex"><tex-math>i</tex-math></inline-formula> such that <inline-formula content-type="math/tex"><tex-math>0\leq i\leq 10</tex-math></inline-formula> <bold>do</bold></alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>carry out some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line lineno="3">
+              <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+            </alg:line>
+          </alg:forall>
+        </alg:algorithm>
+        <alg:algorithm linenodelimiter=":">
+          <alg:for>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>i=0</tex-math></inline-formula> <bold>to</bold> <inline-formula content-type="math/tex"><tex-math>10</tex-math></inline-formula> <bold>do</bold></alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>carry out some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line lineno="3">
+              <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+            </alg:line>
+          </alg:for>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid15" specific-use="subsection">
+        <label>1.11<x>.</x></label>
+        <title>The <italic toggle="yes">while</italic> Loop<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:while>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement><bold>while</bold> some condition holds <bold>do</bold></alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>carry out some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line lineno="3">
+              <alg:statement><bold>end</bold> <bold>while</bold></alg:statement>
+            </alg:line>
+          </alg:while>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid16" specific-use="subsection">
+        <label>1.12<x>.</x></label>
+        <title>The <italic toggle="yes">repeat-until</italic> Loop<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:repeat>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement>
+                  <bold>repeat</bold>
+                </alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>carry out some processing</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:until>
+              <alg:condition>
+                <alg:line lineno="3">
+                  <alg:statement><bold>until</bold> some condition is met</alg:statement>
+                </alg:line>
+              </alg:condition>
+            </alg:until>
+          </alg:repeat>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid17" specific-use="subsection">
+        <label>1.13<x>.</x></label>
+        <title>The Infinite Loop<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:loop>
+            <alg:condition>
+              <alg:line lineno="1">
+                <alg:statement>
+                  <bold>loop</bold>
+                </alg:statement>
+                <alg:comment>comment</alg:comment>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="2">
+                <alg:statement>this processing will be repeated forever</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line lineno="3">
+              <alg:statement><bold>end</bold> <bold>loop</bold></alg:statement>
+            </alg:line>
+          </alg:loop>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid18" specific-use="subsection">
+        <label>1.14<x>.</x></label>
+        <title>Returning Values<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line lineno="1">
+            <alg:statement><bold>return</bold> <inline-formula content-type="math/tex"><tex-math>(x+y)/2</tex-math></inline-formula></alg:statement>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid19" specific-use="subsection">
+        <label>1.15<x>.</x></label>
+        <title>Printing Messages<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line lineno="1">
+            <alg:statement><bold>print</bold> <monospace>``Hello, World!''</monospace></alg:statement>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+    </sec>
+    <sec disp-level="1" id="ltxid20" specific-use="section">
+      <label>2<x>.</x></label>
+      <title>Some longer examples</title>
+      <sec disp-level="2" id="ltxid21" specific-use="subsection">
+        <label>2.1<x>.</x></label>
+        <title><italic toggle="yes">if-elsif-else</italic><x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>a \leftarrow 1</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:if>
+            <alg:condition>
+              <alg:line>
+                <alg:statement><bold>if</bold> <inline-formula content-type="math/tex"><tex-math>a</tex-math></inline-formula> is even <bold>then</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="3">
+                <alg:statement><bold>print</bold> “<inline-formula content-type="math/tex"><tex-math>a</tex-math></inline-formula> is even”</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:elsif>
+              <alg:condition>
+                <alg:line>
+                  <alg:statement><bold>else</bold> <bold>if</bold> <inline-formula content-type="math/tex"><tex-math>a</tex-math></inline-formula> is odd <bold>then</bold></alg:statement>
+                </alg:line>
+              </alg:condition>
+              <alg:block>
+                <alg:line>
+                  <alg:statement><bold>print</bold> “<inline-formula content-type="math/tex"><tex-math>a</tex-math></inline-formula> is odd”</alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:elsif>
+            <alg:else>
+              <alg:line lineno="6">
+                <alg:statement>
+                  <bold>else</bold>
+                </alg:statement>
+              </alg:line>
+              <alg:block>
+                <alg:line>
+                  <alg:statement><bold>print</bold> “<inline-formula content-type="math/tex"><tex-math>a</tex-math></inline-formula> is really weird”</alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:else>
+            <alg:line>
+              <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
+            </alg:line>
+          </alg:if>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid22" specific-use="subsection">
+        <label>2.2<x>.</x></label>
+        <title>Nested structures<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:require><bold>Require:</bold> <inline-formula content-type="math/tex"><tex-math>n \geq 0</tex-math></inline-formula></alg:require>
+          </alg:line>
+          <alg:line>
+            <alg:ensure><bold>Ensure:</bold> <inline-formula content-type="math/tex"><tex-math>y = x^n</tex-math></inline-formula></alg:ensure>
+          </alg:line>
+          <alg:line>
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>y \leftarrow 1</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:line>
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>X \leftarrow x</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:line>
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>N \leftarrow n</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:while>
+            <alg:condition>
+              <alg:line>
+                <alg:statement><bold>while</bold> <inline-formula content-type="math/tex"><tex-math>N \neq 0</tex-math></inline-formula> <bold>do</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:if>
+                <alg:condition>
+                  <alg:line>
+                    <alg:statement><bold>if</bold> <inline-formula content-type="math/tex"><tex-math>N</tex-math></inline-formula> is even <bold>then</bold></alg:statement>
+                  </alg:line>
+                </alg:condition>
+                <alg:block>
+                  <alg:line>
+                    <alg:statement>
+                      <inline-formula content-type="math/tex">
+                        <tex-math>X \leftarrow X \times X</tex-math>
+                      </inline-formula>
+                    </alg:statement>
+                  </alg:line>
+                  <alg:line>
+                    <alg:statement>
+                      <inline-formula content-type="math/tex">
+                        <tex-math>N \leftarrow N / 2</tex-math>
+                      </inline-formula>
+                    </alg:statement>
+                  </alg:line>
+                </alg:block>
+                <alg:else>
+                  <alg:line>
+                    <alg:statement>
+                      <bold>else</bold>
+                    </alg:statement>
+                    <alg:comment><inline-formula content-type="math/tex"><tex-math>N</tex-math></inline-formula> is odd</alg:comment>
+                  </alg:line>
+                  <alg:block>
+                    <alg:line>
+                      <alg:statement>
+                        <inline-formula content-type="math/tex">
+                          <tex-math>y \leftarrow y \times X</tex-math>
+                        </inline-formula>
+                      </alg:statement>
+                    </alg:line>
+                    <alg:line>
+                      <alg:statement>
+                        <inline-formula content-type="math/tex">
+                          <tex-math>N \leftarrow N - 1</tex-math>
+                        </inline-formula>
+                      </alg:statement>
+                    </alg:line>
+                  </alg:block>
+                </alg:else>
+                <alg:line>
+                  <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
+                </alg:line>
+              </alg:if>
+            </alg:block>
+            <alg:line>
+              <alg:statement><bold>end</bold> <bold>while</bold></alg:statement>
+            </alg:line>
+          </alg:while>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid23" specific-use="subsection">
+        <label>2.3<x>.</x></label>
+        <title>mcom3655<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:statement><bold>Input:</bold> Choose an arbitrary <inline-formula content-type="math/tex"><tex-math>\alpha _{{{L}}}^{0}\in \mathbb{C}^{{{(L+1)^2}}}</tex-math></inline-formula>, <inline-formula content-type="math/tex"><tex-math>\{\epsilon ^{k}\}</tex-math></inline-formula> with <inline-formula content-type="math/tex"><tex-math>\epsilon ^{k}&gt;0</tex-math></inline-formula>. Set <inline-formula content-type="math/tex"><tex-math>k=0</tex-math></inline-formula>.</alg:statement>
+          </alg:line>
+          <alg:while>
+            <alg:condition>
+              <alg:line>
+                <alg:statement><bold>while</bold> a termination criterion is not met, <bold>do</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line>
+                <alg:statement>1) Solve the weighted <inline-formula content-type="math/tex"><tex-math>\ell _{2}</tex-math></inline-formula> minimization problem<disp-formula content-type="math/tex"><tex-math>\begin{equation}
+ \alpha ^{k+1}_{l\cdot }=\arg \min \limits _{\alpha _{l\cdot }\in \mathbb{C}^{2l+1}} \left\{ \frac{1}{2}\|\alpha _{l\cdot }-\alpha _{l\cdot }^{\circ }\|_{2}^{2}+\frac{1}{2}\lambda p\beta _{l}w_{l}^{k}\|\alpha _{l\cdot }\|_{2}^{2}\right\},{{l=0,1,\ldots ,L}}, <target id="alpha"><tag parens="yes">1</tag></target>
+\end{equation}</tex-math></disp-formula>where <inline-formula content-type="math/tex"><tex-math>w_{l}^{k}=(\|\alpha ^{k}_{l\cdot }\|_{2}^{2}+\epsilon ^{k})^{\frac{p}{2}-1}</tex-math></inline-formula>.</alg:statement>
+              </alg:line>
+              <alg:line>
+                <alg:statement>2) Set <inline-formula content-type="math/tex"><tex-math>k\leftarrow k+1</tex-math></inline-formula> and go to step 1).</alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:line>
+              <alg:statement><bold>end</bold> <bold>while</bold></alg:statement>
+            </alg:line>
+          </alg:while>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid24" specific-use="subsection">
+        <label>2.4<x>.</x></label>
+        <title>mcom3356<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:require><bold>Require:</bold> A lower trapezoidal <inline-formula content-type="math/tex"><tex-math>n\times (n-1)</tex-math></inline-formula> matrix <inline-formula content-type="math/tex"><tex-math>\mathbf{H}=(h_{i,j})</tex-math></inline-formula> with <inline-formula content-type="math/tex"><tex-math>h_{i,j}=0</tex-math></inline-formula> if <inline-formula content-type="math/tex"><tex-math>j&gt;i</tex-math></inline-formula> and <inline-formula content-type="math/tex"><tex-math>h_{j,j}\ne 0</tex-math></inline-formula>.</alg:require>
+          </alg:line>
+          <alg:line>
+            <alg:ensure><bold>Ensure:</bold> A unimodular matrix <inline-formula content-type="math/tex"><tex-math>\mathbf{D}</tex-math></inline-formula> such that <inline-formula content-type="math/tex"><tex-math>\mathbf{H}:=\mathbf{D}\cdot \mathbf{H} = (h_{i,j})</tex-math></inline-formula> satisfying <inline-formula content-type="math/tex"><tex-math>|h_{i,j}|\le |h_{j,j}|/2</tex-math></inline-formula> for <inline-formula content-type="math/tex"><tex-math>1\le j&lt;i\le n</tex-math></inline-formula>.</alg:ensure>
+          </alg:line>
+          <alg:line lineno="1">
+            <alg:statement><inline-formula content-type="math/tex"><tex-math>\mathbf{D} := \mathbf{I}_n</tex-math></inline-formula>.</alg:statement>
+          </alg:line>
+          <alg:for>
+            <alg:condition>
+              <alg:line lineno="2">
+                <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>i</tex-math></inline-formula> from <inline-formula content-type="math/tex"><tex-math>2</tex-math></inline-formula> to <inline-formula content-type="math/tex"><tex-math>n</tex-math></inline-formula> <bold>do</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:for>
+                <alg:condition>
+                  <alg:line lineno="3">
+                    <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>j</tex-math></inline-formula> from <inline-formula content-type="math/tex"><tex-math>i-1</tex-math></inline-formula> to <inline-formula content-type="math/tex"><tex-math>1</tex-math></inline-formula> by stepsize <inline-formula content-type="math/tex"><tex-math>-1</tex-math></inline-formula> <bold>do</bold></alg:statement>
+                  </alg:line>
+                </alg:condition>
+                <alg:block>
+                  <alg:line lineno="4">
+                    <alg:statement><inline-formula content-type="math/tex"><tex-math>q :=\lfloor h_{i,j}/h_{j,j}+0.5\rfloor </tex-math></inline-formula>.</alg:statement>
+                  </alg:line>
+                  <alg:for>
+                    <alg:condition>
+                      <alg:line lineno="5">
+                        <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>k</tex-math></inline-formula> from <inline-formula content-type="math/tex"><tex-math>1</tex-math></inline-formula> to <inline-formula content-type="math/tex"><tex-math>n</tex-math></inline-formula> <bold>do</bold></alg:statement>
+                      </alg:line>
+                    </alg:condition>
+                    <alg:block>
+                      <alg:line lineno="6">
+                        <alg:statement><inline-formula content-type="math/tex"><tex-math>d_{i,k}:= d_{i,k}-qd_{j,k}</tex-math></inline-formula>.</alg:statement>
+                      </alg:line>
+                    </alg:block>
+                    <alg:line lineno="7">
+                      <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+                    </alg:line>
+                  </alg:for>
+                </alg:block>
+                <alg:line lineno="8">
+                  <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+                </alg:line>
+              </alg:for>
+            </alg:block>
+            <alg:line lineno="9">
+              <alg:statement><bold>end</bold> <bold>for</bold></alg:statement>
+            </alg:line>
+          </alg:for>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid25" specific-use="subsection">
+        <label>2.5<x>.</x></label>
+        <title>mcom3363<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:require><bold>Require:</bold> A polynomial <inline-formula content-type="math/tex"><tex-math>h</tex-math></inline-formula> with irreducible factors of degree <inline-formula content-type="math/tex"><tex-math>d</tex-math></inline-formula> over <inline-formula content-type="math/tex"><tex-math>k=\mathbb{F}_q[X]/f(X)</tex-math></inline-formula>.</alg:require>
+          </alg:line>
+          <alg:line>
+            <alg:ensure><bold>Ensure:</bold> An irreducible factor of <inline-formula content-type="math/tex"><tex-math>h</tex-math></inline-formula> over <inline-formula content-type="math/tex"><tex-math>k</tex-math></inline-formula>.</alg:ensure>
+          </alg:line>
+          <alg:line lineno="1">
+            <alg:statement>If <inline-formula content-type="math/tex"><tex-math>\deg h = d</tex-math></inline-formula> return <inline-formula content-type="math/tex"><tex-math>h</tex-math></inline-formula>.</alg:statement>
+          </alg:line>
+          <alg:line lineno="2">
+            <alg:statement>Take a random polynomial <inline-formula content-type="math/tex"><tex-math>a_0\in k[Z]</tex-math></inline-formula> of degree less than <inline-formula content-type="math/tex"><tex-math>\deg h</tex-math></inline-formula>,</alg:statement>
+          </alg:line>
+          <alg:line lineno="3">
+            <alg:statement>Compute <inline-formula content-type="math/tex"><tex-math>a_1 \leftarrow \sum _{i=0}^{md-1} a_0^{q^i} \mod h</tex-math></inline-formula>,</alg:statement>
+          </alg:line>
+          <alg:if>
+            <alg:condition>
+              <alg:line lineno="4">
+                <alg:statement><bold>if</bold> <inline-formula content-type="math/tex"><tex-math>q</tex-math></inline-formula> is an even power <inline-formula content-type="math/tex"><tex-math>q=2^e</tex-math></inline-formula> <bold>then</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:line lineno="5">
+                <alg:statement>Compute <inline-formula content-type="math/tex"><tex-math>a_2 \leftarrow \sum _{i=0}^{e-1} a_1^{2^i}\mod h</tex-math></inline-formula></alg:statement>
+              </alg:line>
+            </alg:block>
+            <alg:else>
+              <alg:line lineno="6">
+                <alg:statement>
+                  <bold>else</bold>
+                </alg:statement>
+              </alg:line>
+              <alg:block>
+                <alg:line lineno="7">
+                  <alg:statement>Compute <inline-formula content-type="math/tex"><tex-math>a_2 \leftarrow a_1^{(q-1)/2}\mod h</tex-math></inline-formula></alg:statement>
+                </alg:line>
+              </alg:block>
+            </alg:else>
+            <alg:line lineno="8">
+              <alg:statement><bold>end</bold> <bold>if</bold></alg:statement>
+            </alg:line>
+          </alg:if>
+          <alg:line lineno="9">
+            <alg:statement>Compute <inline-formula content-type="math/tex"><tex-math>h_0\leftarrow \gcd (a_2,h)</tex-math></inline-formula> and <inline-formula content-type="math/tex"><tex-math>h_1\leftarrow \gcd (a_2-1,h)</tex-math></inline-formula> and <inline-formula content-type="math/tex"><tex-math>h_{-1}\leftarrow h/(h_0h_1)</tex-math></inline-formula>,</alg:statement>
+          </alg:line>
+          <alg:line lineno="10">
+            <alg:statement>Apply recursively to the smallest non-constant polynomial among <inline-formula content-type="math/tex"><tex-math>h_0,h_1,h_{-1}</tex-math></inline-formula>.</alg:statement>
+          </alg:line>
+        </alg:algorithm>
+      </sec>
+      <sec disp-level="2" id="ltxid26" specific-use="subsection">
+        <label>2.6<x>.</x></label>
+        <title>mcom3385 (with endtags=no)<x>.</x></title>
+        <alg:algorithm linenodelimiter=":">
+          <alg:line>
+            <alg:require><bold>Require:</bold> A rational number <inline-formula content-type="math/tex"><tex-math>\alpha =a/b</tex-math></inline-formula>.</alg:require>
+          </alg:line>
+          <alg:line>
+            <alg:ensure><bold>Ensure:</bold> The algorithm tells whether the RCF expansion of <inline-formula content-type="math/tex"><tex-math>\alpha </tex-math></inline-formula> is finite or periodic.</alg:ensure>
+          </alg:line>
+          <alg:line lineno="1">
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>x:=\alpha </tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:line lineno="2">
+            <alg:statement>
+              <inline-formula content-type="math/tex">
+                <tex-math>B_1:=\max \left(\frac{\log b}{\log \ell },2\right)</tex-math>
+              </inline-formula>
+            </alg:statement>
+          </alg:line>
+          <alg:for>
+            <alg:condition>
+              <alg:line lineno="3">
+                <alg:statement><bold>for</bold> <inline-formula content-type="math/tex"><tex-math>i=1</tex-math></inline-formula> to <inline-formula content-type="math/tex"><tex-math>B_1</tex-math></inline-formula> <bold>do</bold></alg:statement>
+              </alg:line>
+            </alg:condition>
+            <alg:block>
+              <alg:if>
+                <alg:condition>
+                  <alg:line lineno="4">
+                    <alg:statement><bold>if</bold> <inline-formula content-type="math/tex"><tex-math>x&lt;0</tex-math></inline-formula> <bold>then</bold></alg:statement>
+                  </alg:line>
+                </alg:condition>
+                <alg:block>
+                  <alg:line lineno="5">
+                    <alg:statement><bold>return</bold> The expansion is periodic.</alg:statement>
+                  </alg:line>
+                </alg:block>
+              </alg:if>
+              <alg:line lineno="6">
+                <alg:statement>
+                  <inline-formula content-type="math/tex">
+                    <tex-math>y:=x-\lfloor x\rfloor _\ell </tex-math>
+                  </inline-formula>
+                </alg:statement>
+              </alg:line>
+              <alg:if>
+                <alg:condition>
+                  <alg:line lineno="7">
+                    <alg:statement><bold>if</bold> <inline-formula content-type="math/tex"><tex-math>y==0</tex-math></inline-formula> <bold>then</bold></alg:statement>
+                  </alg:line>
+                </alg:condition>
+                <alg:block>
+                  <alg:line lineno="8">
+                    <alg:statement><bold>return</bold> The expansion is finite.</alg:statement>
+                  </alg:line>
+                </alg:block>
+              </alg:if>
+              <alg:line lineno="9">
+                <alg:statement>
+                  <inline-formula content-type="math/tex">
+                    <tex-math>x:=1/y</tex-math>
+                  </inline-formula>
+                </alg:statement>
+              </alg:line>
+            </alg:block>
+          </alg:for>
+        </alg:algorithm>
+      </sec>
+    </sec>
+  </body>
+</article>

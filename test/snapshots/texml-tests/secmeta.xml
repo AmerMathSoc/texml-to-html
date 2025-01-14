@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//AMS TEXML//DTD MODIFIED JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3d2 20201130//EN" "texml-jats-1-3d2.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink">
+  <p>hello, world</p>
+  <sec disp-level="1" id="ltxid1" specific-use="section">
+    <label>1<x>.</x></label>
+    <title>This is a normal section</title>
+  </sec>
+  <sec disp-level="1" id="ltxid2" specific-use="section">
+    <label>2<x>.</x></label>
+    <title>This is a normal section without metadata but with fancy markup.</title>
+    <p>Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here.</p>
+  </sec>
+  <sec disp-level="1" id="ltxid3" specific-use="section">
+    <sec-meta>
+      <contrib-group content-type="authors">
+        <contrib contrib-type="author">
+          <string-name>David M. Jones</string-name>
+          <bio>David was born and isn’t thrilled that nobody asked him his opinion first.</bio>
+        </contrib>
+      </contrib-group>
+    </sec-meta>
+    <title>This is an unnumbered section with metadata</title>
+    <p>Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here.</p>
+  </sec>
+  <sec disp-level="1" id="ltxid4" specific-use="section">
+    <sec-meta>
+      <contrib-group content-type="authors">
+        <contrib contrib-type="author">
+          <string-name>David M. Jones</string-name>
+          <bio>David was born and isn’t thrilled that nobody asked him his opinion first.</bio>
+        </contrib>
+      </contrib-group>
+    </sec-meta>
+    <label>3<x>.</x></label>
+    <title>This is a section with metadata</title>
+    <p>Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here. Section content goes here.</p>
+  </sec>
+</article>

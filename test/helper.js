@@ -21,6 +21,10 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const article = xml2html(fs.readFileSync(path.resolve(__dirname, 'article.xml')).toString(), { 'test.svg': 'custom dictionary alt'}).window.document;
+fs.writeFileSync(path.join(__dirname, 'snapshots', 'article.html'), article.toString())
 export const articleAlttitle = xml2html(fs.readFileSync(path.resolve(__dirname, 'article--alttitle.xml')).toString()).window.document;
+fs.writeFileSync(path.join(__dirname, 'snapshots', 'article--alttitle.html'), articleAlttitle.toString())
 export const articleNometa = xml2html(fs.readFileSync(path.resolve(__dirname, 'article--nometa.xml')).toString()).window.document;
+fs.writeFileSync(path.join(__dirname, 'snapshots', 'article--nometa.html'), articleNometa.toString())
 export const book = xml2html(fs.readFileSync(path.resolve(__dirname, 'book.xml')).toString()).window.document;
+fs.writeFileSync(path.join(__dirname, 'snapshots', 'book.html'), book.toString())
