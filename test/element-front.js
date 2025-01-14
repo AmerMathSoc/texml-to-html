@@ -25,7 +25,7 @@ const jsonSnapshot2 = require('./article-alttitle-meta-snapshot.json');
 const jsonSnapshot3 = require('./article-nometa-meta-snapshot.json');
 
 tape('front.js', async function (t) {
-  t.plan(4);
+  t.plan(5);
 
   const document = article;
   const frontmatter = document.querySelector('section[data-ams-doc="frontmatter"]');
@@ -36,6 +36,7 @@ tape('front.js', async function (t) {
 
   t.deepEqual(jsonData, jsonSnapshot, 'article.xml JSON metadata');
 
+  t.equal(frontmatter.querySelector('h1').innerHTML, 'article-title', 'Article title as h1 in HTML')
 
   const document2 = articleAlttitle;
   t.deepEqual(JSON.parse(document2.querySelector('script[type="application/json"]').textContent), jsonSnapshot2, 'article--alttitle.xml JSON metadata');

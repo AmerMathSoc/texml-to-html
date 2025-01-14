@@ -160,16 +160,28 @@
             </named-book-part-body>
         </preface>
         <front-matter-part id="fmlabeltitle" disp-level="1">
-            <label>Label</label>
-            <title>Title</title>
+            <book-part-meta>
+                <title-group>
+                    <label>Label</label>
+                    <title>Title</title>
+                </title-group>
+            </book-part-meta>
         </front-matter-part>
         <front-matter-part id="fmlabel" disp-level="1">
-            <label>Label</label>
-            <subtitle>Subtitle</subtitle>
+            <book-part-meta>
+                <title-group>
+                    <label>Label</label>
+                    <subtitle>Subtitle</subtitle>
+                </title-group>
+            </book-part-meta>
         </front-matter-part>
         <front-matter-part id="fmtitle" disp-level="1">
-            <title>Title</title>
-            <subtitle>Subtitle</subtitle>
+            <book-part-meta>
+                <title-group>
+                    <title>Title</title>
+                    <subtitle>Subtitle</subtitle>
+                </title-group>
+            </book-part-meta>
         </front-matter-part>
     </front-matter>
     <book-body>
@@ -295,7 +307,7 @@
             <title>title</title>
         </ref-list>
         <ack id="ack1" disp-level="1">
-            <title/>
+            <title>Title</title>
         </ack>
     </book-back>
 </book>
