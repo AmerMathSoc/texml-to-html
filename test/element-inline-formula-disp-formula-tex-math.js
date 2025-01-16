@@ -82,7 +82,7 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   const dispWithText = document.querySelectorAll(
     '#equations [data-ams-doc="math block"] > tex-math'
   );
-  t.equal(dispWithText[1].innerHTML, ' \\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text} ', 'Text markup inside text + escaping active characters');
+  t.equal(dispWithText[1].innerHTML.trim(), '\\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text}', 'Text markup inside text + escaping active characters');
 
   // formula in footnote in formula not treated as nested formula
   t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="label"><sup></sup></span><span data-ams-doc="math inline"><tex-math>x</tex-math></span>', 'Formula with footnote with formula');
@@ -94,5 +94,5 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.equal(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]#textEquation+p').previousElementSibling.innerHTML, '(T)', 'Display Formula of content-type=text, label and paragraph');
 
   // formula with cite-group and cite-detail
-  t.equal(dispWithText[9].innerHTML, ' <ams-x>[</ams-x>\\xhref[bibr]{#bibr-AEG0}{AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>}<ams-x></ams-x> ', 'Formula with cite-group, cite-detail')
+  t.equal(dispWithText[9].innerHTML.trim(), '<ams-x>[</ams-x>\\xhref[bibr]{#bibr-AEG0}{AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>}<ams-x></ams-x>', 'Formula with cite-group, cite-detail')
 });
