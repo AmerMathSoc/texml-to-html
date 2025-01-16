@@ -420,6 +420,10 @@
                   <tag parens="yes">T</tag>
                 </target>
             </disp-formula>
+            <disp-formula content-type="text">
+                <p>Some lengthy complex text fragment with unlabeled tag</p>
+                <tag parens="yes">F</tag>
+            </disp-formula>
             <!-- Formula with cite-group and cite-detail -->
             <disp-formula>
             <tex-math>

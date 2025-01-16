@@ -18,7 +18,7 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(20);
+  t.plan(22);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
@@ -91,7 +91,10 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
 
   // formula of type text (aka "thingy" environment)
   t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
-  t.equal(document.querySelector('div[data-ams-doc="math text"] > span[data-ams-doc="label"]#textEquation+p').previousElementSibling.innerHTML, '(T)', 'Display Formula of content-type=text, label and paragraph');
+  t.equal(document.querySelector('div[data-ams-doc="math text"] > span#textEquation').innerHTML.trim(), '<span data-ams-doc="label">(T)</span>', 'Display Formula of content-type=text, label contents and placement before paragraph');
+  const textEquations = document.querySelectorAll('div[data-ams-doc="math text"]');
+  t.equal(textEquations[0].firstElementChild.getAttribute('id'), 'textEquation', 'Display Formula of content-type=text: first child ID (from target)');
+  t.equal(textEquations[1].firstElementChild.getAttribute('data-ams-doc'), 'label', 'Display Formula of content-type=text: first child from tag (no target)');
 
   // formula with cite-group and cite-detail
   t.equal(dispWithText[9].innerHTML.trim(), '<ams-x>[</ams-x>\\xhref[bibr]{#bibr-AEG0}{AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>}<ams-x></ams-x>', 'Formula with cite-group, cite-detail')
