@@ -18,12 +18,14 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('inline-formula, disp-formula', async function (t) {
-  t.plan(11);
+  t.plan(13);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
   );
   t.ok(inlineformula, 'Inline formula');
+  t.ok(inlineformula.innerHTML.startsWith(`<tex-math`), 'Inline formula: no leading whitespace before tex-math');
+  t.ok(inlineformula.innerHTML.endsWith(`</tex-math>`), 'Inline formula: no trailing whitespace after tex-math');
   const footnote = document.querySelector('#fnid');
   t.ok(
     footnote.getAttribute('role'),
