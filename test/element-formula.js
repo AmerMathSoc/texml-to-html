@@ -17,26 +17,13 @@
 import { article } from './helper.js';
 import tape from 'tape';
 
-tape('inline-formula, disp-formula, tex-math', async function (t) {
-  t.plan(22);
+tape('inline-formula, disp-formula', async function (t) {
+  t.plan(11);
   const document = article;
   const inlineformula = document.querySelector(
     '#equations [data-ams-doc="math inline"]'
   );
   t.ok(inlineformula, 'Inline formula');
-  const tex = inlineformula.innerHTML;
-  t.ok(
-    tex.includes('\\text{Te\\#t }'),
-    'tex-math/text (with unicode spacing characters)'
-  );
-  t.ok(
-    tex.includes('\\xhref[fn]{#fnid1}{{}^{1}}'),
-    'tex-math/xref@ref-type="fn"'
-  );
-  t.ok(
-    tex.includes('\\xhref[other]{#otherid1}{}'),
-    'tex-math/xref@ref-type="other"'
-  );
   const footnote = document.querySelector('#fnid');
   t.ok(
     footnote.getAttribute('role'),
@@ -44,7 +31,6 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     'Inline-formula Footnote'
   );
   t.notOk(footnote.closest('p, span'), 'footnote moved out of span and paragraph');
-  t.ok(footnote.querySelector('a'), 'xref in footnote within tex-math not rewritten to TeX macro')
 
   const displayformula = document.querySelector(
     '#equations [data-ams-doc="math block"]'
@@ -61,34 +47,10 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
     'disp-formula gets attributes from tex-math mapped'
   );
   t.ok(
-    displayformula.innerHTML.includes('\\xhref[fn]{#fnid2}{{}^{2}}'),
-    'tex-math/xref@ref-type="fn"'
-  );
-  t.ok(
     displayformula.nextElementSibling.getAttribute('role'),
     'doc-footnote',
     'Display-formula Footnote'
   );
-  const disptex = displayformula.lastElementChild.innerHTML;
-  // NOTE JS implementation removed extra space between the two strings
-  t.equal(
-    disptex, '\\xhref[fn]{#fnid2}{{}^{2}}\\text{Start\\xhref[other]{#otherid2}{\\$}End}',
-    'tex-math/text/xref'
-  );
-  const formulaNestedTeX = document.querySelectorAll('#equations [data-ams-doc="math inline"] > tex-math')[1];
-  t.equal(formulaNestedTeX.innerHTML, '\\text{Te\\$t$x^2$}');
-
-  // text-mode text styling
-  const dispWithText = document.querySelectorAll(
-    '#equations [data-ams-doc="math block"] > tex-math'
-  );
-  t.equal(dispWithText[1].innerHTML.trim(), '\\text{\\textrm{roman\\#} $\\mathsc{sc\\$}$ \\textit{italic\\_} \\textbf{bold\\$} \\textsf{sans-serif\\&amp;} \\texttt{monospace} \\href{https://ext~}{ext-link\\unicode{x7E}} inside text}', 'Text markup inside text + escaping active characters');
-
-  // formula in footnote in formula not treated as nested formula
-  t.equal(document.querySelector('#fnid5').innerHTML, '<span data-ams-doc="label"><sup></sup></span><span data-ams-doc="math inline"><tex-math>x</tex-math></span>', 'Formula with footnote with formula');
-  // formula in formula at implicit text mode
-  t.equal(dispWithText[5].innerHTML, '\\tag{$x$}', 'Formula with with formula in implicit text mode');
-
   // formula of type text (aka "thingy" environment)
   t.ok(document.querySelector('div[data-ams-doc="math text"]'), 'Display Formula of content-type=text');
   t.equal(document.querySelector('div[data-ams-doc="math text"] > span#textEquation').innerHTML.trim(), '<span data-ams-doc="label">(T)</span>', 'Display Formula of content-type=text, label contents and placement before paragraph');
@@ -96,6 +58,4 @@ tape('inline-formula, disp-formula, tex-math', async function (t) {
   t.equal(textEquations[0].firstElementChild.getAttribute('id'), 'textEquation', 'Display Formula of content-type=text: first child ID (from target)');
   t.equal(textEquations[1].firstElementChild.getAttribute('data-ams-doc'), 'label', 'Display Formula of content-type=text: first child from tag (no target)');
 
-  // formula with cite-group and cite-detail
-  t.equal(dispWithText[9].innerHTML.trim(), '<ams-x>[</ams-x>\\xhref[bibr]{#bibr-AEG0}{AEG08<cite-detail><ams-x>, </ams-x>Section 5</cite-detail>}<ams-x></ams-x>', 'Formula with cite-group, cite-detail')
 });

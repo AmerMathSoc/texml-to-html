@@ -20,10 +20,14 @@ import tape from 'tape';
 
 
 tape('Template: tag', async function (t) {
-  t.plan(4);
+  t.plan(5);
   const document = article;
 
   const equationsBlock = [...document.querySelectorAll('[data-ams-doc="math block"] > tex-math')];
+
+  // formula in formula at implicit text mode
+  t.equal(equationsBlock[5].innerHTML, '\\tag{$x$}', 'Formula within formula in implicit text mode');
+
 
   t.ok(equationsBlock.find(node => node.innerHTML === '\\cssId{targetMath}{_\\tag{$x$}}'), 'Tag with tex-math');
 
