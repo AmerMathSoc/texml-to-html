@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('sec, app, front-matter-part, dedication, title, label', async function (t) {
-  t.plan(44);
+  t.plan(45);
   const document = article;
 
   t.ok(document.querySelector('#ack1[role="doc-acknowledgments"][data-ams-doc-level="1"]'), 'ack to role doc-acknowledgments with data-ams-doc-level');
@@ -77,6 +77,7 @@ tape('sec, app, front-matter-part, dedication, title, label', async function (t)
   t.equal(bookAppGroup.getAttribute('data-ams-doc'), 'app-group', 'book-app-group data-ams-doc');
   t.equal(bookAppGroup.getAttribute('data-ams-doc-level'), '0', 'book-app-group data-ams-level');
   t.equal(document2.querySelector('#applabeltitle').getAttribute('role'), 'doc-appendix', 'book-app role');
+  t.notEqual(document2.querySelector('#appSection').getAttribute('role'), 'doc-appendix', 'nested book-app does not get role=doc-appendix');
 
   const document3 = articleAlttitle;
   t.ok(document3.querySelector('section[data-ams-doc-level="1"]'), 'Article with part gets increased doc-levels');

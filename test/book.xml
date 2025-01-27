@@ -302,6 +302,14 @@
             <book-app id="apptitle" disp-level="1"  specific-use="chapter">
                 <title>Title</title>
             </book-app>
+            <book-app id="appWithSection" disp-level="1"  specific-use="chapter">
+                <label>Label<x>.</x></label>
+                <title>Title</title>
+                <book-app id="appSection" disp-level="1"  specific-use="section">
+                    <label>Label<x>.</x></label>
+                    <title>Title</title>
+                </book-app>
+            </book-app>
         </book-app-group>
         <ref-list id="reflist">
             <title>title</title>
