@@ -176,16 +176,12 @@
             <boxed-text content-type="tcolorbox" position="anchor" border-color="black" background-color="lightgray" border-style="solid" border-width="medium">
                 <p>A boxed paragraph from tcolorbox input</p>
             </boxed-text>
-            <p>
-                <disp-quote specific-use="use">
-                    <attrib/>
-                </disp-quote>
-            </p>
-            <p>
-                <disp-quote content-type="epigraph">
-                    <attrib/>
-                </disp-quote>
-            </p>
+            <disp-quote specific-use="use">
+                <attrib/>
+            </disp-quote>
+            <disp-quote content-type="epigraph">
+                <attrib/>
+            </disp-quote>
             <fig id="figattrib">
                 <caption>Caption</caption>
                 <attrib>Attrib</attrib>
