@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.1.0...v18.2.0) (2025-02-05)
+
+
+### Features
+
+* **attrib.js:** add data-ams-doc ([70fa67c](https://github.com/AmerMathSoc/texml-to-html/commit/70fa67ca59b92d1ff18900d430b107ceef7f2d9c)), closes [#462](https://github.com/AmerMathSoc/texml-to-html/issues/462)
+* replace applyHacks() with fixContentModel() ([0cb4ae7](https://github.com/AmerMathSoc/texml-to-html/commit/0cb4ae7fbcdc4006b51d43b8cd0398dd4cbb2b30)), closes [#473](https://github.com/AmerMathSoc/texml-to-html/issues/473)
+* revise tag and target in text equations ([d7244f6](https://github.com/AmerMathSoc/texml-to-html/commit/d7244f6a8212336754a112657b9e14bb9e0e20a9)), closes [#429](https://github.com/AmerMathSoc/texml-to-html/issues/429)
+
+
+### Bug Fixes
+
+* **app.js:** remove unused ternary path ([f459df1](https://github.com/AmerMathSoc/texml-to-html/commit/f459df12b6f4582138e001cb8c7ae0ddf5125ecd)), closes [#470](https://github.com/AmerMathSoc/texml-to-html/issues/470)
+* **disp-quote.js:** remove outdated workaround ([390482a](https://github.com/AmerMathSoc/texml-to-html/commit/390482a82bd84762e3b8d1ec5191b38c50e29d02)), closes [#472](https://github.com/AmerMathSoc/texml-to-html/issues/472)
+* **disp-quote:** footer is last child ([ee46ad7](https://github.com/AmerMathSoc/texml-to-html/commit/ee46ad7a326ac029ca03adbfe63da1d41bbc2798)), closes [#457](https://github.com/AmerMathSoc/texml-to-html/issues/457) [#463](https://github.com/AmerMathSoc/texml-to-html/issues/463)
+* **formula.js:** remove whitespace clean-up ([6f673f4](https://github.com/AmerMathSoc/texml-to-html/commit/6f673f49e146e08b4647a12122f30ddac88f9e1b)), closes [#424](https://github.com/AmerMathSoc/texml-to-html/issues/424)
+* **formula.js:** trim inner whitespace ([2ae7130](https://github.com/AmerMathSoc/texml-to-html/commit/2ae7130ef1d1d27f4e26a46686c7ec211936d0ec)), closes [#471](https://github.com/AmerMathSoc/texml-to-html/issues/471)
+* remove book-title.js ([57610a8](https://github.com/AmerMathSoc/texml-to-html/commit/57610a8a86ba8e3409d78fcc0dfbe813f9d68b4d)), closes [#254](https://github.com/AmerMathSoc/texml-to-html/issues/254) [#448](https://github.com/AmerMathSoc/texml-to-html/issues/448)
+* remove meta-name.js and meta-value.js ([2bbc8e0](https://github.com/AmerMathSoc/texml-to-html/commit/2bbc8e05b75b72d3f60968d9c891050b16935cde)), closes [#254](https://github.com/AmerMathSoc/texml-to-html/issues/254) [#448](https://github.com/AmerMathSoc/texml-to-html/issues/448)
+* remove subject-group.js and subject.js ([9fefa46](https://github.com/AmerMathSoc/texml-to-html/commit/9fefa4616d0ebe2068e1dd0d1db56a83fae3ed8b)), closes [#254](https://github.com/AmerMathSoc/texml-to-html/issues/254) [#448](https://github.com/AmerMathSoc/texml-to-html/issues/448)
+* revise label/title/etc handling ([804904a](https://github.com/AmerMathSoc/texml-to-html/commit/804904a4bf21878e302bc328a4bbdbee0bbe4f90)), closes [#467](https://github.com/AmerMathSoc/texml-to-html/issues/467) [#452](https://github.com/AmerMathSoc/texml-to-html/issues/452)
+* **sec.js:** workaround nested book-app ([1ec8680](https://github.com/AmerMathSoc/texml-to-html/commit/1ec86805829838288453e8a2ff4140c11a79bc02)), closes [#460](https://github.com/AmerMathSoc/texml-to-html/issues/460)
+
 ## [18.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.0.0...v18.1.0) (2024-09-09)
 
 
