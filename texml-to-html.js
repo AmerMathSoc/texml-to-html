@@ -2,7 +2,7 @@ import { xmlDom, htmlDom } from './lib/doms.js';
 import { setHead } from './lib/head.js';
 import { Transformer } from './lib/transformer.js';
 
-import { applyHacks } from './lib/hacks.js'; 
+import { fixContentModel } from './lib/postProcessing.js'; 
 
 /**
  * 
@@ -25,7 +25,7 @@ const xml2html = (xmlstring, imageAltDictionary = {}) => {
   const transformer = new Transformer(htmldoc, imageAltDictionary, isBook);
   transformer.recurseTheDom(htmldoc.body, root);
 
-  applyHacks(htmldoc);
+  fixContentModel(htmldoc);
   return html;
 };
 

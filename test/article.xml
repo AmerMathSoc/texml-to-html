@@ -196,8 +196,6 @@
             <ext-link xlink:href="https://nested2"><xref ref-type="nested" rid="rid6"></xref></ext-link>
             <fn><label>Label</label></fn>
             <p id="pwithx">Is <x>not</x> ignored.</p>
-            <!-- element-p-p.js -->
-            <p id="pid1"><p/></p>
             <def-list id="pid2">
                 <def-item id="term1">
                     <term>•</term>
@@ -528,28 +526,36 @@
         <sec disp-level="1">
         <p>Email <email>email</email> in content, not metadata.</p>
         </sec>
-        <sec disp-level="1" id="hacks">
-            <!-- DLs will be moved after p (but text node remains) -->
-            <p>
-                text node
-                <def-list>
-                    <def-item>
-                        <term>1</term>
-                        <def><p/></def>
-                    </def-item>
-                </def-list>
-                <def-list>
-                    <def-item>
-                        <term>2</term>
-                        <def><p/></def>
-                    </def-item>
-                </def-list>
-            </p>
+        <sec disp-level="1" id="contentModel">
+            <sec  id="contentModel-1">
+                <!-- DLs will be moved after p (but text node remains) -->
+                <p>
+                    text node
+                    <def-list>
+                        <def-item>
+                            <term>1</term>
+                            <def><p/></def>
+                        </def-item>
+                    </def-list>
+                    <def-list>
+                        <def-item>
+                            <term>2</term>
+                            <def><p/></def>
+                        </def-item>
+                    </def-list>
+                </p>
+            </sec>
+            <sec id="contentModel-2">
             <!-- paragraph will be trimmed after hack -->
-            <p> 
-                <def-list>
-                </def-list>
-            </p>
+                <p> 
+                    <def-list>
+                    </def-list>
+                </p>
+            </sec>
+            <sec id="contentModel-3">
+                <!-- paragraph with nested paragraph will be split up into 3 paragraphs -->
+                <p>1<p>2</p>3</p>
+            </sec>
         </sec>
         <sec id="xrefgroup">
           <p>See groups <xref-group first="xrefgroup1" last="xrefgroup4" middle="xrefgroup2 xrefgroup3" ref-subtype="group" ref-type="grp"><x>(</x><xref ref-subtype="group" ref-type="grp" rid="xrefgroup1" specific-use="ref">2</xref><x>)</x>–<xref ref-subtype="group" ref-type="grp" rid="xrefgroup4" specific-use="ref">5</xref></xref-group></p>
