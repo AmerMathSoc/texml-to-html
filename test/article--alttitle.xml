@@ -84,7 +84,7 @@
         </history>
         <article-id pub-id-type="doi">doi</article-id>
         <article-id pub-id-type="pii">pii</article-id>
-        <abstract/>
+        <abstract xml:lang="fr"/>
       </article-meta>
       <journal-meta>
           <journal-id journal-id-type="publisher">journalId</journal-id>

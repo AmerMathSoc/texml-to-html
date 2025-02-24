@@ -14,14 +14,17 @@
  *  limitations under the License.
  */
 
-import { article } from './helper.js';
+import { article, articleAlttitle } from './helper.js';
 import tape from 'tape';
 
 
 tape('abstract, abstract/title', async function(t) {
-  t.plan(2);
+  t.plan(4);
   const document = article;
   const abstract = document.querySelector('section[data-ams-doc-level="1"][role="doc-abstract"]');
   t.ok(abstract, 'Abstract as Section with data-ams-doc-level 1, role doc-abstract');
   t.ok(abstract.querySelector('h2'), 'Abstract title as h2');
+  t.notOk(abstract.hasAttribute('lang'), 'abstract without lang')
+  const document2 = articleAlttitle;
+  t.equal(document2.querySelector('[role="doc-abstract"]').getAttribute('lang'), 'fr', 'Abstract with lang')
  });
