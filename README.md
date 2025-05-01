@@ -308,6 +308,7 @@ For books:
   - `<book-id>` etc
   - `<book-title-group>` etc
   - `<book-volume-number>`
+  - `<book-issue-number>` (MEMO only)
   - `<publisher>`
   - `<contrib-group>` etc (cf. "contributors" below)
   - `<self-uri>`

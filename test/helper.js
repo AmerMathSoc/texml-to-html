@@ -28,3 +28,5 @@ export const articleNometa = xml2html(fs.readFileSync(path.resolve(__dirname, 'a
 fs.writeFileSync(path.join(__dirname, 'snapshots', 'article--nometa.html'), articleNometa.toString())
 export const book = xml2html(fs.readFileSync(path.resolve(__dirname, 'book.xml')).toString()).window.document;
 fs.writeFileSync(path.join(__dirname, 'snapshots', 'book.html'), book.toString())
+export const bookMetadata = xml2html(fs.readFileSync(path.resolve(__dirname, 'book--metadata.xml')).toString()).window.document;
+fs.writeFileSync(path.join(__dirname, 'snapshots', 'book--metadata.html'), bookMetadata.toString())

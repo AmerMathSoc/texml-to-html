@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//NLM//DTD BITS Book Interchange DTD v1.0 20131225//EN" "BITS-book1.dtd">
+<book xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/html">
+    <collection-meta>
+        <title-group>
+            <title>Collection Title</title>
+        </title-group>
+        <volume-in-collection>
+            <volume-number>volume</volume-number>
+        </volume-in-collection>
+        <issn publication-format="print">issn</issn>
+        <publisher>
+            <publisher-name>American Mathematical Society</publisher-name>
+            <publisher-loc>Providence, Rhode Island</publisher-loc>
+        </publisher>
+        <custom-meta-group>
+            <custom-meta>
+                <meta-name>subseries</meta-name>
+                <meta-value>subseriesName</meta-value>
+            </custom-meta>
+        </custom-meta-group>
+    </collection-meta>
+    <book-meta>
+        <book-id assigning-authority="AMS" book-id-type="publisher">series</book-id>
+        <book-id assigning-authority="AMS" book-id-type="volume_id">volume</book-id>
+        <book-id assigning-authority="crossref" book-id-type="doi">doi</book-id>
+        <book-id assigning-authority="Library of Congress" book-id-type="lccn">0123456789</book-id>
+        <book-title-group>
+            <book-title>title</book-title>
+            <subtitle>subtitle</subtitle>
+        </book-title-group>
+        <book-volume-number>volume</book-volume-number>
+        <book-issue-number>issue</book-issue-number>
+        <publisher>
+            <publisher-name>name1</publisher-name>
+            <publisher-loc>loc</publisher-loc>
+        </publisher>
+        <publisher>
+            <publisher-name>name2</publisher-name>
+        </publisher>
+        <contrib-group content-type="authors">
+            <contrib contrib-type="author">
+                <contrib-id contrib-id-type="orcid">orcidid</contrib-id>
+                <contrib-id contrib-id-type="mrauth">mrauthid</contrib-id>
+                <name name-style="western">
+                    <surname>Sur</surname>
+                    <given-names>Given</given-names>
+                    <suffix>Jr.</suffix>
+                </name>
+                <xref ref-type="aff" rid="aff1"/>
+                <email>email</email>
+                <uri>uri</uri>
+            </contrib>
+            <aff id="aff1">aff</aff>
+            <role>comment</role>
+        </contrib-group>
+        <contrib-group content-type="contrib-group-type2">
+            <contrib contrib-type="contrib-type2">
+                <name name-style="western">
+                    <surname>Sur</surname>
+                    <given-names>Given</given-names>
+                </name>
+            </contrib>
+        </contrib-group>
+        <contrib-group content-type="contrib-group-type3">
+            <role>comment</role>
+            <contrib contrib-type="contrib-type3">
+                <name name-style="given-only">
+                    <given-names>should be ignored</given-names>
+                </name>
+                <string-name>String Name</string-name>
+            </contrib>
+        </contrib-group>
+        <issn publication-format="print">issn print</issn>
+        <isbn publication-format="electronic">isbn pdf</isbn>
+        <isbn publication-format="google">isbn google pdf</isbn>
+        <isbn publication-format="print">isbn print</isbn>
+        <isbn publication-format="epub">isbn epub</isbn>
+        <permissions>
+            <copyright-statement>Copyright 2020 American Mathematical Society</copyright-statement>
+            <copyright-year>2020</copyright-year>
+            <copyright-holder>American Mathematical Society</copyright-holder>
+        </permissions>
+    </book-meta>
+    <front-matter>
+        <toc id="toc">
+            <title-group>
+            <title>Contents</title>
+            </title-group>
+            <toc-entry specific-use="chapter">
+            <title>Chunk</title>
+            <nav-pointer rid="tocid1"/>
+            </toc-entry>
+        </toc>
+    </front-matter>
+    <book-body>
+        <book-part>
+            <body>
+                <sec disp-level="1" id="chapter2" specific-use="chapter">
+                    <title>Title</title>
+                </sec>
+            </body>
+        </book-part>
+    </book-body>
+</book>

@@ -15,15 +15,16 @@
  */
 
 
-import { book } from './helper.js';
+import { book, bookMetadata } from './helper.js';
 import tape from 'tape';
 
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const jsonSnapshot = require('./book-meta-snapshot.json');
+const jsonSnapshot2 = require('./book--metadata-meta-snapshot.json');
 
 tape('Template: book-meta', async function (t) {
-  t.plan(2);
+  t.plan(3);
 
   const document = book;
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
@@ -32,6 +33,11 @@ tape('Template: book-meta', async function (t) {
   const jsonScript = titlepage.querySelector('script[type="application/json"]');
   const jsonData = JSON.parse(jsonScript.textContent);
 
-  t.deepEqual(jsonData, jsonSnapshot, 'JSON metadata');
+  t.deepEqual(jsonData, jsonSnapshot, 'JSON metadata for book.xml');
 
+  const document2 = bookMetadata;
+  const jsonScript2 = document2.querySelector('script[type="application/json"]');
+  const jsonData2 = JSON.parse(jsonScript2.textContent);
+
+  t.deepEqual(jsonData2, jsonSnapshot2, 'JSON metadata book-metadata.xml');
 });
