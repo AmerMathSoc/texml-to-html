@@ -70,6 +70,11 @@
                 <string-name>String Name</string-name>
             </contrib>
         </contrib-group>
+        <pub-date iso-8601-date="2025-04-25">
+            <day>25</day>
+            <month>4</month>
+            <year>2025</year>
+        </pub-date>
         <issn publication-format="print">issn print</issn>
         <isbn publication-format="electronic">isbn pdf</isbn>
         <isbn publication-format="google">isbn google pdf</isbn>

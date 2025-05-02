@@ -74,6 +74,9 @@
     "permissions": {
         "copyrightStatement": "Copyright 2020 American Mathematical Society"
     },
+    "history": {
+        "published": "2025-04-25"
+    },
     "collection": {
         "title": "Collection Title",
         "subseries": "subseriesName"

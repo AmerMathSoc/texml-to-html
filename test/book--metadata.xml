@@ -71,6 +71,21 @@
                 <string-name>String Name</string-name>
             </contrib>
         </contrib-group>
+        <history>
+            <date date-type="issue-date" iso-8601-date="2025-01-01">
+                <day>1</day>
+                <month>1</month>
+                <year>2025</year>
+            </date>
+            <date date-type="xml-last-modified" iso-8601-date="2025-04-25T03:14:18Z">
+                <string-date>2025-04-25T03:14:18Z</string-date>
+            </date>
+        </history>
+        <pub-date iso-8601-date="2025-01-14">
+            <day>14</day>
+            <month>1</month>
+            <year>2025</year>
+        </pub-date>
         <issn publication-format="print">issn print</issn>
         <isbn publication-format="electronic">isbn pdf</isbn>
         <isbn publication-format="google">isbn google pdf</isbn>
