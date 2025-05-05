@@ -79,6 +79,7 @@
     },
     "collection": {
         "title": "Collection Title",
-        "subseries": "subseriesName"
+        "subseries": "subseriesName",
+        "contributors":{}
     }
 }

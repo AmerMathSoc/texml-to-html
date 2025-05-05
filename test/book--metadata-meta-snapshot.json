@@ -75,13 +75,23 @@
     "permissions": {
         "copyrightStatement": "Copyright 2020 American Mathematical Society"
     },
-    "history": { 
+    "history": {
         "published": "2025-01-14",
-        "rev-recd": [], 
+        "rev-recd": [],
         "issue": "2025-01-01"
     },
     "collection": {
         "title": "Collection Title",
-        "subseries": "subseriesName"
+        "subseries": "subseriesName",
+        "contributors": {
+            "editors": [
+                {
+                    "name": "An Editor",
+                    "bio": "",
+                    "affiliations": [],
+                    "emails": []
+                }
+            ]
+        }
     }
 }

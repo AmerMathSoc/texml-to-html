@@ -19,6 +19,11 @@
                 <meta-value>subseriesName</meta-value>
             </custom-meta>
         </custom-meta-group>
+        <contrib-group content-type="editors">
+            <contrib contrib-type="editor">
+                <string-name>An Editor</string-name>
+            </contrib>
+        </contrib-group>
     </collection-meta>
     <book-meta>
         <book-id assigning-authority="AMS" book-id-type="publisher">series</book-id>
