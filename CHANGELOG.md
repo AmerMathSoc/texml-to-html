@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.5.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.4.0...v18.5.0) (2025-05-19)
+
+
+### Features
+
+* **book-meta-json.js:** support issue note ([52bb0be](https://github.com/AmerMathSoc/texml-to-html/commit/52bb0be03ce504dca93623f648e5995398ade119)), closes [#480](https://github.com/AmerMathSoc/texml-to-html/issues/480)
+* **book-meta:** support abstract, keywords, MSCs ([1aee280](https://github.com/AmerMathSoc/texml-to-html/commit/1aee28047bc8f69c0c5067fc088e11272be24993)), closes [#479](https://github.com/AmerMathSoc/texml-to-html/issues/479)
+
 ## [18.4.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.3.0...v18.4.0) (2025-05-05)
 
 
