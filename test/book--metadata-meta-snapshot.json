@@ -28,6 +28,11 @@
         "subtitle": "subtitle",
         "alttitle": "title"
     },
+    "issue": {
+        "number": "issue",
+        "note": "issue note",
+        "date": "2025-01-01"
+    },
     "publishers": [
         {
             "name": "name1",

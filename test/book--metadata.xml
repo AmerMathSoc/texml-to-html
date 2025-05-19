@@ -36,6 +36,7 @@
         </book-title-group>
         <book-volume-number>volume</book-volume-number>
         <book-issue-number>issue</book-issue-number>
+        <book-issue-note>issue note</book-issue-note>
         <publisher>
             <publisher-name>name1</publisher-name>
             <publisher-loc>loc</publisher-loc>
