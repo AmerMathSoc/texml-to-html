@@ -36,6 +36,6 @@
     "tape": "5.7.2"
   },
   "dependencies": {
-    "linkedom": "0.16.4"
+    "linkedom": "0.18.10"
   }
 }
