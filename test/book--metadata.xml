@@ -101,6 +101,24 @@
             <copyright-year>2020</copyright-year>
             <copyright-holder>American Mathematical Society</copyright-holder>
         </permissions>
+        <self-uri content-type="abstract" xlink:href="https://www.ams.org/memo/1537/">https://www.ams.org/memo/1537/</self-uri>
+        <self-uri content-type="pdf" xlink:href="https://www.ams.org/memo/1537/memo1537.pdf">https://www.ams.org/memo/1537/memo1537.pdf</self-uri>
+        <abstract xml:lang="en">
+        <title>Abstract<x>.</x></title>
+        <p>Book abstract</p>
+        </abstract>
+        <kwd-group kwd-group-type="author">
+        <kwd>author keyword</kwd>
+        </kwd-group>
+        <kwd-group vocab="MSC 2020" vocab-identifier="https://mathscinet.ams.org/msc/msc2020.html">
+        <compound-kwd content-type="primary">
+            <compound-kwd-part content-type="code">11A63</compound-kwd-part>
+            <compound-kwd-part content-type="text">Radix representation; digital problems</compound-kwd-part>
+        </compound-kwd>
+        </kwd-group>
+        <funding-group>
+        <funding-statement>The authors were supported.</funding-statement>
+        </funding-group>
     </book-meta>
     <front-matter>
         <toc id="toc">

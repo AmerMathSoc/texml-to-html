@@ -24,7 +24,7 @@ const jsonSnapshot = require('./book-meta-snapshot.json');
 const jsonSnapshot2 = require('./book--metadata-meta-snapshot.json');
 
 tape('Template: book-meta', async function (t) {
-  t.plan(3);
+  t.plan(7);
 
   const document = book;
   const titlepage = document.querySelector('section[data-ams-doc="titlepage"]');
@@ -40,4 +40,10 @@ tape('Template: book-meta', async function (t) {
   const jsonData2 = JSON.parse(jsonScript2.textContent);
 
   t.deepEqual(jsonData2, jsonSnapshot2, 'JSON metadata book-metadata.xml');
+
+  const abstractWrapper = document2.querySelector('[data-ams-doc="abstract"]');
+  t.ok(abstractWrapper, 'book-meta creates wrapper for abstract');
+  t.ok(abstractWrapper.querySelector(':scope > [role="doc-abstract"]'), 'wrapper for abstract contains abstract');
+  t.ok(abstractWrapper.querySelector(':scope > [data-ams-doc="keywords"]'), 'wrapper for abstract contains keywords');
+  t.ok(abstractWrapper.querySelector(':scope > [data-ams-doc="MSC 2020"]'), 'wrapper for abstract contains MSCs');
 });
