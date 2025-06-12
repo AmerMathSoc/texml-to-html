@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.6.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.5.0...v18.6.0) (2025-06-12)
+
+
+### Features
+
+* **graphic.js:** adjust to new alt-text placement ([1468543](https://github.com/AmerMathSoc/texml-to-html/commit/146854336e3ef3cc6a34a6b70cfb522bd6ceceb2)), closes [#477](https://github.com/AmerMathSoc/texml-to-html/issues/477)
+
+
+### Bug Fixes
+
+* **package:** upgrade linkedom@0.18.10 ([06d48ac](https://github.com/AmerMathSoc/texml-to-html/commit/06d48ac562b9627c3b6b2e55647526ca2af58937))
+
 ## [18.5.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.4.0...v18.5.0) (2025-05-19)
 
 
