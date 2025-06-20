@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "c8 npm run test && c8 report --reporter html",
     "release": "commit-and-tag-version",
-    "texmlTests": "rm ./test/snapshots/texml-tests/* && cp ../texml/tests/*.xml ./test/snapshots/texml-tests/.",
+    "texmlTests": "rm ./test/snapshots/texml-tests/* && find ../texml/tests/ -name *.xml -exec cp {} ./test/snapshots/texml-tests/. \\;",
     "pretest": "node ./test/snapshots/updateTexmlSnapshots.js",
     "test": "tape test/*.js"
   },

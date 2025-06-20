@@ -34,36 +34,28 @@
     <section id="ltxid3" data-ams-doc="section" data-ams-doc-level="1"><h2><span data-ams-doc="label">1<ams-x>.</ams-x></span> <span data-ams-doc="title">one</span></h2>
       
       
-      <p>
-        <span data-ams-doc="math block"><span hidden data-ams-doc="tags"><span>EQ1</span></span>
+      <p><span data-ams-doc="math block"><span hidden data-ams-doc="tags"><span>EQ1</span></span>
           <tex-math data-ams-tags="[&quot;EQ1&quot;]">\begin{equation}
  e = mc^2 \cssId{EQ}{\tag{EQ1}}
-\end{equation}</tex-math></span>
-      </p>
+\end{equation}</tex-math></span></p>
       <p><span data-ams-style="monospace">multline</span> is odd in that there can only be one equation tag. If you specify a custom <span data-ams-style="monospace">tag</span>, it can go on any line, but the tag still gets moved to the top (for leqno) or bottom (for reqno) lines.</p>
       <p><span data-ams-style="monospace">texml</span> will move all <span data-ams-style="monospace">tag</span>s to the last line.</p>
-      <p>
-        <span data-ams-doc="math block"><tex-math>\begin{multline}
+      <p><span data-ams-doc="math block"><tex-math>\begin{multline}
  XXX\\
 YYY\\
 ZZZ \tag{a}
-\end{multline}</tex-math></span>
-      </p>
-      <p>
-        <span data-ams-doc="math block"><tex-math>\begin{multline}
+\end{multline}</tex-math></span></p>
+      <p><span data-ams-doc="math block"><tex-math>\begin{multline}
  XXX\\
 YYY\\
 ZZZ \tag{b}
-\end{multline}</tex-math></span>
-      </p>
-      <p>
-        <span data-ams-doc="math block"><span hidden data-ams-doc="tags"><span>c</span></span>
+\end{multline}</tex-math></span></p>
+      <p><span data-ams-doc="math block"><span hidden data-ams-doc="tags"><span>c</span></span>
           <tex-math data-ams-tags="[&quot;c&quot;]">\begin{multline}
  XXX\\
 YYY\\
 ZZZ \cssId{YYY}{\tag{c}}
-\end{multline}</tex-math></span>
-      </p>
+\end{multline}</tex-math></span></p>
       <p>EQ <span data-ams-refrange="null" data-ams-ref="null" data-ams-doc="refgroup"><ams-x>(</ams-x><a data-ams-ref="disp-formula" href="#EQ">EQ1</a><ams-x>)</ams-x></span></p>
       <p>YYY <span data-ams-refrange="null" data-ams-ref="null" data-ams-doc="refgroup"><ams-x>(</ams-x><a data-ams-ref="disp-formula" href="#YYY">c</a><ams-x>)</ams-x></span></p>
     </section>

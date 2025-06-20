@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.1d1 20130915//EN" "JATS-archivearticle1-mathml3.dtd">
+<article xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <fig id="ltxid1">
+    <label>Table 1</label>
+    <caption>
+      <p>In LaTeX the text inside a bare <monospace>multirow</monospace> is flush-left; at present <monospace>texml</monospace> obeys the column table specifier.</p>
+    </caption> <table class="bcc" id="tblrid1"><tr class="bttsb"><td class="tal pr brtsb bltsb pl">R1</td><td class="w pr tac pl brtsb" rowspan="3">C2, R1-3</td><td class="pl brtsb tal pr">R1</td></tr><tr><td class="pr tal pl bltsb brtsb">R2</td><td class="pr tal pl brtsb">R2</td></tr><tr><td class="pl bltsb brtsb pr tal">R3</td><td class="pl brtsb pr tal">R3</td></tr><tr><td class="brtsb pl bltsb pr tal">C1</td><td class="brtsb pl pr tac bttsb">C2</td><td class="pr tal pl brtsb">C3</td></tr></table></fig>
+  <fig id="ltxid2">
+    <label>Table 2</label> <table class="bcc" id="tblrid2"><tr class="bttsb"><td class="pl bltsb brtsb tal pr">R1</td><td class="pr tac pl brtsb" colspan="3" rowspan="2">C2–4, R1–2</td><td class="pl brtsb tal pr">R1</td><td class="brtsb pl tac pr w" rowspan="3">C6, R1–3</td><td class="pl brtsb tal pr">R1</td></tr><tr><td class="pr tal brtsb pl bltsb">R2</td><td class="brtsb pl tal pr">R2</td><td class="pr tal pl brtsb">R2</td></tr><tr><td class="tal pr brtsb bltsb pl">R3</td><td class="pr bttsb vat w1 brtsb pl">C2</td><td class="pr bttsb vat w1 brtsb pl">C3</td><td class="pl brtsb bttsb pr tac">C4</td><td class="brtsb pl tal pr">R3</td><td class="pl brtsb tal pr">R3</td></tr><tr><td class="brtsb bltsb pl tal pr">C1</td><td class="pl brtsb bttsb tac pr">C2</td><td class="pl brtsb bttsb pr tac">C3</td><td class="tac pr bttsb brtsb pl">C4</td><td class="brtsb pl pr tal">C5</td><td class="bttsb pr tac pl brtsb">C6</td><td class="pr tal pl brtsb">C7</td></tr></table></fig>
+</article>
