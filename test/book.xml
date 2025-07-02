@@ -91,7 +91,7 @@
             <title-group>
             <title>Contents</title>
             </title-group>
-            <toc-entry specific-use="chapter">
+            <toc-entry specific-use="chapter" style="custom">
             <title>Chunk</title>
             <nav-pointer rid="tocid1"/>
             </toc-entry>

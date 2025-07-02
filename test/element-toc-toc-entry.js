@@ -18,7 +18,7 @@ import { book } from './helper.js';
 import tape from 'tape';
 
 tape('Template: (book) toc, toc-entry', async function (t) {
-  t.plan(15);
+  t.plan(16);
   const document = book;
 
   const toc = document.querySelector('nav[role="doc-toc"]#toc');
@@ -38,6 +38,11 @@ tape('Template: (book) toc, toc-entry', async function (t) {
     toc1.getAttribute('data-ams-ref'),
     'chapter',
     'toc-entry and nav-pointer creates link with data-ams-ref'
+  );
+  t.equal(
+    toc1.getAttribute('data-ams-style'),
+    'custom',
+    'toc-entry and nav-pointer creates link with data-ams-style'
   );
   t.equal(
     list.querySelector('li a[href="#tocid2"]').innerHTML,
