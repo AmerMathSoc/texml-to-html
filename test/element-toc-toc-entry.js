@@ -18,7 +18,7 @@ import { book } from './helper.js';
 import tape from 'tape';
 
 tape('Template: (book) toc, toc-entry', async function (t) {
-  t.plan(14);
+  t.plan(15);
   const document = book;
 
   const toc = document.querySelector('nav[role="doc-toc"]#toc');
@@ -28,10 +28,16 @@ tape('Template: (book) toc, toc-entry', async function (t) {
   const list = toc.querySelector('ol');
   t.ok(list, 'toc: ordered list');
   t.equal(list.children.length, 6, 'Nested toc-entries remain nested')
+  const toc1 = list.querySelector('li a[href="#tocid1"]');
   t.equal(
-    list.querySelector('li a[href="#tocid1"][data-ams-ref="chapter"]').innerHTML,
+    toc1.innerHTML,
     '<span data-ams-doc="title">Chunk</span>',
-    'toc-entry and nav-pointer with href and data-ams-ref'
+    'toc-entry and nav-pointer creates link'
+  );
+  t.equal(
+    toc1.getAttribute('data-ams-ref'),
+    'chapter',
+    'toc-entry and nav-pointer creates link with data-ams-ref'
   );
   t.equal(
     list.querySelector('li a[href="#tocid2"]').innerHTML,
