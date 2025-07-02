@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [18.7.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.6.0...v18.7.0) (2025-07-02)
+
+
+### Features
+
+* **toc-entry.js:** preserve style attribute ([1e500e9](https://github.com/AmerMathSoc/texml-to-html/commit/1e500e9d3a1a6ad87878c69759fe0449ba8b033b)), closes [#484](https://github.com/AmerMathSoc/texml-to-html/issues/484)
+
 ## [18.6.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.5.0...v18.6.0) (2025-06-12)
 
 
