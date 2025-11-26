@@ -123,9 +123,9 @@
     </book-meta>
     <front-matter>
         <toc id="toc">
-            <title-group>
+            <toc-title-group>
             <title>Contents</title>
-            </title-group>
+            </toc-title-group>
             <toc-entry specific-use="chapter">
             <title>Chunk</title>
             <nav-pointer rid="tocid1"/>
