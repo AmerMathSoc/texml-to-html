@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [19.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.7.0...v19.0.0) (2025-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Expects new texml TOC markup (toc-title-group).
+
+### Features
+
+* adjust to new TOC markup ([b18f29a](https://github.com/AmerMathSoc/texml-to-html/commit/b18f29a831bd6a1943d8a05faf04f01d20f65167)), closes [#494](https://github.com/AmerMathSoc/texml-to-html/issues/494)
+
 ## [18.7.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.6.0...v18.7.0) (2025-07-02)
 
 
