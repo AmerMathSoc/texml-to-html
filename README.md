@@ -162,7 +162,7 @@ Beyond HTML element and attributes, texml-to-html stores data in custom `data-*`
 
 ##### downstream `data-*` attributes
 
-While the vast majority of data attributes originate in texml-to-html, we have a few cases where downstream tooling introduces custom attributes.
+While most data attributes originate in texml-to-html, we have a few cases where downstream tooling introduces custom attributes.
 We list the attribute names, the related tools and purpose:
 
 - [deprecated] data-eqn-tag-#
