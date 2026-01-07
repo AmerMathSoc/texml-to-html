@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [19.0.1](https://github.com/AmerMathSoc/texml-to-html/compare/v19.0.0...v19.0.1) (2026-01-07)
+
+
+### Bug Fixes
+
+* **email.js:** mailto protocol ([fd4d33b](https://github.com/AmerMathSoc/texml-to-html/commit/fd4d33b86173d9822716f855d07a5d6c360e3d1d)), closes [#496](https://github.com/AmerMathSoc/texml-to-html/issues/496)
+
 ## [19.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v18.7.0...v19.0.0) (2025-11-26)
 
 
