@@ -4,20 +4,15 @@
   <front id="ltxid1">
     <article-meta>
       <title-group>
-        <article-title>framebox</article-title>
+        <article-title>mathscr</article-title>
       </title-group>
     </article-meta>
   </front>
   <body id="ltxid2">
     <sec disp-level="1" id="ltxid3" specific-use="section">
       <p>hello, world</p>
-      <p>
-        <disp-formula content-type="math/tex">
-          <tex-math>\begin{equation*}
- \fbox{<inline-formula content-type="math/tex"><tex-math>p\mid T(\ell )</tex-math></inline-formula>.} 
-\end{equation*}</tex-math>
-        </disp-formula>
-      </p>
+      <p><inline-formula content-type="math/tex"><tex-math>\mathcal{A}</tex-math></inline-formula> <inline-formula content-type="math/tex"><tex-math>\mathscr{A}</tex-math></inline-formula></p>
+      <p><inline-formula content-type="math/tex"><tex-math>\mathcal{a}</tex-math></inline-formula> <inline-formula content-type="math/tex"><tex-math>\mathscr{a}</tex-math></inline-formula></p>
     </sec>
   </body>
 </article>
