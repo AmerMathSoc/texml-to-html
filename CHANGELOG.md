@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v19.0.1...v20.0.0) (2026-01-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* JSON metadata for related articles has changed (#493).
+
+### Features
+
+* revise related-article handling ([3489681](https://github.com/AmerMathSoc/texml-to-html/commit/3489681fd3db9f8941bdfd8a4e4c66d1d0920dba)), closes [#493](https://github.com/AmerMathSoc/texml-to-html/issues/493)
+
 ## [19.0.1](https://github.com/AmerMathSoc/texml-to-html/compare/v19.0.0...v19.0.1) (2026-01-07)
 
 
