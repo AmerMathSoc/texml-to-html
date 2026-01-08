@@ -79,8 +79,9 @@
             <self-uri xlink:href="href" content-type="pdf"/>
             <related-article related-article-type="erratum-forward">
                 <pub-id pub-id-type="pii">S0894-0347-2023-01025-2</pub-id>
-                <ext-link ext-link="https://www.ams.org/jams/2023-36-04/S0894-0347-2023-01025-2/">J. Amer. Math. Soc. 36 (2023), 1305-1308.</ext-link>
+                <ext-link xlink:href="https://www.ams.org/jams/2023-36-04/S0894-0347-2023-01025-2/">J. Amer. Math. Soc. 36 (2023), 1305-1308.</ext-link>
             </related-article>
+            <related-article hreflang="ru-cyrl" related-article-type="original-language" xlink:href="http://mi.mathnet.ru/mmo681" xml:lang="ru-cyrl"><string-name>Х. А. Хачатрян</string-name><x>,</x> <string-name>А. С. Петросян</string-name><x>,</x> <article-title>Однопараметрическое семейство неограниченных положительных решений для одного класса нелинейных трехмерных интегральных уравнений с оператором типа Гаммерштейна–Немыцкого</article-title><x>,</x> <source>Труды Московского математического общества</source> <x>(</x><issn>0134-8663</issn><x>)</x> <volume>84</volume><x>(</x><issue>1</issue><x>)</x> <x>(</x><year>2023</year><x>)</x> <fpage>37</fpage><x>–</x><lpage>53</lpage><x>.</x> URL <ext-link hreflang="ru-cyrl" xlink:href="http://mi.mathnet.ru/mmo681">http://mi.mathnet.ru/mmo681</ext-link></related-article>
             <article-citation/>
             <kwd-group>
                 <kwd>keyword</kwd>
