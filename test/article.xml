@@ -166,7 +166,7 @@
             <sc/>
             <monospace/>
             <underline/>
-            <strike/>
+            <p>pre<strike/>post</p>
             <sans-serif/>
             <disp-quote specific-use="use">
                 <p>Quote</p>

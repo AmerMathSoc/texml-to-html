@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('postProcessing.js', async function (t) {
-    t.plan(4);
+    t.plan(5);
     const document = article;
 
     t.equal(document.querySelector('#contentModel-1').innerHTML.trim(), `<p>
@@ -41,5 +41,6 @@ tape('postProcessing.js', async function (t) {
     t.equal(document.querySelector('#contentModel-3').innerHTML.trim(), `<p>1</p><p>2</p><p>3</p>`, 'Paragraph with text+paragraph+text split into 3 paragraphs (snapshot)');
 
     t.equal(document.querySelector('cite-group').parentNode.tagName, 'P', 'Custom elements remain in paragraph');
-});
 
+    t.equal(document.querySelector('p:has(s)').innerHTML, `pre<s></s>post`, 's element is phrasing content');
+});
