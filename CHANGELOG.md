@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v20.1.0...v20.1.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* **postProcessing.js:** s tag is phrasing content ([f4b2561](https://github.com/AmerMathSoc/texml-to-html/commit/f4b2561f40ff309f8275a374e7fdd61b80f2f83e)), closes [#498](https://github.com/AmerMathSoc/texml-to-html/issues/498)
+
 ## [20.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.0.0...v20.1.0) (2026-01-13)
 
 
