@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.0.0...v20.1.0) (2026-01-13)
+
+
+### Features
+
+* support strike element ([7f804f2](https://github.com/AmerMathSoc/texml-to-html/commit/7f804f2658a94d392308834c376e3ce0e59ba3a5)), closes [#497](https://github.com/AmerMathSoc/texml-to-html/issues/497)
+
 ## [20.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v19.0.1...v20.0.0) (2026-01-08)
 
 
