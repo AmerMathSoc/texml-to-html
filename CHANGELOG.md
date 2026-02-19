@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.1.1...v20.2.0) (2026-02-19)
+
+
+### Features
+
+* **attrib.js:** map attributes ([c8bd479](https://github.com/AmerMathSoc/texml-to-html/commit/c8bd4799faba54f4d79e34476d393484a147285d)), closes [#499](https://github.com/AmerMathSoc/texml-to-html/issues/499)
+
 ## [20.1.1](https://github.com/AmerMathSoc/texml-to-html/compare/v20.1.0...v20.1.1) (2026-01-13)
 
 
