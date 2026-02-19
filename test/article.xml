@@ -255,6 +255,7 @@
         </front-matter-part>
         <front-matter-part id="intro1" disp-level="1">
             <title>Introduction</title>
+            <attrib specific-use="aufm">The Author</attrib>
         </front-matter-part>
         <sec id="ack3" disp-level="1"  specific-use="section">
             <title>Acknowledg</title>

@@ -20,8 +20,8 @@ import tape from 'tape';
 
 
 tape('Template: attrib', async function(t) {
-  t.plan(1);
+  t.plan(2);
   const document = article;
   t.ok(document.querySelector('span[data-ams-doc="attribution"]'), 'attrib: span with data attribute');
+  t.ok(document.querySelector('span[data-ams-doc="attribution"][data-ams-specific-use="aufm"]'), 'attrib: specific-use');
 });
-
