@@ -30,8 +30,8 @@
     </article-meta>
   </front>
   <body>
-    <sec id="sec" disp-level="1" specific-use="part">
-        <sec id="seclabeltitle" disp-level="2"  specific-use="section">
+    <sec id="sec" specific-use="part">
+        <sec id="seclabeltitle" specific-use="section">
             <label>Label</label>
             <title>Title</title>
         </sec>

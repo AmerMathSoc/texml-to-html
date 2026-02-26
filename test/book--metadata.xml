@@ -135,7 +135,7 @@
     <book-body>
         <book-part>
             <body>
-                <sec disp-level="1" id="chapter2" specific-use="chapter">
+                <sec id="chapter2" specific-use="chapter">
                     <title>Title</title>
                 </sec>
             </body>

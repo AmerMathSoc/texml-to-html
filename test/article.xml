@@ -157,7 +157,7 @@
         <notes notes-type="dedication"/>
     </front>
     <body>
-        <sec id="sec" disp-level="1" specific-use="section">
+        <sec id="sec" specific-use="section">
             <styled-content style-type="type"/>
             <italic/>
             <italic toggle="yes"/>
@@ -257,36 +257,36 @@
             <title>Introduction</title>
             <attrib specific-use="aufm">The Author</attrib>
         </front-matter-part>
-        <sec id="ack3" disp-level="1"  specific-use="section">
+        <sec id="ack3" specific-use="section">
             <title>Acknowledg</title>
         </sec>
-        <sec id="intro2" disp-level="1"  specific-use="section">
+        <sec id="intro2" specific-use="section">
             <title>Introduction</title>
         </sec>
         <front-matter>
             <dedication id="ded"/>
         </front-matter>
 
-        <sec id="subsec" disp-level="2" specific-use="subsection">
+        <sec id="subsec" specific-use="subsection">
         <label>Subsection</label>
         </sec>
-        <sec id="seclabeltitle" disp-level="1"  specific-use="section">
+        <sec id="seclabeltitle" specific-use="section">
             <label>Label</label>
             <title>Title</title>
         </sec>
-        <sec id="seclabel" disp-level="1"  specific-use="section">
+        <sec id="seclabel" specific-use="section">
             <label>Label</label>
             <subtitle>Subtitle</subtitle>
         </sec>
-        <sec id="sectitle" disp-level="1"  specific-use="section">
+        <sec id="sectitle" specific-use="section">
             <title>Title</title>
             <subtitle>Subtitle</subtitle>
         </sec>
-        <sec id="refhead" disp-level="1"  specific-use="refhead">
+        <sec id="refhead" specific-use="refhead">
             <title>Refhead</title>
         </sec>
         <!-- statement -->
-        <sec disp-level="1" id="statements" specific-use="section">
+        <sec id="statements" specific-use="section">
             <statement content-type="content type" id="statement1" style="style">
                 <label>Label 1</label>
                 <title>Title 1</title>
@@ -306,19 +306,19 @@
             </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement4">
                 <title>Proof</title>
-                <secheading id="statement4secheading" disp-level="3" specific-use="subsection">
+                <secheading id="statement4secheading" specific-use="subsection">
                     <title>secheading</title>
                 </secheading>
             </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement5">
                 <label>Label 5</label>
                 <title>Proof</title>
-                <secheading id="statement5secheading" disp-level="3" specific-use="subsection">
+                <secheading id="statement5secheading" specific-use="subsection">
                     <label>secheading</label>
                 </secheading>
             </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement6">
-                <secheading id="statement6secheading" disp-level="3" specific-use="subsection">
+                <secheading id="statement6secheading" specific-use="subsection">
                     <label>Label 6<x>.</x></label>
                     <title>secheading</title>
                 </secheading>
@@ -342,7 +342,7 @@
             </def-list>
         </sec>
         <!-- fig, fig-group, caption, label -->
-        <sec disp-level="1" id="figures" specific-use="section">
+        <sec id="figures" specific-use="section">
             <fig position="anchor" id="position">
                 <label>Label 1<x>.</x></label>
                 <caption>Caption 1</caption>
@@ -366,7 +366,7 @@
             </fig-group>
         </sec>
         <!-- graphic, inline-graphic, img -->
-        <sec disp-level="1" id="graphics" specific-use="section">
+        <sec id="graphics" specific-use="section">
             <fig>
                 <graphic height="100pt" mimetype="mime" width="100" xlink:href="file" specific-use="use"><alt-text>text</alt-text></graphic>
             </fig>
@@ -374,7 +374,7 @@
             <img src="file" alt="text"></img>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->
-        <sec disp-level="1" id="equations" specific-use="section">
+        <sec id="equations" specific-use="section">
             <p>
                 <inline-formula has-qed-box="true">
                 <!-- NOTE thinspace in text element to test preservation of unicode spacing characters -->
@@ -428,20 +428,20 @@
             </disp-formula>
         </sec>
         <!-- citegroup, cite-detail-->
-        <sec disp-level="1" id="citegroup" specific-use="section">
+        <sec id="citegroup" specific-use="section">
          <p>
          <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group>
          </p>
         </sec>
 
         <!-- alt-title -->
-        <sec disp-level="1" id="alttitle" specific-use="section">
+        <sec id="alttitle" specific-use="section">
             <title>Title</title>
             <alt-title>Alt title</alt-title>
         </sec>
 
         <!-- styled content with color -->
-        <sec disp-level="1" id="styled_color" specific-use="section">
+        <sec id="styled_color" specific-use="section">
             <title>Color</title>
             <styled-content background-color="rgb(0.000%, 0.000%, 1.000%)" border-color="rgb(0, 140, 10)" border-width="thin" border-style="solid" text-color="Teal">Styled content with color</styled-content>
         </sec>
@@ -450,7 +450,7 @@
             <xref ref-type="fn" rid="fnid3">4</xref><fn id="fnid3"><label>3</label><p>Footnote 3</p></fn>
             <xref ref-type="fn" rid="fnid4">4</xref><fn id="fnid4"><label>4</label><p>Footnote 4</p></fn>
         </p>
-        <sec disp-level="1" id="alg:algorithm" specific-use="section">
+        <sec id="alg:algorithm" specific-use="section">
             <title>Algorithm sample</title>
             <alg:algorithm linenodelimiter=":">
                 <alg:line>
@@ -528,7 +528,7 @@
         <sec disp-level="1">
         <p>Email <email>email</email> in content, not metadata.</p>
         </sec>
-        <sec disp-level="1" id="contentModel">
+        <sec id="contentModel">
             <sec  id="contentModel-1">
                 <!-- DLs will be moved after p (but text node remains) -->
                 <p>
@@ -570,20 +570,20 @@
             <ack id="ack1" disp-level="1">
                 <title/>
             </ack>
-            <app id="applabeltitle" disp-level="1"  specific-use="section">
+            <app id="applabeltitle" specific-use="section">
                 <label>Label</label>
                 <title>Title</title>
             </app>
-            <app id="applabel" disp-level="1"  specific-use="section">
+            <app id="applabel" specific-use="section">
                 <label>Label</label>
                 <subtitle>Subtitle</subtitle>
             </app>
-            <app id="apptitle" disp-level="1"  specific-use="section">
+            <app id="apptitle" specific-use="section">
                 <title>Title</title>
                 <subtitle>Subtitle</subtitle>
             </app>
             <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
-            <app id="secmeta" disp-level="1" specific-use="section">
+            <app id="secmeta" specific-use="section">
                 <label>Appendix 1</label>
                 <title>A criterion for kitchen representations</title>
                 <sec-meta>
@@ -597,7 +597,7 @@
                     </contrib-group>
                 </sec-meta>
             </app>
-            <app id="appack" disp-level="1"  specific-use="section">
+            <app id="appack" specific-use="section">
                 <title>Acknowledg</title>
             </app>
         </app-group>

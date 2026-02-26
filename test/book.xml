@@ -154,7 +154,7 @@
             <p>Some notes.
             </p>
         </notes>
-        <preface disp-level="1" id="preface">
+        <preface id="preface">
             <book-part-meta>
                 <title-group>
                     <title>Preface</title>
@@ -192,7 +192,7 @@
     <book-body>
         <book-part>
             <body>
-                <sec disp-level="2" id="chapter" specific-use="chapter">
+                <sec id="chapter" specific-use="chapter">
                     <def-list id="dlist1" content-type="itemize" html:style="list-style-type: disc">
                         <def-item id="ditem1">
                             <term>•</term> <def><p>Item 1</p></def>
@@ -200,40 +200,40 @@
                     </def-list>
                     <p id="pwithx">Is <x>not</x> ignored.</p>
                 </sec>
-                <sec disp-level="1" id="chapter2" specific-use="chapter">
-                    <sec id="ack3" disp-level="2"  specific-use="section">
+                <sec id="chapter2" specific-use="chapter">
+                    <sec id="ack3" specific-use="section">
                         <title>Acknowledg</title>
                     </sec>
-                    <sec id="intro2" disp-level="2"  specific-use="section">
+                    <sec id="intro2" specific-use="section">
                         <title>Introduction</title>
                     </sec>
-                    <sec id="seclabeltitle" disp-level="2"  specific-use="section">
+                    <sec id="seclabeltitle" specific-use="section">
                         <label>Label</label>
                         <title>Title</title>
                     </sec>
-                    <sec id="seclabel" disp-level="2"  specific-use="section">
+                    <sec id="seclabel" specific-use="section">
                         <label>Label</label>
                     </sec>
-                    <sec id="sectitle" disp-level="2"  specific-use="section">
+                    <sec id="sectitle" specific-use="section">
                         <title>Title</title>
                     </sec>
                 </sec>
-                <sec id="part" disp-level="1"  specific-use="part">
-                    <sec disp-level="2"  specific-use="chapter">
-                        <sec id="inparttitle" disp-level="3"  specific-use="section">
+                <sec id="part" specific-use="part">
+                    <sec specific-use="chapter">
+                        <sec id="inparttitle" specific-use="section">
                         <title>Title</title>
                         </sec>
-                        <sec id="inpartlabel" disp-level="3"  specific-use="section">
+                        <sec id="inpartlabel" specific-use="section">
                         <label>Label</label>
                         </sec>
-                        <sec id="xcb" disp-level="3"  specific-use="section" style="xcb">
+                        <sec id="xcb" specific-use="section" style="xcb">
                         <label>Exercise</label>
                         </sec>
                     </sec>
                 </sec>
 
                 <!-- NOTE sec-meta special treatment (see notes in code and tests)-->
-                <sec disp-level="1" id="secmeta" specific-use="chapter">
+                <sec id="secmeta" specific-use="chapter">
                     <title>Title</title>
                     <sec-meta>
                         <contrib-group>
@@ -249,15 +249,15 @@
                 </sec>
 
                 <!-- statement etc -->
-                <sec disp-level="1" id="statementchapter" specific-use="chapter">
+                <sec id="statementchapter" specific-use="chapter">
                     <statement content-type="content type" id="statement2" style="style">
                         <label>Theorem 1</label>
                         <p></p>
                     </statement>
                 </sec>
-                <sec disp-level="1" id="statementpart" specific-use="part">
-                    <sec disp-level="2" id="statementpartchapter" specific-use="chapter">
-                        <sec disp-level="3" id="statementsection" specific-use="section">
+                <sec id="statementpart" specific-use="part">
+                    <sec id="statementpartchapter" specific-use="chapter">
+                        <sec id="statementsection" specific-use="section">
                             <statement content-type="content type" id="statement4" style="style">
                                 <label>Theorem 1</label>
                                 <p></p>
@@ -267,20 +267,20 @@
                 </sec>
 
                 <!-- statement etc -->
-                <sec disp-level="1" id="reflistchapter" specific-use="chapter">
+                <sec id="reflistchapter" specific-use="chapter">
                     <ref-list id="chapterreflist">
                         <title>title</title>
                     </ref-list>
                 </sec>
 
                 <!-- alt-title -->
-                <sec disp-level="1" id="alttitle" specific-use="chapter">
+                <sec id="alttitle" specific-use="chapter">
                     <label>Label<x>.</x></label>
                     <title>Title</title>
                     <alt-title>Alt title</alt-title>
                 </sec>
                 <!-- simpletabbing -->
-                <sec disp-level="1" id="tabbing" specific-use="chapter">
+                <sec id="tabbing" specific-use="chapter">
                     <title>Tabbing</title>
                     <simpletabbing id="simpletabbing">
                         <line id="simpletabbing-line">Line</line>
@@ -288,7 +288,7 @@
                     </simpletabbing>
                 </sec>
                 <!-- citegroup, cite-detail-->
-                <sec disp-level="1" id="citegroup" specific-use="section">
+                <sec id="citegroup" specific-use="section">
                     <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08<cite-detail><x>, </x>Section 5</cite-detail></xref><x>; </x><xref ref-type="bibr" rid="bibr-AEG0" specific-use="cite">AEG08</xref><x>]</x></cite-group>
                 </sec>
 
@@ -297,20 +297,20 @@
     </book-body>
     <book-back>
         <book-app-group id="book-app-group">
-            <book-app id="applabeltitle" disp-level="1"  specific-use="chapter">
+            <book-app id="applabeltitle" specific-use="chapter">
                 <label>Label<x>.</x></label>
                 <title>Title</title>
             </book-app>
-            <book-app id="applabel" disp-level="1"  specific-use="chapter">
+            <book-app id="applabel" specific-use="chapter">
                 <label>Label</label>
             </book-app>
-            <book-app id="apptitle" disp-level="1"  specific-use="chapter">
+            <book-app id="apptitle" specific-use="chapter">
                 <title>Title</title>
             </book-app>
-            <book-app id="appWithSection" disp-level="1"  specific-use="chapter">
+            <book-app id="appWithSection" specific-use="chapter">
                 <label>Label<x>.</x></label>
                 <title>Title</title>
-                <book-app id="appSection" disp-level="1"  specific-use="section">
+                <book-app id="appSection" specific-use="section">
                     <label>Label<x>.</x></label>
                     <title>Title</title>
                 </book-app>
