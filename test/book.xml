@@ -297,7 +297,7 @@
     </book-body>
     <book-back>
         <book-app-group id="book-app-group">
-            <book-app id="applabeltitle" specific-use="chapter">
+            <book-app id="applabeltitle" specific-use="appendix">
                 <label>Label<x>.</x></label>
                 <title>Title</title>
             </book-app>
