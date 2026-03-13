@@ -157,6 +157,8 @@
         <notes notes-type="dedication"/>
     </front>
     <body>
+        <sec id="untagged" specific-use="section untagged">
+        </sec>
         <sec id="sec" specific-use="section">
             <styled-content style-type="type"/>
             <italic/>
