@@ -154,6 +154,14 @@
             <p>Some notes.
             </p>
         </notes>
+        <foreword id="foreword" specific-use="chapter">
+            <book-part-meta>
+                <title-group>
+                    <title>Foreword</title>
+                </title-group>
+            </book-part-meta>
+            <named-book-part-body></named-book-part-body>
+        </foreword>
         <preface id="preface">
             <book-part-meta>
                 <title-group>
