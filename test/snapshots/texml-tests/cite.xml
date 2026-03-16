@@ -9,7 +9,7 @@
     </article-meta>
   </front>
   <body id="ltxid2">
-    <sec id="ltxid3" specific-use="section">
+    <sec id="ltxid3" specific-use="section untagged">
       <p>See <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AGS" specific-use="cite">AGS10</xref><x>]</x></cite-group>.</p>
       <p>See <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-AGS" specific-use="cite">AGS10</xref><x>, </x><xref ref-type="bibr" rid="bibr-AS" specific-use="cite">AS08</xref><x>]</x></cite-group>.</p>
       <p>See <cite-group><x>[</x><xref ref-type="bibr" rid="bibr-XXX" specific-use="undefined cite"><monospace>?XXX</monospace></xref><x>]</x></cite-group>.</p>
@@ -18,7 +18,7 @@
     </sec>
   </body>
   <back id="ltxid4">
-    <ref-list content-type="thebibliography" id="ltxid5">
+    <ref-list content-type="thebibliography" id="ltxid6">
       <title>References</title>
       <ref id="bibr-AGS">
         <label><x>[</x>AGS10<x>]</x></label>

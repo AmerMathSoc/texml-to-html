@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE book PUBLIC "-//NLM//DTD BITS Book Interchange DTD v2.1 20180401//EN" "BITS-book2.dtd">
+<!DOCTYPE book PUBLIC "-//NLM//DTD BITS Book Interchange DTD v2.2 20250930//EN" "BITS-book2-2.dtd">
 <book xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
   <collection-meta collection-type="book series">
     <collection-id collection-id-type="publisher">gsm</collection-id>
@@ -39,7 +39,6 @@
       <day>4</day>
       <month>1</month>
       <year>2023</year>
-      <string-date>January 4, 2023</string-date>
     </pub-date>
     <book-volume-number>226</book-volume-number>
     <book-volume-id>lukic</book-volume-id>
