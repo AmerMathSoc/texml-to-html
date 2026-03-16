@@ -133,12 +133,13 @@
         </toc>
     </front-matter>
     <book-body>
-        <book-part>
-            <body>
-                <sec id="chapter2" specific-use="chapter">
+        <book-part id="chapter2" specific-use="chapter">
+            <book-part-meta>
+                <title-group>
                     <title>Title</title>
-                </sec>
-            </body>
+                </title-group>
+            </book-part-meta>
+            <body/>
         </book-part>
     </book-body>
 </book>
