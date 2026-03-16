@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.2.0...v21.0.0) (2026-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Changes sec-meta output & expects new texml book markup (#495)
+
+### Features
+
+* adjust to texml changes around book-part ([6f7fe2c](https://github.com/AmerMathSoc/texml-to-html/commit/6f7fe2c718be1db0da41615738e6174a732868fa)), closes [#495](https://github.com/AmerMathSoc/texml-to-html/issues/495)
+* **sec.js:** adjust to changes for texml-generated `sec`. ([e88d926](https://github.com/AmerMathSoc/texml-to-html/commit/e88d926dd6aad67d814e925864dd7cfa10a5373e)), closes [#505](https://github.com/AmerMathSoc/texml-to-html/issues/505)
+* **sec.js:** support new appendix markup ([3a91959](https://github.com/AmerMathSoc/texml-to-html/commit/3a91959591d96b10a806b46203576f8d07977197)), closes [#501](https://github.com/AmerMathSoc/texml-to-html/issues/501)
+* support foreword element ([22279d8](https://github.com/AmerMathSoc/texml-to-html/commit/22279d8520a3628e280f16e1bb65cd776c774da1)), closes [#507](https://github.com/AmerMathSoc/texml-to-html/issues/507)
+
+
+### Bug Fixes
+
+* **package:** update linkedom to v0.18.12 ([dbf2af1](https://github.com/AmerMathSoc/texml-to-html/commit/dbf2af155308a3ce4ee6b382e8b8cf80b159f43e))
+
 ## [20.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.1.1...v20.2.0) (2026-02-19)
 
 
