@@ -32,7 +32,7 @@
   "homepage": "https://github.com/AmerMathSoc/texml-to-html#readme",
   "devDependencies": {
     "c8": "11.0.0",
-    "commit-and-tag-version": "12.6.1",
+    "commit-and-tag-version": "12.7.3",
     "tape": "5.9.0"
   },
   "dependencies": {
