@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v21.0.0...v21.1.0) (2026-06-09)
+
+
+### Features
+
+* align secheading level calculation with sec ([ddfc443](https://github.com/AmerMathSoc/texml-to-html/commit/ddfc443e12715f21a5ee5305cadcfed5810531de)), closes [#439](https://github.com/AmerMathSoc/texml-to-html/issues/439)
+
+
+### Bug Fixes
+
+* **package:** update commit-and-tag-version to v12.7.3 ([a357d2a](https://github.com/AmerMathSoc/texml-to-html/commit/a357d2ad6b2f7079f276bf049e815ce1da6e4c8f))
+
 ## [21.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v20.2.0...v21.0.0) (2026-03-16)
 
 
