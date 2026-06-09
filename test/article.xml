@@ -309,7 +309,13 @@
             <statement content-type="proof proof" has-qed-box="true" id="statement4">
                 <title>Proof</title>
                 <secheading id="statement4secheading" specific-use="subsection">
-                    <title>secheading</title>
+                    <title>subsection</title>
+                </secheading>
+                <secheading id="statement4secheading1" specific-use="subsubsection">
+                    <title>subsubsection</title>
+                </secheading>
+                <secheading id="statement4secheading2" specific-use="unknown">
+                    <title>unknown</title>
                 </secheading>
             </statement>
             <statement content-type="proof proof" has-qed-box="true" id="statement5">

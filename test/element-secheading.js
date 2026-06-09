@@ -18,11 +18,21 @@ import { article } from './helper.js';
 import tape from 'tape';
 
 tape('Template: statement, label, title', async function (t) {
-    t.plan(1);
+    t.plan(3);
 
     t.equal(
         article.querySelector('[data-ams-doc="secheading"][id="statement4secheading"][data-ams-specific-use="subsection"][data-ams-doc-level="2"]').innerHTML,
-        'secheading',
-        'secheading with title within statement'
+        'subsection',
+        'secheading with specific-use "subsection" within statement'
+    );
+    t.equal(
+        article.querySelector('[data-ams-doc="secheading"][id="statement4secheading1"][data-ams-specific-use="subsubsection"][data-ams-doc-level="3"]').innerHTML,
+        'subsubsection',
+        'secheading with specific-use "subsubsection" within statement'
+    );
+    t.equal(
+        article.querySelector('[data-ams-doc="secheading"][id="statement4secheading2"][data-ams-specific-use="unknown"][data-ams-doc-level="5"]').innerHTML,
+        'unknown',
+        'secheading with specific-use "unknown" within statement'
     );
 });
