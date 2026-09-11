@@ -186,6 +186,9 @@
             <disp-quote content-type="epigraph">
                 <attrib/>
             </disp-quote>
+            <disp-quote content-type="pullquote">
+                <p>A simple pull quote</p>
+            </disp-quote>
             <fig id="figattrib">
                 <caption>Caption</caption>
                 <attrib>Attrib</attrib>

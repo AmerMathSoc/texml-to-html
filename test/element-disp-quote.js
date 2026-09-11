@@ -20,7 +20,7 @@ import tape from 'tape';
 
 
 tape('Template: disp-quote, disp-quote/attrib', async function(t) {
-  t.plan(5);
+  t.plan(6);
   const document = article;
   const quotes = document.querySelectorAll('blockquote[data-ams-style="use"]');
   t.ok(quotes[0], 'disp-quote with specific-use to blockquote with data-ams-style');
@@ -28,5 +28,5 @@ tape('Template: disp-quote, disp-quote/attrib', async function(t) {
   t.equal(quotes[0].lastElementChild.tagName, 'FOOTER', 'disp-quote footer last child');
   t.notEqual(quotes[1].parentNode.tagName, 'P', 'blockquote moved out of paragraph to avoid invalid HTML');
   t.ok(document.querySelector('blockquote[role="doc-epigraph"]'), 'Epigraphs get role');
+  t.ok(document.querySelector('blockquote[role="doc-pullquote"]:not([data-ams-style="null"])'), 'Pullquotes get role');
 });
-
