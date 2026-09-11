@@ -101,7 +101,7 @@
     },
     "customMeta": {
         "communicated-by": "meta-value",
-        "titlepic": "<img alt=\"Graphic without alt text\" data-ams-height=\"218pt\" data-ams-width=\"493pt\" data-ams-style=\"null\" src=\"Images/imgc920fa78a62d5705041ab0ad31b3c7df.svg\" data-ams-doc=\"inline-graphic\">"
+        "titlepic": "<img alt=\"Graphic without alt text\" data-ams-height=\"218pt\" data-ams-width=\"493pt\" src=\"Images/imgc920fa78a62d5705041ab0ad31b3c7df.svg\" data-ams-doc=\"inline-graphic\">"
     },
     "categories": {},
     "volumeInfo": {
