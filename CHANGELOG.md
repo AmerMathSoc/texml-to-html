@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v21.1.0...v21.2.0) (2026-09-21)
+
+### Features
+
+* **disp-quote.js:** pullquotes ([c7ea097](https://github.com/AmerMathSoc/texml-to-html/commit/c7ea097ff0c45cf746808dbea17aae0373511921)), closes [#518](https://github.com/AmerMathSoc/texml-to-html/issues/518)
+
+### Bug Fixes
+
+* **graphics.js:** specific-use handling ([9a6fc2a](https://github.com/AmerMathSoc/texml-to-html/commit/9a6fc2af4ab47d3758580f07877bd11aa718e0f6)), closes [#515](https://github.com/AmerMathSoc/texml-to-html/issues/515)
+* **package:** update dev dependencies ([5c13f4b](https://github.com/AmerMathSoc/texml-to-html/commit/5c13f4bbd409e0cff8aa27e8ce86bcf015a6c763))
+* **package:** update to linkedom v0.18.13 ([320010b](https://github.com/AmerMathSoc/texml-to-html/commit/320010b5f0f2a56dafe03eec34639ea3c3af91da))
+* **secheadings.js:** shorter warning message ([688fc60](https://github.com/AmerMathSoc/texml-to-html/commit/688fc60b48af6c70ab18f808a5c61ec021652402)), closes [#516](https://github.com/AmerMathSoc/texml-to-html/issues/516)
 ## [21.1.0](https://github.com/AmerMathSoc/texml-to-html/compare/v21.0.0...v21.1.0) (2026-06-09)
 
 
