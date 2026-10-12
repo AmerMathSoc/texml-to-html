@@ -77,7 +77,10 @@
         }
     },
     "customMeta": {
-        "communicated-by": "meta-value"
+        "communicated-by": {
+            "name": "meta-name",
+            "value": "meta-value"
+        }
     },
     "categories": {
         "category": "subject"
