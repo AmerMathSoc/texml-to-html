@@ -25,7 +25,7 @@ tape('Template: fig, fig-group, caption, label', async function(t) {
   const figurePosition = document.querySelector('#figures figure#position');
   t.equal(figurePosition.getAttribute('data-ams-position'), 'anchor', 'Figure with data-ams-position attribute');
   t.notOk(figurePosition.getAttribute('role'), 'Figure has no explicit role');
-  const labels = document.querySelectorAll('#figures figure strong');
+  const labels = document.querySelectorAll('#figures figure [data-ams-doc="label"]');
   t.equal(labels[0].innerHTML, 'Label 1<ams-x>.</ams-x>', 'Fig label with caption gets period');
   t.equal(labels[1].innerHTML, 'Grouplabel 1', 'Fig-group label with caption gets period');
   t.equal(labels[2].innerHTML,'Sublabel 1', 'Subfigure label with caption gets parentheses');

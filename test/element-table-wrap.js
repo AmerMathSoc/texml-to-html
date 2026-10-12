@@ -35,7 +35,7 @@ tape('table-wrap element', async function (t) {
         tableWrap.firstElementChild, tableCaption,
         `first child of table is table caption `
     );
-    const tableLabel = tableCaption.querySelector('strong')
+    const tableLabel = tableCaption.querySelector('[data-ams-doc="label"]')
     t.ok(
         tableLabel,
         `table label in caption as strong element`
