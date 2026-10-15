@@ -33,7 +33,9 @@
         }
     },
     "customMeta": {},
-    "categories": {},
+    "categories": { 
+        "notices-category": "opinion" 
+    },
     "volumeInfo": {
         "volume": "67",
         "issue": "1"

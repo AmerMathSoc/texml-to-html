@@ -27,6 +27,12 @@
       </history>
       <volume>67</volume>
       <issue>1</issue>
+      <custom-meta-group>
+        <custom-meta specific-use="notices-category">
+          <meta-name>category</meta-name>
+          <meta-value>opinion</meta-value>
+        </custom-meta>
+      </custom-meta-group>
     </article-meta>
   </front>
   <body>
