@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [22.0.0](https://github.com/AmerMathSoc/texml-to-html/compare/v21.2.0...v22.0.0) (2026-10-15)
+
+### ⚠ BREAKING CHANGES
+
+* Article metadata stores custom-meta differently,
+  requiring downstream changes.
+* Inside fig, label output has changed.
+* Removes support for `<img>`
+   in XML (which texml no longer generates).
+
+* feat!(fig): switch to default label output ([c665b51](https://github.com/AmerMathSoc/texml-to-html/commit/c665b5153a1984fa153084b73cd852bc682c42fa)), closes [#482](https://github.com/AmerMathSoc/texml-to-html/issues/482)
+
+### Features
+
+* remove support for img ([52065c4](https://github.com/AmerMathSoc/texml-to-html/commit/52065c4d38c8056c5c03a09a7becb78a664c727f)), closes [#520](https://github.com/AmerMathSoc/texml-to-html/issues/520)
+* revise custom-meta processing ([7d323e3](https://github.com/AmerMathSoc/texml-to-html/commit/7d323e39fb4d40eef82f3a7441dd5d3b002476a8)), closes [#519](https://github.com/AmerMathSoc/texml-to-html/issues/519)
+
+### Bug Fixes
+
+* **book-meta-json.js:** create template in closure ([5865ed4](https://github.com/AmerMathSoc/texml-to-html/commit/5865ed4d54ee9ce077d36f25734806cf262e11b6)), closes [#506](https://github.com/AmerMathSoc/texml-to-html/issues/506)
+* **package:** update dev dependencies ([8e14d30](https://github.com/AmerMathSoc/texml-to-html/commit/8e14d30469c15f59f4e8d9e94036f00ef940d490))
+
 ## [21.2.0](https://github.com/AmerMathSoc/texml-to-html/compare/v21.1.0...v21.2.0) (2026-09-21)
 
 ### Features
