@@ -83,7 +83,8 @@
     "history": {
         "published": "2025-01-14",
         "rev-recd": [],
-        "issue": "2025-01-01"
+        "issue": "2025-01-01",
+        "received": "2025-01-01"
     },
     "collection": {
         "title": "Collection Title",

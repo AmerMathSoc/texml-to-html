@@ -83,6 +83,11 @@
                 <month>1</month>
                 <year>2025</year>
             </date>
+            <date date-type="received" iso-8601-date="2025-01-01">
+                <day>1</day>
+                <month>1</month>
+                <year>2025</year>
+            </date>
             <date date-type="xml-last-modified" iso-8601-date="2025-04-25T03:14:18Z">
                 <string-date>2025-04-25T03:14:18Z</string-date>
             </date>
