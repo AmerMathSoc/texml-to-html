@@ -32,8 +32,8 @@
   "homepage": "https://github.com/AmerMathSoc/texml-to-html#readme",
   "devDependencies": {
     "c8": "12.0.0",
-    "commit-and-tag-version": "13.2.0",
-    "tape": "5.10.2"
+    "commit-and-tag-version": "13.3.0",
+    "tape": "5.10.3"
   },
   "dependencies": {
     "linkedom": "0.18.13"
