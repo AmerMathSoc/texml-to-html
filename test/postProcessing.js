@@ -19,7 +19,7 @@ import tape from 'tape';
 
 
 tape('postProcessing.js', async function (t) {
-    t.plan(5);
+    t.plan(6);
     const document = article;
 
     t.equal(document.querySelector('#contentModel-1').innerHTML.trim(), `<p>
@@ -39,6 +39,8 @@ tape('postProcessing.js', async function (t) {
     t.equal(document.querySelector('#contentModel-2').innerHTML.trim(), '<dl>\n                    </dl>', 'Paragraph with only DL: DL is moved out, paragraph is trimmed (snapshot)');
 
     t.equal(document.querySelector('#contentModel-3').innerHTML.trim(), `<p>1</p><p>2</p><p>3</p>`, 'Paragraph with text+paragraph+text split into 3 paragraphs (snapshot)');
+
+    t.equal(document.querySelector('#contentModel-4').innerHTML.trim(), `<p>A</p><p>paragraph</p><p>in</p><p>twain</p>`, 'Paragraph with text+paragraph+paragraph+text split into 4 paragraphs (snapshot)');
 
     t.equal(document.querySelector('cite-group').parentNode.tagName, 'P', 'Custom elements remain in paragraph');
 

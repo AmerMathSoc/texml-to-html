@@ -568,6 +568,10 @@
                 <!-- paragraph with nested paragraph will be split up into 3 paragraphs -->
                 <p>1<p>2</p>3</p>
             </sec>
+            <sec id="contentModel-4">
+              <!-- a paragraph with adjacent flow content -->
+              <p>A<p>paragraph</p><p>in</p>twain</p>
+            </sec>
         </sec>
         <sec id="xrefgroup">
           <p>See groups <xref-group first="xrefgroup1" last="xrefgroup4" middle="xrefgroup2 xrefgroup3" ref-subtype="group" ref-type="grp"><x>(</x><xref ref-subtype="group" ref-type="grp" rid="xrefgroup1" specific-use="ref">2</xref><x>)</x>–<xref ref-subtype="group" ref-type="grp" rid="xrefgroup4" specific-use="ref">5</xref></xref-group></p>
