@@ -381,7 +381,7 @@
             <fig>
                 <graphic height="100pt" mimetype="mime" width="100" xlink:href="file" specific-use="use"><alt-text>text</alt-text></graphic>
             </fig>
-            <inline-graphic  height="height" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
+            <inline-graphic  height="100" mimetype="mime" width="width" xlink:href="file" specific-use="use"/>
         </sec>
         <!-- inline-formula, disp-formula, tex-math -->
         <sec id="equations" specific-use="section">
